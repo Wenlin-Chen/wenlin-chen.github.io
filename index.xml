@@ -5,12 +5,20 @@
     <link>https://wenlin-chen.github.io/</link>
       <atom:link href="https://wenlin-chen.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Wenlin Chen</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2022 Wenlin Chen</copyright><lastBuildDate>Mon, 26 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2022 Wenlin Chen</copyright><lastBuildDate>Thu, 19 Aug 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Wenlin Chen</title>
       <link>https://wenlin-chen.github.io/</link>
     </image>
+    
+    <item>
+      <title>Causal Representation Learning for Latent Space Optimization</title>
+      <link>https://wenlin-chen.github.io/publication/chen2021causal/</link>
+      <pubDate>Thu, 19 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2021causal/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Optimal Client Sampling for Federated Learning</title>

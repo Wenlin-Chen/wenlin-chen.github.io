@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wenlin-chen.github.io/publication-type/3/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <loc>https://wenlin-chen.github.io/publication-type/1/</loc>
+    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://wenlin-chen.github.io/publication/chen2022meta/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <loc>https://wenlin-chen.github.io/publication/chen2023meta/</loc>
+    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication_types/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication-type/2/</loc>
     <lastmod>2022-08-22T00:00:00+00:00</lastmod>
@@ -26,7 +26,7 @@
     <loc>https://wenlin-chen.github.io/publication-type/4/</loc>
     <lastmod>2022-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://wenlin-chen.github.io/publication/tripp2022an/</loc>
+    <loc>https://wenlin-chen.github.io/publication/tripp2022evaluation/</loc>
     <lastmod>2022-04-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication-type/7/</loc>
@@ -34,9 +34,6 @@
   </url><url>
     <loc>https://wenlin-chen.github.io/publication/chen2021causal/</loc>
     <lastmod>2021-08-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://wenlin-chen.github.io/publication-type/1/</loc>
-    <lastmod>2020-09-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication/webb2020ensemble/</loc>
     <lastmod>2020-09-14T00:00:00+00:00</lastmod>

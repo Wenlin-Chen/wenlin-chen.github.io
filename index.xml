@@ -5,7 +5,7 @@
     <link>https://wenlin-chen.github.io/</link>
       <atom:link href="https://wenlin-chen.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Wenlin Chen</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2022 Wenlin Chen</copyright><lastBuildDate>Sun, 06 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2022 Wenlin Chen</copyright><lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Wenlin Chen</title>
@@ -14,9 +14,9 @@
     
     <item>
       <title>Meta-learning Adaptive Deep Kernel Gaussian Processes for Molecular Property Prediction</title>
-      <link>https://wenlin-chen.github.io/publication/chen2022meta/</link>
-      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2022meta/</guid>
+      <link>https://wenlin-chen.github.io/publication/chen2023meta/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2023meta/</guid>
       <description></description>
     </item>
     
@@ -30,9 +30,9 @@
     
     <item>
       <title>An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks</title>
-      <link>https://wenlin-chen.github.io/publication/tripp2022an/</link>
+      <link>https://wenlin-chen.github.io/publication/tripp2022evaluation/</link>
       <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/tripp2022an/</guid>
+      <guid>https://wenlin-chen.github.io/publication/tripp2022evaluation/</guid>
       <description></description>
     </item>
     

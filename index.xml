@@ -57,9 +57,9 @@ $$\nabla_{\theta}\log p_{\theta}(x)=-\nabla_{\theta}E_{\theta}(x)-\nabla_{\theta
 where the gradient of the log partition is intractable and hard to estimate:
 $$\begin{align}
 \nabla_{\theta}\log Z_{\theta}
-&amp;amp;=\frac{1}{Z_{\theta}}\nabla_{\theta}\int \exp(-E_{\theta}(x)) dx \\\
-&amp;amp;=\frac{1}{Z_{\theta}}\int \nabla_{\theta} \exp(-E_{\theta}(x)) dx \\\
-&amp;amp;=\int-\nabla_{\theta}E_{\theta}(x)\frac{\exp(-E_{\theta}(x))}{Z_{\theta}}dx \\\
+&amp;amp;=\frac{1}{Z_{\theta}}\nabla_{\theta}\int \exp(-E_{\theta}(x)) dx \\
+&amp;amp;=\frac{1}{Z_{\theta}}\int \nabla_{\theta} \exp(-E_{\theta}(x)) dx \\
+&amp;amp;=\int-\nabla_{\theta}E_{\theta}(x)\frac{\exp(-E_{\theta}(x))}{Z_{\theta}}dx \\
 &amp;amp;=\mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\theta}(x)}[-\nabla_{\theta}E_{\theta}(x))].
 \end{align}$$&lt;/li&gt;
 &lt;/ul&gt;
@@ -121,8 +121,8 @@ $$p_{\sigma}(\tilde{x})=\int q_{\sigma}(\tilde{x}|x)p_D(x)dx,\quad\text{where } 
 $$
 \begin{align}
 \min_{\theta}~D_F[p_{\sigma}(\tilde{x})||p_{\theta}(\tilde{x})]
-&amp;amp;= \mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\sigma}(\tilde{x})}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}) - s_{\theta}(\tilde{x})\Vert^2\right] \\\
-&amp;amp;= \mathbb{E}&lt;em&gt;{q&lt;/em&gt;{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] \\\
+&amp;amp;= \mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\sigma}(\tilde{x})}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}) - s_{\theta}(\tilde{x})\Vert^2\right] \\
+&amp;amp;= \mathbb{E}&lt;em&gt;{q&lt;/em&gt;{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] \\
 &amp;amp;=\mathbb{E}&lt;em&gt;{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s&lt;/em&gt;{\theta}(x+\sigma z)\right\Vert^2\right].
 \end{align}
 $$

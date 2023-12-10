@@ -13,10 +13,10 @@
     </image>
     
     <item>
-      <title>1. Energy-based Models, Score-based Models and Diffusion Models</title>
-      <link>https://wenlin-chen.github.io/post/energy-score-diffusion/</link>
+      <title>1. Energy-based Models and Score Matching</title>
+      <link>https://wenlin-chen.github.io/post/energy-score/</link>
       <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/post/energy-score-diffusion/</guid>
+      <guid>https://wenlin-chen.github.io/post/energy-score/</guid>
       <description>&lt;h2 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Data: $x\in\mathcal{X}\subseteq\mathbb{R}^d$, potentially high dimensional, complex, structured, e.g.,
@@ -146,19 +146,6 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;DSM with Annealed Langevin Dynamics
-&lt;ul&gt;
-&lt;li&gt;TBD&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;denoising-diffusion-probabilistic-models&#34;&gt;Denoising Diffusion Probabilistic Models&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;TBD&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;score-based-diffusion-models&#34;&gt;Score-based Diffusion Models&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;TBD&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

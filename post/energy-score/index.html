@@ -33,7 +33,7 @@
   <meta name="description" content="Generative Modeling Data: $x\in\mathcal{X}\subseteq\mathbb{R}^d$, potentially high dimensional, complex, structured, e.g., high resolution images and videos, audio waveforms, 3D molecules, &hellip; Given: i.i.d. samples ${x_1,\cdots,x_N}$ from an unknown data distribution $p_D(x)$. Goal: Draw new samples from $p_D(x)$." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/energy-score-diffusion/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/energy-score/" />
 
   
 
@@ -279,7 +279,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/post/energy-score-diffusion/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/energy-score/" />
 
   
   
@@ -296,8 +296,8 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/post/energy-score-diffusion/" />
-  <meta property="og:title" content="1. Energy-based Models, Score-based Models and Diffusion Models | Wenlin Chen" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/energy-score/" />
+  <meta property="og:title" content="1. Energy-based Models and Score Matching | Wenlin Chen" />
   <meta property="og:description" content="Generative Modeling Data: $x\in\mathcal{X}\subseteq\mathbb{R}^d$, potentially high dimensional, complex, structured, e.g., high resolution images and videos, audio waveforms, 3D molecules, &hellip; Given: i.i.d. samples ${x_1,\cdots,x_N}$ from an unknown data distribution $p_D(x)$. Goal: Draw new samples from $p_D(x)$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -331,9 +331,9 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://wenlin-chen.github.io/post/energy-score-diffusion/"
+    "@id": "https://wenlin-chen.github.io/post/energy-score/"
   },
-  "headline": "1. Energy-based Models, Score-based Models and Diffusion Models",
+  "headline": "1. Energy-based Models and Score Matching",
   
   "datePublished": "2023-12-10T00:00:00Z",
   "dateModified": "2023-12-10T00:00:00Z",
@@ -367,11 +367,11 @@
 
 
 
-  <title>1. Energy-based Models, Score-based Models and Diffusion Models | Wenlin Chen</title>
+  <title>1. Energy-based Models and Score Matching | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="b0a88175e9bd1b57791e140d9605f664" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="37b74d4cbf540a64d807ad4d6ed0fba4" >
 
   
   
@@ -685,7 +685,7 @@
   
   
 <div class="container pt-3">
-  <h1>1. Energy-based Models, Score-based Models and Diffusion Models</h1>
+  <h1>1. Energy-based Models and Score Matching</h1>
 
   
 
@@ -713,7 +713,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    3 min read
   </span>
   
 
@@ -871,19 +871,6 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
 </li>
 </ul>
 </li>
-<li>DSM with Annealed Langevin Dynamics
-<ul>
-<li>TBD</li>
-</ul>
-</li>
-</ul>
-<h2 id="denoising-diffusion-probabilistic-models">Denoising Diffusion Probabilistic Models</h2>
-<ul>
-<li>TBD</li>
-</ul>
-<h2 id="score-based-diffusion-models">Score-based Diffusion Models</h2>
-<ul>
-<li>TBD</li>
 </ul>
 
     </div>
@@ -908,7 +895,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/energy-score-diffusion/&amp;text=1.%20Energy-based%20Models,%20Score-based%20Models%20and%20Diffusion%20Models" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/energy-score/&amp;text=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -921,7 +908,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/energy-score-diffusion/&amp;t=1.%20Energy-based%20Models,%20Score-based%20Models%20and%20Diffusion%20Models" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/energy-score/&amp;t=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -934,7 +921,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="mailto:?subject=1.%20Energy-based%20Models,%20Score-based%20Models%20and%20Diffusion%20Models&amp;body=https://wenlin-chen.github.io/post/energy-score-diffusion/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=1.%20Energy-based%20Models%20and%20Score%20Matching&amp;body=https://wenlin-chen.github.io/post/energy-score/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -947,7 +934,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/energy-score-diffusion/&amp;title=1.%20Energy-based%20Models,%20Score-based%20Models%20and%20Diffusion%20Models" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/energy-score/&amp;title=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -960,7 +947,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="whatsapp://send?text=1.%20Energy-based%20Models,%20Score-based%20Models%20and%20Diffusion%20Models%20https://wenlin-chen.github.io/post/energy-score-diffusion/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=1.%20Energy-based%20Models%20and%20Score%20Matching%20https://wenlin-chen.github.io/post/energy-score/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -973,7 +960,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/energy-score-diffusion/&amp;title=1.%20Energy-based%20Models,%20Score-based%20Models%20and%20Diffusion%20Models" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/energy-score/&amp;title=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

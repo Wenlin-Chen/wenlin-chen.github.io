@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wenlin Chen</title>
-    <link>https://wenlin-chen.github.io/</link>
-      <atom:link href="https://wenlin-chen.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <description>Wenlin Chen</description>
+    <title>Personal Notes | Wenlin Chen</title>
+    <link>https://wenlin-chen.github.io/post/</link>
+      <atom:link href="https://wenlin-chen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <description>Personal Notes</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2023 Wenlin Chen</copyright><lastBuildDate>Sun, 10 Dec 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
-      <title>Wenlin Chen</title>
-      <link>https://wenlin-chen.github.io/</link>
+      <title>Personal Notes</title>
+      <link>https://wenlin-chen.github.io/post/</link>
     </image>
     
     <item>
@@ -167,78 +167,6 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
 &lt;li&gt;TBD&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>It HAS to be Subjective: Human Annotator Simulation via Zero-shot Density Estimation</title>
-      <link>https://wenlin-chen.github.io/publication/wu2023has/</link>
-      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/wu2023has/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Leveraging Task Structures for Improved Identifiability in Neural Network Representations</title>
-      <link>https://wenlin-chen.github.io/publication/chen2023leveraging/</link>
-      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2023leveraging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Neural Characteristic Activation Value Analysis for Improved ReLU Network Feature Learning</title>
-      <link>https://wenlin-chen.github.io/publication/chen2023neural/</link>
-      <pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2023neural/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Meta-learning Adaptive Deep Kernel Gaussian Processes for Molecular Property Prediction</title>
-      <link>https://wenlin-chen.github.io/publication/chen2023meta/</link>
-      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2023meta/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Optimal Client Sampling for Federated Learning</title>
-      <link>https://wenlin-chen.github.io/publication/chen2022optimal/</link>
-      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2022optimal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks</title>
-      <link>https://wenlin-chen.github.io/publication/tripp2022evaluation/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/tripp2022evaluation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Causal Representation Learning for Latent Space Optimization</title>
-      <link>https://wenlin-chen.github.io/publication/chen2021causal/</link>
-      <pubDate>Thu, 19 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2021causal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>To Ensemble or Not Ensemble: When Does End-to-End Training Fail?</title>
-      <link>https://wenlin-chen.github.io/publication/webb2020ensemble/</link>
-      <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/webb2020ensemble/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://wenlin-chen.github.io/admin/config.yml</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/admin/config.yml</guid>
-      <description></description>
     </item>
     
   </channel>

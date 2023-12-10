@@ -780,7 +780,9 @@ $$\max_{\theta}~\mathbb{E}<em>{p_D(x)}[\log p</em>{\theta}(x)]\quad\iff\quad\min
 <li>MLE with gradient-based optimization:
 $$\nabla_{\theta}\log p_{\theta}(x)=-\nabla_{\theta}E_{\theta}(x)-\nabla_{\theta}\log Z_{\theta},$$
 where the gradient of the log partition is intractable and hard to estimate:
-$$\begin{aligned} \nabla_{\theta}\log Z_{\theta} &amp;=\frac{1}{Z_{\theta}}\nabla_{\theta}\int \exp(-E_{\theta}(x)) dx \ &amp;=\frac{1}{Z_{\theta}}\int \nabla_{\theta} \exp(-E_{\theta}(x)) dx \ &amp;=\int-\nabla_{\theta}E_{\theta}(x)\frac{\exp(-E_{\theta}(x))}{Z_{\theta}}dx \ &amp;=\mathbb{E}<em>{p</em>{\theta}(x)}[-\nabla_{\theta}E_{\theta}(x))]. \end{aligned}$$</li>
+$$
+\begin{aligned} \nabla_{\theta}\log Z_{\theta} &amp;=\frac{1}{Z_{\theta}}\nabla_{\theta}\int \exp(-E_{\theta}(x)) dx \\ &amp;=\frac{1}{Z_{\theta}}\int \nabla_{\theta} \exp(-E_{\theta}(x)) dx \\ &amp;=\int-\nabla_{\theta}E_{\theta}(x)\frac{\exp(-E_{\theta}(x))}{Z_{\theta}}dx \\ &amp;=\mathbb{E}<em>{p</em>{\theta}(x)}[-\nabla_{\theta}E_{\theta}(x))]. \end{aligned}
+$$</li>
 </ul>
 <h2 id="score-based-models">Score-based Models</h2>
 <ul>
@@ -837,7 +839,9 @@ $$\tilde{x}=x+\sigma z,\quad z\sim\mathcal{N}(0,I),$$
 or, equivalently,
 $$p_{\sigma}(\tilde{x})=\int q_{\sigma}(\tilde{x}|x)p_D(x)dx,\quad\text{where } q_{\sigma}(\tilde{x}|x)=\mathcal{N}(\tilde{x}|x,\sigma^2I).$$</li>
 <li>Match the score of the perturbed data distribution $p_{\sigma}(\tilde{x})$:
-$$\begin{aligned} \min_{\theta}~D_F[p_{\sigma}(\tilde{x})||p_{\theta}(\tilde{x})] &amp;= \mathbb{E}<em>{p</em>{\sigma}(\tilde{x})}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}) - s_{\theta}(\tilde{x})\Vert^2\right] \ &amp;= \mathbb{E}<em>{q</em>{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] \ &amp;=\mathbb{E}<em>{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s</em>{\theta}(x+\sigma z)\right\Vert^2\right]. \end{aligned}$$
+$$
+\begin{aligned} \min_{\theta}~D_F[p_{\sigma}(\tilde{x})||p_{\theta}(\tilde{x})] &amp;= \mathbb{E}<em>{p</em>{\sigma}(\tilde{x})}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}) - s_{\theta}(\tilde{x})\Vert^2\right] \\ &amp;= \mathbb{E}<em>{q</em>{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] \\ &amp;=\mathbb{E}<em>{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s</em>{\theta}(x+\sigma z)\right\Vert^2\right]. \end{aligned}
+$$
 <ul>
 <li>No unknown data score term.</li>
 <li>$p_{\sigma}(\tilde{x})$ is always non-degenerate regardless of the support of $p_D(x)$, since it is obtained by convolving $p_D(x)$ with (full support) Gaussian noise $\mathcal{N}(0,\sigma^2I)$.</li>

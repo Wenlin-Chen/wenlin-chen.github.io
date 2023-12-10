@@ -59,7 +59,7 @@ $$
 \begin{aligned} \nabla_{\theta}\log Z_{\theta} &amp;amp;=\frac{1}{Z_{\theta}}\nabla_{\theta}\int \exp(-E_{\theta}(x)) dx \\
 &amp;amp;=\frac{1}{Z_{\theta}}\int \nabla_{\theta} \exp(-E_{\theta}(x)) dx \\
 &amp;amp;=\int-\nabla_{\theta}E_{\theta}(x)\frac{\exp(-E_{\theta}(x))}{Z_{\theta}}dx \\
-&amp;amp;=-\mathbb{E}_{p_{\theta}(x)}[\nabla_{\theta}E_{\theta}(x)] \end{aligned}
+&amp;amp;=-\mathbb{E}_{p_{\theta}(x)}[\nabla_{\theta}E_{\theta}(x)]. \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;score-based-models&#34;&gt;Score-based Models&lt;/h2&gt;

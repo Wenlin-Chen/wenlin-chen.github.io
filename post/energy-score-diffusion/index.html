@@ -781,7 +781,10 @@ $$\max_{\theta}~\mathbb{E}<em>{p_D(x)}[\log p</em>{\theta}(x)]\quad\iff\quad\min
 $$\nabla_{\theta}\log p_{\theta}(x)=-\nabla_{\theta}E_{\theta}(x)-\nabla_{\theta}\log Z_{\theta},$$
 where the gradient of the log partition is intractable and hard to estimate:
 $$
-\begin{aligned} \nabla_{\theta}\log Z_{\theta} &amp;=\frac{1}{Z_{\theta}}\nabla_{\theta}\int \exp(-E_{\theta}(x)) dx \ &amp;=\frac{1}{Z_{\theta}}\int \nabla_{\theta} \exp(-E_{\theta}(x)) dx \ &amp;=\int-\nabla_{\theta}E_{\theta}(x)\frac{\exp(-E_{\theta}(x))}{Z_{\theta}}dx \ &amp;=\mathbb{E}<em>{p</em>{\theta}(x)}[-\nabla_{\theta}E_{\theta}(x))]. \end{aligned}
+\begin{aligned} \nabla_{\theta}\log Z_{\theta} &amp;=\frac{1}{Z_{\theta}}\nabla_{\theta}\int \exp(-E_{\theta}(x)) dx \\
+&amp;=\frac{1}{Z_{\theta}}\int \nabla_{\theta} \exp(-E_{\theta}(x)) dx \\
+&amp;=\int-\nabla_{\theta}E_{\theta}(x)\frac{\exp(-E_{\theta}(x))}{Z_{\theta}}dx \\
+&amp;=-\mathbb{E}_{p_{\theta}(x)}[\nabla_{\theta}E_{\theta}(x)] \end{aligned}
 $$</li>
 </ul>
 <h2 id="score-based-models">Score-based Models</h2>
@@ -790,7 +793,7 @@ $$</li>
 $$s_{\theta}(x)=\nabla_x\log p_{\theta}(x)=-\nabla_x E_{\theta}(x),$$
 <ul>
 <li>independent of $Z_{\theta}$ thus tractable,</li>
-<li>not to be confused with $\nabla_{\theta}\log p_{\theta}(x)$ which depends on $\theta$.</li>
+<li>not to be confused with $\nabla_{\theta}\log p_{\theta}(x)=-\nabla_{\theta}E_{\theta}(x)-\mathbb{E}_{p_{\theta}(x)}[\nabla_{\theta}E_{\theta}(x)]$ which depends on $\theta$.</li>
 </ul>
 </li>
 <li>Score-based models (SBMs) directly parameterize the score function $s_{\theta}(x)\in\mathbb{R}^d$.
@@ -817,7 +820,7 @@ where
 <h2 id="score-matching">Score Matching</h2>
 <ul>
 <li>Score matching (SM) by minimizing the Fisher divergence:
-$$\min_{\theta}~D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}<em>{p_D(x)}\left[\frac{1}{2} \Vert \nabla_x \log p_D(x) - s</em>{\theta}(x)\Vert^2\right],$$
+$$\min_{\theta}~D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}_{p_D(x)}\left[\frac{1}{2} \Vert \nabla_x \log p_D(x) - s_{\theta}(x)\Vert^2\right],$$
 <ul>
 <li>intractable due to the unknown the data score $\nabla_x \log p_D(x)$,</li>
 <li>only works for non-degenerate (i.e., full support, $\mathcal{X}=\mathbb{R}^d$) $p_D(x)$:
@@ -825,7 +828,7 @@ $$s_{\theta}(x)=\nabla_x \log p_D(x),~\forall x\quad\iff\quad p_{\theta}=p_{D}.$
 </ul>
 </li>
 <li>A tractable score matching objective:
-$$D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}<em>{p_D(x)}\left[\frac{1}{2}\Vert s</em>{\theta}(x)\Vert^2 + \text{Tr}(J_x s_{\theta}(x))\right]+\text{const.}$$
+$$D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}_{p_D(x)}\left[\frac{1}{2}\Vert s_{\theta}(x)\Vert^2 + \text{Tr}(J_x s_{\theta}(x))\right]+\text{const.}$$
 <ul>
 <li>Derived by integration by parts under regularity conditions.</li>
 <li>No unknown data score term.</li>
@@ -840,7 +843,9 @@ or, equivalently,
 $$p_{\sigma}(\tilde{x})=\int q_{\sigma}(\tilde{x}|x)p_D(x)dx,\quad\text{where } q_{\sigma}(\tilde{x}|x)=\mathcal{N}(\tilde{x}|x,\sigma^2I).$$</li>
 <li>Match the score of the perturbed data distribution $p_{\sigma}(\tilde{x})$:
 $$
-\begin{aligned} \min_{\theta}~D_F[p_{\sigma}(\tilde{x})||p_{\theta}(\tilde{x})] &amp;= \mathbb{E}<em>{p</em>{\sigma}(\tilde{x})}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}) - s_{\theta}(\tilde{x})\Vert^2\right] \ &amp;= \mathbb{E}<em>{q</em>{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] \ &amp;=\mathbb{E}<em>{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s</em>{\theta}(x+\sigma z)\right\Vert^2\right]. \end{aligned}
+\begin{aligned} \min_{\theta}~D_F[p_{\sigma}(\tilde{x})||p_{\theta}(\tilde{x})] &amp;= \mathbb{E}_{p_{\sigma}(\tilde{x})}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}) - s_{\theta}(\tilde{x})\Vert^2\right] \\
+&amp;= \mathbb{E}_{q_{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] \\
+&amp;=\mathbb{E}_{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s_{\theta}(x+\sigma z)\right\Vert^2\right]. \end{aligned}
 $$
 <ul>
 <li>No unknown data score term.</li>

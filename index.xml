@@ -51,7 +51,7 @@ $$Z_{\theta}=\int \exp(-E_{\theta}(x)) dx,$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Maximum likelihood estimiation (MLE) with samples from the data distribution $p_D(x)$:
-$$\max_{\theta}~\mathbb{E}&lt;em&gt;{p_D(x)}[\log p_{\theta}(x)]\quad\iff\quad\min&lt;/em&gt;{\theta}~\text{KL}[p_D(x)||p_{\theta}(x)].$$&lt;/li&gt;
+$$\max_{\theta}~\mathbb{E}_{p_D(x)}[\log p_{\theta}(x)] \quad \iff \quad \min_{\theta} ~ \text{KL}[p_D(x)||p_{\theta}(x)].$$&lt;/li&gt;
 &lt;li&gt;MLE with gradient-based optimization:
 $$\nabla_{\theta}\log p_{\theta}(x)=-\nabla_{\theta}E_{\theta}(x)-\nabla_{\theta}\log Z_{\theta},$$
 where the gradient of the log partition is intractable and hard to estimate:

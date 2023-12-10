@@ -713,7 +713,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    4 min read
   </span>
   
 
@@ -844,8 +844,8 @@ $$p_{\sigma}(\tilde{x})=\int q_{\sigma}(\tilde{x}|x)p_D(x)dx,\quad\text{where } 
 <li>Match the score of the perturbed data distribution $p_{\sigma}(\tilde{x})$:
 $$
 \begin{aligned} \min_{\theta}~D_F[p_{\sigma}(\tilde{x})||p_{\theta}(\tilde{x})] &amp;= \mathbb{E}_{p_{\sigma}(\tilde{x})}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}) - s_{\theta}(\tilde{x})\Vert^2\right] \\
-&amp;= \mathbb{E}_{q_{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] \\
-&amp;=\mathbb{E}_{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s_{\theta}(x+\sigma z)\right\Vert^2\right]. \end{aligned}
+&amp;= \mathbb{E}_{q_{\sigma}(\tilde{x}|x)p_D(x)}\left[\frac{1}{2} \Vert \nabla_{\tilde{x}} \log q_{\sigma}(\tilde{x}|x) - s_{\theta}(\tilde{x})\Vert^2\right] + \text{const} \\
+&amp;=\mathbb{E}_{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s_{\theta}(x+\sigma z)\right\Vert^2\right] + \text{const}. \end{aligned}
 $$
 <ul>
 <li>No unknown data score term.</li>

@@ -776,7 +776,7 @@ $$Z_{\theta}=\int \exp(-E_{\theta}(x)) dx,$$
 </ul>
 </li>
 <li>Maximum likelihood estimiation (MLE) with samples from the data distribution $p_D(x)$:
-$$\max_{\theta}~\mathbb{E}<em>{p_D(x)}[\log p</em>{\theta}(x)]\quad\iff\quad\min_{\theta}~\text{KL}[p_D(x)||p_{\theta}(x)].$$</li>
+$$\max_{\theta}~\mathbb{E}<em>{p_D(x)}[\log p_{\theta}(x)]\quad\iff\quad\min</em>{\theta}~\text{KL}[p_D(x)||p_{\theta}(x)].$$</li>
 <li>MLE with gradient-based optimization:
 $$\nabla_{\theta}\log p_{\theta}(x)=-\nabla_{\theta}E_{\theta}(x)-\nabla_{\theta}\log Z_{\theta},$$
 where the gradient of the log partition is intractable and hard to estimate:
@@ -858,8 +858,8 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
 <li>Pitfalls of DSM:
 <ul>
 <li>$s_{\theta}(x)$ is inaccurate in low density regions of $p_D(x)$ since very few or no samples are available for the model to train on.</li>
-<li>When drawing new samples via Langevin dynamics, the initial point $x^{(0)}$ is very likely to be in a low density region in high dimensions.</li>
-<li>Prevents us from moving to high density regions (i.e., generating high quality samples) that are representative of $p_D(x)$.</li>
+<li>When drawing new samples via Langevin dynamics, the initial point $x^{(0)}$ is very likely to be in a low density region in $\mathbb{R}^d$ for a high dimension $d$.</li>
+<li>This prevents us from moving to high density regions (i.e., generating high quality samples) that are representative of $p_D(x)$.</li>
 <li>Need to use large $\sigma$ to populate low density regions, but there is a trade-off:
 <ul>
 <li>$\sigma$ should be sufficiently large so that $p_{\sigma}(\tilde{x})$ covers low density regions.</li>

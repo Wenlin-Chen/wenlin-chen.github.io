@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>1. Energy-based Models and Score Matching</title>
+      <title>Energy-based Models and Score Matching</title>
       <link>https://wenlin-chen.github.io/post/energy-score/</link>
       <pubDate>Sun, 10 Dec 2023 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/energy-score/</guid>
@@ -97,16 +97,16 @@ where
 &lt;li&gt;Score matching (SM) by minimizing the Fisher divergence:
 $$\min_{\theta}~D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}_{p_D(x)}\left[\frac{1}{2} \Vert \nabla_x \log p_D(x) - s_{\theta}(x)\Vert^2\right],$$
 &lt;ul&gt;
-&lt;li&gt;intractable due to the unknown the data score $\nabla_x \log p_D(x)$,&lt;/li&gt;
-&lt;li&gt;only works for non-degenerate (i.e., full support, $\mathcal{X}=\mathbb{R}^d$) $p_D(x)$:
-$$s_{\theta}(x)=\nabla_x \log p_D(x),~\forall x\quad\iff\quad p_{\theta}=p_{D}.$$&lt;/li&gt;
+&lt;li&gt;intractable due to the unknown the true data score $\nabla_x \log p_D(x)$,&lt;/li&gt;
+&lt;li&gt;(incompatible with manifold hypothesis) only works for full support $p_D(x)$: if $\mathcal{X}=\mathbb{R}^d$, then
+$$s_{\theta}(x)=\nabla_x \log p_D(x),~\forall x\in\mathbb{R}^d\quad\iff\quad p_{\theta}=p_{D}.$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;A tractable score matching objective:
 $$D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}_{p_D(x)}\left[\frac{1}{2}\Vert s_{\theta}(x)\Vert^2 + \text{Tr}(J_x s_{\theta}(x))\right]+\text{const.}$$
 &lt;ul&gt;
 &lt;li&gt;Derived by integration by parts under regularity conditions.&lt;/li&gt;
-&lt;li&gt;No unknown data score term.&lt;/li&gt;
+&lt;li&gt;No unknown true data score term.&lt;/li&gt;
 &lt;li&gt;The trace of the Jacobian of the score function $\text{Tr}(J_x s_{\theta}(x))$ takes $\mathcal{O}(d^2)$ time to compute, which is still computationally expensive.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -123,11 +123,11 @@ $$
 &amp;amp;=\mathbb{E}_{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s_{\theta}(x+\sigma z)\right\Vert^2\right] + \text{const}. \end{aligned}
 $$
 &lt;ul&gt;
-&lt;li&gt;No unknown data score term.&lt;/li&gt;
-&lt;li&gt;$p_{\sigma}(\tilde{x})$ is always non-degenerate regardless of the support of $p_D(x)$, since it is obtained by convolving $p_D(x)$ with (full support) Gaussian noise $\mathcal{N}(0,\sigma^2I)$.&lt;/li&gt;
-&lt;li&gt;$\sigma$ needs to be close to zero:
-$$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \tilde{x}\quad\iff\quad p_{\theta}=p_{\sigma}\approx p_D.$$&lt;/li&gt;
-&lt;li&gt;$\sigma$ cannot be too small for the purpose of numerical stability (e.g., the DSM objective has a a term $z/\sigma$).&lt;/li&gt;
+&lt;li&gt;No unknown true data score term.&lt;/li&gt;
+&lt;li&gt;$p_{\sigma}(\tilde{x})$ always has full support regardless of the support of $p_D(x)$, since it is obtained by convolving $p_D(x)$ with (full support) Gaussian noise $\mathcal{N}(0,\sigma^2I)$.&lt;/li&gt;
+&lt;li&gt;$\sigma$ needs to be close to zero, so that
+$$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \tilde{x}\in\mathbb{R}^d\quad\iff\quad p_{\theta}=p_{\sigma}\approx p_D.$$&lt;/li&gt;
+&lt;li&gt;$\sigma$ cannot be too small for the purpose of numerical stability (e.g., the DSM objective has a term $z/\sigma$).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Pitfalls of DSM:

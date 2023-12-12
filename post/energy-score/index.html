@@ -297,7 +297,7 @@
   
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/energy-score/" />
-  <meta property="og:title" content="1. Energy-based Models and Score Matching | Wenlin Chen" />
+  <meta property="og:title" content="Energy-based Models and Score Matching | Wenlin Chen" />
   <meta property="og:description" content="Generative Modeling Data: $x\in\mathcal{X}\subseteq\mathbb{R}^d$, potentially high dimensional, complex, structured, e.g., high resolution images and videos, audio waveforms, 3D molecules, &hellip; Given: i.i.d. samples ${x_1,\cdots,x_N}$ from an unknown data distribution $p_D(x)$. Goal: Draw new samples from $p_D(x)$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -333,7 +333,7 @@
     "@type": "WebPage",
     "@id": "https://wenlin-chen.github.io/post/energy-score/"
   },
-  "headline": "1. Energy-based Models and Score Matching",
+  "headline": "Energy-based Models and Score Matching",
   
   "datePublished": "2023-12-10T00:00:00Z",
   "dateModified": "2023-12-10T00:00:00Z",
@@ -367,7 +367,7 @@
 
 
 
-  <title>1. Energy-based Models and Score Matching | Wenlin Chen</title>
+  <title>Energy-based Models and Score Matching | Wenlin Chen</title>
 </head>
 
 
@@ -685,7 +685,7 @@
   
   
 <div class="container pt-3">
-  <h1>1. Energy-based Models and Score Matching</h1>
+  <h1>Energy-based Models and Score Matching</h1>
 
   
 
@@ -822,16 +822,16 @@ where
 <li>Score matching (SM) by minimizing the Fisher divergence:
 $$\min_{\theta}~D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}_{p_D(x)}\left[\frac{1}{2} \Vert \nabla_x \log p_D(x) - s_{\theta}(x)\Vert^2\right],$$
 <ul>
-<li>intractable due to the unknown the data score $\nabla_x \log p_D(x)$,</li>
-<li>only works for non-degenerate (i.e., full support, $\mathcal{X}=\mathbb{R}^d$) $p_D(x)$:
-$$s_{\theta}(x)=\nabla_x \log p_D(x),~\forall x\quad\iff\quad p_{\theta}=p_{D}.$$</li>
+<li>intractable due to the unknown the true data score $\nabla_x \log p_D(x)$,</li>
+<li>(incompatible with manifold hypothesis) only works for full support $p_D(x)$: if $\mathcal{X}=\mathbb{R}^d$, then
+$$s_{\theta}(x)=\nabla_x \log p_D(x),~\forall x\in\mathbb{R}^d\quad\iff\quad p_{\theta}=p_{D}.$$</li>
 </ul>
 </li>
 <li>A tractable score matching objective:
 $$D_F[p_D(x)||p_{\theta}(x)]=\mathbb{E}_{p_D(x)}\left[\frac{1}{2}\Vert s_{\theta}(x)\Vert^2 + \text{Tr}(J_x s_{\theta}(x))\right]+\text{const.}$$
 <ul>
 <li>Derived by integration by parts under regularity conditions.</li>
-<li>No unknown data score term.</li>
+<li>No unknown true data score term.</li>
 <li>The trace of the Jacobian of the score function $\text{Tr}(J_x s_{\theta}(x))$ takes $\mathcal{O}(d^2)$ time to compute, which is still computationally expensive.</li>
 </ul>
 </li>
@@ -848,11 +848,11 @@ $$
 &amp;=\mathbb{E}_{\mathcal{N}(z|0,I)p_D(x)}\left[\frac{1}{2} \left\Vert \frac{z}{\sigma} + s_{\theta}(x+\sigma z)\right\Vert^2\right] + \text{const}. \end{aligned}
 $$
 <ul>
-<li>No unknown data score term.</li>
-<li>$p_{\sigma}(\tilde{x})$ is always non-degenerate regardless of the support of $p_D(x)$, since it is obtained by convolving $p_D(x)$ with (full support) Gaussian noise $\mathcal{N}(0,\sigma^2I)$.</li>
-<li>$\sigma$ needs to be close to zero:
-$$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \tilde{x}\quad\iff\quad p_{\theta}=p_{\sigma}\approx p_D.$$</li>
-<li>$\sigma$ cannot be too small for the purpose of numerical stability (e.g., the DSM objective has a a term $z/\sigma$).</li>
+<li>No unknown true data score term.</li>
+<li>$p_{\sigma}(\tilde{x})$ always has full support regardless of the support of $p_D(x)$, since it is obtained by convolving $p_D(x)$ with (full support) Gaussian noise $\mathcal{N}(0,\sigma^2I)$.</li>
+<li>$\sigma$ needs to be close to zero, so that
+$$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \tilde{x}\in\mathbb{R}^d\quad\iff\quad p_{\theta}=p_{\sigma}\approx p_D.$$</li>
+<li>$\sigma$ cannot be too small for the purpose of numerical stability (e.g., the DSM objective has a term $z/\sigma$).</li>
 </ul>
 </li>
 <li>Pitfalls of DSM:
@@ -895,7 +895,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/energy-score/&amp;text=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/energy-score/&amp;text=Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -908,7 +908,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/energy-score/&amp;t=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/energy-score/&amp;t=Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -921,7 +921,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="mailto:?subject=1.%20Energy-based%20Models%20and%20Score%20Matching&amp;body=https://wenlin-chen.github.io/post/energy-score/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Energy-based%20Models%20and%20Score%20Matching&amp;body=https://wenlin-chen.github.io/post/energy-score/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -934,7 +934,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/energy-score/&amp;title=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/energy-score/&amp;title=Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -947,7 +947,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="whatsapp://send?text=1.%20Energy-based%20Models%20and%20Score%20Matching%20https://wenlin-chen.github.io/post/energy-score/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Energy-based%20Models%20and%20Score%20Matching%20https://wenlin-chen.github.io/post/energy-score/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -960,7 +960,7 @@ $$s_{\theta}(\tilde{x})=\nabla_{\tilde{x}} \log p_{\sigma}(\tilde{x}),~\forall \
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/energy-score/&amp;title=1.%20Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/energy-score/&amp;title=Energy-based%20Models%20and%20Score%20Matching" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

@@ -324,7 +324,7 @@ class=&#34;math display&#34;&gt;\[\mathbf{F}^{\text{ext}}=\sum_i\mathbf{F}_i^{\t
 &lt;li&gt;Decomposition of the force on each particle: &lt;span
 class=&#34;math display&#34;&gt;\[\mathbf{F}_i=\sum_{j\not=i}\mathbf{F}_{ij}+\mathbf{F}_i^{\text{ext}}.\]&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Total mass: &lt;span class=&#34;math display&#34;&gt;\[M=\sum_i m_i.\]&lt;/span&gt;&lt;/li&gt;
-&lt;li&gt;Center of mass: &lt;span class=&#34;math display&#34;&gt;\[\mathbf{r}=\frac{\sum_i
+&lt;li&gt;Center of mass: &lt;span class=&#34;math display&#34;&gt;\[\mathbf{R}=\frac{\sum_i
 m_i\mathbf{r}_i}{M}.\]&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Total momentum: &lt;span
 class=&#34;math display&#34;&gt;\[\mathbf{P}=\sum_i\mathbf{p}_i.\]&lt;/span&gt;&lt;/li&gt;

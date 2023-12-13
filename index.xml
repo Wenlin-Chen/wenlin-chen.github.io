@@ -251,7 +251,7 @@ class=&#34;math inline&#34;&gt;\(\mathbf{a}(t)=\mathbf{\dot{v}}(t)=\mathbf{\ddot
 &lt;li&gt;Momentum: &lt;span
 class=&#34;math inline&#34;&gt;\(\mathbf{p}(t)=m\mathbf{v}(t)=m\mathbf{\dot{r}}(t)\)&lt;/span&gt;.&lt;/li&gt;
 &lt;li&gt;State: &lt;span
-class=&#34;math inline&#34;&gt;\((\mathbf{r},\mathbf{p})\in\mathbb{R^6}\)&lt;/span&gt;.&lt;/li&gt;
+class=&#34;math inline&#34;&gt;\((\mathbf{r},\mathbf{p})\in\mathbb{R}^6\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Newton’s first law: &lt;span
 class=&#34;math display&#34;&gt;\[\mathbf{F}=\mathbf{0}\quad\implies\quad\mathbf{r}(t)=\mathbf{r}_0+\mathbf{v}t.\]&lt;/span&gt;
@@ -472,9 +472,11 @@ much eaiser than directly dealing with the equations of motions.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Symmetries and conservation laws
 &lt;ul&gt;
-&lt;li&gt;TBD ## Hamiltonian Mechanics TBD&lt;/li&gt;
+&lt;li&gt;TBD&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;hamiltonian-mechanics&#34;&gt;Hamiltonian Mechanics&lt;/h2&gt;
+&lt;p&gt;TBD&lt;/p&gt;
 &lt;h2 id=&#34;poisson-brackets&#34;&gt;Poisson Brackets&lt;/h2&gt;
 &lt;p&gt;TBD&lt;/p&gt;
 &lt;h2 id=&#34;electric-and-magnetic-fields&#34;&gt;Electric and Magnetic Fields&lt;/h2&gt;

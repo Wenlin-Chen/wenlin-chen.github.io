@@ -250,6 +250,8 @@ class=&#34;math inline&#34;&gt;\(\mathbf{v}(t)=\mathbf{\dot{r}}(t)\)&lt;/span&gt
 class=&#34;math inline&#34;&gt;\(\mathbf{a}(t)=\mathbf{\dot{v}}(t)=\mathbf{\ddot{r}}(t)\)&lt;/span&gt;.&lt;/li&gt;
 &lt;li&gt;Momentum: &lt;span
 class=&#34;math inline&#34;&gt;\(\mathbf{p}(t)=m\mathbf{v}(t)=m\dot{\mathbf{r}}(t)\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;State: &lt;span
+class=&#34;math inline&#34;&gt;\((\mathbf{r},\mathbf{p})\in\mathbb{R^6}\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Newton’s first law: &lt;span
 class=&#34;math display&#34;&gt;\[\mathbf{F}=\mathbf{0}\quad\implies\quad\mathbf{r}(t)=\mathbf{r}_0+\mathbf{v}t.\]&lt;/span&gt;

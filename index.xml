@@ -338,7 +338,7 @@ are parallel to $(\mathbf{r}_i-\mathbf{r}_j)$}.\]&lt;/span&gt;
 &lt;li&gt;Total force equals external force: &lt;span
 class=&#34;math display&#34;&gt;\[\sum_i\mathbf{F}_i=\sum_i\sum_{j\not=i}\mathbf{F}_{ij}+\sum_i\mathbf{F}_i^{\text{ext}}=\sum_i\sum_{j&amp;gt;i}(\mathbf{F}_{ij}+\mathbf{F}_{ji})+\sum_i\mathbf{F}_i^{\text{ext}}=\sum_i\mathbf{F}_i^{\text{ext}}=\mathbf{F}^{\text{ext}}.\]&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Newton’s second law for the whole system: &lt;span
-class=&#34;math display&#34;&gt;\[\mathbf{F}^{\text{ext}}=M\mathbf{\ddot{r}}.\]&lt;/span&gt;&lt;/li&gt;
+class=&#34;math display&#34;&gt;\[\mathbf{F}^{\text{ext}}=M\mathbf{\ddot{R}}.\]&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Conservation of total momentum for an isolated system of particles
 (&lt;span
 class=&#34;math inline&#34;&gt;\(\mathbf{F}^{\text{ext}}=\mathbf{0}\)&lt;/span&gt;):
@@ -372,9 +372,10 @@ conserved.&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;Calculus of variations
 &lt;ul&gt;
-&lt;li&gt;Example: length of a path &lt;span class=&#34;math inline&#34;&gt;\(x(t)\)&lt;/span&gt;
-between two points &lt;span class=&#34;math inline&#34;&gt;\((t_1,x(t_1))\)&lt;/span&gt; and
-&lt;span class=&#34;math inline&#34;&gt;\((t_2,x(t_2))\)&lt;/span&gt; &lt;span
+&lt;li&gt;Example: length &lt;span class=&#34;math inline&#34;&gt;\(s[x(t)]\)&lt;/span&gt; of a
+path &lt;span class=&#34;math inline&#34;&gt;\(x(t)\)&lt;/span&gt; between two points &lt;span
+class=&#34;math inline&#34;&gt;\((t_1,x(t_1))\)&lt;/span&gt; and &lt;span
+class=&#34;math inline&#34;&gt;\((t_2,x(t_2))\)&lt;/span&gt; &lt;span
 class=&#34;math display&#34;&gt;\[ds=\sqrt{dt^2+dx^2}=\sqrt{1+\left(\frac{dx}{dt}\right)^2}dt,\]&lt;/span&gt;
 &lt;span
 class=&#34;math display&#34;&gt;\[s[x(t)]=\int_{t_1}^{t_2}\sqrt{1+\left(\frac{dx}{dt}\right)^2}dt.\]&lt;/span&gt;&lt;/li&gt;
@@ -382,7 +383,7 @@ class=&#34;math display&#34;&gt;\[s[x(t)]=\int_{t_1}^{t_2}\sqrt{1+\left(\frac{dx
 class=&#34;math inline&#34;&gt;\(x(t)\)&lt;/span&gt; that minimizes the functional &lt;span
 class=&#34;math inline&#34;&gt;\(s[x(t)]\)&lt;/span&gt;.&lt;/li&gt;
 &lt;li&gt;Approach: set &lt;span class=&#34;math inline&#34;&gt;\(\delta s[x(t)]=0\)&lt;/span&gt;,
-meaning that &lt;span class=&#34;math inline&#34;&gt;\(\delta s=0\)&lt;/span&gt; under
+meaning that &lt;span class=&#34;math inline&#34;&gt;\(\delta s=0\)&lt;/span&gt; under any
 slight change of the path &lt;span class=&#34;math inline&#34;&gt;\(x(t)\)&lt;/span&gt; by
 &lt;span class=&#34;math inline&#34;&gt;\(\delta x(t)\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;

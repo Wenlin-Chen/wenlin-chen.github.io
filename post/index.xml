@@ -249,7 +249,7 @@ class=&#34;math inline&#34;&gt;\(\mathbf{v}(t)=\mathbf{\dot{r}}(t)\)&lt;/span&gt
 &lt;li&gt;Accelartion: &lt;span
 class=&#34;math inline&#34;&gt;\(\mathbf{a}(t)=\mathbf{\dot{v}}(t)=\mathbf{\ddot{r}}(t)\)&lt;/span&gt;.&lt;/li&gt;
 &lt;li&gt;Momentum: &lt;span
-class=&#34;math inline&#34;&gt;\(\mathbf{p}(t)=m\mathbf{v}(t)=m\dot{\mathbf{r}}(t)\)&lt;/span&gt;.&lt;/li&gt;
+class=&#34;math inline&#34;&gt;\(\mathbf{p}(t)=m\mathbf{v}(t)=m\mathbf{\dot{r}}(t)\)&lt;/span&gt;.&lt;/li&gt;
 &lt;li&gt;State: &lt;span
 class=&#34;math inline&#34;&gt;\((\mathbf{r},\mathbf{p})\in\mathbb{R^6}\)&lt;/span&gt;.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -260,7 +260,7 @@ class=&#34;math display&#34;&gt;\[\mathbf{F}=\mathbf{0}\quad\implies\quad\mathbf
 Newton’s first law.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;Newton’s second law: &lt;span
-class=&#34;math display&#34;&gt;\[\mathbf{F}(\mathbf{r},\dot{\mathbf{r}})=\mathbf{\dot{p}}.\]&lt;/span&gt;
+class=&#34;math display&#34;&gt;\[\mathbf{F}(\mathbf{r},\mathbf{\dot{r}})=\mathbf{\dot{p}}.\]&lt;/span&gt;
 &lt;ul&gt;
 &lt;li&gt;Initial conditions: &lt;span
 class=&#34;math inline&#34;&gt;\(\mathbf{r}(t_0)\)&lt;/span&gt; and &lt;span
@@ -338,7 +338,7 @@ are parallel to $(\mathbf{r}_i-\mathbf{r}_j)$}.\]&lt;/span&gt;
 &lt;li&gt;Total force equals external force: &lt;span
 class=&#34;math display&#34;&gt;\[\sum_i\mathbf{F}_i=\sum_i\sum_{j\not=i}\mathbf{F}_{ij}+\sum_i\mathbf{F}_i^{\text{ext}}=\sum_i\sum_{j&amp;gt;i}(\mathbf{F}_{ij}+\mathbf{F}_{ji})+\sum_i\mathbf{F}_i^{\text{ext}}=\sum_i\mathbf{F}_i^{\text{ext}}=\mathbf{F}^{\text{ext}}.\]&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Newton’s second law for the whole system: &lt;span
-class=&#34;math display&#34;&gt;\[\mathbf{F}^{\text{ext}}=M\ddot{\mathbf{r}}.\]&lt;/span&gt;&lt;/li&gt;
+class=&#34;math display&#34;&gt;\[\mathbf{F}^{\text{ext}}=M\mathbf{\ddot{r}}.\]&lt;/span&gt;&lt;/li&gt;
 &lt;li&gt;Conservation of total momentum for an isolated system of particles
 (&lt;span
 class=&#34;math inline&#34;&gt;\(\mathbf{F}^{\text{ext}}=\mathbf{0}\)&lt;/span&gt;):

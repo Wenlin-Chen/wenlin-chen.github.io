@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="De novo drug design has recently received increasing attention from the machine learning community. It is important that the field is aware of the actual goals and challenges of drug design and the roles that de novo molecule design algorithms could play in accelerating the process, so that algorithms can be evaluated in a way that reflects how they would be applied in real drug design scenarios. In this paper, we propose a framework for critically assessing the merits of benchmarks, and argue that most of the existing de novo drug design benchmark functions are either highly unrealistic or depend upon a surrogate model whose performance is not well characterized. In order for the field to achieve its long-term goals, we recommend that poor benchmarks (especially logP and QED) be deprecated in favour of better benchmarks. We hope that our proposed framework can play a part in developing new de novo drug design benchmarks that are more realistic and ideally incorporate the intrinsic goals of drug design." />
+  <meta name="description" content="Introduction Let $p(\mathbf{x}_0)$ be the data distribution of interest. Consider a Gaussian forward diffusion process in the following form: $$ p(\mathbf{x}_t|\mathbf{x}_0)=\mathcal{N}(\mathbf{x}_t|\gamma_t \mathbf{x}_0,\sigma_t^2\mathbf{I}), $$ or, equivalently, $$ \mathbf{x}_t=\gamma_t \mathbf{x}_0 &#43; \sigma_t\mathbf{z},\quad\mathbf{z}\sim\mathcal{N}(\mathbf{0},\mathbf{I}). $$" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/publication/tripp2022evaluation/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/diffusion-parameterization/" />
 
   
 
@@ -62,6 +62,9 @@
   
 
   
+  
+    
+    <script src="/js/mathjax-config.js"></script>
   
 
   
@@ -210,9 +213,9 @@
 
       
       
-        
-      
 
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
       
     
       
@@ -276,7 +279,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/publication/tripp2022evaluation/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/diffusion-parameterization/" />
 
   
   
@@ -293,18 +296,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/publication/tripp2022evaluation/" />
-  <meta property="og:title" content="An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks | Wenlin Chen" />
-  <meta property="og:description" content="De novo drug design has recently received increasing attention from the machine learning community. It is important that the field is aware of the actual goals and challenges of drug design and the roles that de novo molecule design algorithms could play in accelerating the process, so that algorithms can be evaluated in a way that reflects how they would be applied in real drug design scenarios. In this paper, we propose a framework for critically assessing the merits of benchmarks, and argue that most of the existing de novo drug design benchmark functions are either highly unrealistic or depend upon a surrogate model whose performance is not well characterized. In order for the field to achieve its long-term goals, we recommend that poor benchmarks (especially logP and QED) be deprecated in favour of better benchmarks. We hope that our proposed framework can play a part in developing new de novo drug design benchmarks that are more realistic and ideally incorporate the intrinsic goals of drug design." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/diffusion-parameterization/" />
+  <meta property="og:title" content="Connections Among Different Parameterizations of Diffusion Generative Models | Wenlin Chen" />
+  <meta property="og:description" content="Introduction Let $p(\mathbf{x}_0)$ be the data distribution of interest. Consider a Gaussian forward diffusion process in the following form: $$ p(\mathbf{x}_t|\mathbf{x}_0)=\mathcal{N}(\mathbf{x}_t|\gamma_t \mathbf{x}_0,\sigma_t^2\mathbf{I}), $$ or, equivalently, $$ \mathbf{x}_t=\gamma_t \mathbf{x}_0 &#43; \sigma_t\mathbf{z},\quad\mathbf{z}\sim\mathcal{N}(\mathbf{0},\mathbf{I}). $$" /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2022-04-29T00:00:00&#43;00:00"
+        content="2023-12-23T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2022-04-29T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2023-12-23T00:00:00&#43;00:00">
   
 
   
@@ -316,6 +319,8 @@
 
 
 
+
+  
 
 
 
@@ -323,19 +328,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://wenlin-chen.github.io/publication/tripp2022evaluation/"
+    "@id": "https://wenlin-chen.github.io/post/diffusion-parameterization/"
   },
-  "headline": "An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks",
+  "headline": "Connections Among Different Parameterizations of Diffusion Generative Models",
   
-  "datePublished": "2022-04-29T00:00:00Z",
-  "dateModified": "2022-04-29T00:00:00Z",
+  "datePublished": "2023-12-23T00:00:00Z",
+  "dateModified": "2023-12-23T00:00:00Z",
   
   "author": {
     "@type": "Person",
-    "name": "Austin Tripp"
+    "name": "Wenlin Chen"
   },
   
   "publisher": {
@@ -346,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "De novo drug design has recently received increasing attention from the machine learning community. It is important that the field is aware of the actual goals and challenges of drug design and the roles that de novo molecule design algorithms could play in accelerating the process, so that algorithms can be evaluated in a way that reflects how they would be applied in real drug design scenarios. In this paper, we propose a framework for critically assessing the merits of benchmarks, and argue that most of the existing de novo drug design benchmark functions are either highly unrealistic or depend upon a surrogate model whose performance is not well characterized. In order for the field to achieve its long-term goals, we recommend that poor benchmarks (especially logP and QED) be deprecated in favour of better benchmarks. We hope that our proposed framework can play a part in developing new de novo drug design benchmarks that are more realistic and ideally incorporate the intrinsic goals of drug design."
+  "description": "Introduction Let $p(\\mathbf{x}_0)$ be the data distribution of interest. Consider a Gaussian forward diffusion process in the following form: $$ p(\\mathbf{x}_t|\\mathbf{x}_0)=\\mathcal{N}(\\mathbf{x}_t|\\gamma_t \\mathbf{x}_0,\\sigma_t^2\\mathbf{I}), $$ or, equivalently, $$ \\mathbf{x}_t=\\gamma_t \\mathbf{x}_0 + \\sigma_t\\mathbf{z},\\quad\\mathbf{z}\\sim\\mathcal{N}(\\mathbf{0},\\mathbf{I}). $$"
 }
 </script>
 
@@ -362,11 +367,11 @@
 
 
 
-  <title>An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks | Wenlin Chen</title>
+  <title>Connections Among Different Parameterizations of Diffusion Generative Models | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="7c674ec1dda2935eabce28cc88b5af57" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="a2d83ebb499845a7dedfd145b3116655" >
 
   
   
@@ -658,16 +663,7 @@
   </div>
 
   <div class="page-body">
-    
-
-
-
-
-
-
-
-
-<div class="pub">
+    <article class="article">
 
   
 
@@ -689,7 +685,7 @@
   
   
 <div class="container pt-3">
-  <h1>An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks</h1>
+  <h1>Connections Among Different Parameterizations of Diffusion Generative Models</h1>
 
   
 
@@ -701,18 +697,6 @@
 
   
   
-  
-  
-  <div>
-    
-
-  <span >
-      Austin Tripp</span>, <span class="author-highlighted">
-      Wenlin Chen</span>, <span >
-      José Miguel Hernández-Lobato</span>
-  </div>
-  
-  
 
   
   <span class="article-date">
@@ -720,13 +704,18 @@
     
       
     
-    April 2022
+    Dec 23, 2023
   </span>
   
 
   
 
   
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
 
   
   
@@ -744,62 +733,6 @@
 
 
 
-
-<div class="btn-links mb-3">
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-<a class="btn btn-outline-primary btn-page-header" href="/publication/tripp2022evaluation/tripp2022evaluation.pdf" target="_blank" rel="noopener">
-  PDF
-</a>
-
-
-
-<a href="#" class="btn btn-outline-primary btn-page-header js-cite-modal"
-        data-filename="/publication/tripp2022evaluation/cite.bib">
-  Cite
-</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-    
-  
-  
-  
-  
-  
-    
-  
-  <a class="btn btn-outline-primary btn-page-header" href="https://openreview.net/forum?id=W1tcNQNG1S" target="_blank" rel="noopener">
-    OpenReview</a>
-
-
-</div>
 
 
   
@@ -808,47 +741,80 @@
 
   <div class="container">
 
-    
-    <h3>Abstract</h3>
-    <p class="pub-abstract">De novo drug design has recently received increasing attention from the machine learning community. It is important that the field is aware of the actual goals and challenges of drug design and the roles that de novo molecule design algorithms could play in accelerating the process, so that algorithms can be evaluated in a way that reflects how they would be applied in real drug design scenarios. In this paper, we propose a framework for critically assessing the merits of benchmarks, and argue that most of the existing de novo drug design benchmark functions are either highly unrealistic or depend upon a surrogate model whose performance is not well characterized. In order for the field to achieve its long-term goals, we recommend that poor benchmarks (especially logP and QED) be deprecated in favour of better benchmarks. We hope that our proposed framework can play a part in developing new de novo drug design benchmarks that are more realistic and ideally incorporate the intrinsic goals of drug design.</p>
-    
+    <div class="article-style">
+      <h3 id="introduction">Introduction</h3>
+<p>Let $p(\mathbf{x}_0)$ be the data distribution of interest. Consider a Gaussian forward diffusion process in the following form:
+$$
+p(\mathbf{x}_t|\mathbf{x}_0)=\mathcal{N}(\mathbf{x}_t|\gamma_t \mathbf{x}_0,\sigma_t^2\mathbf{I}),
+$$
+or, equivalently,
+$$
+\mathbf{x}_t=\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},\quad\mathbf{z}\sim\mathcal{N}(\mathbf{0},\mathbf{I}).
+$$</p>
+<p>The marginal distribution of the noisy data $\mathbf{x}_t$ can be expressed as
+$$
+p(\mathbf{x}_t)=\int p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0.
+$$</p>
+<h3 id="common-parameterizations-of-diffusion-generative-models">Common Parameterizations of Diffusion Generative Models</h3>
+<p>Diffusion generative models aim to learn the corresponding backward diffusion process (i.e., the denoising process) which can be used to generate data from noise. Two of the most common parameterizations of diffusion generative models are:</p>
+<ol>
+<li>
+<p>Denoising Diffusion Probabilistic Model (DDPM) predicts the mean $\mathbb{E}[\mathbf{x}_{t-1}|\mathbf{x}_t]$ of each step in the backward process. Applying certain variance reduction tricks reduces this to predicting the noise $\mathbf{z}$ that was used to generate $\mathbf{x}_t$ with a noise model $\mathbf{z}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)$:
+$$
+\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{z})}\left[\lVert \mathbf{z}-\mathbf{z}_{\boldsymbol{\theta}}(\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},t)\rVert^2\right].
+$$</p>
+</li>
+<li>
+<p>Score-based Diffusion Model (SDM) predicts the score $\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)$ of the noisy marginal with a score model $\mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)$. Denoising score matching tells us that this is equivalent to matching the score of the Gaussian forward diffusion process:
+$$
+\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{x}_t|\mathbf{x}_0)}\left[\sigma_t^2\lVert \nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t|\mathbf{x}_0) - \mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t) \rVert^2\right].
+$$</p>
+</li>
+</ol>
+<h3 id="connection-between-ddpm-and-sdm">Connection Between DDPM and SDM</h3>
+<p>In the denoising score matching objective, we can analytically compute the score of the Gaussian forward diffusion process:
+$$
+\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t|\mathbf{x}_0)=-\frac{\mathbf{x}_t-\gamma_t\mathbf{x}_0}{\sigma_t^2}=-\frac{\mathbf{z}}{\sigma_t}.
+$$</p>
+<p>Plugging this into denoising score matching objective, we obtain
+$$
+\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{z})}\left[\lVert \mathbf{z}+\sigma_t\mathbf{s}_{\boldsymbol{\theta}}(\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},t)\rVert^2\right].
+$$</p>
+<p>This reveals a connection between the two models:
+$$
+\mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)=-\frac{\mathbf{z}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)}{\sigma_t}.
+$$</p>
+<h3 id="tweedies-formula">Tweedie&rsquo;s Formula</h3>
+<p>There is another perhaps less common parameterization of diffusion generative models which is closely related to Tweedie&rsquo;s Formula:
+$$
+\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)=\frac{\gamma_t \mathbb{E}[\mathbf{x}_0|\mathbf{x}_t] - \mathbf{x}_t}{\sigma_t^2}.
+$$</p>
+<p>Tweedie&rsquo;s Formula tells us: given the Gaussian forward diffusion process, the mean $\mathbb{E}[\mathbf{x}_0|\mathbf{x}_t]$ of the one-step denoising distribution is all we need for constructing the score $\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)$ of the noisy marginal. Therefore, we may construct a new parameterization which predicts $\mathbb{E}[\mathbf{x}_0|\mathbf{x}_t]$ with a parametric model $\mathbf{m}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)$:
+$$
+\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{z})}\left[\lVert \mathbf{x}_0 - \mathbf{m}_{\boldsymbol{\theta}}(\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},t) \rVert^2\right].
+$$</p>
+<p>Tweedie&rsquo;s Formula also reveals a connection between these models:
+$$
+\mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)=\frac{\gamma_t \mathbf{m}_{\boldsymbol{\theta}}(\mathbf{x}_t,t) - \mathbf{x}_t}{\sigma_t^2}\quad\text{and}\quad\mathbf{z}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)=\frac{\mathbf{x}_t - \gamma_t \mathbf{m}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)}{\sigma_t}.
+$$</p>
+<h3 id="what-difference-does-it-make">What Difference Does It Make?</h3>
+<p>In theory, all these parameterizations are equivalent in the sense that they model the same diffusion generative model (i.e., the backward/denoising process for a given Gaussian forward diffusion process). However, the difficulty of optimization depends on parameterizations quite a lot in practice because they essentially serve as different variance reduction techniques for gradient estimation. It is interesting to note that when the diffusion generative model was first invented, it could not be trained well because of the high variance in the estimated gradient. The authors of DDPM proposed a new parameterization with a set of variance reduction tricks five years later, which was the first time that people had managed to get high quality samples using diffusion generative models.</p>
+<h3 id="appendix-proof-of-tweedies-formula">Appendix: Proof of Tweedie&rsquo;s Formula</h3>
+<p>Let&rsquo;s now prove Tweedie&rsquo;s Formula in the context of diffusion generative models:
+$$
+\begin{aligned}
+\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)
+&amp;= \frac{1}{p(\mathbf{x}_t)} \nabla_{\mathbf{x}_t} p(\mathbf{x}_t) \\
+&amp;= \frac{1}{p(\mathbf{x}_t)} \nabla_{\mathbf{x}_t} \int p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0 \\
+&amp;= \frac{1}{p(\mathbf{x}_t)} \int \nabla_{\mathbf{x}_t} p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0 \\
+&amp;= \frac{1}{p(\mathbf{x}_t)} \int \frac{\gamma_t\mathbf{x}_0-\mathbf{x}_t}{\sigma_t^2} p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0 \\
+&amp;= \int \frac{\gamma_t\mathbf{x}_0-\mathbf{x}_t}{\sigma_t^2} \frac{p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)}{p(\mathbf{x}_t)}d\mathbf{x}_0 \\
+&amp;= \int \frac{\gamma_t\mathbf{x}_0-\mathbf{x}_t}{\sigma_t^2} p(\mathbf{x}_0|\mathbf{x}_t)d\mathbf{x}_0 \\
+&amp;= \frac{\gamma_t \mathbb{E}[\mathbf{x}_0|\mathbf{x}_t] - \mathbf{x}_t}{\sigma_t^2}.
+\end{aligned}
+$$</p>
 
-    
-    
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading">Type</div>
-          <div class="col-12 col-md-9">
-            <a href="/publication/#4">
-              Report
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
     </div>
-    <div class="d-md-none space-below"></div>
-    
-
-    
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading">Publication</div>
-          <div class="col-12 col-md-9"><em>ICLR 2022 Workshop on Machine Learning for Drug Discovery (MLDD)</em></div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-    <div class="d-md-none space-below"></div>
-    
-
-    <div class="space-below"></div>
-
-    <div class="article-style"></div>
 
     
 
@@ -870,7 +836,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/publication/tripp2022evaluation/&amp;text=An%20Evaluation%20Framework%20for%20the%20Objective%20Functions%20of%20De%20Novo%20Drug%20Design%20Benchmarks" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/diffusion-parameterization/&amp;text=Connections%20Among%20Different%20Parameterizations%20of%20Diffusion%20Generative%20Models" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -883,7 +849,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/publication/tripp2022evaluation/&amp;t=An%20Evaluation%20Framework%20for%20the%20Objective%20Functions%20of%20De%20Novo%20Drug%20Design%20Benchmarks" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/diffusion-parameterization/&amp;t=Connections%20Among%20Different%20Parameterizations%20of%20Diffusion%20Generative%20Models" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -896,7 +862,7 @@
       
       
       <li>
-        <a href="mailto:?subject=An%20Evaluation%20Framework%20for%20the%20Objective%20Functions%20of%20De%20Novo%20Drug%20Design%20Benchmarks&amp;body=https://wenlin-chen.github.io/publication/tripp2022evaluation/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Connections%20Among%20Different%20Parameterizations%20of%20Diffusion%20Generative%20Models&amp;body=https://wenlin-chen.github.io/post/diffusion-parameterization/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -909,7 +875,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/publication/tripp2022evaluation/&amp;title=An%20Evaluation%20Framework%20for%20the%20Objective%20Functions%20of%20De%20Novo%20Drug%20Design%20Benchmarks" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/diffusion-parameterization/&amp;title=Connections%20Among%20Different%20Parameterizations%20of%20Diffusion%20Generative%20Models" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -922,7 +888,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=An%20Evaluation%20Framework%20for%20the%20Objective%20Functions%20of%20De%20Novo%20Drug%20Design%20Benchmarks%20https://wenlin-chen.github.io/publication/tripp2022evaluation/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Connections%20Among%20Different%20Parameterizations%20of%20Diffusion%20Generative%20Models%20https://wenlin-chen.github.io/post/diffusion-parameterization/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -935,7 +901,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/publication/tripp2022evaluation/&amp;title=An%20Evaluation%20Framework%20for%20the%20Objective%20Functions%20of%20De%20Novo%20Drug%20Design%20Benchmarks" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/diffusion-parameterization/&amp;title=Connections%20Among%20Different%20Parameterizations%20of%20Diffusion%20Generative%20Models" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -955,13 +921,6 @@
 
   
   
-    
-
-
-
-
-  
-    
 
 
 
@@ -1075,13 +1034,6 @@
   </div>
 
 
-  
-    
-
-
-
-
-  
 
 
 
@@ -1104,7 +1056,7 @@
 
 
   </div>
-</div>
+</article>
   </div>
 
   <div class="page-footer">

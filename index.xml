@@ -5,91 +5,12 @@
     <link>https://wenlin-chen.github.io/</link>
       <atom:link href="https://wenlin-chen.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Wenlin Chen</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2023 Wenlin Chen</copyright><lastBuildDate>Sat, 23 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2023 Wenlin Chen</copyright><lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Wenlin Chen</title>
       <link>https://wenlin-chen.github.io/</link>
     </image>
-    
-    <item>
-      <title>Connections Among Different Parameterizations of Diffusion Generative Models</title>
-      <link>https://wenlin-chen.github.io/post/diffusion-parameterization/</link>
-      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/post/diffusion-parameterization/</guid>
-      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;Let $p(\mathbf{x}_0)$ be the data distribution of interest. Consider a Gaussian forward diffusion process in the following form:
-$$
-p(\mathbf{x}_t|\mathbf{x}_0)=\mathcal{N}(\mathbf{x}_t|\gamma_t \mathbf{x}_0,\sigma_t^2\mathbf{I}),
-$$
-or, equivalently,
-$$
-\mathbf{x}_t=\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},\quad\mathbf{z}\sim\mathcal{N}(\mathbf{0},\mathbf{I}).
-$$&lt;/p&gt;
-&lt;p&gt;The marginal distribution of the noisy data $\mathbf{x}_t$ can be expressed as
-$$
-p(\mathbf{x}_t)=\int p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0.
-$$&lt;/p&gt;
-&lt;h3 id=&#34;common-parameterizations-of-diffusion-generative-models&#34;&gt;Common Parameterizations of Diffusion Generative Models&lt;/h3&gt;
-&lt;p&gt;Diffusion generative models aim to learn the corresponding backward diffusion process (i.e., the denoising process) which can be used to generate data from noise. Two of the most common parameterizations of diffusion generative models are:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Denoising Diffusion Probabilistic Model (DDPM) predicts the mean $\mathbb{E}[\mathbf{x}_{t-1}|\mathbf{x}_t]$ of each step in the backward process. Applying certain variance reduction tricks reduces this to predicting the noise $\mathbf{z}$ that was used to generate $\mathbf{x}_t$ with a noise model $\mathbf{z}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)$:
-$$
-\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{z})}\left[\lVert \mathbf{z}-\mathbf{z}_{\boldsymbol{\theta}}(\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},t)\rVert^2\right].
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Score-based Diffusion Model (SDM) predicts the score $\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)$ of the noisy marginal with a score model $\mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)$. Denoising score matching tells us that this is equivalent to matching the score of the Gaussian forward diffusion process:
-$$
-\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{x}_t|\mathbf{x}_0)}\left[\sigma_t^2\lVert \nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t|\mathbf{x}_0) - \mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t) \rVert^2\right].
-$$&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;connection-between-ddpm-and-sdm&#34;&gt;Connection Between DDPM and SDM&lt;/h3&gt;
-&lt;p&gt;In the denoising score matching objective, we can analytically compute the score of the Gaussian forward diffusion process:
-$$
-\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t|\mathbf{x}_0)=-\frac{\mathbf{x}_t-\gamma_t\mathbf{x}_0}{\sigma_t^2}=-\frac{\mathbf{z}}{\sigma_t}.
-$$&lt;/p&gt;
-&lt;p&gt;Plugging this into denoising score matching objective, we obtain
-$$
-\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{z})}\left[\lVert \mathbf{z}+\sigma_t\mathbf{s}_{\boldsymbol{\theta}}(\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},t)\rVert^2\right].
-$$&lt;/p&gt;
-&lt;p&gt;This reveals a connection between the two models:
-$$
-\mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)=-\frac{\mathbf{z}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)}{\sigma_t}.
-$$&lt;/p&gt;
-&lt;h3 id=&#34;tweedies-formula&#34;&gt;Tweedie&amp;rsquo;s Formula&lt;/h3&gt;
-&lt;p&gt;There is another perhaps less common parameterization of diffusion generative models which is closely related to Tweedie&amp;rsquo;s Formula:
-$$
-\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)=\frac{\gamma_t \mathbb{E}[\mathbf{x}_0|\mathbf{x}_t] - \mathbf{x}_t}{\sigma_t^2}.
-$$&lt;/p&gt;
-&lt;p&gt;Tweedie&amp;rsquo;s Formula tells us: given the Gaussian forward diffusion process, the mean $\mathbb{E}[\mathbf{x}_0|\mathbf{x}_t]$ of the one-step denoising distribution is all we need for constructing the score $\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)$ of the noisy marginal. Therefore, we may construct a new parameterization which predicts $\mathbb{E}[\mathbf{x}_0|\mathbf{x}_t]$ with a parametric model $\mathbf{m}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)$:
-$$
-\min_{\boldsymbol{\theta}}~\mathbb{E}_{p(t)p(\mathbf{x}_0)p(\mathbf{z})}\left[\lVert \mathbf{x}_0 - \mathbf{m}_{\boldsymbol{\theta}}(\gamma_t \mathbf{x}_0 + \sigma_t\mathbf{z},t) \rVert^2\right].
-$$&lt;/p&gt;
-&lt;p&gt;Tweedie&amp;rsquo;s Formula also reveals a connection between these models:
-$$
-\mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)=\frac{\gamma_t \mathbf{m}_{\boldsymbol{\theta}}(\mathbf{x}_t,t) - \mathbf{x}_t}{\sigma_t^2}\quad\text{and}\quad\mathbf{z}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)=\frac{\mathbf{x}_t - \gamma_t \mathbf{m}_{\boldsymbol{\theta}}(\mathbf{x}_t,t)}{\sigma_t}.
-$$&lt;/p&gt;
-&lt;h3 id=&#34;what-difference-does-it-make&#34;&gt;What Difference Does It Make?&lt;/h3&gt;
-&lt;p&gt;In theory, all these parameterizations are equivalent in the sense that they model the same diffusion generative model (i.e., the backward/denoising process for a given Gaussian forward diffusion process). However, the difficulty of optimization depends on parameterizations quite a lot in practice because they essentially serve as different variance reduction techniques for gradient estimation. It is interesting to note that when the diffusion generative model was first invented, it could not be trained well because of the high variance in the estimated gradient. The authors of DDPM proposed a new parameterization with a set of variance reduction tricks five years later, which was the first time that people had managed to get high quality samples using diffusion generative models.&lt;/p&gt;
-&lt;h3 id=&#34;appendix-proof-of-tweedies-formula&#34;&gt;Appendix: Proof of Tweedie&amp;rsquo;s Formula&lt;/h3&gt;
-&lt;p&gt;Let&amp;rsquo;s now prove Tweedie&amp;rsquo;s Formula in the context of diffusion generative models:
-$$
-\begin{aligned}
-\nabla_{\mathbf{x}_t}\log p(\mathbf{x}_t)
-&amp;amp;= \frac{1}{p(\mathbf{x}_t)} \nabla_{\mathbf{x}_t} p(\mathbf{x}_t) \\
-&amp;amp;= \frac{1}{p(\mathbf{x}_t)} \nabla_{\mathbf{x}_t} \int p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0 \\
-&amp;amp;= \frac{1}{p(\mathbf{x}_t)} \int \nabla_{\mathbf{x}_t} p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0 \\
-&amp;amp;= \frac{1}{p(\mathbf{x}_t)} \int \frac{\gamma_t\mathbf{x}_0-\mathbf{x}_t}{\sigma_t^2} p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)d\mathbf{x}_0 \\
-&amp;amp;= \int \frac{\gamma_t\mathbf{x}_0-\mathbf{x}_t}{\sigma_t^2} \frac{p(\mathbf{x}_t|\mathbf{x}_0)p(\mathbf{x}_0)}{p(\mathbf{x}_t)}d\mathbf{x}_0 \\
-&amp;amp;= \int \frac{\gamma_t\mathbf{x}_0-\mathbf{x}_t}{\sigma_t^2} p(\mathbf{x}_0|\mathbf{x}_t)d\mathbf{x}_0 \\
-&amp;amp;= \frac{\gamma_t \mathbb{E}[\mathbf{x}_0|\mathbf{x}_t] - \mathbf{x}_t}{\sigma_t^2}.
-\end{aligned}
-$$&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>It HAS to be Subjective: Human Annotator Simulation via Zero-shot Density Estimation</title>

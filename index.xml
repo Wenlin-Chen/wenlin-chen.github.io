@@ -556,25 +556,29 @@ Note that there are multiple ways in which we can associate each covector with a
 &lt;li&gt;$T^{~j}_{i~kl} L^i_j \quad (V \otimes V^*)\to (V^* \otimes V^*)$,&lt;/li&gt;
 &lt;li&gt;&amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;raising-and-lowering-tensor-indices&#34;&gt;Raising and Lowering Tensor Indices&lt;/h3&gt;
-&lt;p&gt;We would like to find a meaningful partner covector $\alpha=v_i\epsilon^i\in V^*$ for each vector $\mathbf{v}=v^i\mathbf{e}_i\in V$. It turns out that such partnership can be defined using the metric tensor $g\in V^*\otimes V^*$ (i.e., dot product).&lt;/p&gt;
-&lt;p&gt;We define the partner of the vector $\mathbf{v}\in V$ as the linear function $\alpha:V\to S$ such that
+&lt;h3 id=&#34;musical-isomorphism&#34;&gt;Musical Isomorphism&lt;/h3&gt;
+&lt;p&gt;We would like to find a meaningful partner covector $\nu=v_i\epsilon^i\in V^*$ for each vector $\mathbf{v}=v^i\mathbf{e}_i\in V$. It turns out that one such partnership is called musical isomorphism, which is defined using the metric tensor $g\in V^*\otimes V^*$ (i.e., dot product).&lt;/p&gt;
+&lt;p&gt;We define the partner of the vector $\mathbf{v}\in V$ as the linear function $\nu:V\to S$ such that
 $$
-\alpha=g(\mathbf{v},\cdot)=g_{ik}\epsilon^i\otimes\epsilon^k(v^j\mathbf{e}_j)=g_{ik} v^j \epsilon^i\delta^k_j=g_{ij}v^j\epsilon^i.
+\nu=g(\mathbf{v},\cdot)=g_{ik}\epsilon^i\otimes\epsilon^k(v^j\mathbf{e}_j)=g_{ik} v^j \epsilon^i\delta^k_j=g_{ij}v^j\epsilon^i.
 $$
-Therefore, we lower the index of the components of the vector $\mathbf{v}$ by
+Therefore, we lower (flat) the index of the components $v^j$ of the vector $\mathbf{v}$ by
 $$
 v_i=g_{ij}v^j.
 $$
-This gives us the definition of the partner covector $\alpha$ for the vector $\mathbf{v}$:
+This gives us the definition of the partner covector $\nu$ for the vector $\mathbf{v}$:
 $$
-\alpha=v_i\epsilon^i=g_{ij}v^j\epsilon^i.
+\nu=v_i\epsilon^i=g_{ij}v^j\epsilon^i.
+$$&lt;/p&gt;
+&lt;p&gt;Another way to think about the flat operation for lowering vector component indices is that
 $$
-This is a meaningful partnership because it holds in any basis by definition:
+v_i=g(\mathbf{e}_i,\mathbf{v})=g(\mathbf{e}_i,v^j\mathbf{e}_j)=v^j g(\mathbf{e}_i,\mathbf{e}_j)=g_{ij}v^j.
+$$&lt;/p&gt;
+&lt;p&gt;This is a meaningful partnership because it holds in any basis by definition:
 $$
-\tilde{v}_i=\tilde{g}_{ij}\tilde{v}^j \quad\text{and}\quad\alpha=\tilde{v}_i\tilde{\epsilon}^i=\tilde{g}_{ij}\tilde{v}^j\tilde{\epsilon}^i.
-$$
-Note that in general $v^i\not=v_i$. The only exception is in the orthonormal basis where we have
+\tilde{v}_i=\tilde{g}_{ij}\tilde{v}^j \quad\text{and}\quad\nu=\tilde{v}_i\tilde{\epsilon}^i=\tilde{g}_{ij}\tilde{v}^j\tilde{\epsilon}^i.
+$$&lt;/p&gt;
+&lt;p&gt;Note that in general $v^i\not=v_i$. The only exception is in the orthonormal basis where we have
 $$
 v_i=g_{ij}v^j=\delta_{ij}v^j=v^i.
 $$&lt;/p&gt;
@@ -582,7 +586,7 @@ $$&lt;/p&gt;
 $$
 h^{ij}g_{jk}=\delta^i_k.
 $$
-Then, we raise the index of the components of the covector $\alpha$ (i.e., the inverse of the partnership above) by
+Then, we raise (sharp) the index of the components $v_j$ of the covector $\nu$ (i.e., the inverse of the partnership above) by
 $$
 h^{ij}v_j=h^{ij}g_{jk}v^k=\delta^i_k v^k=v^i\quad\text{and}\quad \mathbf{v}=v^i\mathbf{e}_i=h^{ij}v_j\mathbf{e}_i.
 $$
@@ -590,7 +594,7 @@ Similarly, this holds in any basis by definition:
 $$
 \tilde{v}^i=\tilde{h}^{ij}\tilde{v}_j\quad\text{and}\quad \mathbf{v}=\tilde{v}^i\tilde{\mathbf{e}}_i=\tilde{h}^{ij}\tilde{v}_j\tilde{\mathbf{e}}_i.
 $$&lt;/p&gt;
-&lt;p&gt;The technique of lowering and raising indices can be applied to tensors of any rank in general. For example, consider the tensor $T=T^i_{jk}\mathbf{e}_i\otimes\epsilon^j\otimes\epsilon^k\in V\otimes V^* \otimes V^*$. We can raise the index $j$ by $T^i_{jk}h^{jl}=T^{il}_k$, which results in a new tensor $T&amp;rsquo;=T^{il}_k \mathbf{e}_i\otimes\mathbf{e}_l\otimes\epsilon^k\in V\otimes V \otimes V^*$.&lt;/p&gt;
+&lt;p&gt;The operations of lowering and raising indices can be applied to tensors of any rank in general. For example, consider the tensor $T=T^i_{jk}\mathbf{e}_i\otimes\epsilon^j\otimes\epsilon^k\in V\otimes V^* \otimes V^*$. We can raise the index $j$ by $T^i_{jk}h^{jl}=T^{il}_k$, which results in a new tensor $T&amp;rsquo;=T^{il}_k \mathbf{e}_i\otimes\mathbf{e}_l\otimes\epsilon^k\in V\otimes V \otimes V^*$.&lt;/p&gt;
 </description>
     </item>
     

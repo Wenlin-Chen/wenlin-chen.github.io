@@ -1194,7 +1194,8 @@ $$
 $$
 $$
 T^{ijk\cdots}_{rst\cdots}=(F^i_a F^j_b F^k_c\cdots ) \tilde{T}^{abc\cdots}_{xyz\cdots} (B^x_r B^y_s B^z_t\cdots).
-$$</p>
+$$
+We will derive this transformation rule using tensor products later.</p>
 <h3 id="examples-of-tensor-products">Examples of Tensor Products</h3>
 <p>In general, tensors can be constructed by combining vectors and covectors using tensor product. We first give a few examples of redefining tensors that we have learned using tensor products below.</p>
 <p>Linear maps are tensor products of vector-covector pairs:
@@ -1235,14 +1236,14 @@ $$</p>
 $$
 T = T^{ijk\cdots}_{rst\cdots}(\mathbf{e}_i\otimes\mathbf{e}_j\otimes\mathbf{e}_k\otimes\cdots)\otimes (\epsilon^r\otimes\epsilon^s\otimes\epsilon^t\otimes\cdots).
 $$
-Applying a change of basis and dual basis, we obtain
+Applying changes of bases and dual bases, we obtain
 $$
 \begin{aligned}
 T &amp;= T^{ijk\cdots}_{rst\cdots}(B^a_i\tilde{\mathbf{e}}_a\otimes B^b_j\tilde{\mathbf{e}}_b\otimes B^c_k\tilde{\mathbf{e}}_c\otimes\cdots)\otimes (F^r_x\tilde{\epsilon}^x\otimes F^s_y\tilde{\epsilon}^y\otimes F^t_z \tilde{\epsilon}^z\otimes\cdots) \\
 &amp;= (B^a_i B^b_j B^c_k\cdots) T^{ijk\cdots}_{rst\cdots} (F^r_x F^s_y F^t_z \cdots) (\tilde{\mathbf{e}}_a\otimes \tilde{\mathbf{e}}_b\otimes \tilde{\mathbf{e}}_c\otimes\cdots)\otimes (\tilde{\epsilon}^x\otimes \tilde{\epsilon}^y\otimes \tilde{\epsilon}^z\otimes\cdots).
 \end{aligned}
 $$
-But the definition of the tensor $T$ in the new basis and dual basis is
+But the definition of the tensor $T$ in the new bases and dual bases is
 $$
 T = \tilde{T}^{abc\cdots}_{xyz\cdots}(\tilde{\mathbf{e}}_a\otimes \tilde{\mathbf{e}}_b\otimes \tilde{\mathbf{e}}_c\otimes\cdots)\otimes (\tilde{\epsilon}^x\otimes \tilde{\epsilon}^y\otimes \tilde{\epsilon}^z\otimes\cdots).
 $$
@@ -1273,7 +1274,7 @@ Note that there are multiple ways in which we can associate each covector with a
 <li>$\mathbf{v}\otimes\alpha+\mathbf{v}\otimes\beta=\mathbf{v}\otimes(\alpha+\beta)$,</li>
 <li>$\mathbf{v}\otimes\alpha+\mathbf{u}\otimes\alpha=(\mathbf{v}+\mathbf{u})\otimes\alpha$.</li>
 </ol>
-<p>We can form tensor product spaces $V\otimes V$, $V\times V^*$, $V^*\times V$, and $V^*\times V^*$ using tensor products, and we can continue forming larger tensor products such as $V\otimes V^* \otimes V \otimes \cdots$ and so forth. A tensor space associated with tensor contains elements obtained by any number of summations with that tensor in any order.</p>
+<p>We can form tensor product spaces $V\otimes V$, $V\times V^*$, $V^*\times V$, and $V^*\times V^*$ using tensor products, and we can continue forming larger tensor products such as $V\otimes V^* \otimes V \otimes \cdots$ and so forth. A tensor space associated with a tensor $T$ contains elements obtained by any number of summations with $T$ in any order.</p>
 <p>For example, consider a tensor space $V^* \otimes V \otimes V^* \otimes V^*$ associated with the tensor $T^{~j}_{i~kl}\epsilon^i\mathbf{e}_j\epsilon^k\epsilon^l$. Below are some example elements in this tensor space:</p>
 <ul>
 <li>$T^{~j}_{i~kl} v^i \alpha_j w^k u^l\quad V \times V^* \times V \times V \to S$,</li>

@@ -5,7 +5,7 @@
     <link>https://wenlin-chen.github.io/post/</link>
       <atom:link href="https://wenlin-chen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Notes</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2023 Wenlin Chen</copyright><lastBuildDate>Mon, 25 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Fri, 05 Jan 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Notes</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Tensor Algebra</title>
       <link>https://wenlin-chen.github.io/post/tensor-algebra/</link>
-      <pubDate>Mon, 25 Dec 2023 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/tensor-algebra/</guid>
       <description>&lt;p&gt;These are my learning notes for the lecture series &lt;a href=&#34;https://www.youtube.com/playlist?list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tensors for Beginners&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;motivation-and-applications-of-tensors&#34;&gt;Motivation and Applications of Tensors&lt;/h3&gt;

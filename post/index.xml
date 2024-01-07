@@ -44,7 +44,7 @@
 &lt;p&gt;(Array Definition) A tensors is a multi-dimensional array, such as&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;rank-0 tensor: scalar,&lt;/li&gt;
-&lt;li&gt;rank-1 tensor: vecoter,&lt;/li&gt;
+&lt;li&gt;rank-1 tensor: vector,&lt;/li&gt;
 &lt;li&gt;rank-2 tensor: matrix,&lt;/li&gt;
 &lt;li&gt;rank-3 tensor: ?,&lt;/li&gt;
 &lt;li&gt;&amp;hellip;&lt;/li&gt;

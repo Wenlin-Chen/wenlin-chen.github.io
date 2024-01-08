@@ -572,14 +572,13 @@ $$&lt;/p&gt;
 $$
 v_i=g(\mathbf{e}_i,\mathbf{v})=g(\mathbf{e}_i,v^j\mathbf{e}_j)=v^j g(\mathbf{e}_i,\mathbf{e}_j)=g_{ij}v^j.
 $$
-Geometrically, this tells us that $v_i$ is the length of projection of the vector $\mathbf{v}$ onto the basis vector $\mathbf{e}_i$.&lt;/p&gt;
+Geometrically, this tells us that $v_i$ is the projection of the vector $\mathbf{v}$ onto the basis vector $\mathbf{e}_i$. Note that $v^i\not=v_i$ in general. The only exception is in the orthonormal basis where we have
+$$
+v_i=g_{ij}v^j=\delta_{ij}v^j=v^i.
+$$&lt;/p&gt;
 &lt;p&gt;This is a meaningful partnership because it holds in any basis by definition:
 $$
 \tilde{v}_i=\tilde{g}_{ij}\tilde{v}^j \quad\text{and}\quad\nu=\tilde{v}_i\tilde{\epsilon}^i=\tilde{g}_{ij}\tilde{v}^j\tilde{\epsilon}^i.
-$$&lt;/p&gt;
-&lt;p&gt;Note that $v^i\not=v_i$ in general. The only exception is in the orthonormal basis where we have
-$$
-v_i=g_{ij}v^j=\delta_{ij}v^j=v^i.
 $$&lt;/p&gt;
 &lt;p&gt;We can define the inverse of the metric tensor as $h^{ki}\in V\otimes V$ such that composing $g$ and $h$ results in the identity:
 $$

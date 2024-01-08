@@ -141,7 +141,7 @@ $$ --&gt;
 &lt;/ul&gt;
 &lt;p&gt;We usually omit $\cdot$ and just write $a\mathbf{v}$ instead.&lt;/p&gt;
 &lt;p&gt;Vectors are a kind of tensor. Vectors are invariant to the coordinate systems, but the components of vectors are not.&lt;/p&gt;
-&lt;p&gt;Let $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ be a basis of $(V,S,+,\cdot)$. First, we note that the basis vectors $\mathbf{e}_i$ are vectors. A vector $\mathbf{v}\in V$ can be represented as a linear combination of the basis vectors:
+&lt;p&gt;Let $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ be a basis of $(V,S,+,\cdot)$. A vector $\mathbf{v}\in V$ can be represented as a linear combination of the basis vectors:
 $$
 \mathbf{v}= v^i \mathbf{e}_i,
 $$

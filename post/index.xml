@@ -155,6 +155,7 @@ v^n
 \end{bmatrix}_{E}
 $$
 This tells us that column vectors are the array representations of vectors, which is the array definition of vectors.&lt;/p&gt;
+&lt;p&gt;Geometrically, vectors are arrows (directed line segments).&lt;/p&gt;
 &lt;h3 id=&#34;vector-transformation&#34;&gt;Vector Transformation&lt;/h3&gt;
 &lt;p&gt;Let&amp;rsquo;s represent the vector components of $\mathbf{v}$ in a different basis $\tilde{E}$:
 $$

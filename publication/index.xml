@@ -5,12 +5,20 @@
     <link>https://wenlin-chen.github.io/publication/</link>
       <atom:link href="https://wenlin-chen.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Tue, 06 Feb 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Publications</title>
       <link>https://wenlin-chen.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Diffusive Gibbs Sampling</title>
+      <link>https://wenlin-chen.github.io/publication/chen2024diffusive/</link>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2024diffusive/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>It HAS to be Subjective: Human Annotator Simulation via Zero-shot Density Estimation</title>

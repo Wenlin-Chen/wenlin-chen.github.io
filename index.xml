@@ -5,12 +5,20 @@
     <link>https://wenlin-chen.github.io/</link>
       <atom:link href="https://wenlin-chen.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Wenlin Chen</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Sun, 21 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Sun, 11 Aug 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Wenlin Chen</title>
       <link>https://wenlin-chen.github.io/</link>
     </image>
+    
+    <item>
+      <title>Modelling Variability in Human Annotator Simulation</title>
+      <link>https://wenlin-chen.github.io/publication/wu2024modelling/</link>
+      <pubDate>Sun, 11 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/wu2024modelling/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Diffusive Gibbs Sampling</title>
@@ -37,10 +45,10 @@
     </item>
     
     <item>
-      <title>Neural Characteristic Activation Value Analysis for Improved ReLU Network Feature Learning</title>
-      <link>https://wenlin-chen.github.io/publication/chen2023neural/</link>
+      <title>ReLU Characteristic Activation Analysis</title>
+      <link>https://wenlin-chen.github.io/publication/chen2023relu/</link>
       <pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2023neural/</guid>
+      <guid>https://wenlin-chen.github.io/publication/chen2023relu/</guid>
       <description></description>
     </item>
     

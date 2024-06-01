@@ -925,7 +925,7 @@ $$
 $$</p>
 <h3 id="importance-sampling-estimator">Importance Sampling Estimator</h3>
 <p>Estimate the noisy score with the target score identity using importance sampling
-$$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_y E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right.$$
+$$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right.$$
 Proof: Using target score identity and the fact that $q(x|y)\propto p(y|x)$, we have
 $$
 \begin{aligned}
@@ -934,7 +934,7 @@ $$
 &amp;= \frac{\int \nabla_x\log p(x) p(y|x)p(x) dx}{\alpha p(y)} \\
 &amp;= \frac{\int \nabla_x\log p(x) p(y|x)p(x) dx}{\alpha \int p(y|x)p(x)dx} \\
 &amp;= \frac{\int \nabla_x\log p(x) \exp(-E(x)) q(x|y) dx}{\alpha \int \exp(-E(x)) q(x|y)dx} \\
-&amp;= -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_y E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)
+&amp;\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)
 \end{aligned}
 $$</p>
 <h1 id="generative-modeling">Generative Modeling</h1>

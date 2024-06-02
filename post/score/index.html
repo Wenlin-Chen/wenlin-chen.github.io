@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Introduction Problem Setting Data distribution $$p(x)=\frac{\exp(-E(x))}{Z}$$ Intractable normalizing constant $$Z=\int \exp(-E(x)) dx$$ Tractable score function $$\nabla_x \log p(x)=-\nabla_x E(x)$$ Generative Modeling Samples $x_1,\cdots,x_N\sim p(x)$ are available The energy function $E$ is unknown and needs to be learned from data Sampling The energy function $E$ is given Samples from $p(x)$ are not available Diffusion Gaussian convolution kernel $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$$ Intractable noisy marginal $$p(y)=\int p(y|x)p(x)dx$$ Intractable denoising posterior $$p(x|y)=\frac{p(y|x)p(x)}{p(y)}$$ Intractable noisy score $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx$$ Score Identities Denoising Score Identity $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$" />
+  <meta name="description" content="Introduction Problem Setting Data distribution $$p(x)=\frac{\exp(-E(x))}{Z}$$ Intractable normalizing constant $$Z=\int \exp(-E(x)) dx$$ Tractable score function $$\nabla_x \log p(x)=-\nabla_x E(x)$$ Generative Modeling Samples $x_1,\cdots,x_N\sim p(x)$ are available The energy function $E$ is unknown and needs to be learned from data Sampling The energy function $E$ is given Samples from $p(x)$ are not available Diffusion Gaussian convolution kernel $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$$ Intractable noisy marginal $$p(y)=\int p(y|x)p(x)dx$$ Intractable denoising posterior $$p(x|y)=\frac{p(y|x)p(x)}{p(y)}$$ Intractable noisy score $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx$$ Score Identities Denoising Score Identity $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$ Proof: By definition, we have $$ \begin{aligned} \nabla_y\log p(y) &amp;= \frac{\int\nabla_y p(y|x)p(x)dx}{p(y)} \\ &amp;= \int\nabla_y\log(y|x)\frac{p(y|x)p(x)}{p(y)}dx \\ &amp;= \int\nabla_y\log p(y|x) p(x|y)dx \end{aligned} $$" />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/score/" />
@@ -298,7 +298,7 @@
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/score/" />
   <meta property="og:title" content="Diffusion Sampling and Generative Modeling | Wenlin Chen" />
-  <meta property="og:description" content="Introduction Problem Setting Data distribution $$p(x)=\frac{\exp(-E(x))}{Z}$$ Intractable normalizing constant $$Z=\int \exp(-E(x)) dx$$ Tractable score function $$\nabla_x \log p(x)=-\nabla_x E(x)$$ Generative Modeling Samples $x_1,\cdots,x_N\sim p(x)$ are available The energy function $E$ is unknown and needs to be learned from data Sampling The energy function $E$ is given Samples from $p(x)$ are not available Diffusion Gaussian convolution kernel $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$$ Intractable noisy marginal $$p(y)=\int p(y|x)p(x)dx$$ Intractable denoising posterior $$p(x|y)=\frac{p(y|x)p(x)}{p(y)}$$ Intractable noisy score $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx$$ Score Identities Denoising Score Identity $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$" /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Introduction Problem Setting Data distribution $$p(x)=\frac{\exp(-E(x))}{Z}$$ Intractable normalizing constant $$Z=\int \exp(-E(x)) dx$$ Tractable score function $$\nabla_x \log p(x)=-\nabla_x E(x)$$ Generative Modeling Samples $x_1,\cdots,x_N\sim p(x)$ are available The energy function $E$ is unknown and needs to be learned from data Sampling The energy function $E$ is given Samples from $p(x)$ are not available Diffusion Gaussian convolution kernel $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$$ Intractable noisy marginal $$p(y)=\int p(y|x)p(x)dx$$ Intractable denoising posterior $$p(x|y)=\frac{p(y|x)p(x)}{p(y)}$$ Intractable noisy score $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx$$ Score Identities Denoising Score Identity $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$ Proof: By definition, we have $$ \begin{aligned} \nabla_y\log p(y) &amp;= \frac{\int\nabla_y p(y|x)p(x)dx}{p(y)} \\ &amp;= \int\nabla_y\log(y|x)\frac{p(y|x)p(x)}{p(y)}dx \\ &amp;= \int\nabla_y\log p(y|x) p(x|y)dx \end{aligned} $$" /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Introduction Problem Setting Data distribution $$p(x)=\\frac{\\exp(-E(x))}{Z}$$ Intractable normalizing constant $$Z=\\int \\exp(-E(x)) dx$$ Tractable score function $$\\nabla_x \\log p(x)=-\\nabla_x E(x)$$ Generative Modeling Samples $x_1,\\cdots,x_N\\sim p(x)$ are available The energy function $E$ is unknown and needs to be learned from data Sampling The energy function $E$ is given Samples from $p(x)$ are not available Diffusion Gaussian convolution kernel $$p(y|x)=\\mathcal{N}(y|\\alpha x,\\sigma^2 I)$$ Intractable noisy marginal $$p(y)=\\int p(y|x)p(x)dx$$ Intractable denoising posterior $$p(x|y)=\\frac{p(y|x)p(x)}{p(y)}$$ Intractable noisy score $$\\nabla_y\\log p(y)=\\nabla_y\\log \\int p(y|x)p(x)dx$$ Score Identities Denoising Score Identity $$\\nabla_y\\log p(y)=\\mathbb{E}_{p(x|y)}[\\nabla_y\\log p(y|x)]=\\int\\nabla_y\\log p(y|x) p(x|y)dx$$"
+  "description": "Introduction Problem Setting Data distribution $$p(x)=\\frac{\\exp(-E(x))}{Z}$$ Intractable normalizing constant $$Z=\\int \\exp(-E(x)) dx$$ Tractable score function $$\\nabla_x \\log p(x)=-\\nabla_x E(x)$$ Generative Modeling Samples $x_1,\\cdots,x_N\\sim p(x)$ are available The energy function $E$ is unknown and needs to be learned from data Sampling The energy function $E$ is given Samples from $p(x)$ are not available Diffusion Gaussian convolution kernel $$p(y|x)=\\mathcal{N}(y|\\alpha x,\\sigma^2 I)$$ Intractable noisy marginal $$p(y)=\\int p(y|x)p(x)dx$$ Intractable denoising posterior $$p(x|y)=\\frac{p(y|x)p(x)}{p(y)}$$ Intractable noisy score $$\\nabla_y\\log p(y)=\\nabla_y\\log \\int p(y|x)p(x)dx$$ Score Identities Denoising Score Identity $$\\nabla_y\\log p(y)=\\mathbb{E}_{p(x|y)}[\\nabla_y\\log p(y|x)]=\\int\\nabla_y\\log p(y|x) p(x|y)dx$$ Proof: By definition, we have $$ \\begin{aligned} \\nabla_y\\log p(y) \u0026amp;= \\frac{\\int\\nabla_y p(y|x)p(x)dx}{p(y)} \\\\ \u0026amp;= \\int\\nabla_y\\log(y|x)\\frac{p(y|x)p(x)}{p(y)}dx \\\\ \u0026amp;= \\int\\nabla_y\\log p(y|x) p(x|y)dx \\end{aligned} $$"
 }
 </script>
 
@@ -854,9 +854,8 @@ $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx$$</li>
 </ul>
 <h1 id="score-identities">Score Identities</h1>
 <h3 id="denoising-score-identity">Denoising Score Identity</h3>
-<p>$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$</p>
-<ul>
-<li>Proof: By definition, we have
+<p>$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$
+Proof: By definition, we have
 $$
 \begin{aligned}
 \nabla_y\log p(y)
@@ -864,12 +863,10 @@ $$
 &amp;= \int\nabla_y\log(y|x)\frac{p(y|x)p(x)}{p(y)}dx \\
 &amp;= \int\nabla_y\log p(y|x) p(x|y)dx
 \end{aligned}
-$$</li>
-</ul>
+$$</p>
 <h3 id="tweedie-score-identity">Tweedie Score Identity</h3>
-<p>$$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx$$</p>
-<ul>
-<li>Proof: By denoising score identity, we have
+<p>$$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx$$
+Proof: By denoising score identity, we have
 $$
 \begin{aligned}
 \nabla_y\log p(y)
@@ -877,12 +874,10 @@ $$
 &amp;= \int\nabla_y\left(-\frac{\lVert y-\alpha x\rVert^2}{2\sigma^2}\right) p(x|y)dx \\
 &amp;= \int \left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx
 \end{aligned}
-$$</li>
-</ul>
+$$</p>
 <h3 id="target-score-identity">Target Score Identity</h3>
-<p>$$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx$$</p>
-<ul>
-<li>Proof: By denoising score identity and using the following three identities
+<p>$$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx$$
+Proof: By denoising score identity and using the following three identities
 $$\nabla_y \log p(y|x)=-\alpha^{-1}\nabla_x \log p(y|x)$$
 $$\nabla_x \log p(y|x)=\nabla_x\log p(x|y)-\nabla_x \log p(x)$$
 $$\int \nabla_x\log p(x|y)p(x|y)dx=\int \nabla_xp(x|y)dx=\nabla_x\int p(x|y)dx=0$$
@@ -895,8 +890,7 @@ $$
 &amp;= \alpha^{-1}\int(\nabla_x \log p(x)-\nabla_x\log p(x|y)) p(x|y)dx \\
 &amp;= \alpha^{-1}\int\nabla_x \log p(x) p(x|y)dx \\
 \end{aligned}
-$$</li>
-</ul>
+$$</p>
 <h3 id="mixed-score-identity">Mixed Score Identity</h3>
 <p>$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx$$</p>
 <p>Proof: Using a variance-preserving scheme $\sigma^2=1-\alpha^2$ and combining target score identity and denoising score identity with coefficients $\alpha^2$ and $1-\alpha^2$, we have

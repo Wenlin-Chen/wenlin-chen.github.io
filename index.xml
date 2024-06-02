@@ -71,9 +71,8 @@ $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h1&gt;
 &lt;h3 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h3&gt;
-&lt;p&gt;$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Proof: By definition, we have
+&lt;p&gt;$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx$$
+Proof: By definition, we have
 $$
 \begin{aligned}
 \nabla_y\log p(y)
@@ -81,12 +80,10 @@ $$
 &amp;amp;= \int\nabla_y\log(y|x)\frac{p(y|x)p(x)}{p(y)}dx \\
 &amp;amp;= \int\nabla_y\log p(y|x) p(x|y)dx
 \end{aligned}
-$$&lt;/li&gt;
-&lt;/ul&gt;
+$$&lt;/p&gt;
 &lt;h3 id=&#34;tweedie-score-identity&#34;&gt;Tweedie Score Identity&lt;/h3&gt;
-&lt;p&gt;$$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Proof: By denoising score identity, we have
+&lt;p&gt;$$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx$$
+Proof: By denoising score identity, we have
 $$
 \begin{aligned}
 \nabla_y\log p(y)
@@ -94,12 +91,10 @@ $$
 &amp;amp;= \int\nabla_y\left(-\frac{\lVert y-\alpha x\rVert^2}{2\sigma^2}\right) p(x|y)dx \\
 &amp;amp;= \int \left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx
 \end{aligned}
-$$&lt;/li&gt;
-&lt;/ul&gt;
+$$&lt;/p&gt;
 &lt;h3 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h3&gt;
-&lt;p&gt;$$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Proof: By denoising score identity and using the following three identities
+&lt;p&gt;$$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx$$
+Proof: By denoising score identity and using the following three identities
 $$\nabla_y \log p(y|x)=-\alpha^{-1}\nabla_x \log p(y|x)$$
 $$\nabla_x \log p(y|x)=\nabla_x\log p(x|y)-\nabla_x \log p(x)$$
 $$\int \nabla_x\log p(x|y)p(x|y)dx=\int \nabla_xp(x|y)dx=\nabla_x\int p(x|y)dx=0$$
@@ -112,8 +107,7 @@ $$
 &amp;amp;= \alpha^{-1}\int(\nabla_x \log p(x)-\nabla_x\log p(x|y)) p(x|y)dx \\
 &amp;amp;= \alpha^{-1}\int\nabla_x \log p(x) p(x|y)dx \\
 \end{aligned}
-$$&lt;/li&gt;
-&lt;/ul&gt;
+$$&lt;/p&gt;
 &lt;h3 id=&#34;mixed-score-identity&#34;&gt;Mixed Score Identity&lt;/h3&gt;
 &lt;p&gt;$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx$$&lt;/p&gt;
 &lt;p&gt;Proof: Using a variance-preserving scheme $\sigma^2=1-\alpha^2$ and combining target score identity and denoising score identity with coefficients $\alpha^2$ and $1-\alpha^2$, we have

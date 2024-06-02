@@ -62,7 +62,9 @@ $$\nabla_x \log p(x)=-\nabla_x E(x)$$&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;Gaussian convolution kernel
 $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$$&lt;/li&gt;
-&lt;li&gt;Intractable denoising posterior and noisy marginal
+&lt;li&gt;Intractable noisy marginal
+$$p(y)=\int p(y|x)p(x)dx$$&lt;/li&gt;
+&lt;li&gt;Intractable denoising posterior
 $$p(x|y)=\frac{p(y|x)p(x)}{p(y)}$$&lt;/li&gt;
 &lt;li&gt;Intractable noisy score
 $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx$$&lt;/li&gt;

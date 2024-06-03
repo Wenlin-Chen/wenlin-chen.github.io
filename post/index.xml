@@ -109,7 +109,7 @@ $$&lt;/p&gt;
 $$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y)$$
 Initialize the sampler for $p(x|y)$ with its mean $\mathbb{E}_{p(x|y)}[ x ]$ estimated by importance sampling
 $$\mathbb{E}_{p(x|y)}[ x ]\approx\frac{\sum_{l=1}^L x_l\exp(-E(x_l))}{\sum_{l=1}^L \exp(-E(x_{l}))},\quad x_l\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right.$$
-Proof: Using Tweedie score identity and the fact that $q(x|y)\propto p(y|x)$, we have
+Proof: Using the fact that $q(x|y)\propto p(y|x)$, we have
 $$
 \begin{aligned}
 \mathbb{E}_{p(x|y)}[ x ]
@@ -151,7 +151,7 @@ $$
 &amp;amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C
 \end{aligned}
 $$&lt;/p&gt;
-&lt;h3 id=&#34;nonparametric-score-estimator&#34;&gt;Nonparametric Score Estimator&lt;/h3&gt;
+&lt;h3 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h3&gt;
 &lt;p&gt;$$\nabla_y \log p(y)=\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x)$$
 Proof: By definition of noisy score, we have
 $$

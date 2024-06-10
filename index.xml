@@ -29,14 +29,14 @@
     </item>
     
     <item>
-      <title>Score Matching and Flow Matching</title>
-      <link>https://wenlin-chen.github.io/post/gen/</link>
+      <title>Score and Flow Matching</title>
+      <link>https://wenlin-chen.github.io/post/score_flow_matching/</link>
       <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/post/gen/</guid>
+      <guid>https://wenlin-chen.github.io/post/score_flow_matching/</guid>
       <description>&lt;h1 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h1&gt;
 &lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Unknown data distribution $p_{data}(x)$.&lt;/li&gt;
+&lt;li&gt;Data distribution $p_{data}(x)$ is unknown.&lt;/li&gt;
 &lt;li&gt;Samples from $p_{data}(x)$ are available.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;goals&#34;&gt;Goals&lt;/h3&gt;
@@ -87,7 +87,7 @@ $$\mathcal{L}_{SM}(\theta) = \mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[\lambda(t)\
 $$\mathcal{L}_{DSM}(\theta)=\mathbb{E}_{p_{t|0}(x_t|x_0)p_{data}(x_0)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2].$$
 &lt;ul&gt;
 &lt;li&gt;It can be shown that $\nabla_{\theta}\mathcal{L}_{SM}(\theta)=\nabla_{\theta}\mathcal{L}_{DSM}(\theta).$&lt;/li&gt;
-&lt;li&gt;Proof: See my notes on &lt;a href=&#34;../score&#34;&gt;Score Identities for Sampling and Generative Modeling&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Proof: See my notes on &lt;a href=&#34;https://wenlin-chen.github.io/post/score_identities&#34;&gt;Score Identities for Sampling and Generative Modeling&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Weighting function $\lambda(t)$:
@@ -277,9 +277,9 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$&lt;/li&gt
     
     <item>
       <title>Score Identities for Sampling and Generative Modeling</title>
-      <link>https://wenlin-chen.github.io/post/score/</link>
+      <link>https://wenlin-chen.github.io/post/score_identities/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/post/score/</guid>
+      <guid>https://wenlin-chen.github.io/post/score_identities/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
 &lt;ul&gt;

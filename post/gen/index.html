@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="Introduction Problem Setting Data distribution: $$p(x)=\frac{\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\int \exp(-E(x)) dx.$$ Tractable score function: $$\nabla_x \log p(x)=-\nabla_x E(x).$$ Generative Modeling: Samples from $p(x)$ are available. The energy function $E$ is unknown and needs to be learned from data." />
+  <meta name="description" content="Generative Modeling Problem Setting Unknown data distribution $p_{data}(x)$. Samples from $p_{data}(x)$ are available. Goals Estimate the density of the data distributions $p_{data}(x)$. Generate new samples from $p_{data}(x)$. Diffusion Models and Score Matching Notation Denote data by $x_0=x$ and noise by $x_T$." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/score/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/gen/" />
 
   
 
@@ -279,7 +279,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/post/score/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/gen/" />
 
   
   
@@ -296,18 +296,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/post/score/" />
-  <meta property="og:title" content="Score Identities for Sampling and Generative Modeling | Wenlin Chen" />
-  <meta property="og:description" content="Introduction Problem Setting Data distribution: $$p(x)=\frac{\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\int \exp(-E(x)) dx.$$ Tractable score function: $$\nabla_x \log p(x)=-\nabla_x E(x).$$ Generative Modeling: Samples from $p(x)$ are available. The energy function $E$ is unknown and needs to be learned from data." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/gen/" />
+  <meta property="og:title" content="Score Matching and Flow Matching | Wenlin Chen" />
+  <meta property="og:description" content="Generative Modeling Problem Setting Unknown data distribution $p_{data}(x)$. Samples from $p_{data}(x)$ are available. Goals Estimate the density of the data distributions $p_{data}(x)$. Generate new samples from $p_{data}(x)$. Diffusion Models and Score Matching Notation Denote data by $x_0=x$ and noise by $x_T$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2024-06-01T00:00:00&#43;00:00"
+        content="2024-06-09T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-06-01T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-06-09T00:00:00&#43;00:00">
   
 
   
@@ -331,12 +331,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://wenlin-chen.github.io/post/score/"
+    "@id": "https://wenlin-chen.github.io/post/gen/"
   },
-  "headline": "Score Identities for Sampling and Generative Modeling",
+  "headline": "Score Matching and Flow Matching",
   
-  "datePublished": "2024-06-01T00:00:00Z",
-  "dateModified": "2024-06-01T00:00:00Z",
+  "datePublished": "2024-06-09T00:00:00Z",
+  "dateModified": "2024-06-09T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Introduction Problem Setting Data distribution: $$p(x)=\\frac{\\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\\int \\exp(-E(x)) dx.$$ Tractable score function: $$\\nabla_x \\log p(x)=-\\nabla_x E(x).$$ Generative Modeling: Samples from $p(x)$ are available. The energy function $E$ is unknown and needs to be learned from data."
+  "description": "Generative Modeling Problem Setting Unknown data distribution $p_{data}(x)$. Samples from $p_{data}(x)$ are available. Goals Estimate the density of the data distributions $p_{data}(x)$. Generate new samples from $p_{data}(x)$. Diffusion Models and Score Matching Notation Denote data by $x_0=x$ and noise by $x_T$."
 }
 </script>
 
@@ -367,11 +367,11 @@
 
 
 
-  <title>Score Identities for Sampling and Generative Modeling | Wenlin Chen</title>
+  <title>Score Matching and Flow Matching | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="19a6bc66ab7d6c59a41b7d57746d5859" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="30118056e04e4a5a9f78efaf23f0c8fa" >
 
   
   
@@ -759,7 +759,7 @@
   
   
 <div class="container pt-3">
-  <h1>Score Identities for Sampling and Generative Modeling</h1>
+  <h1>Score Matching and Flow Matching</h1>
 
   
 
@@ -778,7 +778,7 @@
     
       
     
-    Jun 1, 2024
+    Jun 9, 2024
   </span>
   
 
@@ -787,7 +787,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    5 min read
   </span>
   
 
@@ -816,181 +816,244 @@
   <div class="container">
 
     <div class="article-style">
-      <h1 id="introduction">Introduction</h1>
+      <h1 id="generative-modeling">Generative Modeling</h1>
 <h3 id="problem-setting">Problem Setting</h3>
 <ul>
-<li>Data distribution:
-$$p(x)=\frac{\exp(-E(x))}{Z}.$$
+<li>Unknown data distribution $p_{data}(x)$.</li>
+<li>Samples from $p_{data}(x)$ are available.</li>
+</ul>
+<h3 id="goals">Goals</h3>
 <ul>
-<li>Intractable normalizing constant:
-$$Z=\int \exp(-E(x)) dx.$$</li>
-<li>Tractable score function:
-$$\nabla_x \log p(x)=-\nabla_x E(x).$$</li>
+<li>Estimate the density of the data distributions $p_{data}(x)$.</li>
+<li>Generate new samples from $p_{data}(x)$.</li>
+</ul>
+<h1 id="diffusion-models-and-score-matching">Diffusion Models and Score Matching</h1>
+<h3 id="notation">Notation</h3>
+<ul>
+<li>Denote data by $x_0=x$ and noise by $x_T$.</li>
+<li>Wiener process SDE ($dt&gt;0$):
+$$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$</li>
+</ul>
+<h3 id="diffusion-process">Diffusion Process</h3>
+<ul>
+<li>Forward diffusion SDE ($dt&gt;0$):
+$$dx_t=f_t(x_t)dt+g_tdw_t.$$
+<ul>
+<li>Forward diffusion SDE corrupts data to noise.</li>
+<li>$f_t(x_t)$ is a vector-valued drift coefficient.</li>
+<li>$g_t$ is a scalar-valued diffusion coefficient.</li>
 </ul>
 </li>
-<li>Generative Modeling:
+<li>Reverse diffusion SDE ($dt&lt;0$):
+$$dx_t=\left(f_t(x_t)-g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt + g_tdw_t.$$
 <ul>
-<li>Samples from $p(x)$ are available.</li>
-<li>The energy function $E$ is unknown and needs to be learned from data.</li>
+<li>Reverse diffusion SDE recovers data from noise.</li>
 </ul>
 </li>
-<li>Sampling:
+<li>Probability flow ODE ($dt&lt;0$):
+$$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
 <ul>
-<li>The energy function $E$ is given.</li>
-<li>Samples from $p(x)$ are not available.</li>
+<li>Probability flow ODE and reverse diffusion SDE have the same marginal $p_t(x_t)$ at every time $t$.</li>
 </ul>
 </li>
 </ul>
-<h3 id="diffusion">Diffusion</h3>
-<ul>
-<li>Gaussian convolution kernel:
-$$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I).$$</li>
-<li>Intractable noisy marginal:
-$$p(y)=\int p(y|x)p(x)dx.$$</li>
-<li>Intractable denoising posterior:
-$$p(x|y)=\frac{p(y|x)p(x)}{p(y)}.$$</li>
-<li>Intractable noisy score:
-$$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx.$$</li>
-</ul>
-<h1 id="score-identities">Score Identities</h1>
-<h3 id="denoising-score-identity">Denoising Score Identity</h3>
-<ul>
-<li>Denoising score identity is a general formula without assumping the form of $p(y|x)$:
-$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx.$$</li>
-<li>Proof: By definition, we have
-$$
-\begin{aligned}
-\nabla_y\log p(y)
-&amp;= \frac{\int\nabla_y p(y|x)p(x)dx}{p(y)} \\
-&amp;= \int\nabla_y\log(y|x)\frac{p(y|x)p(x)}{p(y)}dx \\
-&amp;= \int\nabla_y\log p(y|x) p(x|y)dx.
-\end{aligned}
-$$</li>
-</ul>
-<h3 id="tweedie-score-identity">Tweedie Score Identity</h3>
-<ul>
-<li>Tweedie score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
-$$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx.$$</li>
-<li>Proof: By denoising score identity, we have
-$$
-\begin{aligned}
-\nabla_y\log p(y)
-&amp;= \int\nabla_y\log p(y|x) p(x|y)dx \\
-&amp;= \int\nabla_y\left(-\frac{\lVert y-\alpha x\rVert^2}{2\sigma^2}\right) p(x|y)dx \\
-&amp;= \int \left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx.
-\end{aligned}
-$$</li>
-</ul>
-<h3 id="target-score-identity">Target Score Identity</h3>
-<ul>
-<li>Target score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
-$$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$</li>
-<li>Proof: By denoising score identity and using the following three identities
-$$\nabla_y \log p(y|x)=-\alpha^{-1}\nabla_x \log p(y|x),$$
-$$\nabla_x \log p(y|x)=\nabla_x\log p(x|y)-\nabla_x \log p(x),$$
-$$\int \nabla_x\log p(x|y)p(x|y)dx=\int \nabla_xp(x|y)dx=\nabla_x\int p(x|y)dx=0,$$
-we have
-$$
-\begin{aligned}
-\nabla_y\log p(y)
-&amp;= \int\nabla_y\log p(y|x) p(x|y)dx \\
-&amp;= -\alpha^{-1}\int\nabla_x\log p(y|x) p(x|y)dx \\
-&amp;= \alpha^{-1}\int(\nabla_x \log p(x)-\nabla_x\log p(x|y)) p(x|y)dx \\
-&amp;= \alpha^{-1}\int\nabla_x \log p(x) p(x|y)dx.
-\end{aligned}
-$$</li>
-</ul>
-<h3 id="mixed-score-identity">Mixed Score Identity</h3>
-<ul>
-<li>Mixed score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$ with a variance-preserving scheme $\sigma^2=1-\alpha^2$:
-$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.$$
-Proof: Consider a convex combination of the target score identity and Tweedie score identity with coefficients $\alpha^2$ and $1-\alpha^2$:
-$$
-\begin{aligned}
-\nabla_y\log p(y)
-&amp;= \int \left((\alpha^2\frac{\nabla_x \log p(x)}{\alpha} + (1-\alpha^2)\frac{\alpha x - y}{\sigma^2}\right)p(x|y)dx \\
-&amp;= \int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.
-\end{aligned}
-$$</li>
-</ul>
-<h1 id="score-based-sampling">Score-based Sampling</h1>
-<h3 id="monte-carlo-estimator">Monte Carlo Estimator</h3>
-<ul>
-<li>Estimate the noisy score with Tweedie score identity using Monte Carlo:
-$$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y).$$
-We may initialize the sampler for $p(x|y)$ with its mean $\mathbb{E}_{p(x|y)}[ x ]$ estimated by importance sampling:
-$$\mathbb{E}_{p(x|y)}[ x ]\approx\frac{\sum_{l=1}^L x_l\exp(-E(x_l))}{\sum_{l=1}^L \exp(-E(x_{l}))},\quad x_l\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$</li>
-<li>This is the standard importance sampling approach. It does not work well in high dimensional space.</li>
-<li>Proof: Using the fact that $q(x|y)\propto p(y|x)$, we have
-$$
-\begin{aligned}
-\mathbb{E}_{p(x|y)}[ x ]
-&amp;= \int x p(x|y)dx \\
-&amp;= \int x \frac{p(y|x)p(x)}{p(y)}dx \\
-&amp;= \frac{\int x p(y|x)p(x)dx}{\int p(y|x)p(x)dx} \\
-&amp;= \frac{\int x \exp(-E(x))q(x|y)dx}{\int \exp(-E(x))q(x|y)dx} \\
-&amp;\approx \frac{\sum_{l=1}^L x_l\exp(-E(x_l))}{\sum_{l=1}^L \exp(-E(x_{l}))},\quad x_l\sim q(x|y).
-\end{aligned}
-$$</li>
-</ul>
-<h3 id="importance-sampling-estimator">Importance Sampling Estimator</h3>
-<ul>
-<li>Estimate the noisy score with the target score identity using importance sampling:
-$$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$</li>
-<li>This does not work well in practice as it only works for very small $t$.</li>
-<li>Proof: Using target score identity and the fact that $q(x|y)\propto p(y|x)$, we have
-$$
-\begin{aligned}
-\nabla_y\log p(y)
-&amp;= \alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx \\
-&amp;= \frac{\int \nabla_x\log p(x) p(y|x)p(x) dx}{\alpha p(y)} \\
-&amp;= \frac{\int \nabla_x\log p(x) p(y|x)p(x) dx}{\alpha \int p(y|x)p(x)dx} \\
-&amp;= \frac{\int \nabla_x\log p(x) \exp(-E(x)) q(x|y) dx}{\alpha \int \exp(-E(x)) q(x|y)dx} \\
-&amp;\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y).
-\end{aligned}
-$$</li>
-</ul>
-<h1 id="score-based-generative-modeling">Score-based Generative Modeling</h1>
 <h3 id="denoising-score-matching">Denoising Score Matching</h3>
 <ul>
-<li>Learn a noisy score network $s_{\theta}(y)$ by minimizing
+<li>To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.</li>
+<li>Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
+$$\mathcal{L}_{SM}(\theta) = \mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2].$$
+<ul>
+<li>The score matching objective is intractable since we do not know the true score $\nabla_{x_t} \log p_t(x_t)$.</li>
+</ul>
+</li>
+<li>We instead minimize the tractable denoising score matching objective:
+$$\mathcal{L}_{DSM}(\theta)=\mathbb{E}_{p_{t|0}(x_t|x_0)p_{data}(x_0)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2].$$
+<ul>
+<li>It can be shown that $\nabla_{\theta}\mathcal{L}_{SM}(\theta)=\nabla_{\theta}\mathcal{L}_{DSM}(\theta).$</li>
+<li>Proof: See my notes on <a href="../score">Score Identities for Sampling and Generative Modeling</a>.</li>
+</ul>
+</li>
+<li>Weighting function $\lambda(t)$:
+<ul>
+<li>Magnitude weighting balances the magnitude of the score matching loss across time $t$:
+$$\lambda(t)\propto1/\lVert \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2.$$</li>
+<li>Likelihood weighting $\lambda(t)=g_t^2$ leads to a nice connection between KL divergence and Fisher divergence:
+$$\text{KL}(p_{data}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$</li>
+</ul>
+</li>
+<li>One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.</li>
+</ul>
+<h1 id="continuous-normalizing-flows-and-flow-matching">Continuous Normalizing Flows and Flow Matching</h1>
+<h3 id="notation-1">Notation</h3>
+<ul>
+<li>Denote data by $x_T=x$ and noise by $x_0$
+<ul>
+<li>This follows the convention in flow matching.</li>
+<li>Note: this is the opposite to the definition in diffusion models.</li>
+</ul>
+</li>
+</ul>
+<h3 id="discrete-normalizing-flow">Discrete Normalizing Flow</h3>
+<ul>
+<li>Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
+$$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
+$$\log p(x_1)=\log \pi(\phi^{-1}(x_1)) +\log\left|\det\frac{\partial \phi^{-1}(x_1)}{\partial x_1}\right|.$$</li>
+<li>Compose $T$ discrete normalizing flows:
+$$x_{t+1}=\phi_{t}(x_t),$$
+$$\phi=\phi_{T-1}\circ\cdots\circ\phi_0,$$
+$$\log p(x_T)=\log \pi(\phi^{-1}(x_T)) +\sum_{t=1}^T\log\left|\det\frac{\partial \phi_{t-1}^{-1}(x_t)}{\partial x_{t}}\right|.$$</li>
+<li>Discrete residual flow transformation:
+$$\phi_t(x_t)=x_{t+1}=x_t+\delta u_t(x_t).$$
+<ul>
+<li>$u_t$ needs to be $1/\delta$-Lipschitz to guarantee the invertibility of $\phi_t$.</li>
+</ul>
+</li>
+<li>Learn a parametric flow transformation function $\phi_{\theta}$ by MLE:
+$$\max_{\theta}~\mathbb{E}_{p_{data}(x_T)}[\log p_{\theta}(x_T)].$$
+<ul>
+<li>We need to enforce invertibility in the architecture of $\phi_{\theta}$.</li>
+<li>We need to compute and backpropagate through the inverse and Jacobian for $\phi_{\theta}$.</li>
+</ul>
+</li>
+</ul>
+<h3 id="continuous-normalizing-flow">Continuous Normalizing Flow</h3>
+<ul>
+<li>Continuous residual flow transformation:
+$$x_{t+\delta}=x_t+\delta u_t(x_t).$$
+$$u_t(x_t)=\lim_{\delta\to0}\frac{x_{t+\delta}-x_t}{\delta}=\frac{dx_t}{dt}.$$</li>
+<li>Continuous normalizing flow with a transformation function $\phi_t$ induced by the vector field $u_t$:
+$$x_t=x_0+\int_0^t u_s(x_s)ds,\quad x_0\sim\pi(x_0),$$
+<ul>
+<li>Set $T=1$ following convention.</li>
+</ul>
+</li>
+<li>The probability path $p_t$ induced by the vector field $u_t$ follows
+$$\log p_t(x_t)=\log\pi(x_0)-\int_{0}^t\nabla_{x_s}\cdot u_s(x_s)ds.$$
+<ul>
+<li>Proof: By the transport equation, we have
 $$
 \begin{aligned}
-\mathcal{L}(\theta)
-&amp;= \mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2] \\
-&amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
+\frac{\partial}{\partial t} p_t(x_t)
+&amp;= -\nabla_{x_t}\cdot(u_t(x_t)p_t(x_t)) \\
+&amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t)-\left&lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&gt;.
+\end{aligned}$$
+The total derivative is then given by
+$$
+\begin{aligned}
+\frac{d}{d t} p_t(x_t)
+&amp;= \frac{\partial}{\partial t} p_t(x_t) + \left&lt;\nabla_{x_t}p_t(x_t),\frac{dx_t}{d t}\right&gt; \\
+&amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t)-\left&lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&gt; + \left&lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&gt; \\
+&amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t).
 \end{aligned}
+$$
+Therefore, we have
+$$\frac{d}{dt}\log p_t(x_t)=\frac{1}{p_t(x_t)}\frac{d}{d t} p_t(x_t)=-\nabla_{x_t}\cdot u_t(x_t).$$</li>
+</ul>
+</li>
+<li>In practice, both $x_t$ and $\log p_t(x_t)$ can be solved jointly using a numerical ODE integrator:
+$$
+\frac{d}{dt}
+\begin{pmatrix}
+x_t \\
+\log p_t(x_t)
+\end{pmatrix}=
+\begin{pmatrix}
+u_t(x_t) \\
+-\nabla_{x_t}\cdot u_t(x_t)
+\end{pmatrix}.
 $$</li>
-<li>This is the most popular generative modeling apporach. It is inaccurate for very small $t$.</li>
-<li>Proof: Using the denoising score identity, we have
+<li>Note that there are many different vector fields $u_t$ that can induce probability paths between $p_0$ and $p_1$.</li>
+<li>Learn a parameteric time-dependent vector field $u_{\theta}(x_t, t)$ by MLE:
+$$\max_{\theta}~\mathbb{E}_{p_{data}(x_1)}[\log p_{\theta}(x_1)].$$
+<ul>
+<li>We do not need to choose the number of flow transformations as in composed discrete normalizing flows.</li>
+<li>$u_t$ only needs to be $L$-Lipschitz with any value $L$ to guarantee the invertibility of $\phi_t$.</li>
+<li>Numerical simulation of the ODE with backpropagation makes training very slow and expensive.</li>
+<li>Divergence estimator scales poorly with dimensionality.</li>
+</ul>
+</li>
+</ul>
+<h3 id="conditional-flow-matching">Conditional Flow Matching</h3>
+<ul>
+<li>We want a simulation-free objective like score matching.</li>
+<li>Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:
+$$\mathcal{L}_{FM}(\theta)=\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t, t)-u_t(x_t)\rVert^2].$$
+<ul>
+<li>The flow matching objective is intractable since we do not know the true vector field $u_t(x_t)$.</li>
+</ul>
+</li>
+<li>To circumvent the intractability, we consider a specific probability path $p_t(x_t)$ defined by a conditional probability path $p_{t|1}(x_t|x_1)$:
+$$p_t(x_t)=\int p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1,$$
+with boundary conditions
+$$p_{0|1}(x)=\pi(x)\implies p_0(x_0)=\pi(x_0),$$
+$$p_{1|1}(x)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$</li>
+<li>The marginal vector field $u_t$ can be obtained from the corresponding conditional vector field $u_{t|1}(x_t|x_1)$ and conditional probability path $p_{t|1}(x_t|x_1)$ through the following identity:
+$$u_t(x_t)=\mathbb{E}_{p_{1|t}(x_1|x_t)}[u_{t|1}(x_t|x_1)]=\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)}dx_1.$$
+<ul>
+<li>Proof: We verify that this is consistent with the transport equation for the marginals.
 $$
 \begin{aligned}
-\mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2]
-&amp;= \int \lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2 p(y) dy \\
-&amp;= \int \lVert s_{\theta}(y) \rVert^2 p(y) dy - 2 \int \left&lt;s_{\theta}(y),\nabla_y \log p(y)\right&gt;p(y)dy + C&rsquo; \\
-&amp;= \int \lVert s_{\theta}(y) \rVert^2 p(y) dy - 2 \iint \left&lt;s_{\theta}(y),\nabla_y\log p(y|x) \right&gt;p(x|y)p(y)dxdy + C&rsquo; \\
-&amp;= \int \lVert s_{\theta}(y) \rVert^2 p(y) dy - 2 \iint \left&lt;s_{\theta}(y),\nabla_y\log p(y|x) \right&gt;p(y|x)p(x)dxdy + C&rsquo; \\
-&amp;= \iint \left( \lVert s_{\theta}(y) \rVert^2 + \lVert \nabla_y\log p(y|x) \rVert^2 - 2 \left&lt;s_{\theta}(y),\nabla_y\log p(y|x) \right&gt;\right)p(y|x)p(x)dxdy + C \\
-&amp;= \iint \lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2 p(y|x)p(x)dxdy + C \\
-&amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
+\frac{\partial}{\partial t}p_t(x_t)
+&amp;= \frac{\partial}{\partial t} \int p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 \\
+&amp;= \int \frac{\partial}{\partial t} p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 \\
+&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)) p_{data}(x_1)dx_1 \\
+&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{data}(x_1)) dx_1 \\
+&amp;= - \nabla_{x_t}\cdot  \int  u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{data}(x_1) dx_1  \\
+&amp;= - \nabla_{x_t}\cdot \left( \int  u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)} dx_1 p_t(x_t) \right) \\
+&amp;= - \nabla_{x_t}\cdot (u_t(x_t) p_t(x_t)). \\
 \end{aligned}
 $$</li>
 </ul>
-<h3 id="nonparametric-estimator">Nonparametric Estimator</h3>
+</li>
+<li>We now introduce a tractable conditional flow matching objective:
+$$\mathcal{L}_{CFM}(\theta)=\mathbb{E}_{p_{t|1}(x_t|x_1)p_{data}(x_1)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t,t)-u_{t|1}(x_t|x_1) \rVert^2].$$
 <ul>
-<li>Estimate the noisy score with the target score identity using with a KDE-style estimator:
-$$\nabla_y \log p(y)\approx\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).$$</li>
-<li>This is expensive to evaluate and needs to be recomputed for different $y$.</li>
-<li>Proof: By definition of noisy score, we have
+<li>It can be shown that $\nabla_{\theta}\mathcal{L}_{FM}(\theta)=\nabla_{\theta}\mathcal{L}_{CFM}(\theta)$.</li>
+<li>Proof: We follow a similar idea to the proof of denoising score matching but with the following equality.
 $$
 \begin{aligned}
-\nabla_y\log p(y)
-&amp;= \nabla_y\log \int p(y|x)p(x)dx \\
-&amp;\approx \nabla_y\log\sum_{k=1}^K p(y|x_k),\quad x_k\sim p(x) \\
-&amp;= \frac{\sum_{k=1}^K \nabla_y p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x) \\
-&amp;= \frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).
+\mathbb{E}_{p_t(x_t)}[\left&lt;u_{\theta}(x_t,t),u_t(x_t)\right&gt;]
+&amp;= \int \left&lt;u_{\theta}(x_t,t),u_t(x_t)\right&gt; p_t(x_t) dx_t \\
+&amp;= \int \left&lt;u_{\theta}(x_t,t),\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)}dx_1\right&gt; p_t(x_t) dx_t \\
+&amp;= \iint \left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt; p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 dx_t \\
+&amp;= \mathbb{E}_{p_{t|1}(x_t|x_1)p_{data}(x_1)}[\left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt;].
 \end{aligned}
 $$</li>
+</ul>
+</li>
+<li>In practice, we may want our conditional vector field $u_{t|1}$ to generate a conditional Gaussian probability path:
+$$p_{t|1}(x_t|x_1)=\mathcal{N}(x_t|\mu_t(x_1),\sigma_t(x_1)^2I),$$
+with boundary conditions
+$$\mu_0(x_1)=0,\quad\sigma_0(x_1)=1,$$
+$$\mu_1(x_1)=x_1,\quad\sigma_1(x_1)=0.$$
+<ul>
+<li>One correpsonding conditional vector field is given by
+$$u_{t|1}(x_t|x_1)=\frac{x-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t},$$
+with a conditional flow transformation
+$$\phi_{t|1}(x_0|x_1)=\mu_t(x_1)+\sigma_t(x_1)x_0.$$</li>
+<li>Proof: We prove it by verifying the following two quantities are identical.
+$$\frac{d}{dt}\phi_{t|1}(x_0|x_1)=\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1),$$
+and
+$$
+\begin{aligned}
+u_{t|1}(\phi_{t|1}(x_0|x_1)|x_1)
+&amp;= \frac{\mu_t(x_1)+\sigma_t(x_1)x_0-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t} \\
+&amp;=x_0\frac{d}{dt}\sigma_t(x_1)+\frac{d}{dt}\mu_t(x_1).
+\end{aligned}
+$$</li>
+</ul>
+</li>
+<li>Two problems with conditional flow matching:
+<ul>
+<li>The estimate of the gradient $\nabla_{\theta} \mathcal{L}_{CFM}(\theta)$ is of high variance since there are many possible data $x_1$ corresponding to a noise $x_0$ due to intersection of probability paths for different realizations of $u_{t|1}(x_t|x_1)$ with different values of the conditioning variable $x_1$.</li>
+<li>Sampling is slow at generation time since it is difficult to integrate ODE with non-straight marginal path $u_{\theta}(u_t,t)$.</li>
+</ul>
+</li>
+<li>Coupling: instead of maping between data $x_1$ and noise $x_0$ (i.e., one-sided conditioning), we can similarly map between any two variables $x_0$ and $x_1$ with two-sided conditioning:
+$$p_t(x_t)=\iint p_{t|0,1}(x_t|x_0,x_1)p_{data}(x_0,x_1)dx_0dx_1,$$
+with boundary conditions
+$$p_{0|0,1}(x|x_0,x_1)=\delta(x-x_0)\implies p_0(x_0)=p_{data}(x_0),$$
+$$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$</li>
 </ul>
 
     </div>
@@ -1015,7 +1078,7 @@ $$</li>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/score/&amp;text=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/gen/&amp;text=Score%20Matching%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1028,7 +1091,7 @@ $$</li>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/score/&amp;t=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/gen/&amp;t=Score%20Matching%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1041,7 +1104,7 @@ $$</li>
       
       
       <li>
-        <a href="mailto:?subject=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling&amp;body=https://wenlin-chen.github.io/post/score/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Score%20Matching%20and%20Flow%20Matching&amp;body=https://wenlin-chen.github.io/post/gen/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1054,7 +1117,7 @@ $$</li>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/score/&amp;title=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/gen/&amp;title=Score%20Matching%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1067,7 +1130,7 @@ $$</li>
       
       
       <li>
-        <a href="whatsapp://send?text=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling%20https://wenlin-chen.github.io/post/score/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Score%20Matching%20and%20Flow%20Matching%20https://wenlin-chen.github.io/post/gen/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1080,7 +1143,7 @@ $$</li>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/score/&amp;title=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/gen/&amp;title=Score%20Matching%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

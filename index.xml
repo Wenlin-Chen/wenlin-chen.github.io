@@ -29,6 +29,437 @@
     </item>
     
     <item>
+      <title>Score Matching and Flow Matching</title>
+      <link>https://wenlin-chen.github.io/post/gen/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/post/gen/</guid>
+      <description>&lt;h1 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h1&gt;
+&lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Unknown data distribution $p_{data}(x)$.&lt;/li&gt;
+&lt;li&gt;Samples from $p_{data}(x)$ are available.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;goals&#34;&gt;Goals&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Estimate the density of the data distributions $p_{data}(x)$.&lt;/li&gt;
+&lt;li&gt;Generate new samples from $p_{data}(x)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;diffusion-models-and-score-matching&#34;&gt;Diffusion Models and Score Matching&lt;/h1&gt;
+&lt;h3 id=&#34;notation&#34;&gt;Notation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Denote data by $x_0=x$ and noise by $x_T$.&lt;/li&gt;
+&lt;li&gt;Wiener process SDE ($dt&amp;gt;0$):
+$$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;diffusion-process&#34;&gt;Diffusion Process&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Forward diffusion SDE ($dt&amp;gt;0$):
+$$dx_t=f_t(x_t)dt+g_tdw_t.$$
+&lt;ul&gt;
+&lt;li&gt;Forward diffusion SDE corrupts data to noise.&lt;/li&gt;
+&lt;li&gt;$f_t(x_t)$ is a vector-valued drift coefficient.&lt;/li&gt;
+&lt;li&gt;$g_t$ is a scalar-valued diffusion coefficient.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Reverse diffusion SDE ($dt&amp;lt;0$):
+$$dx_t=\left(f_t(x_t)-g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt + g_tdw_t.$$
+&lt;ul&gt;
+&lt;li&gt;Reverse diffusion SDE recovers data from noise.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Probability flow ODE ($dt&amp;lt;0$):
+$$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
+&lt;ul&gt;
+&lt;li&gt;Probability flow ODE and reverse diffusion SDE have the same marginal $p_t(x_t)$ at every time $t$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.&lt;/li&gt;
+&lt;li&gt;Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
+$$\mathcal{L}_{SM}(\theta) = \mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2].$$
+&lt;ul&gt;
+&lt;li&gt;The score matching objective is intractable since we do not know the true score $\nabla_{x_t} \log p_t(x_t)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;We instead minimize the tractable denoising score matching objective:
+$$\mathcal{L}_{DSM}(\theta)=\mathbb{E}_{p_{t|0}(x_t|x_0)p_{data}(x_0)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2].$$
+&lt;ul&gt;
+&lt;li&gt;It can be shown that $\nabla_{\theta}\mathcal{L}_{SM}(\theta)=\nabla_{\theta}\mathcal{L}_{DSM}(\theta).$&lt;/li&gt;
+&lt;li&gt;Proof: See my notes on &lt;a href=&#34;../score&#34;&gt;Score Identities for Sampling and Generative Modeling&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Weighting function $\lambda(t)$:
+&lt;ul&gt;
+&lt;li&gt;Magnitude weighting balances the magnitude of the score matching loss across time $t$:
+$$\lambda(t)\propto1/\lVert \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2.$$&lt;/li&gt;
+&lt;li&gt;Likelihood weighting $\lambda(t)=g_t^2$ leads to a nice connection between KL divergence and Fisher divergence:
+$$\text{KL}(p_{data}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;continuous-normalizing-flows-and-flow-matching&#34;&gt;Continuous Normalizing Flows and Flow Matching&lt;/h1&gt;
+&lt;h3 id=&#34;notation-1&#34;&gt;Notation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Denote data by $x_T=x$ and noise by $x_0$
+&lt;ul&gt;
+&lt;li&gt;This follows the convention in flow matching.&lt;/li&gt;
+&lt;li&gt;Note: this is the opposite to the definition in diffusion models.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;discrete-normalizing-flow&#34;&gt;Discrete Normalizing Flow&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
+$$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
+$$\log p(x_1)=\log \pi(\phi^{-1}(x_1)) +\log\left|\det\frac{\partial \phi^{-1}(x_1)}{\partial x_1}\right|.$$&lt;/li&gt;
+&lt;li&gt;Compose $T$ discrete normalizing flows:
+$$x_{t+1}=\phi_{t}(x_t),$$
+$$\phi=\phi_{T-1}\circ\cdots\circ\phi_0,$$
+$$\log p(x_T)=\log \pi(\phi^{-1}(x_T)) +\sum_{t=1}^T\log\left|\det\frac{\partial \phi_{t-1}^{-1}(x_t)}{\partial x_{t}}\right|.$$&lt;/li&gt;
+&lt;li&gt;Discrete residual flow transformation:
+$$\phi_t(x_t)=x_{t+1}=x_t+\delta u_t(x_t).$$
+&lt;ul&gt;
+&lt;li&gt;$u_t$ needs to be $1/\delta$-Lipschitz to guarantee the invertibility of $\phi_t$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Learn a parametric flow transformation function $\phi_{\theta}$ by MLE:
+$$\max_{\theta}~\mathbb{E}_{p_{data}(x_T)}[\log p_{\theta}(x_T)].$$
+&lt;ul&gt;
+&lt;li&gt;We need to enforce invertibility in the architecture of $\phi_{\theta}$.&lt;/li&gt;
+&lt;li&gt;We need to compute and backpropagate through the inverse and Jacobian for $\phi_{\theta}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;continuous-normalizing-flow&#34;&gt;Continuous Normalizing Flow&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Continuous residual flow transformation:
+$$x_{t+\delta}=x_t+\delta u_t(x_t).$$
+$$u_t(x_t)=\lim_{\delta\to0}\frac{x_{t+\delta}-x_t}{\delta}=\frac{dx_t}{dt}.$$&lt;/li&gt;
+&lt;li&gt;Continuous normalizing flow with a transformation function $\phi_t$ induced by the vector field $u_t$:
+$$x_t=x_0+\int_0^t u_s(x_s)ds,\quad x_0\sim\pi(x_0),$$
+&lt;ul&gt;
+&lt;li&gt;Set $T=1$ following convention.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The probability path $p_t$ induced by the vector field $u_t$ follows
+$$\log p_t(x_t)=\log\pi(x_0)-\int_{0}^t\nabla_{x_s}\cdot u_s(x_s)ds.$$
+&lt;ul&gt;
+&lt;li&gt;Proof: By the transport equation, we have
+$$
+\begin{aligned}
+\frac{\partial}{\partial t} p_t(x_t)
+&amp;amp;= -\nabla_{x_t}\cdot(u_t(x_t)p_t(x_t)) \\
+&amp;amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t)-\left&amp;lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&amp;gt;.
+\end{aligned}$$
+The total derivative is then given by
+$$
+\begin{aligned}
+\frac{d}{d t} p_t(x_t)
+&amp;amp;= \frac{\partial}{\partial t} p_t(x_t) + \left&amp;lt;\nabla_{x_t}p_t(x_t),\frac{dx_t}{d t}\right&amp;gt; \\
+&amp;amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t)-\left&amp;lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&amp;gt; + \left&amp;lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&amp;gt; \\
+&amp;amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t).
+\end{aligned}
+$$
+Therefore, we have
+$$\frac{d}{dt}\log p_t(x_t)=\frac{1}{p_t(x_t)}\frac{d}{d t} p_t(x_t)=-\nabla_{x_t}\cdot u_t(x_t).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In practice, both $x_t$ and $\log p_t(x_t)$ can be solved jointly using a numerical ODE integrator:
+$$
+\frac{d}{dt}
+\begin{pmatrix}
+x_t \\
+\log p_t(x_t)
+\end{pmatrix}=
+\begin{pmatrix}
+u_t(x_t) \\
+-\nabla_{x_t}\cdot u_t(x_t)
+\end{pmatrix}.
+$$&lt;/li&gt;
+&lt;li&gt;Note that there are many different vector fields $u_t$ that can induce probability paths between $p_0$ and $p_1$.&lt;/li&gt;
+&lt;li&gt;Learn a parameteric time-dependent vector field $u_{\theta}(x_t, t)$ by MLE:
+$$\max_{\theta}~\mathbb{E}_{p_{data}(x_1)}[\log p_{\theta}(x_1)].$$
+&lt;ul&gt;
+&lt;li&gt;We do not need to choose the number of flow transformations as in composed discrete normalizing flows.&lt;/li&gt;
+&lt;li&gt;$u_t$ only needs to be $L$-Lipschitz with any value $L$ to guarantee the invertibility of $\phi_t$.&lt;/li&gt;
+&lt;li&gt;Numerical simulation of the ODE with backpropagation makes training very slow and expensive.&lt;/li&gt;
+&lt;li&gt;Divergence estimator scales poorly with dimensionality.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;conditional-flow-matching&#34;&gt;Conditional Flow Matching&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;We want a simulation-free objective like score matching.&lt;/li&gt;
+&lt;li&gt;Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:
+$$\mathcal{L}_{FM}(\theta)=\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t, t)-u_t(x_t)\rVert^2].$$
+&lt;ul&gt;
+&lt;li&gt;The flow matching objective is intractable since we do not know the true vector field $u_t(x_t)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;To circumvent the intractability, we consider a specific probability path $p_t(x_t)$ defined by a conditional probability path $p_{t|1}(x_t|x_1)$:
+$$p_t(x_t)=\int p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1,$$
+with boundary conditions
+$$p_{0|1}(x)=\pi(x)\implies p_0(x_0)=\pi(x_0),$$
+$$p_{1|1}(x)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$&lt;/li&gt;
+&lt;li&gt;The marginal vector field $u_t$ can be obtained from the corresponding conditional vector field $u_{t|1}(x_t|x_1)$ and conditional probability path $p_{t|1}(x_t|x_1)$ through the following identity:
+$$u_t(x_t)=\mathbb{E}_{p_{1|t}(x_1|x_t)}[u_{t|1}(x_t|x_1)]=\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)}dx_1.$$
+&lt;ul&gt;
+&lt;li&gt;Proof: We verify that this is consistent with the transport equation for the marginals.
+$$
+\begin{aligned}
+\frac{\partial}{\partial t}p_t(x_t)
+&amp;amp;= \frac{\partial}{\partial t} \int p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 \\
+&amp;amp;= \int \frac{\partial}{\partial t} p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 \\
+&amp;amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)) p_{data}(x_1)dx_1 \\
+&amp;amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{data}(x_1)) dx_1 \\
+&amp;amp;= - \nabla_{x_t}\cdot  \int  u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{data}(x_1) dx_1  \\
+&amp;amp;= - \nabla_{x_t}\cdot \left( \int  u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)} dx_1 p_t(x_t) \right) \\
+&amp;amp;= - \nabla_{x_t}\cdot (u_t(x_t) p_t(x_t)). \\
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;We now introduce a tractable conditional flow matching objective:
+$$\mathcal{L}_{CFM}(\theta)=\mathbb{E}_{p_{t|1}(x_t|x_1)p_{data}(x_1)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t,t)-u_{t|1}(x_t|x_1) \rVert^2].$$
+&lt;ul&gt;
+&lt;li&gt;It can be shown that $\nabla_{\theta}\mathcal{L}_{FM}(\theta)=\nabla_{\theta}\mathcal{L}_{CFM}(\theta)$.&lt;/li&gt;
+&lt;li&gt;Proof: We follow a similar idea to the proof of denoising score matching but with the following equality.
+$$
+\begin{aligned}
+\mathbb{E}_{p_t(x_t)}[\left&amp;lt;u_{\theta}(x_t,t),u_t(x_t)\right&amp;gt;]
+&amp;amp;= \int \left&amp;lt;u_{\theta}(x_t,t),u_t(x_t)\right&amp;gt; p_t(x_t) dx_t \\
+&amp;amp;= \int \left&amp;lt;u_{\theta}(x_t,t),\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)}dx_1\right&amp;gt; p_t(x_t) dx_t \\
+&amp;amp;= \iint \left&amp;lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&amp;gt; p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 dx_t \\
+&amp;amp;= \mathbb{E}_{p_{t|1}(x_t|x_1)p_{data}(x_1)}[\left&amp;lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&amp;gt;].
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In practice, we may want our conditional vector field $u_{t|1}$ to generate a conditional Gaussian probability path:
+$$p_{t|1}(x_t|x_1)=\mathcal{N}(x_t|\mu_t(x_1),\sigma_t(x_1)^2I),$$
+with boundary conditions
+$$\mu_0(x_1)=0,\quad\sigma_0(x_1)=1,$$
+$$\mu_1(x_1)=x_1,\quad\sigma_1(x_1)=0.$$
+&lt;ul&gt;
+&lt;li&gt;One correpsonding conditional vector field is given by
+$$u_{t|1}(x_t|x_1)=\frac{x-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t},$$
+with a conditional flow transformation
+$$\phi_{t|1}(x_0|x_1)=\mu_t(x_1)+\sigma_t(x_1)x_0.$$&lt;/li&gt;
+&lt;li&gt;Proof: We prove it by verifying the following two quantities are identical.
+$$\frac{d}{dt}\phi_{t|1}(x_0|x_1)=\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1),$$
+and
+$$
+\begin{aligned}
+u_{t|1}(\phi_{t|1}(x_0|x_1)|x_1)
+&amp;amp;= \frac{\mu_t(x_1)+\sigma_t(x_1)x_0-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t} \\
+&amp;amp;=x_0\frac{d}{dt}\sigma_t(x_1)+\frac{d}{dt}\mu_t(x_1).
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Two problems with conditional flow matching:
+&lt;ul&gt;
+&lt;li&gt;The estimate of the gradient $\nabla_{\theta} \mathcal{L}_{CFM}(\theta)$ is of high variance since there are many possible data $x_1$ corresponding to a noise $x_0$ due to intersection of probability paths for different realizations of $u_{t|1}(x_t|x_1)$ with different values of the conditioning variable $x_1$.&lt;/li&gt;
+&lt;li&gt;Sampling is slow at generation time since it is difficult to integrate ODE with non-straight marginal path $u_{\theta}(u_t,t)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Coupling: instead of maping between data $x_1$ and noise $x_0$ (i.e., one-sided conditioning), we can similarly map between any two variables $x_0$ and $x_1$ with two-sided conditioning:
+$$p_t(x_t)=\iint p_{t|0,1}(x_t|x_0,x_1)p_{data}(x_0,x_1)dx_0dx_1,$$
+with boundary conditions
+$$p_{0|0,1}(x|x_0,x_1)=\delta(x-x_0)\implies p_0(x_0)=p_{data}(x_0),$$
+$$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Score Identities for Sampling and Generative Modeling</title>
+      <link>https://wenlin-chen.github.io/post/score/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/post/score/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Data distribution:
+$$p(x)=\frac{\exp(-E(x))}{Z}.$$
+&lt;ul&gt;
+&lt;li&gt;Intractable normalizing constant:
+$$Z=\int \exp(-E(x)) dx.$$&lt;/li&gt;
+&lt;li&gt;Tractable score function:
+$$\nabla_x \log p(x)=-\nabla_x E(x).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Generative Modeling:
+&lt;ul&gt;
+&lt;li&gt;Samples from $p(x)$ are available.&lt;/li&gt;
+&lt;li&gt;The energy function $E$ is unknown and needs to be learned from data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sampling:
+&lt;ul&gt;
+&lt;li&gt;The energy function $E$ is given.&lt;/li&gt;
+&lt;li&gt;Samples from $p(x)$ are not available.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;diffusion&#34;&gt;Diffusion&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Gaussian convolution kernel:
+$$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I).$$&lt;/li&gt;
+&lt;li&gt;Intractable noisy marginal:
+$$p(y)=\int p(y|x)p(x)dx.$$&lt;/li&gt;
+&lt;li&gt;Intractable denoising posterior:
+$$p(x|y)=\frac{p(y|x)p(x)}{p(y)}.$$&lt;/li&gt;
+&lt;li&gt;Intractable noisy score:
+$$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx.$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h1&gt;
+&lt;h3 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Denoising score identity is a general formula without assumping the form of $p(y|x)$:
+$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx.$$&lt;/li&gt;
+&lt;li&gt;Proof: By definition, we have
+$$
+\begin{aligned}
+\nabla_y\log p(y)
+&amp;amp;= \frac{\int\nabla_y p(y|x)p(x)dx}{p(y)} \\
+&amp;amp;= \int\nabla_y\log(y|x)\frac{p(y|x)p(x)}{p(y)}dx \\
+&amp;amp;= \int\nabla_y\log p(y|x) p(x|y)dx.
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tweedie-score-identity&#34;&gt;Tweedie Score Identity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Tweedie score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
+$$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx.$$&lt;/li&gt;
+&lt;li&gt;Proof: By denoising score identity, we have
+$$
+\begin{aligned}
+\nabla_y\log p(y)
+&amp;amp;= \int\nabla_y\log p(y|x) p(x|y)dx \\
+&amp;amp;= \int\nabla_y\left(-\frac{\lVert y-\alpha x\rVert^2}{2\sigma^2}\right) p(x|y)dx \\
+&amp;amp;= \int \left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx.
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Target score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
+$$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$&lt;/li&gt;
+&lt;li&gt;Proof: By denoising score identity and using the following three identities
+$$\nabla_y \log p(y|x)=-\alpha^{-1}\nabla_x \log p(y|x),$$
+$$\nabla_x \log p(y|x)=\nabla_x\log p(x|y)-\nabla_x \log p(x),$$
+$$\int \nabla_x\log p(x|y)p(x|y)dx=\int \nabla_xp(x|y)dx=\nabla_x\int p(x|y)dx=0,$$
+we have
+$$
+\begin{aligned}
+\nabla_y\log p(y)
+&amp;amp;= \int\nabla_y\log p(y|x) p(x|y)dx \\
+&amp;amp;= -\alpha^{-1}\int\nabla_x\log p(y|x) p(x|y)dx \\
+&amp;amp;= \alpha^{-1}\int(\nabla_x \log p(x)-\nabla_x\log p(x|y)) p(x|y)dx \\
+&amp;amp;= \alpha^{-1}\int\nabla_x \log p(x) p(x|y)dx.
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;mixed-score-identity&#34;&gt;Mixed Score Identity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Mixed score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$ with a variance-preserving scheme $\sigma^2=1-\alpha^2$:
+$$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.$$
+Proof: Consider a convex combination of the target score identity and Tweedie score identity with coefficients $\alpha^2$ and $1-\alpha^2$:
+$$
+\begin{aligned}
+\nabla_y\log p(y)
+&amp;amp;= \int \left((\alpha^2\frac{\nabla_x \log p(x)}{\alpha} + (1-\alpha^2)\frac{\alpha x - y}{\sigma^2}\right)p(x|y)dx \\
+&amp;amp;= \int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;score-based-sampling&#34;&gt;Score-based Sampling&lt;/h1&gt;
+&lt;h3 id=&#34;monte-carlo-estimator&#34;&gt;Monte Carlo Estimator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Estimate the noisy score with Tweedie score identity using Monte Carlo:
+$$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y).$$
+We may initialize the sampler for $p(x|y)$ with its mean $\mathbb{E}_{p(x|y)}[ x ]$ estimated by importance sampling:
+$$\mathbb{E}_{p(x|y)}[ x ]\approx\frac{\sum_{l=1}^L x_l\exp(-E(x_l))}{\sum_{l=1}^L \exp(-E(x_{l}))},\quad x_l\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$&lt;/li&gt;
+&lt;li&gt;This is the standard importance sampling approach. It does not work well in high dimensional space.&lt;/li&gt;
+&lt;li&gt;Proof: Using the fact that $q(x|y)\propto p(y|x)$, we have
+$$
+\begin{aligned}
+\mathbb{E}_{p(x|y)}[ x ]
+&amp;amp;= \int x p(x|y)dx \\
+&amp;amp;= \int x \frac{p(y|x)p(x)}{p(y)}dx \\
+&amp;amp;= \frac{\int x p(y|x)p(x)dx}{\int p(y|x)p(x)dx} \\
+&amp;amp;= \frac{\int x \exp(-E(x))q(x|y)dx}{\int \exp(-E(x))q(x|y)dx} \\
+&amp;amp;\approx \frac{\sum_{l=1}^L x_l\exp(-E(x_l))}{\sum_{l=1}^L \exp(-E(x_{l}))},\quad x_l\sim q(x|y).
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;importance-sampling-estimator&#34;&gt;Importance Sampling Estimator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Estimate the noisy score with the target score identity using importance sampling:
+$$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$&lt;/li&gt;
+&lt;li&gt;This does not work well in practice as it only works for very small $t$.&lt;/li&gt;
+&lt;li&gt;Proof: Using target score identity and the fact that $q(x|y)\propto p(y|x)$, we have
+$$
+\begin{aligned}
+\nabla_y\log p(y)
+&amp;amp;= \alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx \\
+&amp;amp;= \frac{\int \nabla_x\log p(x) p(y|x)p(x) dx}{\alpha p(y)} \\
+&amp;amp;= \frac{\int \nabla_x\log p(x) p(y|x)p(x) dx}{\alpha \int p(y|x)p(x)dx} \\
+&amp;amp;= \frac{\int \nabla_x\log p(x) \exp(-E(x)) q(x|y) dx}{\alpha \int \exp(-E(x)) q(x|y)dx} \\
+&amp;amp;\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y).
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;score-based-generative-modeling&#34;&gt;Score-based Generative Modeling&lt;/h1&gt;
+&lt;h3 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
+$$
+\begin{aligned}
+\mathcal{L}(\theta)
+&amp;amp;= \mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2] \\
+&amp;amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
+\end{aligned}
+$$&lt;/li&gt;
+&lt;li&gt;This is the most popular generative modeling apporach. It is inaccurate for very small $t$.&lt;/li&gt;
+&lt;li&gt;Proof: Using the denoising score identity, we have
+$$
+\begin{aligned}
+\mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2]
+&amp;amp;= \int \lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2 p(y) dy \\
+&amp;amp;= \int \lVert s_{\theta}(y) \rVert^2 p(y) dy - 2 \int \left&amp;lt;s_{\theta}(y),\nabla_y \log p(y)\right&amp;gt;p(y)dy + C&amp;rsquo; \\
+&amp;amp;= \int \lVert s_{\theta}(y) \rVert^2 p(y) dy - 2 \iint \left&amp;lt;s_{\theta}(y),\nabla_y\log p(y|x) \right&amp;gt;p(x|y)p(y)dxdy + C&amp;rsquo; \\
+&amp;amp;= \int \lVert s_{\theta}(y) \rVert^2 p(y) dy - 2 \iint \left&amp;lt;s_{\theta}(y),\nabla_y\log p(y|x) \right&amp;gt;p(y|x)p(x)dxdy + C&amp;rsquo; \\
+&amp;amp;= \iint \left( \lVert s_{\theta}(y) \rVert^2 + \lVert \nabla_y\log p(y|x) \rVert^2 - 2 \left&amp;lt;s_{\theta}(y),\nabla_y\log p(y|x) \right&amp;gt;\right)p(y|x)p(x)dxdy + C \\
+&amp;amp;= \iint \lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2 p(y|x)p(x)dxdy + C \\
+&amp;amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Estimate the noisy score with the target score identity using with a KDE-style estimator:
+$$\nabla_y \log p(y)\approx\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).$$&lt;/li&gt;
+&lt;li&gt;This is expensive to evaluate and needs to be recomputed for different $y$.&lt;/li&gt;
+&lt;li&gt;Proof: By definition of noisy score, we have
+$$
+\begin{aligned}
+\nabla_y\log p(y)
+&amp;amp;= \nabla_y\log \int p(y|x)p(x)dx \\
+&amp;amp;\approx \nabla_y\log\sum_{k=1}^K p(y|x_k),\quad x_k\sim p(x) \\
+&amp;amp;= \frac{\sum_{k=1}^K \nabla_y p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x) \\
+&amp;amp;= \frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>It HAS to be Subjective: Human Annotator Simulation via Zero-shot Density Estimation</title>
       <link>https://wenlin-chen.github.io/publication/wu2023has/</link>
       <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>

@@ -33,25 +33,25 @@
       <link>https://wenlin-chen.github.io/post/score_flow_matching/</link>
       <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/score_flow_matching/</guid>
-      <description>&lt;h1 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h1&gt;
-&lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
+      <description>&lt;h2 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h2&gt;
+&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Data distribution $p_{data}(x)$ is unknown.&lt;/li&gt;
 &lt;li&gt;Samples from $p_{data}(x)$ are available.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;goals&#34;&gt;Goals&lt;/h3&gt;
+&lt;h4 id=&#34;goals&#34;&gt;Goals&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the density of the data distributions $p_{data}(x)$.&lt;/li&gt;
 &lt;li&gt;Generate new samples from $p_{data}(x)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;diffusion-models-and-score-matching&#34;&gt;Diffusion Models and Score Matching&lt;/h1&gt;
-&lt;h3 id=&#34;notation&#34;&gt;Notation&lt;/h3&gt;
+&lt;h2 id=&#34;score-matching-for-diffusion-models&#34;&gt;Score Matching for Diffusion Models&lt;/h2&gt;
+&lt;h4 id=&#34;notation&#34;&gt;Notation&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denote data by $x_0=x$ and noise by $x_T$.&lt;/li&gt;
 &lt;li&gt;Wiener process SDE ($dt&amp;gt;0$):
 $$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;diffusion-process&#34;&gt;Diffusion Process&lt;/h3&gt;
+&lt;h4 id=&#34;diffusion-process&#34;&gt;Diffusion Process&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Forward diffusion SDE ($dt&amp;gt;0$):
 $$dx_t=f_t(x_t)dt+g_tdw_t.$$
@@ -74,7 +74,7 @@ $$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h3&gt;
+&lt;h4 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.&lt;/li&gt;
 &lt;li&gt;Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
@@ -100,8 +100,8 @@ $$\text{KL}(p_{data}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\m
 &lt;/li&gt;
 &lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;continuous-normalizing-flows-and-flow-matching&#34;&gt;Continuous Normalizing Flows and Flow Matching&lt;/h1&gt;
-&lt;h3 id=&#34;notation-1&#34;&gt;Notation&lt;/h3&gt;
+&lt;h2 id=&#34;flow-matching-for-continuous-normalizing-flows&#34;&gt;Flow Matching for Continuous Normalizing Flows&lt;/h2&gt;
+&lt;h4 id=&#34;notation-1&#34;&gt;Notation&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denote data by $x_T=x$ and noise by $x_0$
 &lt;ul&gt;
@@ -110,7 +110,7 @@ $$\text{KL}(p_{data}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\m
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;discrete-normalizing-flow&#34;&gt;Discrete Normalizing Flow&lt;/h3&gt;
+&lt;h4 id=&#34;discrete-normalizing-flow&#34;&gt;Discrete Normalizing Flow&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
 $$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
@@ -133,7 +133,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{data}(x_T)}[\log p_{\theta}(x_T)].$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;continuous-normalizing-flow&#34;&gt;Continuous Normalizing Flow&lt;/h3&gt;
+&lt;h4 id=&#34;continuous-normalizing-flow&#34;&gt;Continuous Normalizing Flow&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Continuous residual flow transformation:
 $$x_{t+\delta}=x_t+\delta u_t(x_t).$$
@@ -191,7 +191,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{data}(x_1)}[\log p_{\theta}(x_1)].$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;conditional-flow-matching&#34;&gt;Conditional Flow Matching&lt;/h3&gt;
+&lt;h4 id=&#34;conditional-flow-matching&#34;&gt;Conditional Flow Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;We want a simulation-free objective like score matching.&lt;/li&gt;
 &lt;li&gt;Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:
@@ -281,8 +281,8 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$&lt;/li&gt
       <link>https://wenlin-chen.github.io/post/score_identities/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/score_identities/</guid>
-      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
-&lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Data distribution:
 $$p(x)=\frac{\exp(-E(x))}{Z}.$$
@@ -306,7 +306,7 @@ $$\nabla_x \log p(x)=-\nabla_x E(x).$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;diffusion&#34;&gt;Diffusion&lt;/h3&gt;
+&lt;h4 id=&#34;diffusion&#34;&gt;Diffusion&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Gaussian convolution kernel:
 $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I).$$&lt;/li&gt;
@@ -317,8 +317,8 @@ $$p(x|y)=\frac{p(y|x)p(x)}{p(y)}.$$&lt;/li&gt;
 &lt;li&gt;Intractable noisy score:
 $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx.$$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h1&gt;
-&lt;h3 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h3&gt;
+&lt;h2 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h2&gt;
+&lt;h4 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denoising score identity is a general formula without assumping the form of $p(y|x)$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx.$$&lt;/li&gt;
@@ -332,7 +332,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;tweedie-score-identity&#34;&gt;Tweedie Score Identity&lt;/h3&gt;
+&lt;h4 id=&#34;tweedie-score-identity&#34;&gt;Tweedie Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Tweedie score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
 $$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx.$$&lt;/li&gt;
@@ -346,7 +346,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h3&gt;
+&lt;h4 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Target score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
 $$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$&lt;/li&gt;
@@ -365,7 +365,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;mixed-score-identity&#34;&gt;Mixed Score Identity&lt;/h3&gt;
+&lt;h4 id=&#34;mixed-score-identity&#34;&gt;Mixed Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Mixed score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$ with a variance-preserving scheme $\sigma^2=1-\alpha^2$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.$$
@@ -378,8 +378,8 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;score-based-sampling&#34;&gt;Score-based Sampling&lt;/h1&gt;
-&lt;h3 id=&#34;monte-carlo-estimator&#34;&gt;Monte Carlo Estimator&lt;/h3&gt;
+&lt;h2 id=&#34;score-based-sampling&#34;&gt;Score-based Sampling&lt;/h2&gt;
+&lt;h4 id=&#34;monte-carlo-estimator&#34;&gt;Monte Carlo Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with Tweedie score identity using Monte Carlo:
 $$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y).$$&lt;/li&gt;
@@ -398,7 +398,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;importance-sampling-estimator&#34;&gt;Importance Sampling Estimator&lt;/h3&gt;
+&lt;h4 id=&#34;importance-sampling-estimator&#34;&gt;Importance Sampling Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with the target score identity using importance sampling:
 $$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$
@@ -415,8 +415,8 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;score-based-generative-modeling&#34;&gt;Score-based Generative Modeling&lt;/h1&gt;
-&lt;h3 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h3&gt;
+&lt;h2 id=&#34;score-based-generative-modeling&#34;&gt;Score-based Generative Modeling&lt;/h2&gt;
+&lt;h4 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
@@ -441,7 +441,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h3&gt;
+&lt;h4 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with the target score identity using with a KDE-style estimator:
 $$\nabla_y \log p(y)\approx\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).$$

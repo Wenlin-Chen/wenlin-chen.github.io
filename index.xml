@@ -462,9 +462,9 @@ $$&lt;/li&gt;
     
     <item>
       <title>Tensor Algebra</title>
-      <link>https://wenlin-chen.github.io/post/tensor-algebra/</link>
+      <link>https://wenlin-chen.github.io/post/tensor_algebra/</link>
       <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/post/tensor-algebra/</guid>
+      <guid>https://wenlin-chen.github.io/post/tensor_algebra/</guid>
       <description>&lt;h3 id=&#34;motivation-and-applications-of-tensors&#34;&gt;Motivation and Applications of Tensors&lt;/h3&gt;
 &lt;p&gt;Tensors provide insights about how geometry works. Below are some examples that involve tensors.&lt;/p&gt;
 &lt;ul&gt;

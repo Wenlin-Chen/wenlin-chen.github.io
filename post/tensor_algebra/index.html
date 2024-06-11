@@ -1,0 +1,1827 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wenlin Chen" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.
+General relativity (metric tensor): curved space-time, expanding universe. Quantum mechanics and quantum computing: quantum superposition (linear combination), quantum engtanglement (tensor product)." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/tensor_algebra/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.481af39c39ffd87b2d14f39943e7c723.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/tensor_algebra/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Wenlin Chen" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/tensor_algebra/" />
+  <meta property="og:title" content="Tensor Algebra | Wenlin Chen" />
+  <meta property="og:description" content="Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.
+General relativity (metric tensor): curved space-time, expanding universe. Quantum mechanics and quantum computing: quantum superposition (linear combination), quantum engtanglement (tensor product)." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-01-05T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-01-05T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wenlin-chen.github.io/post/tensor_algebra/"
+  },
+  "headline": "Tensor Algebra",
+  
+  "datePublished": "2024-01-05T00:00:00Z",
+  "dateModified": "2024-01-05T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wenlin Chen"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wenlin Chen",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.\nGeneral relativity (metric tensor): curved space-time, expanding universe. Quantum mechanics and quantum computing: quantum superposition (linear combination), quantum engtanglement (tensor product)."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Tensor Algebra | Wenlin Chen</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="8a05ac4ffe17026cd3c7830507ad3e99" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.1d309c6b3f55725f8869af2651084961.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Wenlin Chen</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Wenlin Chen</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#accomplishments"><span>Awards</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="container pt-3">
+  <h1>Tensor Algebra</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jan 5, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    16 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+  <div class="container">
+
+    <div class="article-style">
+      <h3 id="motivation-and-applications-of-tensors">Motivation and Applications of Tensors</h3>
+<p>Tensors provide insights about how geometry works. Below are some examples that involve tensors.</p>
+<ul>
+<li>General relativity (metric tensor):
+<ul>
+<li>curved space-time,</li>
+<li>expanding universe.</li>
+</ul>
+</li>
+<li>Quantum mechanics and quantum computing:
+<ul>
+<li>quantum superposition (linear combination),</li>
+<li>quantum engtanglement (tensor product).</li>
+</ul>
+</li>
+<li>Optimization.</li>
+<li>&hellip;</li>
+</ul>
+<h3 id="definitions-of-tensors">Definitions of Tensors</h3>
+<p>Roughtly speaking, tensors are objects defined by the way they transform. Tensor algbra focuses on the analysis of individual tensors, which generalizes linear algebra. Tensor calculus focuses on the analysis of tensor fields, which generalizes multivariate calculus.</p>
+<p>Formally, there are several definitions of tensors from different perspectives.</p>
+<ol>
+<li>
+<p>(Array Definition) A tensors is a multi-dimensional array, such as</p>
+<ul>
+<li>rank-0 tensor: scalar,</li>
+<li>rank-1 tensor: vector,</li>
+<li>rank-2 tensor: matrix,</li>
+<li>rank-3 tensor: ?,</li>
+<li>&hellip;</li>
+</ul>
+<p>This is not a good definition as arrays are not what tensors fundamentally are. The array definition ignores the geometric meaning behind tensors and is not helpful for understanding geometry.</p>
+</li>
+<li>
+<p>(Coordinate Definition) A tensor is an object invariant under a change of coordinates, which has components that change in a special, predictable way under a change of coordinates.</p>
+<ul>
+<li>A tensor object itself is intrinsic and does not depend on the choice of coordinate system.</li>
+<li>The components of a tensor change under different coordinate systems in a specific way that can be figured out. We will get to this.</li>
+</ul>
+</li>
+<li>
+<p>(Algebra Definition) A tensors is a collections of vectors and covectors combined together using the tensor product.</p>
+<ul>
+<li>This is a consice and probably the best definition of tensors.</li>
+<li>But&hellip; What are covectors? What is tensor product? We will get to this.</li>
+</ul>
+</li>
+<li>
+<p>(Calculus Definition) Tensors are partial derivatives and gradients that transform with the Jacobian matrix.</p>
+<ul>
+<li>This is also a useful definition, but we will focus on the coordinate and algebra definitions in tensor algebra.</li>
+</ul>
+</li>
+</ol>
+<p>We will begin with special examples of tensors that we have seen in linear algebra and then gradually generalize the concept of tensors. For notational simplicity, we will use Einstein&rsquo;s notation, which drops the summation symbols $\sum$ since they can be inferred from the context by contracting all corresponding upper and lower indices.</p>
+<h3 id="change-of-basis">Change of Basis</h3>
+<p>Consider an old basis $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ and a new basis $\tilde{E}=[\tilde{\mathbf{e}}_1,\cdots,\tilde{\mathbf{e}}_n]$.</p>
+<p>The forward transformation $F$ builds the new basis from the old basis:
+$$
+\tilde{\mathbf{e}}_i = F^j_i\mathbf{e}_j.
+$$</p>
+<!-- or in the matrix-vector equation form:
+$$
+[\tilde{\mathbf{e}}_1,\cdots,\tilde{\mathbf{e}}_n]=[\mathbf{e}_1,\cdots,\mathbf{e}_n]
+\begin{bmatrix}
+F^1_1 & \cdots & F^1_n \\\\
+\vdots & \ddots & \vdots \\\\
+F^n_1 & \cdots & F^n_n
+\end{bmatrix}.
+$$ -->
+<p>The backward transformation $B$ builds the old basis from the new basis:
+$$
+\mathbf{e}_i = B^j_i\tilde{\mathbf{e}}_j.
+$$</p>
+<!-- or in the matrix-vector equation form:
+$$
+[\mathbf{e}_1,\cdots,\mathbf{e}_n]=[\tilde{\mathbf{e}}_1,\cdots,\tilde{\mathbf{e}}_n]
+\begin{bmatrix}
+B^1_1 & \cdots & B^1_n \\\\
+\vdots & \ddots & \vdots \\\\
+B^n_1 & \cdots & B^n_n
+\end{bmatrix}.
+$$ -->
+<p>Composing the forward and backward transformation should result in the identity transformation:
+$$
+\mathbf{e}_i = B^j_i F^k_j\mathbf{e}_k
+$$
+$$
+\implies B^j_i F^k_j =\delta^k_i = F^k_j B^j_i.
+$$</p>
+<!-- or in the matrix-vector equation form:
+$$
+FB=
+\begin{bmatrix}
+F^1_1 & \cdots & F^1_n \\\\
+\vdots & \ddots & \vdots \\\\
+F^n_1 & \cdots & F^n_n
+\end{bmatrix}
+\begin{bmatrix}
+B^1_1 & \cdots & B^1_n \\\\
+\vdots & \ddots & \vdots \\\\
+B^n_1 & \cdots & B^n_n
+\end{bmatrix}=
+\begin{bmatrix}
+1 & \cdots & 0 \\\\
+\vdots & \ddots & \vdots \\\\
+0 & \cdots & 1
+\end{bmatrix}=I.
+$$ -->
+<p>Therefore, the forward and backward transformations are inverses of each other.</p>
+<!-- $$
+B=F^{-1}\quad\text{and}\quad F=B^{-1}.
+$$ -->
+<h3 id="vectors-and-vector-spaces">Vectors and Vector Spaces</h3>
+<p>A vector space $(V,S,+,\cdot)$ consists of</p>
+<ul>
+<li>$V$: a set of vectors,</li>
+<li>$S$: a set of scalars,</li>
+<li>$+$: a vector addtion rule such that $\mathbf{v}+\mathbf{w}\in V,~\forall\mathbf{v},\mathbf{w}\in V$,</li>
+<li>$\cdot$: a vector scaling rule such that $a\cdot\mathbf{v}\in V,~\forall a\in S,\mathbf{v}\in V$.</li>
+</ul>
+<p>We usually omit $\cdot$ and just write $a\mathbf{v}$ instead.</p>
+<p>Vectors are a kind of tensor. Vectors are invariant to the coordinate systems, but the components of vectors are not.</p>
+<p>Let $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ be a basis of $(V,S,+,\cdot)$. A vector $\mathbf{v}\in V$ can be represented as a linear combination of the basis vectors:
+$$
+\mathbf{v}= v^i \mathbf{e}_i,
+$$
+where the components $v^i\in S$ of $\mathbf{v}$ in the basis $E$ are
+$$
+\mathbf{v}=
+\begin{bmatrix}
+v^1 \\
+\vdots \\
+v^n
+\end{bmatrix}_{E}
+$$
+This tells us that column vectors are the array representations of vectors, which is the array definition of vectors.</p>
+<p>Geometrically, vectors are arrows (directed line segments).</p>
+<h3 id="vector-transformation">Vector Transformation</h3>
+<p>Let&rsquo;s represent the vector components of $\mathbf{v}$ in a different basis $\tilde{E}$:
+$$
+\mathbf{v}=\tilde{v}^j \tilde{\mathbf{e}}_j = \tilde{v}^jF^i_j\mathbf{e}_i = (F^i_j\tilde{v}^j)\mathbf{e}_i.
+$$
+But in the basis $E$, we have $\mathbf{v}=v^i \mathbf{e}_i$. This implies that
+$$
+v^i = F^i_j\tilde{v}^j.
+$$</p>
+<p>Likewise, we have
+$$
+\tilde{v}^j \tilde{\mathbf{e}}_j=\mathbf{v}=v^i \mathbf{e}_i =v^i  B^j_i\tilde{\mathbf{e}}_j = (B^j_i v^i) \tilde{\mathbf{e}}_j,
+$$
+$$
+\implies \tilde{v}^j = B^j_i v^i.
+$$</p>
+<p>Let&rsquo;s now compare a change of basis to vector transformation:
+$$
+\tilde{\mathbf{e}}_j = F^i_j\mathbf{e}_i \quad\quad \mathbf{e}_j =  B^i_j\tilde{\mathbf{e}}_i
+$$
+$$
+v^i = F^i_j\tilde{v}^j \quad\quad \tilde{v}^i = B^i_j v^j
+$$</p>
+<p>It is interesting to note that vector transformation behaves contrarily to a change of basis.</p>
+<ul>
+<li>Change of basis:
+<ul>
+<li>Forward transformation changes the old basis into the new basis.</li>
+<li>Backward transformation changes the new basis into the old basis.</li>
+</ul>
+</li>
+<li>Vector transformation:
+<ul>
+<li>Forward transformation changes the vector components from the new basis to the old basis.</li>
+<li>Backward transformation changes the vector components from the old basis to the new basis.</li>
+</ul>
+</li>
+</ul>
+<p>We say that vector components are contravariant because they contra-vary with a change of basis. As a reminder, we always put the indices of the vector components above the letters. We say that basis vectors are covariant and put the indices of the basis vectors below the letters.</p>
+<h3 id="covectors-and-dual-vector-spaces">Covectors and Dual Vector Spaces</h3>
+<p>Covectors (linear forms) are functions $\alpha: V\to S$ that map the vectors in $V$ to the scalars in $S$ such that</p>
+<ol>
+<li>$\alpha(\mathbf{v}+\mathbf{w})=\alpha(\mathbf{v})+\alpha(\mathbf{w}),~\forall \mathbf{v},\mathbf{w}\in V$.</li>
+<li>$\alpha(n\mathbf{v})=n\alpha(\mathbf{v}),\forall n\in S,\mathbf{v}\in V$.</li>
+</ol>
+<p>The dual vector space $(V^*,S,+&rsquo;,\cdot&rsquo;)$ of a vector space $(V,S,+,\cdot)$ is a vector space with</p>
+<ul>
+<li>the same set $S$ of scalars</li>
+<li>a different set $V^*$ of vectors ($\alpha\in V^*$ are covectors),</li>
+<li>different addition ($+&rsquo;$) and scaling ($\cdot&rsquo;$) rules such that
+<ol>
+<li>$(n\cdot\alpha)(\mathbf{v})=n\alpha(\mathbf{v}),~\forall n\in S,\alpha\in V^*,\mathbf{v}\in V$.</li>
+<li>$(\alpha+\beta)(\mathbf{v})=\alpha(\mathbf{v})+\beta(\mathbf{v}),~\forall\alpha,\beta\in V^*,\mathbf{v}\in V$.</li>
+</ol>
+</li>
+</ul>
+<p>As shown above, we usually just write $+$ and $\cdot$ when we add and scale covectors in $V^*$ but need to remember that the addition and scaling rules in $V^*$ are actually different from those in $V$.</p>
+<h3 id="dual-basis-and-covector-components">Dual Basis and Covector Components</h3>
+<p>Covectors are a kind of tensor. Covectors are invariant to the coordinate systems, but the components of covectors are not.</p>
+<p>Take the basis $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ for a vector space $V$. We introduce the (Kronecker) dual basis $\mathcal{E}=[\epsilon^1,\cdots,\epsilon^n]^T$ ($\epsilon^i:V\to S$) for its dual vector space $V^*$:
+$$
+\epsilon^i(\mathbf{e}_j)=\delta^i_j.
+$$</p>
+<p>Each covector $\epsilon^i\in V^*$ in the dual basis outputs the corresponding vector component $v^i$ in the basis $E$:
+$$
+\epsilon^i(\mathbf{v})=\epsilon^i\left( v^j \mathbf{e}_j \right)=v^j \epsilon^i(\mathbf{e}_j)=v^j\delta^i_j=v^i.
+$$</p>
+<p>For any covector $\alpha\in V^*$, we define
+$$
+\alpha(\mathbf{e}_i)=\alpha_i.
+$$</p>
+<p>Now, a covector $\alpha\in V^*$ can be represented as
+$$
+\alpha(\mathbf{v})=\alpha\left(v^i \mathbf{e}_i \right)=v^i \alpha(\mathbf{e}_i) =  \alpha_i \epsilon^i(\mathbf{v})=(\alpha_i \epsilon^i)(\mathbf{v}).
+$$
+$$
+\implies \alpha = \alpha_i \epsilon^i.
+$$</p>
+<p>Therefore, the covector components in the dual basis $\mathcal{E}$ are
+$$
+\alpha=[\alpha_1, \cdots, \alpha_n]_{\mathcal{E}}.
+$$</p>
+<p>This tells us that row vectors are the array representation of covectors, which is the array definition of covectors.</p>
+<!-- $$
+\alpha(\mathbf{v})=\alpha\left(\sum_{i=1}^n v^i \mathbf{e}\_i \right)=\sum\_{i=1}^n v^i \alpha(\mathbf{e}_i) = \sum\_{i=1}^n \alpha_i v^i.
+$$ -->
+<p>Geometrically, a covector is a stack of linearly spaced, straight contour lines. A covector maps a vector into a scalar specified by the number of covector contour lines that the vector covers.</p>
+<h3 id="change-of-dual-basis-and-covector-transformation">Change of Dual Basis and Covector Transformation</h3>
+<p>Consider an old dual basis $\mathcal{E}=[\epsilon^1,\cdots,\epsilon^n]^T$ and a new dual basis $\tilde{\mathcal{E}}=[\tilde{\epsilon}^1,\cdots,\tilde{\epsilon}^n]^T$ for $V^*$. Let&rsquo;s build the new dual basis from the old dual basis using a transformation $Q$:
+$$
+\tilde{\epsilon}^i=Q^i_j\epsilon^j.
+$$
+Applying forward transformation to $\tilde{\mathbf{e}}_k$ in $\tilde{\epsilon}^i(\tilde{\mathbf{e}}_k)$ gives
+$$
+\tilde{\epsilon}^i(\tilde{\mathbf{e}}_k)=Q^i_j\epsilon^j(\tilde{\mathbf{e}}_k)= Q^i_j\epsilon^j\left(F^l_k\mathbf{e}_l\right)=Q^i_j \epsilon^j(\mathbf{e}_l) F^l_k=Q^i_j \delta^j_l F^l_k= Q^i_j F^j_k.
+$$
+But we know that $\tilde{\epsilon}^i(\tilde{\mathbf{e}}_k)=\delta^i_k$ by definition. This implies that
+$$
+Q^i_j F^j_k=\delta^i_k\quad\implies\quad Q=B.
+$$
+Therefore, we build the new dual basis from the old dual basis using the backward transformation:
+$$
+\tilde{\epsilon}^i=B^i_j\epsilon^j.
+$$
+Likewise, we build the old dual basis from the new dual basis using the forward transformation:
+$$
+\epsilon^i=F^i_j\tilde{\epsilon}^j.
+$$
+Let&rsquo;s now compare a change of basis to a change of dual basis:
+$$
+\tilde{\mathbf{e}}_j = F^i_j\mathbf{e}_i \quad\quad \mathbf{e}_j = B^i_j\tilde{\mathbf{e}}_i
+$$
+$$
+\epsilon^i=F^i_j\tilde{\epsilon}^j \quad\quad \tilde{\epsilon}^i=B^i_j \epsilon^j
+$$
+It is interesting to note that a change of dual basis behaves contrarily to a change of basis.</p>
+<p>As for covector component transformation, we first represent a covector in two dual bases:
+$$
+\alpha = \alpha_i\epsilon^i = \tilde{\alpha}_j\tilde{\epsilon}^j.
+$$
+But changing the dual basis gives
+$$
+\alpha = \alpha_i\epsilon^i = \alpha_i F^i_j\tilde{\epsilon}^j= (F^i_j\alpha_i)\tilde{\epsilon}^j.
+$$
+This implies that the forward transformation changes the covector components from the old dual basis to the new dual basis:
+$$
+\tilde{\alpha}_j = F^i_j\alpha_i.
+$$
+Likewise, the backward transformation changes the covector components from the new dual basis to the old dual basis:
+$$
+\alpha_j = B^i_j\tilde{\alpha}_i.
+$$
+This tells us covector transformation is covariant to a change of basis and contravariant to a change of dual basis.</p>
+<p>Let&rsquo;s now summarize what we have learned so far about changes of basis/dual basis and vector/covector transformations:
+$$
+\tilde{\mathbf{e}}_j = F^i_j\mathbf{e}_i \quad\quad \mathbf{e}_j =  B^i_j\tilde{\mathbf{e}}_i \quad\quad\text{and}\quad\quad v^i =  F^i_j\tilde{v}^j \quad\quad \tilde{v}^i = B^i_j v^j
+$$
+$$
+\epsilon^i= F^i_j\tilde{\epsilon}^j \quad\quad ~ \tilde{\epsilon}^i= B^i_j\epsilon^j \quad\quad\text{and}\quad\quad \tilde{\alpha}_j =  F^i_j\alpha_i \quad\quad \alpha_j =  B^i_j\tilde{\alpha}_i
+$$</p>
+<h3 id="linear-maps">Linear Maps</h3>
+<p>Linear maps $L:V\to W$ map vectors in $V$ to vectors in $W$ such that</p>
+<ol>
+<li>$L(\mathbf{v}+\mathbf{w})=L(\mathbf{v})+L(\mathbf{w})$,</li>
+<li>$L(n\mathbf{v})=nL(\mathbf{v})$.</li>
+</ol>
+<p>Let&rsquo;s consider a speical case where $W=V$ from now on. In the array definition, linear maps are matrices that transform column vectors but do not transform basis. We define the transformation of a copy of each basis vector under a linear map $L$ by
+$$
+L(\mathbf{e}_i)=L^j_i\mathbf{e}_j.
+$$
+This defines a matrix which contains the linear map components in the basis $E$:
+$$
+L=\begin{bmatrix}
+L^1_1 &amp; \cdots &amp; L^1_n \\
+\vdots &amp; \ddots &amp; \vdots \\
+L^n_1 &amp; \cdots &amp; L^n_n
+\end{bmatrix}_{E}.
+$$
+Let $\mathbf{v}=\sum_{i=1}^n v^i \mathbf{e}_i$ and $\mathbf{w}=\sum_{i=1}^n w^i \mathbf{e}_i$ respectively be the input and output vectors represented in the basis $E$. Then, we have
+$$
+\mathbf{w}=L(\mathbf{v})=L( v^i \mathbf{e}_i )=v^i L(\mathbf{e}_i)=v^i L^j_i\mathbf{e}_j=(L^j_i v^i ) \mathbf{e}_j,
+$$
+$$
+\implies w^i = L^i_j v^j.
+$$
+This is essentially the usual matrix-vector multiplication rule:
+$$
+\begin{bmatrix}
+w^1 \\
+\vdots \\
+w^n
+\end{bmatrix}_{E}=
+\begin{bmatrix}
+L^1_1 &amp; \cdots &amp; L^1_n \\
+\vdots &amp; \ddots &amp; \vdots \\
+L^n_1 &amp; \cdots &amp; L^n_n
+\end{bmatrix}_{E}
+\begin{bmatrix}
+v^1 \\
+\vdots \\
+v^n
+\end{bmatrix}_{E}.
+$$
+It is important to note that</p>
+<ul>
+<li>The transformed vectors are in the same basis as the input vectors.</li>
+<li>The $i$-th column vector in a matrix is what a copy of the $i$-th basis vector will be transformed into.</li>
+</ul>
+<p>Geometrically, linear maps are spatial transformations that keep lines parallel, keep lines evenly spaced, and keep the origin unchanged. A linear map can be a combination of vector scaling and rotation but not vector translation.</p>
+<h3 id="linear-map-transformation">Linear Map Transformation</h3>
+<p>Linear maps are a kind of tensor. Linear maps are invariant to the coordinate systems, but the components of linear maps are not.</p>
+<p>Let&rsquo;s transform a linear map from an old basis $E$ to a new basis $\tilde{E}$. By definition, we have
+$$
+L(\tilde{\mathbf{e}}_i)=\tilde{L}^l_i \tilde{\mathbf{e}}_l.
+$$
+But we also have
+$$
+L(\tilde{\mathbf{e}}_i)=L( F^j_i \mathbf{e}_j )=F^j_i L(\mathbf{e}_j) = F^j_i L^k_j \mathbf{e}_k = F^j_i L^k_j B^l_k \tilde{\mathbf{e}}_l = ( B^l_k L^k_j F^j_i ) \tilde{\mathbf{e}}_l.
+$$
+This implies that
+$$
+\tilde{L}^l_i = B^l_k L^k_j F^j_i.
+$$</p>
+<p>Note that multiplying by the identity transformation $I$ does not change a matrix:
+$$
+(LI)^i_k = L^i_j \delta^j_k = L^i_k.
+$$
+Then, the backward transformation for the linear map is given by
+$$
+F^s_l \tilde{L}^l_i B^i_t = F^s_l B^l_k L^k_j F^j_i B^i_t = \delta^s_k L^k_j \delta^j_t = L^s_t.
+$$</p>
+<p>Let&rsquo;s classify the tensors we have learned so far. Note that by vectors, covectors, linear maps and any other tensors (excluding the bases and dual bases), we always mean the components.</p>
+<ul>
+<li>(0,1)-tensors (covariant):
+<ul>
+<li>Basis:
+$$
+\tilde{\mathbf{e}}_j = F^i_j \mathbf{e}_i \quad\quad \mathbf{e}_j = B^i_j \tilde{\mathbf{e}}_i
+$$</li>
+<li>Covectors:
+$$
+\tilde{\alpha}_j = F^i_j \alpha_i \quad\quad \alpha_j = B^i_j \tilde{\alpha}_i
+$$</li>
+</ul>
+</li>
+<li>(1,0)-tensors (contravariant):
+<ul>
+<li>Dual basis:
+$$
+\tilde{\epsilon}^i = B^i_j\epsilon^j \quad\quad \epsilon^i = F^i_j\tilde{\epsilon}^j
+$$</li>
+<li>Vectors:
+$$
+\tilde{v}^i = B^i_j v^j \quad\quad v^i = F^i_j\tilde{v}^j
+$$</li>
+</ul>
+</li>
+<li>(1,1)-tensors (one contravariant dimension, one covariant dimension):
+<ul>
+<li>Linear maps:
+$$
+\tilde{L}^i_j = B^i_k L^k_l F^l_j \quad\quad L^i_j = F^i_k \tilde{L}^k_l B^l_j
+$$</li>
+</ul>
+</li>
+</ul>
+<h3 id="bilinear-forms-metric-tensors-and-their-transformations">Bilinear Forms, Metric Tensors and Their Transformations</h3>
+<p>Metric tensors $g:V\times V\to S$ are speical bilinear forms that define dot products between vectors such that</p>
+<ol>
+<li>$ag(\mathbf{v},\mathbf{w})=g(a\mathbf{v},\mathbf{w})=g(\mathbf{v},a\mathbf{w}),~\forall a\in S,~\forall\mathbf{v},\mathbf{w}\in V$.</li>
+<li>$g(\mathbf{v}+\mathbf{u},\mathbf{w})=g(\mathbf{v},\mathbf{w}) + g(\mathbf{u},\mathbf{w}),~\forall\mathbf{v},\mathbf{u},\mathbf{w}\in V$.</li>
+<li>$g(\mathbf{v},\mathbf{w}+\mathbf{t})=g(\mathbf{v},\mathbf{w}) + g(\mathbf{v},\mathbf{t}),~\forall\mathbf{v},\mathbf{w},\mathbf{t}\in V$.</li>
+<li>$g(\mathbf{v},\mathbf{w})=g(\mathbf{w},\mathbf{v}),~\forall\mathbf{v},\mathbf{w}\in V$.</li>
+<li>$g(\mathbf{v},\mathbf{v})\geq 0,~\forall\mathbf{v}\in V$.</li>
+</ol>
+<p>Note that 1-3 are rules for general bilinear forms. Rules 4-5 are special for metric tensors, so metric tensors must be symmetric (4) and positive semi-definite (5).</p>
+<p>Metric tensors define the dot product between two vectors $\mathbf{v}$ and $\mathbf{w}$ in a basis $E$:
+$$
+g(\mathbf{v},\mathbf{w})=g(v^i \mathbf{e}_i,w^j \mathbf{e}_j)=v^i w^j g(\mathbf{e}_i,\mathbf{e}_j).
+$$
+The array representation of a metric tensor $g$ in the basis $E$ is defined as
+$$
+g_{ij}=g(\mathbf{e}_i,\mathbf{e}_j),
+$$
+Therefore, the dot product in the basis $E$ becomes
+$$
+g(\mathbf{v},\mathbf{w})=v^i w^j g_{ij}.
+% \begin{bmatrix}
+% v^1 &amp; \cdots &amp; v^n
+% \end{bmatrix}_{E}
+% \begin{bmatrix}
+% g_{11} &amp; \cdots &amp; g_{1n} \\
+% \vdots &amp; \ddots &amp; \vdots \\
+% g_{n1} &amp; \cdots &amp; g_{nn}
+% \end{bmatrix}_{E}
+% \begin{bmatrix}
+% w^1 \\
+% \vdots \\
+% w^n
+% \end{bmatrix}_{E}.
+$$</p>
+<p>Using dot products, we respectively define the norm $\lVert\cdot\rVert$ of a vector and the angle $\left&lt;\cdot,\cdot\right&gt;$ between two vectors as
+$$
+\lVert\mathbf{v}\rVert^2 = g(\mathbf{v},\mathbf{v})=v^i v^j g_{ij}\geq 0,
+$$
+$$
+\cos\left&lt;\mathbf{v},\mathbf{w}\right&gt;=\frac{g(\mathbf{v},\mathbf{w})}{\lVert\mathbf{v}\rVert\lVert\mathbf{w}\rVert}=\frac{v^i w^j g_{ij}}{\sqrt{v^i v^j g_{ij}}\sqrt{w^i w^j g_{ij}}}.
+$$</p>
+<p>For an orthonormal basis $E$, the metric tensor is given by the identity matrix $g_{ij}=g(\mathbf{e}_i,\mathbf{e}_j)=\delta_{ij}$. This gives us the usual dot product $g(\mathbf{v},\mathbf{w})=v^i w^i$ and the Pythagorean theorem $\lVert\mathbf{v}\rVert^2=v^iv^i$.</p>
+<p>Metric tensors are invariant to the coordinate systems, but the components of metric tensors are not. Let&rsquo;s now a transform metric tensor (or more generally, a bilinear form) from an old basis $E$ to a new basis $\tilde{E}$:
+$$
+\tilde{g}_{ij}=g(\tilde{\mathbf{e}}_i,\tilde{\mathbf{e}}_j)=g(F^k_i \mathbf{e}_k,F^l_j \mathbf{e}_l)=F^k_iF^l_j g(\mathbf{e}_k,\mathbf{e}_l)=F^k_iF^l_jg_{kl}.
+$$
+Likewise, the metric tensor transformation from $\tilde{E}$ to $E$ is given by the inverse of the above transformation
+$$
+g_{kl}=g(\mathbf{e}_k,\mathbf{e}_l)=g(B^i_k \tilde{\mathbf{e}}_i,B^j_l \tilde{\mathbf{e}}_j)=B^i_k B^j_l g(\tilde{\mathbf{e}}_i,\tilde{\mathbf{e}}_j)=B^i_k B^j_l \tilde{g}_{ij}.
+$$
+Metric tensors (and general bilinear forms) are (0,2)-tensors since both dimensions in a metric tensor are covariant (to a change of basis).</p>
+<p>We can also show that the results of dot products are identical in different bases:
+$$
+g(\mathbf{v},\mathbf{w})=v^i w^j g_{ij}=(F^i_k\tilde{v}^k)(F^j_l\tilde{v}^l) B^s_i B^t_j \tilde{g}_{st}=(B^s_i F^i_k)(B^t_jF^j_l)\tilde{v}^k\tilde{v}^l\tilde{g}_{st} = \delta^s_k \delta^t_l \tilde{v}^k\tilde{v}^l\tilde{g}_{st}=\tilde{v}^s\tilde{v}^t\tilde{g}_{st}.
+$$</p>
+<h3 id="general-linear-forms-and-tensors">General Linear Forms and Tensors</h3>
+<p>In general, we define an $n$-(linear) form to be a linear function $V\times V\times \cdots \times V=V^n\to S$, which is a (0,$n$)-tensor or a rank-$n$ covector. Covectors are linear forms or 1-linear forms. Bilinear forms are 2-linear forms.</p>
+<p>A general ($m$,$n$)-tensor $T$ is a tensor with $m$ contravariant dimensions and $n$ covariant dimensions. General tensor transformations are defined as
+$$
+\tilde{T}^{abc\cdots}_{xyz\cdots}=(B^a_i B^b_j B^c_k\cdots ) T^{ijk\cdots}_{rst\cdots} (F^r_x F^s_y F^t_z\cdots),
+$$
+$$
+T^{ijk\cdots}_{rst\cdots}=(F^i_a F^j_b F^k_c\cdots ) \tilde{T}^{abc\cdots}_{xyz\cdots} (B^x_r B^y_s B^z_t\cdots).
+$$
+We will derive this transformation rule using tensor products later.</p>
+<h3 id="examples-of-tensor-products">Examples of Tensor Products</h3>
+<p>In general, tensors can be constructed by combining vectors and covectors using tensor product. We first give a few examples of redefining tensors that we have learned using tensor products below.</p>
+<p>Linear maps are tensor products of vector-covector pairs:
+$$
+L=L^i_j\mathbf{e}_i\otimes\epsilon^j.
+$$
+We can verify the definition of linear maps:
+$$
+\mathbf{w}=L(\mathbf{v})=L^i_j\mathbf{e}_i\otimes\epsilon^j(v^k\mathbf{e}_k)=L^i_j v^k \mathbf{e}_i\otimes\epsilon^j(\mathbf{e}_k)=L^i_j v^k \mathbf{e}_i \delta^j_k = L^i_j v^j \mathbf{e}_i,
+$$
+and the transformation of linear maps:
+$$
+L=L^k_l\mathbf{e}_k\otimes\epsilon^l=L^k_l(B^i_k\tilde{\mathbf{e}}_i)\otimes(F^l_j\tilde{\epsilon}^j)= (B^i_k L^k_l F^l_j) \tilde{\mathbf{e}}_i \otimes \tilde{\epsilon}^j=\tilde{L}^i_j \tilde{\mathbf{e}}_i \otimes \tilde{\epsilon}^j
+$$
+$$
+\implies \tilde{L}^i_j = B^i_k L^k_l F^l_j.
+$$</p>
+<p>Bilinear forms (including metric tensors) are tensor products of covector-covector pairs:
+$$
+\mathcal{B}=\mathcal{B}_{ij}\epsilon^i\otimes\epsilon^j.
+$$
+We can verify the definition of bilinear forms:
+$$
+\begin{aligned}
+s
+&amp;= \mathcal{B}(\mathbf{v},\mathbf{w})=\mathcal{B}_{ij}(\epsilon^i\otimes\epsilon^j)(\mathbf{v},\mathbf{w})=\mathcal{B}_{ij}\epsilon^i(\mathbf{v})\otimes\epsilon^j(\mathbf{w})=\mathcal{B}_{ij}\epsilon^i(v^k\mathbf{e}_k)\otimes\epsilon^j(w^l\mathbf{e}_l) \\
+&amp;=\mathcal{B}_{ij}v^k w^l\epsilon^i(\mathbf{e}_k)\otimes\epsilon^j(\mathbf{e}_l)=\mathcal{B}_{ij}v^k w^l \delta^i_k \delta^j_l=\mathcal{B}_{ij}v^i w^j,
+\end{aligned}
+$$
+and the transformation of bilinear forms:
+$$
+\mathcal{B}=\mathcal{B}_{kl}\epsilon^k\otimes\epsilon^l=\mathcal{B}_{kl}(F^k_i\tilde{\epsilon}^i)\otimes(F^l_j\tilde{\epsilon}^j)=F^k_i F^l_j\mathcal{B}_{kl}\tilde{\epsilon}^i\otimes\tilde{\epsilon}^j=\tilde{\mathcal{B}}_{ij}\tilde{\epsilon}^i\otimes\tilde{\epsilon}^j
+$$
+$$
+\implies \tilde{\mathcal{B}}_{ij} = F^k_i F^l_j\mathcal{B}_{kl}.
+$$</p>
+<h3 id="general-tensor-products-and-kronecker-products">General Tensor Products and Kronecker Products</h3>
+<p>A general ($m$,$n$)-tensor can be defined by combining $m$ vectors $\mathbf{e}_i,\mathbf{e}_j,\mathbf{e}_k,\cdots$ and $n$ covectors $\epsilon^r,\epsilon^s,\epsilon^t,\cdots$ using tensor products:
+$$
+T = T^{ijk\cdots}_{rst\cdots}(\mathbf{e}_i\otimes\mathbf{e}_j\otimes\mathbf{e}_k\otimes\cdots)\otimes (\epsilon^r\otimes\epsilon^s\otimes\epsilon^t\otimes\cdots).
+$$
+Applying changes of bases and dual bases, we obtain
+$$
+\begin{aligned}
+T &amp;= T^{ijk\cdots}_{rst\cdots}(B^a_i\tilde{\mathbf{e}}_a\otimes B^b_j\tilde{\mathbf{e}}_b\otimes B^c_k\tilde{\mathbf{e}}_c\otimes\cdots)\otimes (F^r_x\tilde{\epsilon}^x\otimes F^s_y\tilde{\epsilon}^y\otimes F^t_z \tilde{\epsilon}^z\otimes\cdots) \\
+&amp;= (B^a_i B^b_j B^c_k\cdots) T^{ijk\cdots}_{rst\cdots} (F^r_x F^s_y F^t_z \cdots) (\tilde{\mathbf{e}}_a\otimes \tilde{\mathbf{e}}_b\otimes \tilde{\mathbf{e}}_c\otimes\cdots)\otimes (\tilde{\epsilon}^x\otimes \tilde{\epsilon}^y\otimes \tilde{\epsilon}^z\otimes\cdots).
+\end{aligned}
+$$
+But the definition of the tensor $T$ in the new bases and dual bases is
+$$
+T = \tilde{T}^{abc\cdots}_{xyz\cdots}(\tilde{\mathbf{e}}_a\otimes \tilde{\mathbf{e}}_b\otimes \tilde{\mathbf{e}}_c\otimes\cdots)\otimes (\tilde{\epsilon}^x\otimes \tilde{\epsilon}^y\otimes \tilde{\epsilon}^z\otimes\cdots).
+$$
+This gives us the general tensor transformation rule:
+$$
+\tilde{T}^{abc\cdots}_{xyz\cdots}=(B^a_i B^b_j B^c_k\cdots ) T^{ijk\cdots}_{rst\cdots} (F^r_x F^s_y F^t_z\cdots).
+$$</p>
+<p>When we apply an ($m$,$n$)-tensor tensor $T$ to an ($n$,0)-tensor (or a rank-$n$ vector) $D$, we will obtain an ($m$,0)-tensor (or a rank-$m$ vector) $T(D)$. This is a generalization of applying a (rank-1) covector (i.e., a (1,0)-tensor) to a $rank-1$ vector (i.e., a (0,1)-tensor) resulting in a scalar (i.e., a (0,0)-tensor).</p>
+<p>Specifically, suppose that
+$$
+D = D^{opq\cdots}(\mathbf{e}_o\otimes\mathbf{e}_p\otimes\mathbf{e}_q\otimes\cdots).
+$$
+Then, we have
+$$
+T(D)=T^{ijk\cdots}_{rst\cdots}(\mathbf{e}_i\otimes\mathbf{e}_j\otimes\mathbf{e}_k\otimes\cdots)\otimes (\epsilon^r\otimes\epsilon^s\otimes\epsilon^t\otimes\cdots)(D^{opq\cdots}\mathbf{e}_o\otimes\mathbf{e}_p\otimes\mathbf{e}_q\otimes\cdots).
+$$
+Note that there are multiple ways in which we can associate each covector with a vector in $(T_{rst\cdots}\epsilon^r\otimes\epsilon^s\otimes\epsilon^t\otimes\cdots)(D^{opq\cdots}\mathbf{e}_o\otimes\mathbf{e}_p\otimes\mathbf{e}_q\otimes\cdots)$. To avoid ambiguity, we should always clearly specify such association using Einstein&rsquo;s notation. That is, whether it means $T(D)=T^{ijk\cdots}_{rst\cdots} D^{rst\cdots}$ or $T(D)=T^{ijk\cdots}_{rst\cdots} D^{rts\cdots}$ or anything else.</p>
+<p>Note that a tensor is a multilinear map, which is linear when all inputs except one are held constant:</p>
+<ol>
+<li>$T(x_1,\cdots,nx_i,\cdots,x_n)=nT(x_1,\cdots,x_i,\cdots,x_n),~\forall i$,</li>
+<li>$T(x_1,\cdots,x_i+y_i,\cdots,x_n)=T(x_1,\cdots,x_i,\cdots,x_n)+T(x_1,\cdots,y_i,\cdots,x_n),~\forall i$.</li>
+</ol>
+<p>Kronecker products are tensor products expressed in the array representation of tensors. For examples, matrices are Kronecker products of (column vector, row vector) pairs, and metric tensors are Kronecker products of (row vector, row vector) pairs.</p>
+<h3 id="tensor-product-spaces">Tensor Product Spaces</h3>
+<p>Let $n\in S$ be a scalar, $\mathbf{v},\mathbf{u}\in V$ be vectors, and $\alpha,\beta\in V^*$ be covectors. Tensor products satisfy the following rules</p>
+<ol>
+<li>$n(\mathbf{v}\otimes\alpha)=(n\mathbf{v})\otimes\alpha=\mathbf{v}\otimes(n\alpha)$,</li>
+<li>$\mathbf{v}\otimes\alpha+\mathbf{v}\otimes\beta=\mathbf{v}\otimes(\alpha+\beta)$,</li>
+<li>$\mathbf{v}\otimes\alpha+\mathbf{u}\otimes\alpha=(\mathbf{v}+\mathbf{u})\otimes\alpha$.</li>
+</ol>
+<p>We can form tensor product spaces $V\otimes V$, $V\times V^*$, $V^*\times V$, and $V^*\times V^*$ using tensor products, and we can continue forming larger tensor products such as $V\otimes V^* \otimes V \otimes \cdots$ and so forth. A tensor space associated with a tensor $T$ contains elements obtained by any number of summations with $T$ in any order.</p>
+<p>For example, consider a tensor space $V^* \otimes V \otimes V^* \otimes V^*$ associated with the tensor $T^{~j}_{i~kl}\epsilon^i\mathbf{e}_j\epsilon^k\epsilon^l$. Below are some example elements in this tensor space:</p>
+<ul>
+<li>$T^{~j}_{i~kl} v^i \alpha_j w^k u^l\quad V \times V^* \times V \times V \to S$,</li>
+<li>$T^{~j}_{i~kl} U^{ikl}\beta_j\quad (V \otimes V \otimes V)\times V^* \to S$,</li>
+<li>$T^{~j}_{i~kl} \alpha_j D^{kl}\quad V^* \times (V \otimes V) \to V^*$,</li>
+<li>$T^{~j}_{i~kl} L^i_j \quad (V \otimes V^*)\to (V^* \otimes V^*)$,</li>
+<li>&hellip;</li>
+</ul>
+<h3 id="musical-isomorphism">Musical Isomorphism</h3>
+<p>We would like to find a meaningful partner covector $\nu=v_i\epsilon^i\in V^*$ for each vector $\mathbf{v}=v^i\mathbf{e}_i\in V$. It turns out that one such partnership is called musical isomorphism, which is defined using the metric tensor $g\in V^*\otimes V^*$ (i.e., dot product).</p>
+<p>Musical isomorphism defines the partner of the vector $\mathbf{v}\in V$ as the linear function $\nu:V\to S$ such that
+$$
+\nu=g(\cdot,\mathbf{v})=g_{ik}\epsilon^i\otimes\epsilon^k(v^j\mathbf{e}_j)=g_{ik}v^j\epsilon^i\otimes\epsilon^k(\mathbf{e}_j)=g_{ik} v^j \epsilon^i\delta^k_j=(g_{ij}v^j)\epsilon^i.
+$$
+But we have $\nu=v_i\epsilon^i$ by definition. This defines the flat operation which lowers the index of the components $v^j$ of the vector $\mathbf{v}$ by
+$$
+v_i=g_{ij}v^j.
+$$
+Therefore, the partner covector $\nu$ for the vector $\mathbf{v}$ is given by
+$$
+\nu=v_i\epsilon^i=g_{ij}v^j\epsilon^i.
+$$</p>
+<p>Another way to think about the flat operation for lowering vector component indices $v^i$ is to consider the dot product between the corresponding basis vector $\mathbf{e}_i$ and the vector $\mathbf{v}$:
+$$
+v_i=g(\mathbf{e}_i,\mathbf{v})=g(\mathbf{e}_i,v^j\mathbf{e}_j)=v^j g(\mathbf{e}_i,\mathbf{e}_j)=g_{ij}v^j.
+$$
+Geometrically, this tells us that $v_i$ is the projection of the vector $\mathbf{v}$ onto the basis vector $\mathbf{e}_i$. Note that $v^i\not=v_i$ in general. The only exception is in the orthonormal basis where we have
+$$
+v_i=g_{ij}v^j=\delta_{ij}v^j=v^i.
+$$</p>
+<p>This is a meaningful partnership because it holds in any basis by definition:
+$$
+\tilde{v}_i=\tilde{g}_{ij}\tilde{v}^j \quad\text{and}\quad\nu=\tilde{v}_i\tilde{\epsilon}^i=\tilde{g}_{ij}\tilde{v}^j\tilde{\epsilon}^i.
+$$</p>
+<p>We can define the inverse of the metric tensor as $h^{ki}\in V\otimes V$ such that composing $g$ and $h$ results in the identity:
+$$
+h^{ij}g_{jk}=\delta^i_k.
+$$
+Then, the sharp operation which raises the index of the components $v_j$ of the covector $\nu$ (i.e., the inverse of the flat operation) can be derived as follows:
+$$
+h^{ij}v_j=h^{ij}g_{jk}v^k=\delta^i_k v^k=v^i,
+$$
+$$
+\mathbf{v}=v^i\mathbf{e}_i=h^{ij}v_j\mathbf{e}_i.
+$$
+Likewise, this holds in any basis by definition:
+$$
+\tilde{v}^i=\tilde{h}^{ij}\tilde{v}_j,
+$$
+$$
+\mathbf{v}=\tilde{v}^i\tilde{\mathbf{e}}_i=\tilde{h}^{ij}\tilde{v}_j\tilde{\mathbf{e}}_i.
+$$</p>
+<p>The flat and sharp operations for lowering and raising indices can be applied to tensors of any rank in general. For example, consider the tensor $T=T^i_{jk}\mathbf{e}_i\otimes\epsilon^j\otimes\epsilon^k\in V\otimes V^* \otimes V^*$. We can raise the index $j$ by $T^i_{jk}h^{jl}=T^{il}_k$, which results in a new tensor $T&rsquo;=T^{il}_k \mathbf{e}_i\otimes\mathbf{e}_l\otimes\epsilon^k\in V\otimes V \otimes V^*$.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/tensor_algebra/&amp;text=Tensor%20Algebra" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/tensor_algebra/&amp;t=Tensor%20Algebra" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Tensor%20Algebra&amp;body=https://wenlin-chen.github.io/post/tensor_algebra/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/tensor_algebra/&amp;title=Tensor%20Algebra" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Tensor%20Algebra%20https://wenlin-chen.github.io/post/tensor_algebra/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/tensor_algebra/&amp;title=Tensor%20Algebra" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://wenlin-chen.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu27f7dc34c9db8fd2b063f3fba6be9864_216943_270x270_fill_q75_lanczos_center.jpg" alt="Wenlin Chen"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://wenlin-chen.github.io/">Wenlin Chen</a></h5>
+      <h6 class="card-subtitle">PhD Student in Machine Learning</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?hl=en&amp;user=A4zbE2IAAAAJ" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/wenlin-chen/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Wenlin-Chen" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/WenlinChen_" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+    
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <p class="powered-by">
+      © 2024 Wenlin Chen
+    </p>
+    
+  
+    <p class="powered-by">
+      
+      
+      
+    </p>
+  </footer>
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.9592335d574f7a97010f99b90ad0f310.js"></script>
+
+    
+    
+    
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.2cc80485e7b9001edba5cdf5b39a1f97.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

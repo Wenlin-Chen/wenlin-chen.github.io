@@ -922,13 +922,14 @@ $$\max_{\theta}~\mathbb{E}_{p_{data}(x_T)}[\log p_{\theta}(x_T)].$$
 $$x_{t+\delta}=x_t+\delta u_t(x_t).$$
 $$u_t(x_t)=\lim_{\delta\to0}\frac{x_{t+\delta}-x_t}{\delta}=\frac{dx_t}{dt}.$$</li>
 <li>Continuous normalizing flow with a transformation function $\phi_t$ induced by the vector field $u_t$:
-$$x_t=x_0+\int_0^t u_s(x_s)ds,\quad x_0\sim\pi(x_0),$$
+$$\frac{dx_t}{dt}=u_t(x_t)\quad\implies\quad x_t=x_0+\int_0^t u_s(x_s)ds,\quad x_0\sim\pi(x_0),$$
 <ul>
 <li>Set $T=1$ following convention.</li>
+<li>The flow transformation is defined as $x_t=\phi_t(x_0)$.</li>
 </ul>
 </li>
 <li>The probability path $p_t$ induced by the vector field $u_t$ follows
-$$\log p_t(x_t)=\log\pi(x_0)-\int_{0}^t\nabla_{x_s}\cdot u_s(x_s)ds.$$
+$$\frac{d}{dt}\log p_t(x_t)=-\nabla_{x_t}\cdot u_t(x_t)\quad\implies\quad\log p_t(x_t)=\log\pi(x_0)-\int_{0}^t\nabla_{x_s}\cdot u_s(x_s)ds.$$
 <ul>
 <li>Proof: By the transport equation, we have
 $$
@@ -1024,14 +1025,14 @@ $$</li>
 <li>In practice, we may want our conditional vector field $u_{t|1}$ to generate a conditional Gaussian probability path:
 $$p_{t|1}(x_t|x_1)=\mathcal{N}(x_t|\mu_t(x_1),\sigma_t(x_1)^2I),$$
 with boundary conditions
-$$\mu_0(x_1)=0,\quad\sigma_0(x_1)=1,$$
-$$\mu_1(x_1)=x_1,\quad\sigma_1(x_1)=0.$$
+$$\mu_0(x_1)=0,~\sigma_0(x_1)=1\quad\implies\quad p_{0|1}(x|x_1)=\pi(x)=\mathcal{N}(x|0,I),$$
+$$\mu_1(x_1)=x_1,\quad\sigma_1(x_1)=0\quad\implies\quad p_{1|1}(x|x_1)=\delta(x-x_1).$$
 <ul>
 <li>One correpsonding conditional vector field is given by
 $$u_{t|1}(x_t|x_1)=\frac{x-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t},$$
 with a conditional flow transformation
 $$\phi_{t|1}(x_0|x_1)=\mu_t(x_1)+\sigma_t(x_1)x_0.$$</li>
-<li>Proof: We prove it by verifying the following two quantities are identical.
+<li>Proof: We verify that the following two quantities are identical.
 $$\frac{d}{dt}\phi_{t|1}(x_0|x_1)=\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1),$$
 and
 $$
@@ -1046,7 +1047,7 @@ $$</li>
 <li>Two problems with conditional flow matching:
 <ul>
 <li>The estimate of the gradient $\nabla_{\theta} \mathcal{L}_{CFM}(\theta)$ is of high variance since there are many possible data $x_1$ corresponding to a noise $x_0$ due to intersection of probability paths for different realizations of $u_{t|1}(x_t|x_1)$ with different values of the conditioning variable $x_1$.</li>
-<li>Sampling is slow at generation time since it is difficult to integrate ODE with non-straight marginal path $u_{\theta}(u_t,t)$.</li>
+<li>Sampling is slow at generation time since it is difficult to integrate ODE with non-straight path induced by the learned marginal vector field $u_{\theta}(u_t,t)$.</li>
 </ul>
 </li>
 <li>Coupling: instead of maping between data $x_1$ and noise $x_0$ (i.e., one-sided conditioning), we can similarly map between any two variables $x_0$ and $x_1$ with two-sided conditioning:

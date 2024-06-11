@@ -297,7 +297,7 @@
   
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/score_identities/" />
-  <meta property="og:title" content="Score Identities for Sampling and Generative Modeling | Wenlin Chen" />
+  <meta property="og:title" content="Score Identities | Wenlin Chen" />
   <meta property="og:description" content="Introduction Problem Setting Data distribution: $$p(x)=\frac{\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\int \exp(-E(x)) dx.$$ Tractable score function: $$\nabla_x \log p(x)=-\nabla_x E(x).$$ Generative Modeling: Samples from $p(x)$ are available. The energy function $E$ is unknown and needs to be learned from data." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -333,7 +333,7 @@
     "@type": "WebPage",
     "@id": "https://wenlin-chen.github.io/post/score_identities/"
   },
-  "headline": "Score Identities for Sampling and Generative Modeling",
+  "headline": "Score Identities",
   
   "datePublished": "2024-06-01T00:00:00Z",
   "dateModified": "2024-06-01T00:00:00Z",
@@ -367,7 +367,7 @@
 
 
 
-  <title>Score Identities for Sampling and Generative Modeling | Wenlin Chen</title>
+  <title>Score Identities | Wenlin Chen</title>
 </head>
 
 
@@ -759,7 +759,7 @@
   
   
 <div class="container pt-3">
-  <h1>Score Identities for Sampling and Generative Modeling</h1>
+  <h1>Score Identities</h1>
 
   
 
@@ -917,10 +917,10 @@ $$</li>
 <h3 id="monte-carlo-estimator">Monte Carlo Estimator</h3>
 <ul>
 <li>Estimate the noisy score with Tweedie score identity using Monte Carlo:
-$$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y).$$
-We may initialize the sampler for $p(x|y)$ with its mean $\mathbb{E}_{p(x|y)}[ x ]$ estimated by importance sampling:
-$$\mathbb{E}_{p(x|y)}[ x ]\approx\frac{\sum_{l=1}^L x_l\exp(-E(x_l))}{\sum_{l=1}^L \exp(-E(x_{l}))},\quad x_l\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$</li>
-<li>This is the standard importance sampling approach. It does not work well in high dimensional space.</li>
+$$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y).$$</li>
+<li>We may initialize the sampler for $p(x|y)$ with its mean $\mathbb{E}_{p(x|y)}[ x ]$ estimated by importance sampling:
+$$\mathbb{E}_{p(x|y)}[ x ]\approx\frac{\sum_{l=1}^L x_l\exp(-E(x_l))}{\sum_{l=1}^L \exp(-E(x_{l}))},\quad x_l\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$
+This is the standard importance sampling approach. It does not work well in high dimensional space.</li>
 <li>Proof: Using the fact that $q(x|y)\propto p(y|x)$, we have
 $$
 \begin{aligned}
@@ -936,8 +936,8 @@ $$</li>
 <h3 id="importance-sampling-estimator">Importance Sampling Estimator</h3>
 <ul>
 <li>Estimate the noisy score with the target score identity using importance sampling:
-$$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$</li>
-<li>This does not work well in practice as it only works for very small $t$.</li>
+$$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$
+This does not work well in practice as it only works for very small $t$.</li>
 <li>Proof: Using target score identity and the fact that $q(x|y)\propto p(y|x)$, we have
 $$
 \begin{aligned}
@@ -960,8 +960,8 @@ $$
 &amp;= \mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2] \\
 &amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
 \end{aligned}
-$$</li>
-<li>This is the most popular generative modeling apporach. It is inaccurate for very small $t$.</li>
+$$
+This is the most popular generative modeling apporach. It is inaccurate for very small $t$.</li>
 <li>Proof: Using the denoising score identity, we have
 $$
 \begin{aligned}
@@ -979,8 +979,8 @@ $$</li>
 <h3 id="nonparametric-estimator">Nonparametric Estimator</h3>
 <ul>
 <li>Estimate the noisy score with the target score identity using with a KDE-style estimator:
-$$\nabla_y \log p(y)\approx\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).$$</li>
-<li>This is expensive to evaluate and needs to be recomputed for different $y$.</li>
+$$\nabla_y \log p(y)\approx\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).$$
+This is expensive to evaluate and needs to be recomputed for different values of $y$.</li>
 <li>Proof: By definition of noisy score, we have
 $$
 \begin{aligned}
@@ -1015,7 +1015,7 @@ $$</li>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/score_identities/&amp;text=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/score_identities/&amp;text=Score%20Identities" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1028,7 +1028,7 @@ $$</li>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/score_identities/&amp;t=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/score_identities/&amp;t=Score%20Identities" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1041,7 +1041,7 @@ $$</li>
       
       
       <li>
-        <a href="mailto:?subject=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling&amp;body=https://wenlin-chen.github.io/post/score_identities/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Score%20Identities&amp;body=https://wenlin-chen.github.io/post/score_identities/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1054,7 +1054,7 @@ $$</li>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/score_identities/&amp;title=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/score_identities/&amp;title=Score%20Identities" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1067,7 +1067,7 @@ $$</li>
       
       
       <li>
-        <a href="whatsapp://send?text=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling%20https://wenlin-chen.github.io/post/score_identities/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Score%20Identities%20https://wenlin-chen.github.io/post/score_identities/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1080,7 +1080,7 @@ $$</li>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/score_identities/&amp;title=Score%20Identities%20for%20Sampling%20and%20Generative%20Modeling" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/score_identities/&amp;title=Score%20Identities" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Generative Modeling Problem Setting Data distribution $p_{data}(x)$ is unknown. Samples from $p_{data}(x)$ are available. Goals Estimate the density of the data distribution $p_{data}(x)$. Generate new samples from $p_{data}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." />
+  <meta name="description" content="Generative Modeling Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/score_flow_matching/" />
@@ -298,7 +298,7 @@
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/score_flow_matching/" />
   <meta property="og:title" content="Score and Flow Matching | Wenlin Chen" />
-  <meta property="og:description" content="Generative Modeling Problem Setting Data distribution $p_{data}(x)$ is unknown. Samples from $p_{data}(x)$ are available. Goals Estimate the density of the data distribution $p_{data}(x)$. Generate new samples from $p_{data}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Generative Modeling Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Generative Modeling Problem Setting Data distribution $p_{data}(x)$ is unknown. Samples from $p_{data}(x)$ are available. Goals Estimate the density of the data distribution $p_{data}(x)$. Generate new samples from $p_{data}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$."
+  "description": "Generative Modeling Problem Setting Data distribution $p_{\\text{data}}(x)$ is unknown. Samples from $p_{\\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\\text{data}}(x)$. Generate new samples from $p_{\\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$."
 }
 </script>
 
@@ -819,13 +819,13 @@
       <h2 id="generative-modeling">Generative Modeling</h2>
 <h4 id="problem-setting">Problem Setting</h4>
 <ul>
-<li>Data distribution $p_{data}(x)$ is unknown.</li>
-<li>Samples from $p_{data}(x)$ are available.</li>
+<li>Data distribution $p_{\text{data}}(x)$ is unknown.</li>
+<li>Samples from $p_{\text{data}}(x)$ are available.</li>
 </ul>
 <h4 id="goals">Goals</h4>
 <ul>
-<li>Estimate the density of the data distribution $p_{data}(x)$.</li>
-<li>Generate new samples from $p_{data}(x)$.</li>
+<li>Estimate the density of the data distribution $p_{\text{data}}(x)$.</li>
+<li>Generate new samples from $p_{\text{data}}(x)$.</li>
 </ul>
 <h2 id="score-matching-for-diffusion-models">Score Matching for Diffusion Models</h2>
 <h4 id="notation">Notation</h4>
@@ -867,7 +867,7 @@ $$\mathcal{L}_{SM}(\theta) = \mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[\lambda(t)\
 </ul>
 </li>
 <li>We instead minimize the tractable denoising score matching objective:
-$$\mathcal{L}_{DSM}(\theta)=\mathbb{E}_{p_{t|0}(x_t|x_0)p_{data}(x_0)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2].$$
+$$\mathcal{L}_{DSM}(\theta)=\mathbb{E}_{p_{t|0}(x_t|x_0)p_{\text{data}}(x_0)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2].$$
 <ul>
 <li>It can be shown that $\nabla_{\theta}\mathcal{L}_{SM}(\theta)=\nabla_{\theta}\mathcal{L}_{DSM}(\theta).$</li>
 <li>Proof: See my notes on <a href="/post/score_identities">Score Identities for Sampling and Generative Modeling</a>.</li>
@@ -878,7 +878,7 @@ $$\mathcal{L}_{DSM}(\theta)=\mathbb{E}_{p_{t|0}(x_t|x_0)p_{data}(x_0)\mathcal{U}
 <li>Magnitude weighting balances the magnitude of the score matching loss across time $t$:
 $$\lambda(t)\propto1/\lVert \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2.$$</li>
 <li>Likelihood weighting $\lambda(t)=g_t^2$ leads to a nice connection between KL divergence and Fisher divergence:
-$$\text{KL}(p_{data}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$</li>
+$$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$</li>
 </ul>
 </li>
 <li>One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.</li>
@@ -909,7 +909,7 @@ $$\phi_t(x_t)=x_{t+1}=x_t+\delta u_t(x_t).$$
 </ul>
 </li>
 <li>Learn a parametric flow transformation function $\phi_{\theta}$ by MLE:
-$$\max_{\theta}~\mathbb{E}_{p_{data}(x_T)}[\log p_{\theta}(x_T)].$$
+$$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_T)}[\log p_{\theta}(x_T)].$$
 <ul>
 <li>We need to enforce invertibility in the architecture of $\phi_{\theta}$.</li>
 <li>We need to compute and backpropagate through the inverse and Jacobian for $\phi_{\theta}$.</li>
@@ -965,7 +965,7 @@ u_t(x_t) \\
 $$</li>
 <li>Note that there are many different vector fields $u_t$ that can induce probability paths between $p_0$ and $p_1$.</li>
 <li>Learn a parameteric time-dependent vector field $u_{\theta}(x_t, t)$ by MLE:
-$$\max_{\theta}~\mathbb{E}_{p_{data}(x_1)}[\log p_{\theta}(x_1)].$$
+$$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_1)}[\log p_{\theta}(x_1)].$$
 <ul>
 <li>We do not need to choose the number of flow transformations as in composed discrete normalizing flows.</li>
 <li>$u_t$ only needs to be $L$-Lipschitz with any value $L$ to guarantee the invertibility of $\phi_t$.</li>
@@ -984,30 +984,30 @@ $$\mathcal{L}_{FM}(\theta)=\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,1)}[\lVert u_{\th
 </ul>
 </li>
 <li>To circumvent the intractability, we consider a specific probability path $p_t(x_t)$ defined by a conditional probability path $p_{t|1}(x_t|x_1)$:
-$$p_t(x_t)=\int p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1,$$
+$$p_t(x_t)=\int p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1,$$
 with boundary conditions
 $$p_{0|1}(x)=\pi(x)\implies p_0(x_0)=\pi(x_0),$$
-$$p_{1|1}(x)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$</li>
+$$p_{1|1}(x)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</li>
 <li>The marginal vector field $u_t$ can be obtained from the corresponding conditional vector field $u_{t|1}(x_t|x_1)$ and conditional probability path $p_{t|1}(x_t|x_1)$ through the following identity:
-$$u_t(x_t)=\mathbb{E}_{p_{1|t}(x_1|x_t)}[u_{t|1}(x_t|x_1)]=\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)}dx_1.$$
+$$u_t(x_t)=\mathbb{E}_{p_{1|t}(x_1|x_t)}[u_{t|1}(x_t|x_1)]=\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}{p_t(x_t)}dx_1.$$
 <ul>
 <li>Proof: We verify that this is consistent with the transport equation for the marginals.
 $$
 \begin{aligned}
 \frac{\partial}{\partial t}p_t(x_t)
-&amp;= \frac{\partial}{\partial t} \int p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 \\
-&amp;= \int \frac{\partial}{\partial t} p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 \\
-&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)) p_{data}(x_1)dx_1 \\
-&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{data}(x_1)) dx_1 \\
-&amp;= - \nabla_{x_t}\cdot  \int  u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{data}(x_1) dx_1  \\
-&amp;= - \nabla_{x_t}\cdot \left( \int  u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)} dx_1 p_t(x_t) \right) \\
+&amp;= \frac{\partial}{\partial t} \int p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1 \\
+&amp;= \int \frac{\partial}{\partial t} p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1 \\
+&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)) p_{\text{data}}(x_1)dx_1 \\
+&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)) dx_1 \\
+&amp;= - \nabla_{x_t}\cdot  \int  u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{\text{data}}(x_1) dx_1  \\
+&amp;= - \nabla_{x_t}\cdot \left( \int  u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}{p_t(x_t)} dx_1 p_t(x_t) \right) \\
 &amp;= - \nabla_{x_t}\cdot (u_t(x_t) p_t(x_t)). \\
 \end{aligned}
 $$</li>
 </ul>
 </li>
 <li>We now introduce a tractable conditional flow matching objective:
-$$\mathcal{L}_{CFM}(\theta)=\mathbb{E}_{p_{t|1}(x_t|x_1)p_{data}(x_1)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t,t)-u_{t|1}(x_t|x_1) \rVert^2].$$
+$$\mathcal{L}_{CFM}(\theta)=\mathbb{E}_{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t,t)-u_{t|1}(x_t|x_1) \rVert^2].$$
 <ul>
 <li>It can be shown that $\nabla_{\theta}\mathcal{L}_{FM}(\theta)=\nabla_{\theta}\mathcal{L}_{CFM}(\theta)$.</li>
 <li>Proof: We follow a similar idea to the proof of denoising score matching but with the following equality.
@@ -1015,9 +1015,9 @@ $$
 \begin{aligned}
 \mathbb{E}_{p_t(x_t)}[\left&lt;u_{\theta}(x_t,t),u_t(x_t)\right&gt;]
 &amp;= \int \left&lt;u_{\theta}(x_t,t),u_t(x_t)\right&gt; p_t(x_t) dx_t \\
-&amp;= \int \left&lt;u_{\theta}(x_t,t),\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{data}(x_1)}{p_t(x_t)}dx_1\right&gt; p_t(x_t) dx_t \\
-&amp;= \iint \left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt; p_{t|1}(x_t|x_1)p_{data}(x_1)dx_1 dx_t \\
-&amp;= \mathbb{E}_{p_{t|1}(x_t|x_1)p_{data}(x_1)}[\left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt;].
+&amp;= \int \left&lt;u_{\theta}(x_t,t),\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}{p_t(x_t)}dx_1\right&gt; p_t(x_t) dx_t \\
+&amp;= \iint \left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt; p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1 dx_t \\
+&amp;= \mathbb{E}_{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}[\left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt;].
 \end{aligned}
 $$</li>
 </ul>
@@ -1051,10 +1051,10 @@ $$</li>
 </ul>
 </li>
 <li>Coupling: instead of maping between data $x_1$ and noise $x_0$ (i.e., one-sided conditioning), we can similarly map between any two variables $x_0$ and $x_1$ with two-sided conditioning:
-$$p_t(x_t)=\iint p_{t|0,1}(x_t|x_0,x_1)p_{data}(x_0,x_1)dx_0dx_1,$$
+$$p_t(x_t)=\iint p_{t|0,1}(x_t|x_0,x_1)p_{\text{data}}(x_0,x_1)dx_0dx_1,$$
 with boundary conditions
-$$p_{0|0,1}(x|x_0,x_1)=\delta(x-x_0)\implies p_0(x_0)=p_{data}(x_0),$$
-$$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{data}(x_1).$$</li>
+$$p_{0|0,1}(x|x_0,x_1)=\delta(x-x_0)\implies p_0(x_0)=p_{\text{data}}(x_0),$$
+$$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</li>
 </ul>
 
     </div>

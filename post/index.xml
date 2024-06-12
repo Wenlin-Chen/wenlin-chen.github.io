@@ -490,7 +490,7 @@ $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;(Algebra Definition) A tensors is a collections of vectors and covectors combined together using the tensor product.&lt;/p&gt;
+&lt;p&gt;(Algebra Definition) A tensor is a collection of vectors and covectors combined together using the tensor product.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;This is a consice and probably the best definition of tensors.&lt;/li&gt;
 &lt;li&gt;But&amp;hellip; What are covectors? What is tensor product? We will get to this.&lt;/li&gt;

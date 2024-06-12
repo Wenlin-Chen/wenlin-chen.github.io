@@ -837,7 +837,7 @@ $$</li>
 <h3 id="gradient-based-optimization">Gradient-based Optimization</h3>
 <ul>
 <li>The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.</li>
-<li>We can compute the hyper-gradient (i.e., total derivative) of $f(x,y^{*}(x))$ with respect to $x$:
+<li>We can compute the hyper-gradient (i.e., total derivative) of $f(x,y^{*}(x))$ with respect to $x$ using the chain rule:
 $$\frac{d f(x,y^{*}(x))}{d x}=\frac{\partial f(x,y^{*}(x))}{\partial x}+\frac{\partial f(x,y^{*}(x))}{\partial y^*(x)}\frac{\partial y^*(x)}{\partial x}.$$
 <ul>
 <li>The two gradients $\frac{\partial f(x,y^{*}(x))}{\partial x}$ and $\frac{\partial f(x,y^{*}(x))}{\partial y^*(x)}$ can be easily calculated by automatic differentiation.</li>

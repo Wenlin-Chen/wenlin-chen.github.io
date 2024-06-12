@@ -41,7 +41,7 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;goals&#34;&gt;Goals&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Estimate the density of the data distributions $p_{data}(x)$.&lt;/li&gt;
+&lt;li&gt;Estimate the density of the data distribution $p_{data}(x)$.&lt;/li&gt;
 &lt;li&gt;Generate new samples from $p_{data}(x)$.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;score-matching-for-diffusion-models&#34;&gt;Score Matching for Diffusion Models&lt;/h2&gt;

@@ -870,7 +870,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
 <li>Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.</li>
 <li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>
 <li>Inner optimization corresponds to finding the optimum task-specific parameters $y^*(x)$ for each task by minimizing the training loss $g(x,y)$ given current meta-learned parameters $x$ shared across all tasks.</li>
-<li>Outer optimization corresponds to finding the optimum meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimum task-specific parameters $y^{*}(x)$.</li>
+<li>Outer optimization corresponds to finding the optimum meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimum task-specific parameters $y^{*}(x)$ for each task.</li>
 </ul>
 
     </div>

@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="My name is Wenlin Chen. I am a PhD student in Machine Learning at University of Cambridge and Max Planck Institute for Intelligent Systems." />
+  <meta name="description" content="Bi-level Optimization Problem Setting Consider the following bi-level optimization objective: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ This bi-level optimization objective can be understood by separately considering the two objectives." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/bilevel_optimization/" />
 
   
 
@@ -62,6 +62,9 @@
   
 
   
+  
+    
+    <script src="/js/mathjax-config.js"></script>
   
 
   
@@ -210,9 +213,9 @@
 
       
       
-        
-      
 
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
       
     
       
@@ -268,8 +271,6 @@
   
 
   
-    <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Wenlin Chen" />
-  
 
   
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -278,7 +279,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/post/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/bilevel_optimization/" />
 
   
   
@@ -295,33 +296,82 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/post/" />
-  <meta property="og:title" content="Notes | Wenlin Chen" />
-  <meta property="og:description" content="My name is Wenlin Chen. I am a PhD student in Machine Learning at University of Cambridge and Max Planck Institute for Intelligent Systems." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/bilevel_optimization/" />
+  <meta property="og:title" content="Bi-level Optimization | Wenlin Chen" />
+  <meta property="og:description" content="Bi-level Optimization Problem Setting Consider the following bi-level optimization objective: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ This bi-level optimization objective can be understood by separately considering the two objectives." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2024-06-09T00:00:00&#43;00:00" />
+      <meta
+        property="article:published_time"
+        content="2023-02-01T00:00:00&#43;00:00"
+      />
     
+    <meta property="article:modified_time" content="2023-02-01T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wenlin-chen.github.io/post/bilevel_optimization/"
+  },
+  "headline": "Bi-level Optimization",
+  
+  "datePublished": "2023-02-01T00:00:00Z",
+  "dateModified": "2023-02-01T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wenlin Chen"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wenlin Chen",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Bi-level Optimization Problem Setting Consider the following bi-level optimization objective: $$ \\begin{aligned} x^*\u0026amp;=\\underset{x}{\\operatorname{argmin}}~f(x,y^*(x))\\quad\\text{(outer optimization)}, \\\\ s.t.\\quad y^*(x)\u0026amp;=\\underset{y}{\\operatorname{argmin}}~g(x,y)\\quad\\text{(inner optimization)}. \\end{aligned} $$ This bi-level optimization objective can be understood by separately considering the two objectives."
+}
+</script>
+
+  
+
+  
+
   
 
   
 
 
 
-  
-
-  
 
 
-
-
-
-  <title>Notes | Wenlin Chen</title>
+  <title>Bi-level Optimization | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="6370009740e1eb2ee0b7974f10ecc91f" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="245ebf3059b3076cbe50083274df28b3" >
 
   
   
@@ -687,167 +737,385 @@
   </div>
 
   <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="container pt-3">
+  <h1>Bi-level Optimization</h1>
+
+  
+
+  
     
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
+<div class="article-metadata">
 
   
   
+
   
+  <span class="article-date">
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>Notes</h1>
-
-  
-
-  
-</div>
-
-
-<div class="universal-wrapper">
-
-  
-
-  
-  
-    
-      
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-<div class="view-list-item">
-  <i class="far fa-newspaper pub-icon" aria-hidden="true"></i>
-  <a href="/post/score_flow_matching/" >Score and Flow Matching</a>
-
-  
-
-  
-
-  
-
-</div>
-
-    
-  
     
       
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-<div class="view-list-item">
-  <i class="far fa-newspaper pub-icon" aria-hidden="true"></i>
-  <a href="/post/score_identities/" >Score Identities</a>
-
+    
+    Feb 1, 2023
+  </span>
   
 
   
 
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
   
 
 </div>
 
     
+
+
+
+
+
   
+</div>
+
+
+  <div class="container">
+
+    <div class="article-style">
+      <h2 id="bi-level-optimization">Bi-level Optimization</h2>
+<h3 id="problem-setting">Problem Setting</h3>
+<ul>
+<li>Consider the following bi-level optimization objective:
+$$
+\begin{aligned}
+x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\
+s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}.
+\end{aligned}
+$$</li>
+<li>This bi-level optimization objective can be understood by separately considering the two objectives.
+<ul>
+<li>Inner optimization: for each given value of $x$, the best response function $y^*(x)$ is defined as the value $y$ that minimizes the inner objective $g(x,y)$.</li>
+<li>Outer optimization: given the best response function $y^{*}(x)$, the optimum $x^*$ is defined as the value $x$ that minimizes the outer objective $f(x,y^{*}(x))$.</li>
+</ul>
+</li>
+<li>This results in a nested optimization procedure as evaluating the outer objective $f(x,y^*(x))$ at each value of $x$ requires solving an inner optimization problem to obtain the best response function $y^{*}(x)$ at that value of $x$.</li>
+</ul>
+<h3 id="gradient-based-optimization">Gradient-based Optimization</h3>
+<ul>
+<li>The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.</li>
+<li>We can compute the hyper-gradient (i.e., total derivative) of $f(x,y^{*}(x))$ with respect to $x$:
+$$\frac{d f(x,y^{*}(x))}{d x}=\frac{\partial f(x,y^{*}(x))}{\partial x}+\frac{\partial f(x,y^{*}(x))}{\partial y^*(x)}\frac{\partial y^*(x)}{\partial x}.$$
+<ul>
+<li>The two gradients $\frac{\partial f(x,y^{*}(x))}{\partial x}$ and $\frac{\partial f(x,y^{*}(x))}{\partial y^*(x)}$ can be easily calculated by automatic differentiation.</li>
+<li>Calculating the Jacobian $\frac{\partial y^*(x)}{\partial x}$ is tricky, since the best response function $y^*(x)$ itself is defined by an argmin function in the inner optimization.</li>
+<li>If the inner optimization is also solved by gradient-based optimzation, then calculating the Jacobian $\frac{\partial y^*(x)}{\partial x}$ naively by automatic differentiation will require tracking the gradients through many iterations of the inner optimization, which is computationally intractable in practice.</li>
+</ul>
+</li>
+</ul>
+<h3 id="implicit-function-theorem-ift">Implicit Function Theorem (IFT)</h3>
+<ul>
+<li>An important observation is that $y^*(x)$ is a critical point (i.e., minimum) of $g(x,y)$ for each given $x$.</li>
+<li>This enables us to employ Implicit Function Theorem (IFT) to calculate the Jacobian $\frac{\partial y^*(x)}{\partial x}$ for any $x&rsquo;$:
+$$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\frac{\partial^2 g(x,y)}{\partial y \partial y^T}\right)^{-1}\frac{\partial^2 g(x,y)}{\partial y \partial x^T}\right|_{x=x&rsquo;,y=y^*(x&rsquo;)}.$$
+<ul>
+<li>The mixed partial derivatives $\frac{\partial^2 g(x,y)}{\partial y \partial x^T}$ can be easily calculated by automatic differentiation.</li>
+<li>The inverse Hessian $\left(\frac{\partial^2 g(x,y)}{\partial y \partial y^T}\right)^{-1}$ may be calculated exactly by automatic differentiation or approximated by Neumann approximation or conjugate gradient, depending on the size of the problem.</li>
+</ul>
+</li>
+</ul>
+<h2 id="applications">Applications</h2>
+<h3 id="hyperparmaeter-optimization">Hyperparmaeter Optimization</h3>
+<ul>
+<li>Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.</li>
+<li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>
+<li>Inner optimization corresponds to finding the optimum model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.</li>
+<li>Outer optimization corresponds to finding the optimum hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimum model parameters $y^{*}(x)$.</li>
+</ul>
+<h3 id="meta-learning">Meta-learning</h3>
+<ul>
+<li>Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.</li>
+<li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>
+<li>Inner optimization corresponds to finding the optimum task-specific parameters $y^*(x)$ for each task by minimizing the training loss $g(x,y)$ given current meta-learned parameters $x$ shared across all tasks.</li>
+<li>Outer optimization corresponds to finding the optimum meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimum task-specific parameters $y^{*}(x)$.</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
     
       
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-<div class="view-list-item">
-  <i class="far fa-newspaper pub-icon" aria-hidden="true"></i>
-  <a href="/post/tensor_algebra/" >Tensor Algebra</a>
-
-  
-
-  
-
-  
-
-</div>
-
-    
-  
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;text=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
       
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-<div class="view-list-item">
-  <i class="far fa-newspaper pub-icon" aria-hidden="true"></i>
-  <a href="/post/bilevel_optimization/" >Bi-level Optimization</a>
-
-  
-
-  
-
-  
-
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;t=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Bi-level%20Optimization&amp;body=https://wenlin-chen.github.io/post/bilevel_optimization/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;title=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Bi-level%20Optimization%20https://wenlin-chen.github.io/post/bilevel_optimization/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;title=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
     
   
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://wenlin-chen.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu27f7dc34c9db8fd2b063f3fba6be9864_216943_270x270_fill_q75_lanczos_center.jpg" alt="Wenlin Chen"></a>
+    
 
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://wenlin-chen.github.io/">Wenlin Chen</a></h5>
+      <h6 class="card-subtitle">PhD Student in Machine Learning</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?hl=en&amp;user=A4zbE2IAAAAJ" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/wenlin-chen/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Wenlin-Chen" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/WenlinChen_" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   
 
 
-</div>
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">

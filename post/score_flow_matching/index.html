@@ -817,24 +817,24 @@
 
     <div class="article-style">
       <h2 id="generative-modeling">Generative Modeling</h2>
-<h4 id="problem-setting">Problem Setting</h4>
+<h3 id="problem-setting">Problem Setting</h3>
 <ul>
 <li>Data distribution $p_{\text{data}}(x)$ is unknown.</li>
 <li>Samples from $p_{\text{data}}(x)$ are available.</li>
 </ul>
-<h4 id="goals">Goals</h4>
+<h3 id="goals">Goals</h3>
 <ul>
 <li>Estimate the density of the data distribution $p_{\text{data}}(x)$.</li>
 <li>Generate new samples from $p_{\text{data}}(x)$.</li>
 </ul>
 <h2 id="score-matching-for-diffusion-models">Score Matching for Diffusion Models</h2>
-<h4 id="notation">Notation</h4>
+<h3 id="notation">Notation</h3>
 <ul>
 <li>Denote data by $x_0=x$ and noise by $x_T$.</li>
 <li>Wiener process SDE ($dt&gt;0$):
 $$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$</li>
 </ul>
-<h4 id="diffusion-process">Diffusion Process</h4>
+<h3 id="diffusion-process">Diffusion Process</h3>
 <ul>
 <li>Forward diffusion SDE ($dt&gt;0$):
 $$dx_t=f_t(x_t)dt+g_tdw_t.$$
@@ -857,7 +857,7 @@ $$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
 </ul>
 </li>
 </ul>
-<h4 id="denoising-score-matching">Denoising Score Matching</h4>
+<h3 id="denoising-score-matching">Denoising Score Matching</h3>
 <ul>
 <li>To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.</li>
 <li>Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
@@ -884,7 +884,7 @@ $$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t
 <li>One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.</li>
 </ul>
 <h2 id="flow-matching-for-continuous-normalizing-flows">Flow Matching for Continuous Normalizing Flows</h2>
-<h4 id="notation-1">Notation</h4>
+<h3 id="notation-1">Notation</h3>
 <ul>
 <li>Denote data by $x_T=x$ and noise by $x_0$
 <ul>
@@ -893,7 +893,7 @@ $$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t
 </ul>
 </li>
 </ul>
-<h4 id="discrete-normalizing-flow">Discrete Normalizing Flow</h4>
+<h3 id="discrete-normalizing-flow">Discrete Normalizing Flow</h3>
 <ul>
 <li>Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
 $$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
@@ -916,7 +916,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_T)}[\log p_{\theta}(x_T)].$$
 </ul>
 </li>
 </ul>
-<h4 id="continuous-normalizing-flow">Continuous Normalizing Flow</h4>
+<h3 id="continuous-normalizing-flow">Continuous Normalizing Flow</h3>
 <ul>
 <li>Continuous residual flow transformation:
 $$x_{t+\delta}=x_t+\delta u_t(x_t).$$
@@ -974,7 +974,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_1)}[\log p_{\theta}(x_1)].$$
 </ul>
 </li>
 </ul>
-<h4 id="conditional-flow-matching">Conditional Flow Matching</h4>
+<h3 id="conditional-flow-matching">Conditional Flow Matching</h3>
 <ul>
 <li>We want a simulation-free objective like score matching.</li>
 <li>Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:

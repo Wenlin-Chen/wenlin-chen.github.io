@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Bi-level Optimization Problem Setting Consider the following bi-level optimization objective: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ This bi-level optimization objective can be understood by separately considering the two objectives." />
+  <meta name="description" content="Bilevel Optimization Problem Setting Consider the following bilevel optimization problem: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/bilevel_optimization/" />
@@ -297,8 +297,8 @@
   
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/bilevel_optimization/" />
-  <meta property="og:title" content="Bi-level Optimization | Wenlin Chen" />
-  <meta property="og:description" content="Bi-level Optimization Problem Setting Consider the following bi-level optimization objective: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ This bi-level optimization objective can be understood by separately considering the two objectives." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:title" content="Bilevel Optimization | Wenlin Chen" />
+  <meta property="og:description" content="Bilevel Optimization Problem Setting Consider the following bilevel optimization problem: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -333,7 +333,7 @@
     "@type": "WebPage",
     "@id": "https://wenlin-chen.github.io/post/bilevel_optimization/"
   },
-  "headline": "Bi-level Optimization",
+  "headline": "Bilevel Optimization",
   
   "datePublished": "2023-02-01T00:00:00Z",
   "dateModified": "2023-02-01T00:00:00Z",
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Bi-level Optimization Problem Setting Consider the following bi-level optimization objective: $$ \\begin{aligned} x^*\u0026amp;=\\underset{x}{\\operatorname{argmin}}~f(x,y^*(x))\\quad\\text{(outer optimization)}, \\\\ s.t.\\quad y^*(x)\u0026amp;=\\underset{y}{\\operatorname{argmin}}~g(x,y)\\quad\\text{(inner optimization)}. \\end{aligned} $$ This bi-level optimization objective can be understood by separately considering the two objectives."
+  "description": "Bilevel Optimization Problem Setting Consider the following bilevel optimization problem: $$ \\begin{aligned} x^*\u0026amp;=\\underset{x}{\\operatorname{argmin}}~f(x,y^*(x))\\quad\\text{(outer optimization)}, \\\\ s.t.\\quad y^*(x)\u0026amp;=\\underset{y}{\\operatorname{argmin}}~g(x,y)\\quad\\text{(inner optimization)}. \\end{aligned} $$ Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives."
 }
 </script>
 
@@ -367,7 +367,7 @@
 
 
 
-  <title>Bi-level Optimization | Wenlin Chen</title>
+  <title>Bilevel Optimization | Wenlin Chen</title>
 </head>
 
 
@@ -759,7 +759,7 @@
   
   
 <div class="container pt-3">
-  <h1>Bi-level Optimization</h1>
+  <h1>Bilevel Optimization</h1>
 
   
 
@@ -816,17 +816,20 @@
   <div class="container">
 
     <div class="article-style">
-      <h2 id="bi-level-optimization">Bi-level Optimization</h2>
+      <h2 id="bilevel-optimization">Bilevel Optimization</h2>
 <h3 id="problem-setting">Problem Setting</h3>
 <ul>
-<li>Consider the following bi-level optimization objective:
+<li>Consider the following bilevel optimization problem:
 $$
 \begin{aligned}
 x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\
 s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}.
 \end{aligned}
 $$</li>
-<li>This bi-level optimization objective can be understood by separately considering the two objectives.
+</ul>
+<h3 id="understanding-the-bilevel-objective">Understanding the Bilevel Objective</h3>
+<ul>
+<li>The bilevel optimization objective can be understood by separately considering the two objectives.
 <ul>
 <li>Inner optimization: for each given value of $x$, the best response function $y^*(x)$ is defined as the value $y$ that minimizes the inner objective $g(x,y)$.</li>
 <li>Outer optimization: given the best response function $y^{*}(x)$, the optimum $x^*$ is defined as the value $x$ that minimizes the outer objective $f(x,y^{*}(x))$.</li>
@@ -834,6 +837,7 @@ $$</li>
 </li>
 <li>This results in a nested optimization procedure as evaluating the outer objective $f(x,y^*(x))$ at each value of $x$ requires solving an inner optimization problem to obtain the best response function $y^{*}(x)$ at that value of $x$.</li>
 </ul>
+<h2 id="solving-bilevel-optimization">Solving Bilevel Optimization</h2>
 <h3 id="gradient-based-optimization">Gradient-based Optimization</h3>
 <ul>
 <li>The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.</li>
@@ -857,7 +861,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
 </ul>
 </li>
 </ul>
-<h2 id="applications">Applications</h2>
+<h2 id="applications-in-machine-learning">Applications in Machine Learning</h2>
 <h3 id="hyperparmaeter-optimization">Hyperparmaeter Optimization</h3>
 <ul>
 <li>Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.</li>
@@ -895,7 +899,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;text=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;text=Bilevel%20Optimization" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -908,7 +912,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;t=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;t=Bilevel%20Optimization" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -921,7 +925,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
       
       
       <li>
-        <a href="mailto:?subject=Bi-level%20Optimization&amp;body=https://wenlin-chen.github.io/post/bilevel_optimization/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Bilevel%20Optimization&amp;body=https://wenlin-chen.github.io/post/bilevel_optimization/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -934,7 +938,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;title=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;title=Bilevel%20Optimization" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -947,7 +951,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
       
       
       <li>
-        <a href="whatsapp://send?text=Bi-level%20Optimization%20https://wenlin-chen.github.io/post/bilevel_optimization/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Bilevel%20Optimization%20https://wenlin-chen.github.io/post/bilevel_optimization/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -960,7 +964,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;title=Bi-level%20Optimization" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/bilevel_optimization/&amp;title=Bilevel%20Optimization" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

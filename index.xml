@@ -1084,21 +1084,24 @@ $$&lt;/p&gt;
     </item>
     
     <item>
-      <title>Bi-level Optimization</title>
+      <title>Bilevel Optimization</title>
       <link>https://wenlin-chen.github.io/post/bilevel_optimization/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/bilevel_optimization/</guid>
-      <description>&lt;h2 id=&#34;bi-level-optimization&#34;&gt;Bi-level Optimization&lt;/h2&gt;
+      <description>&lt;h2 id=&#34;bilevel-optimization&#34;&gt;Bilevel Optimization&lt;/h2&gt;
 &lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;Consider the following bi-level optimization objective:
+&lt;li&gt;Consider the following bilevel optimization problem:
 $$
 \begin{aligned}
 x^*&amp;amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\
 s.t.\quad y^*(x)&amp;amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}.
 \end{aligned}
 $$&lt;/li&gt;
-&lt;li&gt;This bi-level optimization objective can be understood by separately considering the two objectives.
+&lt;/ul&gt;
+&lt;h3 id=&#34;understanding-the-bilevel-objective&#34;&gt;Understanding the Bilevel Objective&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The bilevel optimization objective can be understood by separately considering the two objectives.
 &lt;ul&gt;
 &lt;li&gt;Inner optimization: for each given value of $x$, the best response function $y^*(x)$ is defined as the value $y$ that minimizes the inner objective $g(x,y)$.&lt;/li&gt;
 &lt;li&gt;Outer optimization: given the best response function $y^{*}(x)$, the optimum $x^*$ is defined as the value $x$ that minimizes the outer objective $f(x,y^{*}(x))$.&lt;/li&gt;
@@ -1106,6 +1109,7 @@ $$&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;This results in a nested optimization procedure as evaluating the outer objective $f(x,y^*(x))$ at each value of $x$ requires solving an inner optimization problem to obtain the best response function $y^{*}(x)$ at that value of $x$.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;solving-bilevel-optimization&#34;&gt;Solving Bilevel Optimization&lt;/h2&gt;
 &lt;h3 id=&#34;gradient-based-optimization&#34;&gt;Gradient-based Optimization&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.&lt;/li&gt;
@@ -1129,7 +1133,7 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&amp;rsquo;}=-\left.\left(
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;applications&#34;&gt;Applications&lt;/h2&gt;
+&lt;h2 id=&#34;applications-in-machine-learning&#34;&gt;Applications in Machine Learning&lt;/h2&gt;
 &lt;h3 id=&#34;hyperparmaeter-optimization&#34;&gt;Hyperparmaeter Optimization&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.&lt;/li&gt;

@@ -29,29 +29,182 @@
     </item>
     
     <item>
+      <title>Hierarchical Latent Variable Models</title>
+      <link>https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/</link>
+      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/</guid>
+      <description>&lt;h3 id=&#34;latent-variable-models&#34;&gt;Latent Variable Models&lt;/h3&gt;
+&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$.&lt;/li&gt;
+&lt;li&gt;Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$).&lt;/li&gt;
+&lt;li&gt;The joint distribution is factorized as the product of likelihood and prior:
+$$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$
+&lt;ul&gt;
+&lt;li&gt;The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network:
+$$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma_n^2I).$$&lt;/li&gt;
+&lt;li&gt;The prior is often chosen to be a simple distribution like standard Gaussian:
+$$p(z)=\mathcal{N}(z|0,I).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The marginal likelihood (or model evidence) is usually used for model selection:
+$$p_{\theta}(x)=\int p_{\theta}(x|z)p(z) dz.$$
+&lt;ul&gt;
+&lt;li&gt;Maximum marginal likelihood learning $\max_{\theta}\log p_{\theta}(x)$ in intractable due to the intractable integral.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The posterior is given by Bayes&amp;rsquo; rule:
+$$p_{\theta}(z|x)=\frac{p_{\theta}(x|z)p(z)}{p_{\theta}(x)}=\frac{p_{\theta}(x|z)p(z)}{\int p_{\theta}(x|z)p(z) dz}.$$
+&lt;ul&gt;
+&lt;li&gt;The posterior is also intractable due to the intractability of the marginal likelihood.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;variational-autoencoders-vaes&#34;&gt;Variational Autoencoders (VAEs)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;VAEs introduce an amortized Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
+$$q_{\phi}(z|x)=\mathcal{N}(z|m_{\phi}(x),\text{diag}(s_{\phi}(x)^2))\approx p_{\theta}(z|x).$$&lt;/li&gt;
+&lt;li&gt;The parameters of both the generation and inference models are jointly learned by maximizing a tractable evidence lower bound (ELBO) of the marginal likelihood:
+$$\log p_{\theta}(x)\geq\mathbb{E}_{q_{\phi}(z|x)}\left[\log\frac{p_{\theta}(x|z)p(z)}{q_{\phi}(z|x)}\right]=\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]-\text{KL}(q_{\phi}(z|x)||p(z))=\mathcal{F}(\theta,\phi).$$
+&lt;ul&gt;
+&lt;li&gt;It is quite hard to train both generation and inference models well in practice due to optimization difficulties (i.e., variational posterior collapsing to prior due to variational overpruning).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;hierarchical-latent-variable-models&#34;&gt;Hierarchical Latent Variable Models&lt;/h3&gt;
+&lt;h4 id=&#34;introduction-1&#34;&gt;Introduction&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;We slightly change the notation following the convention of hierarchical latent variable models.
+&lt;ul&gt;
+&lt;li&gt;Observed data: $x_0=x\in\mathcal{X}\subseteq\mathbb{R}^n$.&lt;/li&gt;
+&lt;li&gt;We employ a sequence of latent variables $x_1,\cdots,x_T\in\mathbb{R}^d$ ($d\leq n$) to capture data representation at different levels.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The results in a new marginal likelihood:
+$$p_{\theta}(x_0)=\int p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)dx_{1:T}.$$&lt;/li&gt;
+&lt;li&gt;The prior over the last latent variable is a Standard Gaussian:
+$$p(x_T)=\mathcal{N}(x_T|0,I).$$&lt;/li&gt;
+&lt;li&gt;The likelihoods (or decoders/generation models) are Gaussians with mean parameterized by a time-dependent neural network:
+$$p_{\theta}(x_{t-1}|x_t)=\mathcal{N}(x_{t-1}|\mu_{\theta}(x_t,t),\sigma_t^2 I).$$&lt;/li&gt;
+&lt;li&gt;The posterior is intractable as before:
+$$p_{\theta}(x_{1:T}|x_0)=\frac{p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)}{p_{\theta}(x_0)}.$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;hierarchical-variational-autoencoders-hvaes&#34;&gt;Hierarchical Variational Autoencoders (HVAEs)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;HVAEs approximate the intractable posterior with an amortized Gaussian variational posterior (or encoder/inference model):
+$$q_{\phi}(x_{1:T}|x_0)\approx p_{\theta}(x_{1:T}|x_0).$$&lt;/li&gt;
+&lt;li&gt;There are different design choices for the factorization of the inference model.
+&lt;ul&gt;
+&lt;li&gt;Bottom-up factorization:
+$$q_{\phi}(x_{1:T}|x_0)=\prod_{t=1}^T q_{\phi}(x_t|x_{t-1}).$$&lt;/li&gt;
+&lt;li&gt;Top-down factorization:
+$$q_{\phi}(x_{1:T}|x_0)=q_{\phi}(x_T|x_0)\prod_{t=2}^T q_{\phi}(x_{t-1}|x_t,x_0).$$&lt;/li&gt;
+&lt;li&gt;The mean and diagnoal variance of the factors $q_{\phi}(x_t|x_{t-1})$ and $q_{\phi}(x_{t-1}|x_t,x_0)$ are parameterized by neural networks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The tractable ELBO can be derived for HVAEs:
+$$\log p_{\theta}(x_0)\geq\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log\frac{p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)}{q_{\phi}(x_{1:T}|x_0)}\right]=\mathcal{F}(\theta,\phi).$$
+&lt;ul&gt;
+&lt;li&gt;For the bottom-up factorization, the ELBO becomes:
+$$\mathcal{F}(\theta,\phi)=\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=1}^{T-1}\text{KL}(q_{\phi}(x_t|x_{t-1})||p_{\theta}(x_t|x_{t+1}))-\text{KL}(q_{\phi}(x_T|x_{T-1})||p(x_T))\right].$$&lt;/li&gt;
+&lt;li&gt;For the top-down factorization, the ELBO becomes:
+$$\mathcal{F}(\theta,\phi)=\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=2}^T\text{KL}(q_{\phi}(x_{t-1}|x_t,x_0)||p_{\theta}(x_{t-1}|x_t))-\text{KL}(q_{\phi}(x_T|x_0)||p(x_T))\right].$$&lt;/li&gt;
+&lt;li&gt;The parameters of both generation and inference models are learned jointly by maximizing the ELBO.&lt;/li&gt;
+&lt;li&gt;To reduce the model size, parameter sharing between the generation and inference models is possible.&lt;/li&gt;
+&lt;li&gt;HVAEs are very flexible and expressive, since only the last latent variable $x_T$ is constrained to be standard Gaussian and the model will need to figure out the intermediate latent variables $x_{1:T-1}$.&lt;/li&gt;
+&lt;li&gt;This causes even more difficulties during optimization than VAEs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;denoising-diffusion-probabilistic-models-ddpms&#34;&gt;Denoising Diffusion Probabilistic Models (DDPMs)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;DDPMs are a class of state-of-the-art deep generative models.&lt;/li&gt;
+&lt;li&gt;DDPMs do not perform dimensionality reduction $(d=n)$ and define a fixed bottom-up inference model (or diffusion process):
+$$q(x_{1:T}|x_0)=\prod_{t=1}^T q(x_t|x_{t-1}).$$
+&lt;ul&gt;
+&lt;li&gt;The factors are predefined Gaussian convolution kernels:
+$$q(x_t|x_{t-1})=\mathcal{N}(x_t|\sqrt{\alpha_t}x_{t-1},(1-\alpha_t)I).$$
+$$\implies q(x_t|x_0)=\mathcal{N}(x_t|\sqrt{\bar{\alpha}_t}x_0,(1-\bar{\alpha}_t)I),\quad \bar{\alpha}_t=\prod_{s=1}^t \alpha_s.$$&lt;/li&gt;
+&lt;li&gt;The top-down form of the inference model is analytically tractable:
+$$q(x_{t-1}|x_t,x_0)=\mathcal{N}(x_{t-1}|\tilde{\mu}(x_t,x_0),\tilde{\sigma}_t^2),$$
+where
+$$\tilde{\mu}(x_t,x_0)=\frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}x_0+\frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}x_t,$$
+$$\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t}.$$
+&lt;ul&gt;
+&lt;li&gt;Sketch of proof: By Bayes&amp;rsquo; rule and the Markovian property, we have
+$$q(x_{t-1}|x_t,x_0)\propto q(x_t|x_{t-1},x_0)q(x_{t-1}|x_0)=q(x_t|q_{t-1})q(x_{t-1}|x_0).$$
+Since everything is Gaussian, $\tilde{\mu}(x_t,x_0)$ and $\tilde{\sigma}_t^2$ can be figured out by Gaussian moment matching.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The tractable ELBO can be derived for DDPMs:
+$$
+\begin{aligned}
+\mathcal{F}(\theta)
+&amp;amp;= \mathbb{E}_{q(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=2}^T\text{KL}(q(x_{t-1}|x_t,x_0)||p_{\theta}(x_{t-1}|x_t))-\text{KL}(q(x_T|x_0)||p(x_T))\right] \\
+&amp;amp;= \mathbb{E}_{q(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=2}^T \frac{\lVert\tilde{\mu}(x_t,x_0)-\mu_{\theta}(x_t,t)\rVert^2}{2\sigma_t^2}\right]+const.
+\end{aligned}
+$$
+&lt;ul&gt;
+&lt;li&gt;In constrast to HVAEs with flexible intermediate latent variables, the fixed inference model in DDPMs provides extra supervision signals for the intermediate latent variables.&lt;/li&gt;
+&lt;li&gt;The objective for each intermediate latent variable looks like a regression objective and is much easier to optimize.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The ELBO can be further simplified using variance reduction techniques with the reparameterization trick:
+&lt;ol&gt;
+&lt;li&gt;Reparameterize $x_t$ according to the predefined inference model $q(x_t|x_0)$:
+$$x_t=\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,~\epsilon\sim\mathcal{N}(0,I)\quad\implies\quad x_0=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}.$$&lt;/li&gt;
+&lt;li&gt;Plug the reparameterized $x_t$ into $\tilde{\mu}(x_t,x_0)$:
+$$\tilde{\mu}(x_t,x_0)=\tilde{\mu}\left(x_t,\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}\right)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon\right).$$&lt;/li&gt;
+&lt;li&gt;Reparameterize $\mu_{\theta}(x_t,t)$ in the same form:
+$$\mu_{\theta}(x_t,t)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_{\theta}(x_t,t)\right).$$&lt;/li&gt;
+&lt;li&gt;The regression objectives can then be simplified to noise matching with a time-dependent noise prediction network $\epsilon_{\theta}(x_t,t)$:
+$$\mathbb{E}_{\mathcal{N}(\epsilon|0,I)}[\lVert\epsilon-\epsilon_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,t)\rVert^2].$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Connection to score matching:
+&lt;ul&gt;
+&lt;li&gt;Denoising score matching with a time-dependent score network $s_{\theta}(x_t, t)$:
+$$
+\begin{aligned}
+\mathbb{E}_{p(x_t|x_0)}[\lVert\nabla_{x_t}\log p(x_t|x_0)-s_{\theta}(x_t, t)^2\rVert]
+&amp;amp;=\mathbb{E}_{p(x_t|x_0)}\left[\left\lVert\frac{x_t-\sqrt{\bar{\alpha}_t}x_0}{1-\bar{\alpha}_t}+s_{\theta}(x_t, t)\right\rVert^2\right] \\
+&amp;amp;= \mathbb{E}_{\mathcal{N}(\epsilon|0,I)}\left[\left\lVert\frac{\epsilon}{\sqrt{1-\bar{\alpha}_t}}+s_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t)\right\rVert^2\right].
+\end{aligned}
+$$&lt;/li&gt;
+&lt;li&gt;Therefore, the score network $s_{theta}(x_t,t)$ and the noise prediction network $\epsilon_{\theta}(x_t,t)$ have the following connection:
+$$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Score and Flow Matching</title>
       <link>https://wenlin-chen.github.io/post/score_flow_matching/</link>
       <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/score_flow_matching/</guid>
-      <description>&lt;h2 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h2&gt;
-&lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h3&gt;
+&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Data distribution $p_{\text{data}}(x)$ is unknown.&lt;/li&gt;
 &lt;li&gt;Samples from $p_{\text{data}}(x)$ are available.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;goals&#34;&gt;Goals&lt;/h3&gt;
+&lt;h4 id=&#34;goals&#34;&gt;Goals&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the density of the data distribution $p_{\text{data}}(x)$.&lt;/li&gt;
 &lt;li&gt;Generate new samples from $p_{\text{data}}(x)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;score-matching-for-diffusion-models&#34;&gt;Score Matching for Diffusion Models&lt;/h2&gt;
-&lt;h3 id=&#34;notation&#34;&gt;Notation&lt;/h3&gt;
+&lt;h3 id=&#34;score-matching-for-diffusion-models&#34;&gt;Score Matching for Diffusion Models&lt;/h3&gt;
+&lt;h4 id=&#34;notation&#34;&gt;Notation&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denote data by $x_0=x$ and noise by $x_T$.&lt;/li&gt;
 &lt;li&gt;Wiener process SDE ($dt&amp;gt;0$):
 $$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;diffusion-process&#34;&gt;Diffusion Process&lt;/h3&gt;
+&lt;h4 id=&#34;diffusion-process&#34;&gt;Diffusion Process&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Forward diffusion SDE ($dt&amp;gt;0$):
 $$dx_t=f_t(x_t)dt+g_tdw_t.$$
@@ -74,7 +227,7 @@ $$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h3&gt;
+&lt;h4 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.&lt;/li&gt;
 &lt;li&gt;Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
@@ -100,8 +253,8 @@ $$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t
 &lt;/li&gt;
 &lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;flow-matching-for-continuous-normalizing-flows&#34;&gt;Flow Matching for Continuous Normalizing Flows&lt;/h2&gt;
-&lt;h3 id=&#34;notation-1&#34;&gt;Notation&lt;/h3&gt;
+&lt;h3 id=&#34;flow-matching-for-continuous-normalizing-flows&#34;&gt;Flow Matching for Continuous Normalizing Flows&lt;/h3&gt;
+&lt;h4 id=&#34;notation-1&#34;&gt;Notation&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denote data by $x_T=x$ and noise by $x_0$
 &lt;ul&gt;
@@ -110,7 +263,7 @@ $$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;discrete-normalizing-flow&#34;&gt;Discrete Normalizing Flow&lt;/h3&gt;
+&lt;h4 id=&#34;discrete-normalizing-flow&#34;&gt;Discrete Normalizing Flow&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
 $$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
@@ -133,7 +286,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_T)}[\log p_{\theta}(x_T)].$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;continuous-normalizing-flow&#34;&gt;Continuous Normalizing Flow&lt;/h3&gt;
+&lt;h4 id=&#34;continuous-normalizing-flow&#34;&gt;Continuous Normalizing Flow&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Continuous residual flow transformation:
 $$x_{t+\delta}=x_t+\delta u_t(x_t).$$
@@ -191,7 +344,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_1)}[\log p_{\theta}(x_1)].$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;conditional-flow-matching&#34;&gt;Conditional Flow Matching&lt;/h3&gt;
+&lt;h4 id=&#34;conditional-flow-matching&#34;&gt;Conditional Flow Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;We want a simulation-free objective like score matching.&lt;/li&gt;
 &lt;li&gt;Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:
@@ -281,8 +434,8 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$&lt
       <link>https://wenlin-chen.github.io/post/score_identities/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/score_identities/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Data distribution:
 $$p(x)=\frac{\exp(-E(x))}{Z}.$$
@@ -306,7 +459,7 @@ $$\nabla_x \log p(x)=-\nabla_x E(x).$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;diffusion&#34;&gt;Diffusion&lt;/h3&gt;
+&lt;h4 id=&#34;diffusion&#34;&gt;Diffusion&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Gaussian convolution kernel:
 $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I).$$&lt;/li&gt;
@@ -317,8 +470,8 @@ $$p(x|y)=\frac{p(y|x)p(x)}{p(y)}.$$&lt;/li&gt;
 &lt;li&gt;Intractable noisy score:
 $$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx.$$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h2&gt;
-&lt;h3 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h3&gt;
+&lt;h3 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h3&gt;
+&lt;h4 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denoising score identity is a general formula without assumping the form of $p(y|x)$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx.$$&lt;/li&gt;
@@ -332,7 +485,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;tweedie-score-identity&#34;&gt;Tweedie Score Identity&lt;/h3&gt;
+&lt;h4 id=&#34;tweedie-score-identity&#34;&gt;Tweedie Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Tweedie score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
 $$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx.$$&lt;/li&gt;
@@ -346,7 +499,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h3&gt;
+&lt;h4 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Target score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
 $$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$&lt;/li&gt;
@@ -365,7 +518,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;mixed-score-identity&#34;&gt;Mixed Score Identity&lt;/h3&gt;
+&lt;h4 id=&#34;mixed-score-identity&#34;&gt;Mixed Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Mixed score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$ with a variance-preserving scheme $\sigma^2=1-\alpha^2$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.$$
@@ -378,8 +531,8 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;score-based-sampling&#34;&gt;Score-based Sampling&lt;/h2&gt;
-&lt;h3 id=&#34;monte-carlo-estimator&#34;&gt;Monte Carlo Estimator&lt;/h3&gt;
+&lt;h3 id=&#34;applications-in-score-based-sampling&#34;&gt;Applications in Score-based Sampling&lt;/h3&gt;
+&lt;h4 id=&#34;monte-carlo-estimator&#34;&gt;Monte Carlo Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with Tweedie score identity using Monte Carlo:
 $$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y).$$&lt;/li&gt;
@@ -398,7 +551,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;importance-sampling-estimator&#34;&gt;Importance Sampling Estimator&lt;/h3&gt;
+&lt;h4 id=&#34;importance-sampling-estimator&#34;&gt;Importance Sampling Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with the target score identity using importance sampling:
 $$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$
@@ -415,8 +568,8 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;score-based-generative-modeling&#34;&gt;Score-based Generative Modeling&lt;/h2&gt;
-&lt;h3 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h3&gt;
+&lt;h3 id=&#34;applications-in-score-based-generative-modeling&#34;&gt;Applications in Score-based Generative Modeling&lt;/h3&gt;
+&lt;h4 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
@@ -441,7 +594,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h3&gt;
+&lt;h4 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with the target score identity using with a KDE-style estimator:
 $$\nabla_y \log p(y)\approx\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).$$
@@ -1088,8 +1241,8 @@ $$&lt;/p&gt;
       <link>https://wenlin-chen.github.io/post/bilevel_optimization/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/bilevel_optimization/</guid>
-      <description>&lt;h2 id=&#34;bilevel-optimization&#34;&gt;Bilevel Optimization&lt;/h2&gt;
-&lt;h3 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;bilevel-optimization&#34;&gt;Bilevel Optimization&lt;/h3&gt;
+&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Consider the following bilevel optimization problem:
 $$
@@ -1099,7 +1252,7 @@ s.t.\quad y^*(x)&amp;amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;understanding-the-bilevel-objective&#34;&gt;Understanding the Bilevel Objective&lt;/h3&gt;
+&lt;h4 id=&#34;understanding-the-bilevel-objective&#34;&gt;Understanding the Bilevel Objective&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;The bilevel optimization objective can be understood by separately considering the two objectives.
 &lt;ul&gt;
@@ -1109,8 +1262,8 @@ $$&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;This results in a nested optimization procedure as evaluating the outer objective $f(x,y^*(x))$ at each value of $x$ requires solving an inner optimization problem to obtain the best response function $y^{*}(x)$ at that value of $x$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;solving-bilevel-optimization&#34;&gt;Solving Bilevel Optimization&lt;/h2&gt;
-&lt;h3 id=&#34;gradient-based-optimization&#34;&gt;Gradient-based Optimization&lt;/h3&gt;
+&lt;h3 id=&#34;solving-bilevel-optimization&#34;&gt;Solving Bilevel Optimization&lt;/h3&gt;
+&lt;h4 id=&#34;gradient-based-optimization&#34;&gt;Gradient-based Optimization&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.&lt;/li&gt;
 &lt;li&gt;We can calculate the hyper-gradient (i.e., total derivative) of $f(x,y^{*}(x))$ with respect to $x$ using the chain rule:
@@ -1122,7 +1275,7 @@ $$\frac{d f(x,y^{*}(x))}{d x}=\frac{\partial f(x,y^{*}(x))}{\partial x}+\frac{\p
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;implicit-function-theorem-ift&#34;&gt;Implicit Function Theorem (IFT)&lt;/h3&gt;
+&lt;h4 id=&#34;implicit-function-theorem-ift&#34;&gt;Implicit Function Theorem (IFT)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;An important observation is that $y^*(x)$ is a critical point (i.e., minimum) of $g(x,y)$ for each given $x$.&lt;/li&gt;
 &lt;li&gt;This enables us to employ Implicit Function Theorem (IFT) to calculate the Jacobian $\frac{\partial y^*(x)}{\partial x}$ for any $x&amp;rsquo;$:
@@ -1133,15 +1286,15 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&amp;rsquo;}=-\left.\left(
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;applications-in-machine-learning&#34;&gt;Applications in Machine Learning&lt;/h2&gt;
-&lt;h3 id=&#34;hyperparmaeter-optimization&#34;&gt;Hyperparmaeter Optimization&lt;/h3&gt;
+&lt;h3 id=&#34;applications-in-machine-learning&#34;&gt;Applications in Machine Learning&lt;/h3&gt;
+&lt;h4 id=&#34;hyperparmaeter-optimization&#34;&gt;Hyperparmaeter Optimization&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.&lt;/li&gt;
 &lt;li&gt;Let $f$ be the validation loss function and $g$ be the training loss function.&lt;/li&gt;
 &lt;li&gt;Inner optimization corresponds to finding the optimum model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.&lt;/li&gt;
 &lt;li&gt;Outer optimization corresponds to finding the optimum hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimum model parameters $y^{*}(x)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;meta-learning&#34;&gt;Meta-learning&lt;/h3&gt;
+&lt;h4 id=&#34;meta-learning&#34;&gt;Meta-learning&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.&lt;/li&gt;
 &lt;li&gt;Let $f$ be the validation loss function and $g$ be the training loss function.&lt;/li&gt;

@@ -816,8 +816,8 @@
   <div class="container">
 
     <div class="article-style">
-      <h2 id="bilevel-optimization">Bilevel Optimization</h2>
-<h3 id="problem-setting">Problem Setting</h3>
+      <h3 id="bilevel-optimization">Bilevel Optimization</h3>
+<h4 id="problem-setting">Problem Setting</h4>
 <ul>
 <li>Consider the following bilevel optimization problem:
 $$
@@ -827,7 +827,7 @@ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inne
 \end{aligned}
 $$</li>
 </ul>
-<h3 id="understanding-the-bilevel-objective">Understanding the Bilevel Objective</h3>
+<h4 id="understanding-the-bilevel-objective">Understanding the Bilevel Objective</h4>
 <ul>
 <li>The bilevel optimization objective can be understood by separately considering the two objectives.
 <ul>
@@ -837,8 +837,8 @@ $$</li>
 </li>
 <li>This results in a nested optimization procedure as evaluating the outer objective $f(x,y^*(x))$ at each value of $x$ requires solving an inner optimization problem to obtain the best response function $y^{*}(x)$ at that value of $x$.</li>
 </ul>
-<h2 id="solving-bilevel-optimization">Solving Bilevel Optimization</h2>
-<h3 id="gradient-based-optimization">Gradient-based Optimization</h3>
+<h3 id="solving-bilevel-optimization">Solving Bilevel Optimization</h3>
+<h4 id="gradient-based-optimization">Gradient-based Optimization</h4>
 <ul>
 <li>The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.</li>
 <li>We can calculate the hyper-gradient (i.e., total derivative) of $f(x,y^{*}(x))$ with respect to $x$ using the chain rule:
@@ -850,7 +850,7 @@ $$\frac{d f(x,y^{*}(x))}{d x}=\frac{\partial f(x,y^{*}(x))}{\partial x}+\frac{\p
 </ul>
 </li>
 </ul>
-<h3 id="implicit-function-theorem-ift">Implicit Function Theorem (IFT)</h3>
+<h4 id="implicit-function-theorem-ift">Implicit Function Theorem (IFT)</h4>
 <ul>
 <li>An important observation is that $y^*(x)$ is a critical point (i.e., minimum) of $g(x,y)$ for each given $x$.</li>
 <li>This enables us to employ Implicit Function Theorem (IFT) to calculate the Jacobian $\frac{\partial y^*(x)}{\partial x}$ for any $x&rsquo;$:
@@ -861,15 +861,15 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
 </ul>
 </li>
 </ul>
-<h2 id="applications-in-machine-learning">Applications in Machine Learning</h2>
-<h3 id="hyperparmaeter-optimization">Hyperparmaeter Optimization</h3>
+<h3 id="applications-in-machine-learning">Applications in Machine Learning</h3>
+<h4 id="hyperparmaeter-optimization">Hyperparmaeter Optimization</h4>
 <ul>
 <li>Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.</li>
 <li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>
 <li>Inner optimization corresponds to finding the optimum model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.</li>
 <li>Outer optimization corresponds to finding the optimum hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimum model parameters $y^{*}(x)$.</li>
 </ul>
-<h3 id="meta-learning">Meta-learning</h3>
+<h4 id="meta-learning">Meta-learning</h4>
 <ul>
 <li>Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.</li>
 <li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>

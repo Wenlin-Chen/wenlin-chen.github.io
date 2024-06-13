@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="Generative Modeling Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." />
+  <meta name="description" content="Latent Variable Models Introduction Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$. Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma_n^2I)." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/score_flow_matching/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/" />
 
   
 
@@ -279,7 +279,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/post/score_flow_matching/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/" />
 
   
   
@@ -296,18 +296,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/post/score_flow_matching/" />
-  <meta property="og:title" content="Score and Flow Matching | Wenlin Chen" />
-  <meta property="og:description" content="Generative Modeling Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/" />
+  <meta property="og:title" content="Hierarchical Latent Variable Models | Wenlin Chen" />
+  <meta property="og:description" content="Latent Variable Models Introduction Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$. Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma_n^2I)." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2024-06-09T00:00:00&#43;00:00"
+        content="2024-06-12T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-06-09T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-06-12T00:00:00&#43;00:00">
   
 
   
@@ -331,12 +331,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://wenlin-chen.github.io/post/score_flow_matching/"
+    "@id": "https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/"
   },
-  "headline": "Score and Flow Matching",
+  "headline": "Hierarchical Latent Variable Models",
   
-  "datePublished": "2024-06-09T00:00:00Z",
-  "dateModified": "2024-06-09T00:00:00Z",
+  "datePublished": "2024-06-12T00:00:00Z",
+  "dateModified": "2024-06-12T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Generative Modeling Problem Setting Data distribution $p_{\\text{data}}(x)$ is unknown. Samples from $p_{\\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\\text{data}}(x)$. Generate new samples from $p_{\\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$."
+  "description": "Latent Variable Models Introduction Observed data: $x\\in\\mathcal{X}\\subseteq\\mathbb{R}^n$. Latent variable: $z\\in\\mathbb{R}^d$ ($d\\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\\theta}(x,z)=p_{\\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\\theta}(x|z)=\\mathcal{N}(x|\\mu_{\\theta}(z),\\sigma_n^2I)."
 }
 </script>
 
@@ -367,11 +367,11 @@
 
 
 
-  <title>Score and Flow Matching | Wenlin Chen</title>
+  <title>Hierarchical Latent Variable Models | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d284046991e13e2dbafd3ab7467a0162" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="9f280963f32684168e6e31e432dbc4c5" >
 
   
   
@@ -759,7 +759,7 @@
   
   
 <div class="container pt-3">
-  <h1>Score and Flow Matching</h1>
+  <h1>Hierarchical Latent Variable Models</h1>
 
   
 
@@ -778,7 +778,7 @@
     
       
     
-    Jun 9, 2024
+    Jun 12, 2024
   </span>
   
 
@@ -787,7 +787,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    4 min read
   </span>
   
 
@@ -816,245 +816,150 @@
   <div class="container">
 
     <div class="article-style">
-      <h3 id="generative-modeling">Generative Modeling</h3>
-<h4 id="problem-setting">Problem Setting</h4>
+      <h3 id="latent-variable-models">Latent Variable Models</h3>
+<h4 id="introduction">Introduction</h4>
 <ul>
-<li>Data distribution $p_{\text{data}}(x)$ is unknown.</li>
-<li>Samples from $p_{\text{data}}(x)$ are available.</li>
-</ul>
-<h4 id="goals">Goals</h4>
+<li>Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$.</li>
+<li>Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$).</li>
+<li>The joint distribution is factorized as the product of likelihood and prior:
+$$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$
 <ul>
-<li>Estimate the density of the data distribution $p_{\text{data}}(x)$.</li>
-<li>Generate new samples from $p_{\text{data}}(x)$.</li>
-</ul>
-<h3 id="score-matching-for-diffusion-models">Score Matching for Diffusion Models</h3>
-<h4 id="notation">Notation</h4>
-<ul>
-<li>Denote data by $x_0=x$ and noise by $x_T$.</li>
-<li>Wiener process SDE ($dt&gt;0$):
-$$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$</li>
-</ul>
-<h4 id="diffusion-process">Diffusion Process</h4>
-<ul>
-<li>Forward diffusion SDE ($dt&gt;0$):
-$$dx_t=f_t(x_t)dt+g_tdw_t.$$
-<ul>
-<li>Forward diffusion SDE corrupts data to noise.</li>
-<li>$f_t(x_t)$ is a vector-valued drift coefficient.</li>
-<li>$g_t$ is a scalar-valued diffusion coefficient.</li>
+<li>The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network:
+$$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma_n^2I).$$</li>
+<li>The prior is often chosen to be a simple distribution like standard Gaussian:
+$$p(z)=\mathcal{N}(z|0,I).$$</li>
 </ul>
 </li>
-<li>Reverse diffusion SDE ($dt&lt;0$):
-$$dx_t=\left(f_t(x_t)-g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt + g_tdw_t.$$
+<li>The marginal likelihood (or model evidence) is usually used for model selection:
+$$p_{\theta}(x)=\int p_{\theta}(x|z)p(z) dz.$$
 <ul>
-<li>Reverse diffusion SDE recovers data from noise.</li>
+<li>Maximum marginal likelihood learning $\max_{\theta}\log p_{\theta}(x)$ in intractable due to the intractable integral.</li>
 </ul>
 </li>
-<li>Probability flow ODE ($dt&lt;0$):
-$$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
+<li>The posterior is given by Bayes&rsquo; rule:
+$$p_{\theta}(z|x)=\frac{p_{\theta}(x|z)p(z)}{p_{\theta}(x)}=\frac{p_{\theta}(x|z)p(z)}{\int p_{\theta}(x|z)p(z) dz}.$$
 <ul>
-<li>Probability flow ODE and reverse diffusion SDE have the same marginal $p_t(x_t)$ at every time $t$.</li>
+<li>The posterior is also intractable due to the intractability of the marginal likelihood.</li>
 </ul>
 </li>
 </ul>
-<h4 id="denoising-score-matching">Denoising Score Matching</h4>
+<h4 id="variational-autoencoders-vaes">Variational Autoencoders (VAEs)</h4>
 <ul>
-<li>To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.</li>
-<li>Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
-$$\mathcal{L}_{SM}(\theta) = \mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2].$$
+<li>VAEs introduce an amortized Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
+$$q_{\phi}(z|x)=\mathcal{N}(z|m_{\phi}(x),\text{diag}(s_{\phi}(x)^2))\approx p_{\theta}(z|x).$$</li>
+<li>The parameters of both the generation and inference models are jointly learned by maximizing a tractable evidence lower bound (ELBO) of the marginal likelihood:
+$$\log p_{\theta}(x)\geq\mathbb{E}_{q_{\phi}(z|x)}\left[\log\frac{p_{\theta}(x|z)p(z)}{q_{\phi}(z|x)}\right]=\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]-\text{KL}(q_{\phi}(z|x)||p(z))=\mathcal{F}(\theta,\phi).$$
 <ul>
-<li>The score matching objective is intractable since we do not know the true score $\nabla_{x_t} \log p_t(x_t)$.</li>
-</ul>
-</li>
-<li>We instead minimize the tractable denoising score matching objective:
-$$\mathcal{L}_{DSM}(\theta)=\mathbb{E}_{p_{t|0}(x_t|x_0)p_{\text{data}}(x_0)\mathcal{U}(t|0,T)}[\lambda(t)\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2].$$
-<ul>
-<li>It can be shown that $\nabla_{\theta}\mathcal{L}_{SM}(\theta)=\nabla_{\theta}\mathcal{L}_{DSM}(\theta).$</li>
-<li>Proof: See my notes on <a href="/post/score_identities">Score Identities for Sampling and Generative Modeling</a>.</li>
-</ul>
-</li>
-<li>Weighting function $\lambda(t)$:
-<ul>
-<li>Magnitude weighting balances the magnitude of the score matching loss across time $t$:
-$$\lambda(t)\propto1/\lVert \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2.$$</li>
-<li>Likelihood weighting $\lambda(t)=g_t^2$ leads to a nice connection between KL divergence and Fisher divergence:
-$$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$</li>
-</ul>
-</li>
-<li>One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.</li>
-</ul>
-<h3 id="flow-matching-for-continuous-normalizing-flows">Flow Matching for Continuous Normalizing Flows</h3>
-<h4 id="notation-1">Notation</h4>
-<ul>
-<li>Denote data by $x_T=x$ and noise by $x_0$
-<ul>
-<li>This follows the convention in flow matching.</li>
-<li>Note: this is the opposite to the definition in diffusion models.</li>
+<li>It is quite hard to train both generation and inference models well in practice due to optimization difficulties (i.e., variational posterior collapsing to prior due to variational overpruning).</li>
 </ul>
 </li>
 </ul>
-<h4 id="discrete-normalizing-flow">Discrete Normalizing Flow</h4>
+<h3 id="hierarchical-latent-variable-models">Hierarchical Latent Variable Models</h3>
+<h4 id="introduction-1">Introduction</h4>
 <ul>
-<li>Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
-$$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
-$$\log p(x_1)=\log \pi(\phi^{-1}(x_1)) +\log\left|\det\frac{\partial \phi^{-1}(x_1)}{\partial x_1}\right|.$$</li>
-<li>Compose $T$ discrete normalizing flows:
-$$x_{t+1}=\phi_{t}(x_t),$$
-$$\phi=\phi_{T-1}\circ\cdots\circ\phi_0,$$
-$$\log p(x_T)=\log \pi(\phi^{-1}(x_T)) +\sum_{t=1}^T\log\left|\det\frac{\partial \phi_{t-1}^{-1}(x_t)}{\partial x_{t}}\right|.$$</li>
-<li>Discrete residual flow transformation:
-$$\phi_t(x_t)=x_{t+1}=x_t+\delta u_t(x_t).$$
+<li>We slightly change the notation following the convention of hierarchical latent variable models.
 <ul>
-<li>$u_t$ needs to be $1/\delta$-Lipschitz to guarantee the invertibility of $\phi_t$.</li>
+<li>Observed data: $x_0=x\in\mathcal{X}\subseteq\mathbb{R}^n$.</li>
+<li>We employ a sequence of latent variables $x_1,\cdots,x_T\in\mathbb{R}^d$ ($d\leq n$) to capture data representation at different levels.</li>
 </ul>
 </li>
-<li>Learn a parametric flow transformation function $\phi_{\theta}$ by MLE:
-$$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_T)}[\log p_{\theta}(x_T)].$$
+<li>The results in a new marginal likelihood:
+$$p_{\theta}(x_0)=\int p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)dx_{1:T}.$$</li>
+<li>The prior over the last latent variable is a Standard Gaussian:
+$$p(x_T)=\mathcal{N}(x_T|0,I).$$</li>
+<li>The likelihoods (or decoders/generation models) are Gaussians with mean parameterized by a time-dependent neural network:
+$$p_{\theta}(x_{t-1}|x_t)=\mathcal{N}(x_{t-1}|\mu_{\theta}(x_t,t),\sigma_t^2 I).$$</li>
+<li>The posterior is intractable as before:
+$$p_{\theta}(x_{1:T}|x_0)=\frac{p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)}{p_{\theta}(x_0)}.$$</li>
+</ul>
+<h4 id="hierarchical-variational-autoencoders-hvaes">Hierarchical Variational Autoencoders (HVAEs)</h4>
 <ul>
-<li>We need to enforce invertibility in the architecture of $\phi_{\theta}$.</li>
-<li>We need to compute and backpropagate through the inverse and Jacobian for $\phi_{\theta}$.</li>
+<li>HVAEs approximate the intractable posterior with an amortized Gaussian variational posterior (or encoder/inference model):
+$$q_{\phi}(x_{1:T}|x_0)\approx p_{\theta}(x_{1:T}|x_0).$$</li>
+<li>There are different design choices for the factorization of the inference model.
+<ul>
+<li>Bottom-up factorization:
+$$q_{\phi}(x_{1:T}|x_0)=\prod_{t=1}^T q_{\phi}(x_t|x_{t-1}).$$</li>
+<li>Top-down factorization:
+$$q_{\phi}(x_{1:T}|x_0)=q_{\phi}(x_T|x_0)\prod_{t=2}^T q_{\phi}(x_{t-1}|x_t,x_0).$$</li>
+<li>The mean and diagnoal variance of the factors $q_{\phi}(x_t|x_{t-1})$ and $q_{\phi}(x_{t-1}|x_t,x_0)$ are parameterized by neural networks.</li>
+</ul>
+</li>
+<li>The tractable ELBO can be derived for HVAEs:
+$$\log p_{\theta}(x_0)\geq\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log\frac{p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)}{q_{\phi}(x_{1:T}|x_0)}\right]=\mathcal{F}(\theta,\phi).$$
+<ul>
+<li>For the bottom-up factorization, the ELBO becomes:
+$$\mathcal{F}(\theta,\phi)=\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=1}^{T-1}\text{KL}(q_{\phi}(x_t|x_{t-1})||p_{\theta}(x_t|x_{t+1}))-\text{KL}(q_{\phi}(x_T|x_{T-1})||p(x_T))\right].$$</li>
+<li>For the top-down factorization, the ELBO becomes:
+$$\mathcal{F}(\theta,\phi)=\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=2}^T\text{KL}(q_{\phi}(x_{t-1}|x_t,x_0)||p_{\theta}(x_{t-1}|x_t))-\text{KL}(q_{\phi}(x_T|x_0)||p(x_T))\right].$$</li>
+<li>The parameters of both generation and inference models are learned jointly by maximizing the ELBO.</li>
+<li>To reduce the model size, parameter sharing between the generation and inference models is possible.</li>
+<li>HVAEs are very flexible and expressive, since only the last latent variable $x_T$ is constrained to be standard Gaussian and the model will need to figure out the intermediate latent variables $x_{1:T-1}$.</li>
+<li>This causes even more difficulties during optimization than VAEs.</li>
 </ul>
 </li>
 </ul>
-<h4 id="continuous-normalizing-flow">Continuous Normalizing Flow</h4>
+<h4 id="denoising-diffusion-probabilistic-models-ddpms">Denoising Diffusion Probabilistic Models (DDPMs)</h4>
 <ul>
-<li>Continuous residual flow transformation:
-$$x_{t+\delta}=x_t+\delta u_t(x_t).$$
-$$u_t(x_t)=\lim_{\delta\to0}\frac{x_{t+\delta}-x_t}{\delta}=\frac{dx_t}{dt}.$$</li>
-<li>Continuous normalizing flow with a transformation function $\phi_t$ induced by the vector field $u_t$:
-$$\frac{dx_t}{dt}=u_t(x_t)\quad\implies\quad x_t=x_0+\int_0^t u_s(x_s)ds,\quad x_0\sim\pi(x_0),$$
+<li>DDPMs are a class of state-of-the-art deep generative models.</li>
+<li>DDPMs do not perform dimensionality reduction $(d=n)$ and define a fixed bottom-up inference model (or diffusion process):
+$$q(x_{1:T}|x_0)=\prod_{t=1}^T q(x_t|x_{t-1}).$$
 <ul>
-<li>Set $T=1$ following convention.</li>
-<li>The flow transformation is defined as $x_t=\phi_t(x_0)$.</li>
+<li>The factors are predefined Gaussian convolution kernels:
+$$q(x_t|x_{t-1})=\mathcal{N}(x_t|\sqrt{\alpha_t}x_{t-1},(1-\alpha_t)I).$$
+$$\implies q(x_t|x_0)=\mathcal{N}(x_t|\sqrt{\bar{\alpha}_t}x_0,(1-\bar{\alpha}_t)I),\quad \bar{\alpha}_t=\prod_{s=1}^t \alpha_s.$$</li>
+<li>The top-down form of the inference model is analytically tractable:
+$$q(x_{t-1}|x_t,x_0)=\mathcal{N}(x_{t-1}|\tilde{\mu}(x_t,x_0),\tilde{\sigma}_t^2),$$
+where
+$$\tilde{\mu}(x_t,x_0)=\frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alpha}_t}x_0+\frac{\sqrt{\alpha_t}(1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t}x_t,$$
+$$\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t}.$$
+<ul>
+<li>Sketch of proof: By Bayes&rsquo; rule and the Markovian property, we have
+$$q(x_{t-1}|x_t,x_0)\propto q(x_t|x_{t-1},x_0)q(x_{t-1}|x_0)=q(x_t|q_{t-1})q(x_{t-1}|x_0).$$
+Since everything is Gaussian, $\tilde{\mu}(x_t,x_0)$ and $\tilde{\sigma}_t^2$ can be figured out by Gaussian moment matching.</li>
 </ul>
 </li>
-<li>The probability path $p_t$ induced by the vector field $u_t$ follows
-$$\frac{d}{dt}\log p_t(x_t)=-\nabla_{x_t}\cdot u_t(x_t)\quad\implies\quad\log p_t(x_t)=\log\pi(x_0)-\int_{0}^t\nabla_{x_s}\cdot u_s(x_s)ds.$$
-<ul>
-<li>Proof: By the transport equation, we have
+</ul>
+</li>
+<li>The tractable ELBO can be derived for DDPMs:
 $$
 \begin{aligned}
-\frac{\partial}{\partial t} p_t(x_t)
-&amp;= -\nabla_{x_t}\cdot(u_t(x_t)p_t(x_t)) \\
-&amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t)-\left&lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&gt;.
-\end{aligned}$$
-The total derivative is then given by
-$$
-\begin{aligned}
-\frac{d}{d t} p_t(x_t)
-&amp;= \frac{\partial}{\partial t} p_t(x_t) + \left&lt;\nabla_{x_t}p_t(x_t),\frac{dx_t}{d t}\right&gt; \\
-&amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t)-\left&lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&gt; + \left&lt;\nabla_{x_t}p_t(x_t),u_t(x_t)\right&gt; \\
-&amp;= -p_t(x_t)\nabla_{x_t}\cdot u_t(x_t).
+\mathcal{F}(\theta)
+&amp;= \mathbb{E}_{q(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=2}^T\text{KL}(q(x_{t-1}|x_t,x_0)||p_{\theta}(x_{t-1}|x_t))-\text{KL}(q(x_T|x_0)||p(x_T))\right] \\
+&amp;= \mathbb{E}_{q(x_{1:T}|x_0)}\left[\log p_{\theta}(x_0|x_1)-\sum_{t=2}^T \frac{\lVert\tilde{\mu}(x_t,x_0)-\mu_{\theta}(x_t,t)\rVert^2}{2\sigma_t^2}\right]+const.
 \end{aligned}
 $$
-Therefore, we have
-$$\frac{d}{dt}\log p_t(x_t)=\frac{1}{p_t(x_t)}\frac{d}{d t} p_t(x_t)=-\nabla_{x_t}\cdot u_t(x_t).$$</li>
+<ul>
+<li>In constrast to HVAEs with flexible intermediate latent variables, the fixed inference model in DDPMs provides extra supervision signals for the intermediate latent variables.</li>
+<li>The objective for each intermediate latent variable looks like a regression objective and is much easier to optimize.</li>
 </ul>
 </li>
-<li>In practice, both $x_t$ and $\log p_t(x_t)$ can be solved jointly using a numerical ODE integrator:
-$$
-\frac{d}{dt}
-\begin{pmatrix}
-x_t \\
-\log p_t(x_t)
-\end{pmatrix}=
-\begin{pmatrix}
-u_t(x_t) \\
--\nabla_{x_t}\cdot u_t(x_t)
-\end{pmatrix}.
-$$</li>
-<li>Note that there are many different vector fields $u_t$ that can induce probability paths between $p_0$ and $p_1$.</li>
-<li>Learn a parameteric time-dependent vector field $u_{\theta}(x_t, t)$ by MLE:
-$$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_1)}[\log p_{\theta}(x_1)].$$
-<ul>
-<li>We do not need to choose the number of flow transformations as in composed discrete normalizing flows.</li>
-<li>$u_t$ only needs to be $L$-Lipschitz with any value $L$ to guarantee the invertibility of $\phi_t$.</li>
-<li>Numerical simulation of the ODE with backpropagation makes training very slow and expensive.</li>
-<li>Divergence estimator scales poorly with dimensionality.</li>
-</ul>
+<li>The ELBO can be further simplified using variance reduction techniques with the reparameterization trick:
+<ol>
+<li>Reparameterize $x_t$ according to the predefined inference model $q(x_t|x_0)$:
+$$x_t=\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,~\epsilon\sim\mathcal{N}(0,I)\quad\implies\quad x_0=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}.$$</li>
+<li>Plug the reparameterized $x_t$ into $\tilde{\mu}(x_t,x_0)$:
+$$\tilde{\mu}(x_t,x_0)=\tilde{\mu}\left(x_t,\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}\right)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon\right).$$</li>
+<li>Reparameterize $\mu_{\theta}(x_t,t)$ in the same form:
+$$\mu_{\theta}(x_t,t)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_{\theta}(x_t,t)\right).$$</li>
+<li>The regression objectives can then be simplified to noise matching with a time-dependent noise prediction network $\epsilon_{\theta}(x_t,t)$:
+$$\mathbb{E}_{\mathcal{N}(\epsilon|0,I)}[\lVert\epsilon-\epsilon_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,t)\rVert^2].$$</li>
+</ol>
 </li>
-</ul>
-<h4 id="conditional-flow-matching">Conditional Flow Matching</h4>
+<li>Connection to score matching:
 <ul>
-<li>We want a simulation-free objective like score matching.</li>
-<li>Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:
-$$\mathcal{L}_{FM}(\theta)=\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t, t)-u_t(x_t)\rVert^2].$$
-<ul>
-<li>The flow matching objective is intractable since we do not know the true vector field $u_t(x_t)$.</li>
-</ul>
-</li>
-<li>To circumvent the intractability, we consider a specific probability path $p_t(x_t)$ defined by a conditional probability path $p_{t|1}(x_t|x_1)$:
-$$p_t(x_t)=\int p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1,$$
-with boundary conditions
-$$p_{0|1}(x)=\pi(x)\implies p_0(x_0)=\pi(x_0),$$
-$$p_{1|1}(x)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</li>
-<li>The marginal vector field $u_t$ can be obtained from the corresponding conditional vector field $u_{t|1}(x_t|x_1)$ and conditional probability path $p_{t|1}(x_t|x_1)$ through the following identity:
-$$u_t(x_t)=\mathbb{E}_{p_{1|t}(x_1|x_t)}[u_{t|1}(x_t|x_1)]=\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}{p_t(x_t)}dx_1.$$
-<ul>
-<li>Proof: We verify that this is consistent with the transport equation for the marginals.
+<li>Denoising score matching with a time-dependent score network $s_{\theta}(x_t, t)$:
 $$
 \begin{aligned}
-\frac{\partial}{\partial t}p_t(x_t)
-&amp;= \frac{\partial}{\partial t} \int p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1 \\
-&amp;= \int \frac{\partial}{\partial t} p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1 \\
-&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)) p_{\text{data}}(x_1)dx_1 \\
-&amp;= - \int \nabla_{x_t}\cdot (u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)) dx_1 \\
-&amp;= - \nabla_{x_t}\cdot  \int  u_{t|1}(x_t|x_1)p_{t|1}(x_t|x_1)p_{\text{data}}(x_1) dx_1  \\
-&amp;= - \nabla_{x_t}\cdot \left( \int  u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}{p_t(x_t)} dx_1 p_t(x_t) \right) \\
-&amp;= - \nabla_{x_t}\cdot (u_t(x_t) p_t(x_t)). \\
+\mathbb{E}_{p(x_t|x_0)}[\lVert\nabla_{x_t}\log p(x_t|x_0)-s_{\theta}(x_t, t)^2\rVert]
+&amp;=\mathbb{E}_{p(x_t|x_0)}\left[\left\lVert\frac{x_t-\sqrt{\bar{\alpha}_t}x_0}{1-\bar{\alpha}_t}+s_{\theta}(x_t, t)\right\rVert^2\right] \\
+&amp;= \mathbb{E}_{\mathcal{N}(\epsilon|0,I)}\left[\left\lVert\frac{\epsilon}{\sqrt{1-\bar{\alpha}_t}}+s_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t)\right\rVert^2\right].
 \end{aligned}
 $$</li>
+<li>Therefore, the score network $s_{theta}(x_t,t)$ and the noise prediction network $\epsilon_{\theta}(x_t,t)$ have the following connection:
+$$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$</li>
 </ul>
 </li>
-<li>We now introduce a tractable conditional flow matching objective:
-$$\mathcal{L}_{CFM}(\theta)=\mathbb{E}_{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(x_t,t)-u_{t|1}(x_t|x_1) \rVert^2].$$
-<ul>
-<li>It can be shown that $\nabla_{\theta}\mathcal{L}_{FM}(\theta)=\nabla_{\theta}\mathcal{L}_{CFM}(\theta)$.</li>
-<li>Proof: We follow a similar idea to the proof of denoising score matching but with the following equality.
-$$
-\begin{aligned}
-\mathbb{E}_{p_t(x_t)}[\left&lt;u_{\theta}(x_t,t),u_t(x_t)\right&gt;]
-&amp;= \int \left&lt;u_{\theta}(x_t,t),u_t(x_t)\right&gt; p_t(x_t) dx_t \\
-&amp;= \int \left&lt;u_{\theta}(x_t,t),\int u_{t|1}(x_t|x_1)\frac{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}{p_t(x_t)}dx_1\right&gt; p_t(x_t) dx_t \\
-&amp;= \iint \left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt; p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)dx_1 dx_t \\
-&amp;= \mathbb{E}_{p_{t|1}(x_t|x_1)p_{\text{data}}(x_1)}[\left&lt;u_{\theta}(x_t,t),u_{t|1}(x_t|x_1)\right&gt;].
-\end{aligned}
-$$</li>
-</ul>
-</li>
-<li>In practice, we may want our conditional vector field $u_{t|1}$ to generate a conditional Gaussian probability path:
-$$p_{t|1}(x_t|x_1)=\mathcal{N}(x_t|\mu_t(x_1),\sigma_t(x_1)^2I),$$
-with boundary conditions
-$$\mu_0(x_1)=0,~\sigma_0(x_1)=1\quad\implies\quad p_{0|1}(x|x_1)=\pi(x)=\mathcal{N}(x|0,I),$$
-$$\mu_1(x_1)=x_1,\quad\sigma_1(x_1)=0\quad\implies\quad p_{1|1}(x|x_1)=\delta(x-x_1).$$
-<ul>
-<li>One correpsonding conditional vector field is given by
-$$u_{t|1}(x_t|x_1)=\frac{x-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t},$$
-with a conditional flow transformation
-$$\phi_{t|1}(x_0|x_1)=\mu_t(x_1)+\sigma_t(x_1)x_0.$$</li>
-<li>Proof: We verify that the following two quantities are identical.
-$$\frac{d}{dt}\phi_{t|1}(x_0|x_1)=\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1),$$
-and
-$$
-\begin{aligned}
-u_{t|1}(\phi_{t|1}(x_0|x_1)|x_1)
-&amp;= \frac{\mu_t(x_1)+\sigma_t(x_1)x_0-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t} \\
-&amp;=x_0\frac{d}{dt}\sigma_t(x_1)+\frac{d}{dt}\mu_t(x_1).
-\end{aligned}
-$$</li>
-</ul>
-</li>
-<li>Two problems with conditional flow matching:
-<ul>
-<li>The estimate of the gradient $\nabla_{\theta} \mathcal{L}_{CFM}(\theta)$ is of high variance since there are many possible data $x_1$ corresponding to a noise $x_0$ due to intersection of probability paths for different realizations of $u_{t|1}(x_t|x_1)$ with different values of the conditioning variable $x_1$.</li>
-<li>Sampling is slow at generation time since it is difficult to integrate ODE with non-straight path induced by the learned marginal vector field $u_{\theta}(u_t,t)$.</li>
-</ul>
-</li>
-<li>Coupling: instead of maping between data $x_1$ and noise $x_0$ (i.e., one-sided conditioning), we can similarly map between any two variables $x_0$ and $x_1$ with two-sided conditioning:
-$$p_t(x_t)=\iint p_{t|0,1}(x_t|x_0,x_1)p_{\text{data}}(x_0,x_1)dx_0dx_1,$$
-with boundary conditions
-$$p_{0|0,1}(x|x_0,x_1)=\delta(x-x_0)\implies p_0(x_0)=p_{\text{data}}(x_0),$$
-$$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</li>
 </ul>
 
     </div>
@@ -1079,7 +984,7 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</l
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/score_flow_matching/&amp;text=Score%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/&amp;text=Hierarchical%20Latent%20Variable%20Models" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1092,7 +997,7 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</l
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/score_flow_matching/&amp;t=Score%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/&amp;t=Hierarchical%20Latent%20Variable%20Models" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1105,7 +1010,7 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</l
       
       
       <li>
-        <a href="mailto:?subject=Score%20and%20Flow%20Matching&amp;body=https://wenlin-chen.github.io/post/score_flow_matching/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Hierarchical%20Latent%20Variable%20Models&amp;body=https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1118,7 +1023,7 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</l
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/score_flow_matching/&amp;title=Score%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/&amp;title=Hierarchical%20Latent%20Variable%20Models" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1131,7 +1036,7 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</l
       
       
       <li>
-        <a href="whatsapp://send?text=Score%20and%20Flow%20Matching%20https://wenlin-chen.github.io/post/score_flow_matching/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Hierarchical%20Latent%20Variable%20Models%20https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1144,7 +1049,7 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$</l
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/score_flow_matching/&amp;title=Score%20and%20Flow%20Matching" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/&amp;title=Hierarchical%20Latent%20Variable%20Models" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

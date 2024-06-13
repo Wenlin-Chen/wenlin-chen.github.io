@@ -866,15 +866,15 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
 <ul>
 <li>Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.</li>
 <li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>
-<li>Inner optimization corresponds to finding the optimum model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.</li>
-<li>Outer optimization corresponds to finding the optimum hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimum model parameters $y^{*}(x)$.</li>
+<li>Inner optimization corresponds to finding the optimal model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.</li>
+<li>Outer optimization corresponds to finding the optimal hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimal model parameters $y^{*}(x)$.</li>
 </ul>
 <h4 id="meta-learning">Meta-learning</h4>
 <ul>
 <li>Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.</li>
 <li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>
-<li>Inner optimization corresponds to finding the optimum task-specific parameters $y^*(x)$ for each task by minimizing the training loss $g(x,y)$ given current meta-learned parameters $x$ shared across all tasks.</li>
-<li>Outer optimization corresponds to finding the optimum meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimum task-specific parameters $y^{*}(x)$ for each task.</li>
+<li>Inner optimization corresponds to finding the optimal task-specific parameters $y^*(x)$ for each task by minimizing the training loss $g(x,y)$ given current meta-learned parameters $x$ shared across all tasks.</li>
+<li>Outer optimization corresponds to finding the optimal meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimal task-specific parameters $y^{*}(x)$ for each task.</li>
 </ul>
 
     </div>

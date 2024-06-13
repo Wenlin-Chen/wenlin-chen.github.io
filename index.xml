@@ -1292,15 +1292,15 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&amp;rsquo;}=-\left.\left(
 &lt;ul&gt;
 &lt;li&gt;Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.&lt;/li&gt;
 &lt;li&gt;Let $f$ be the validation loss function and $g$ be the training loss function.&lt;/li&gt;
-&lt;li&gt;Inner optimization corresponds to finding the optimum model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.&lt;/li&gt;
-&lt;li&gt;Outer optimization corresponds to finding the optimum hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimum model parameters $y^{*}(x)$.&lt;/li&gt;
+&lt;li&gt;Inner optimization corresponds to finding the optimal model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.&lt;/li&gt;
+&lt;li&gt;Outer optimization corresponds to finding the optimal hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimal model parameters $y^{*}(x)$.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;meta-learning&#34;&gt;Meta-learning&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.&lt;/li&gt;
 &lt;li&gt;Let $f$ be the validation loss function and $g$ be the training loss function.&lt;/li&gt;
-&lt;li&gt;Inner optimization corresponds to finding the optimum task-specific parameters $y^*(x)$ for each task by minimizing the training loss $g(x,y)$ given current meta-learned parameters $x$ shared across all tasks.&lt;/li&gt;
-&lt;li&gt;Outer optimization corresponds to finding the optimum meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimum task-specific parameters $y^{*}(x)$ for each task.&lt;/li&gt;
+&lt;li&gt;Inner optimization corresponds to finding the optimal task-specific parameters $y^*(x)$ for each task by minimizing the training loss $g(x,y)$ given current meta-learned parameters $x$ shared across all tasks.&lt;/li&gt;
+&lt;li&gt;Outer optimization corresponds to finding the optimal meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimal task-specific parameters $y^{*}(x)$ for each task.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

@@ -208,6 +208,7 @@ $$dx_t=\left(f_t(x_t)-g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt + g_tdw_t.$$
 $$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
 &lt;ul&gt;
 &lt;li&gt;Probability flow ODE and reverse diffusion SDE have the same marginal $p_t(x_t)$ at every time $t$.&lt;/li&gt;
+&lt;li&gt;Probability flow ODE allows for likelihood evaluation for test or generated samples as it converts a diffusion model to a continuous normalizing flow (see the flow section beloww).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;

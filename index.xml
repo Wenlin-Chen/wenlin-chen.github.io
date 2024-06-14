@@ -42,7 +42,7 @@
 $$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$
 &lt;ul&gt;
 &lt;li&gt;The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network:
-$$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma_n^2I).$$&lt;/li&gt;
+$$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma^2I).$$&lt;/li&gt;
 &lt;li&gt;The prior is often chosen to be a simple distribution like standard Gaussian:
 $$p(z)=\mathcal{N}(z|0,I).$$&lt;/li&gt;
 &lt;/ul&gt;
@@ -63,7 +63,7 @@ $$p_{\theta}(z|x)=\frac{p_{\theta}(x|z)p(z)}{p_{\theta}(x)}=\frac{p_{\theta}(x|z
 &lt;h4 id=&#34;variational-autoencoders-vaes&#34;&gt;Variational Autoencoders (VAEs)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;VAEs introduce an amortized Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
-$$q_{\phi}(z|x)=\mathcal{N}(z|m_{\phi}(x),\text{diag}(s_{\phi}(x)^2))\approx p_{\theta}(z|x).$$&lt;/li&gt;
+$$q_{\phi}(z|x)=\mathcal{N}(z|\tilde{\mu}_{\phi}(x),\text{diag}(\tilde{\sigma}_{\phi}(x)^2))\approx p_{\theta}(z|x).$$&lt;/li&gt;
 &lt;li&gt;The parameters of both the generation and inference models are jointly learned by maximizing a tractable evidence lower bound (ELBO) of the log marginal likelihood:
 $$\log p_{\theta}(x)\geq\mathbb{E}_{q_{\phi}(z|x)}\left[\log\frac{p_{\theta}(x|z)p(z)}{q_{\phi}(z|x)}\right]=\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]-\text{KL}(q_{\phi}(z|x)||p(z))=\mathcal{F}(\theta,\phi).$$
 &lt;ul&gt;

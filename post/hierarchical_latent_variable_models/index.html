@@ -847,10 +847,20 @@ $$p_{\theta}(z|x)=\frac{p_{\theta}(x|z)p(z)}{p_{\theta}(x)}=\frac{p_{\theta}(x|z
 <ul>
 <li>VAEs introduce an amortized Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
 $$q_{\phi}(z|x)=\mathcal{N}(z|m_{\phi}(x),\text{diag}(s_{\phi}(x)^2))\approx p_{\theta}(z|x).$$</li>
-<li>The parameters of both the generation and inference models are jointly learned by maximizing a tractable evidence lower bound (ELBO) of the marginal likelihood:
+<li>The parameters of both the generation and inference models are jointly learned by maximizing a tractable evidence lower bound (ELBO) of the log marginal likelihood:
 $$\log p_{\theta}(x)\geq\mathbb{E}_{q_{\phi}(z|x)}\left[\log\frac{p_{\theta}(x|z)p(z)}{q_{\phi}(z|x)}\right]=\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]-\text{KL}(q_{\phi}(z|x)||p(z))=\mathcal{F}(\theta,\phi).$$
 <ul>
-<li>It is quite hard to train both generation and inference models well in practice due to optimization difficulties (i.e., variational posterior collapsing to prior due to variational overpruning).</li>
+<li>The first term $\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]$ controls the reconstruction error.</li>
+<li>The second term $\text{KL}(q_{\phi}(z|x)||p(z))$ regularizes the approximate posterior to be close to the prior.</li>
+<li>It is quite hard to train both generation and inference models well in practice due to difficulties in balancing the two terms above during optimization (e.g., the variational posterior can easily collapse to the prior due to variational overpruning).</li>
+</ul>
+</li>
+<li>The gap between the ELBO and log marginal likelihood is given by:
+$$\log p_{\theta}(x)-\mathcal{F}(\theta,\phi)=\text{KL}(q_{\phi}(z|x)||p_{\theta}(z|x))\geq 0.$$
+<ul>
+<li>Maximizing the ELBO is equivalent to minimizing the KL divergence between the approximate and true posteriors.</li>
+<li>The ELBO attains equality when the approximate posterior is exactly the same as the true posterior:
+$$\log p_{\theta}(x)=\mathcal{F}(\theta,\phi)\iff\text{KL}(q_{\phi}(z|x)||p_{\theta}(z|x))=0\iff q_{\phi}(z|x)=p_{\theta}(z|x).$$</li>
 </ul>
 </li>
 </ul>
@@ -902,9 +912,10 @@ $$\mathcal{F}(\theta,\phi)=\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log p_{\thet
 <h4 id="denoising-diffusion-probabilistic-models-ddpms">Denoising Diffusion Probabilistic Models (DDPMs)</h4>
 <ul>
 <li>DDPMs are a class of state-of-the-art deep generative models.</li>
-<li>DDPMs do not perform dimensionality reduction $(d=n)$ and define a fixed bottom-up inference model (or diffusion process):
+<li>DDPMs define a fixed bottom-up inference model (or diffusion process):
 $$q(x_{1:T}|x_0)=\prod_{t=1}^T q(x_t|x_{t-1}).$$
 <ul>
+<li>No dimensionality reduction is performed $(d=n)$.</li>
 <li>The factors are predefined Gaussian convolution kernels:
 $$q(x_t|x_{t-1})=\mathcal{N}(x_t|\sqrt{\alpha_t}x_{t-1},(1-\alpha_t)I).$$
 $$\implies q(x_t|x_0)=\mathcal{N}(x_t|\sqrt{\bar{\alpha}_t}x_0,(1-\bar{\alpha}_t)I),\quad \bar{\alpha}_t=\prod_{s=1}^t \alpha_s.$$</li>
@@ -936,11 +947,11 @@ $$
 </li>
 <li>The ELBO can be further simplified using variance reduction techniques with the reparameterization trick:
 <ol>
-<li>Reparameterize $x_t$ according to the predefined inference model $q(x_t|x_0)$:
-$$x_t=\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,~\epsilon\sim\mathcal{N}(0,I)\quad\implies\quad x_0=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}.$$</li>
-<li>Plug the reparameterized $x_t$ into $\tilde{\mu}(x_t,x_0)$:
+<li>Reparameterize $x_0$ according to the predefined inference model $q(x_t|x_0)$:
+$$x_t=\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon\quad\implies\quad x_0=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}},\quad\epsilon\sim\mathcal{N}(0,I).$$</li>
+<li>Plug in the reparameterized $x_0$ to $\tilde{\mu}(x_t,x_0)$:
 $$\tilde{\mu}(x_t,x_0)=\tilde{\mu}\left(x_t,\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}\right)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon\right).$$</li>
-<li>Reparameterize $\mu_{\theta}(x_t,t)$ in the same form:
+<li>Reparameterize $\mu_{\theta}(x_t,t)$ in the same form as $\tilde{\mu}(x_t,x_0)$:
 $$\mu_{\theta}(x_t,t)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_{\theta}(x_t,t)\right).$$</li>
 <li>The regression objectives can then be simplified to noise matching with a time-dependent noise prediction network $\epsilon_{\theta}(x_t,t)$:
 $$\mathbb{E}_{\mathcal{N}(\epsilon|0,I)}[\lVert\epsilon-\epsilon_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,t)\rVert^2].$$</li>
@@ -956,7 +967,7 @@ $$
 &amp;= \mathbb{E}_{\mathcal{N}(\epsilon|0,I)}\left[\left\lVert\frac{\epsilon}{\sqrt{1-\bar{\alpha}_t}}+s_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t)\right\rVert^2\right].
 \end{aligned}
 $$</li>
-<li>Therefore, the score network $s_{theta}(x_t,t)$ and the noise prediction network $\epsilon_{\theta}(x_t,t)$ have the following connection:
+<li>Therefore, the score network $s_{\theta}(x_t,t)$ and the noise prediction network $\epsilon_{\theta}(x_t,t)$ have the following connection:
 $$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$</li>
 </ul>
 </li>

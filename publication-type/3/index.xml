@@ -5,12 +5,20 @@
     <link>https://wenlin-chen.github.io/publication-type/3/</link>
       <atom:link href="https://wenlin-chen.github.io/publication-type/3/index.xml" rel="self" type="application/rss+xml" />
     <description>3</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Fri, 26 Jul 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>3</title>
       <link>https://wenlin-chen.github.io/publication-type/3/</link>
     </image>
+    
+    <item>
+      <title>ReLU Characteristic Activation Analysis</title>
+      <link>https://wenlin-chen.github.io/publication/chen2024relu/</link>
+      <pubDate>Fri, 26 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2024relu/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>It HAS to be Subjective: Human Annotator Simulation via Zero-shot Density Estimation</title>
@@ -25,14 +33,6 @@
       <link>https://wenlin-chen.github.io/publication/chen2023leveraging/</link>
       <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/publication/chen2023leveraging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ReLU Characteristic Activation Analysis</title>
-      <link>https://wenlin-chen.github.io/publication/chen2023relu/</link>
-      <pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2023relu/</guid>
       <description></description>
     </item>
     

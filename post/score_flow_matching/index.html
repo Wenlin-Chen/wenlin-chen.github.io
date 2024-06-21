@@ -1032,17 +1032,23 @@ $$\mu_1(x_1)=x_1,\quad\sigma_1(x_1)=0\quad\implies\quad p_{1|1}(x|x_1)=\delta(x-
 <li>One correpsonding conditional vector field is given by
 $$u_{t|1}(x_t|x_1)=\frac{x-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t},$$
 with a conditional flow transformation
-$$\phi_{t|1}(x_0|x_1)=\mu_t(x_1)+\sigma_t(x_1)x_0.$$</li>
+$$x_t(x_1)=\phi_{t|1}(x_0|x_1)=\mu_t(x_1)+\sigma_t(x_1)x_0.$$</li>
 <li>Proof: We verify that the following two quantities are identical.
-$$\frac{d}{dt}\phi_{t|1}(x_0|x_1)=\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1),$$
+$$\frac{d}{dt}x_t(x_1)=\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1),$$
 and
 $$
 \begin{aligned}
-u_{t|1}(\phi_{t|1}(x_0|x_1)|x_1)
+u_{t|1}(x_t(x_1)|x_1)
 &amp;= \frac{\mu_t(x_1)+\sigma_t(x_1)x_0-\mu_t(x_1)}{\sigma_t(x_1)}\frac{d\sigma_t(x_1)}{d t}+\frac{d \mu_t(x_1)}{d t} \\
 &amp;=x_0\frac{d}{dt}\sigma_t(x_1)+\frac{d}{dt}\mu_t(x_1).
 \end{aligned}
 $$</li>
+<li>Reparameterize the conditional flow matching objective:
+$$\implies \mathcal{L}_{CFM}(\theta)=\mathbb{E}_{\pi(x_0)p_{\text{data}}(x_1)\mathcal{U}(t|0,1)}\left[\left\lVert u_{\theta}(\mu_t(x_1)+\sigma_t(x_1)x_0,t)-\left(\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1) \right)\right\rVert^2\right].$$</li>
+<li>Example with optimal transport conditional vector field (linear interpolation):
+$$\mu_t(x_1)=tx_1,\quad \sigma_t(x_1)=(1-t)+t\sigma_{min}=1-(1-\sigma_{min})t.$$
+$$\implies u_{t|1}(x_t(x_1)|x_1)=x_1-(1-\sigma_{min})x_0.$$
+$$\implies \mathcal{L}_{CFM}(\theta)=\mathbb{E}_{\pi(x_0)p_{\text{data}}(x_1)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(tx_1+(1-(1-\sigma_{min})t)x_0,t)-(x_1-(1-\sigma_{min})x_0) \rVert^2].$$</li>
 </ul>
 </li>
 <li>Two problems with conditional flow matching:

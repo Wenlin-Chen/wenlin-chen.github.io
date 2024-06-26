@@ -315,6 +315,8 @@ $$
 $$
 Therefore, we have
 $$\frac{d}{dt}\log p_t(x_t)=\frac{1}{p_t(x_t)}\frac{d}{d t} p_t(x_t)=-\nabla_{x_t}\cdot u_t(x_t).$$&lt;/li&gt;
+&lt;li&gt;The transport equation for diffusion models with $u_t(x_t)=f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)$ is the Fokker-Planck equation:
+$$\frac{\partial}{\partial t} p_t(x_t)+\nabla_{x_t}\cdot(f_t(x_t)p_t(x_t))-\frac{1}{2}g_t^2\nabla_{x_t}^2p_t(x_t)=0.$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;In practice, both $x_t$ and $\log p_t(x_t)$ can be solved jointly using a numerical ODE integrator:

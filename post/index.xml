@@ -46,13 +46,15 @@ $$p_{\theta}(z|x)=\frac{p_{\theta}(x|z)p(z)}{p_{\theta}(x)}=\frac{p_{\theta}(x|z
 &lt;/ul&gt;
 &lt;h4 id=&#34;variational-autoencoders-vaes&#34;&gt;Variational Autoencoders (VAEs)&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;VAEs introduce an amortized Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
+&lt;li&gt;VAEs introduce an amortized mean-field Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
 $$q_{\phi}(z|x)=\mathcal{N}(z|\tilde{\mu}_{\phi}(x),\text{diag}(\tilde{\sigma}_{\phi}(x)^2))\approx p_{\theta}(z|x).$$&lt;/li&gt;
 &lt;li&gt;The parameters of both the generation and inference models are jointly learned by maximizing a tractable evidence lower bound (ELBO) of the log marginal likelihood:
 $$\log p_{\theta}(x)\geq\mathbb{E}_{q_{\phi}(z|x)}\left[\log\frac{p_{\theta}(x|z)p(z)}{q_{\phi}(z|x)}\right]=\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]-\text{KL}(q_{\phi}(z|x)||p(z))=\mathcal{F}(\theta,\phi).$$
 &lt;ul&gt;
 &lt;li&gt;The first term $\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]$ controls the reconstruction error.&lt;/li&gt;
 &lt;li&gt;The second term $\text{KL}(q_{\phi}(z|x)||p(z))$ regularizes the approximate posterior to be close to the prior.&lt;/li&gt;
+&lt;li&gt;In order to backpropagate through samples $z\sim q_{\phi}(z|x)$, we employ the reparameterization trick:
+$$z=\tilde{\mu}_{\phi}(x)+\text{diag}(\tilde{\sigma}_{\phi}(x))\odot \epsilon,\quad \epsilon\sim N(0,I).$$&lt;/li&gt;
 &lt;li&gt;It is quite hard to train both generation and inference models well in practice due to difficulties in balancing the two terms above during optimization (e.g., the variational posterior can easily collapse to the prior due to variational overpruning).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -127,7 +129,7 @@ $$\tilde{\mu}(x_t,x_0)=\frac{\sqrt{\bar{\alpha}_{t-1}}(1-\alpha_t)}{1-\bar{\alph
 $$\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t}.$$
 &lt;ul&gt;
 &lt;li&gt;Sketch of proof: By Bayes&amp;rsquo; rule and the Markovian property, we have
-$$q(x_{t-1}|x_t,x_0)= \frac{q(x_t|x_{t-1},x_0)q(x_{t-1}|x_0)}{q(x_t|x_0)}=\frac{q(x_t|x_{t-1})q(x_{t-1}|x_0)}{q(x_t|x_0)}.$$
+$$q(x_{t-1}|x_t,x_0)= \frac{q(x_t|x_{t-1},x_0)q(x_{t-1}|x_0)}{q(x_t|x_0)}\propto q(x_t|x_{t-1})q(x_{t-1}|x_0).$$
 Since everything is Gaussian with analytical expression, $\tilde{\mu}(x_t,x_0)$ and $\tilde{\sigma}_t^2$ can be figured out by moment matching.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;

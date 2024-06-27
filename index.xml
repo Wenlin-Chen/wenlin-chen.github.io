@@ -78,7 +78,7 @@ $$\log p_{\theta}(x)\geq\mathbb{E}_{q_{\phi}(z|x)}\left[\log\frac{p_{\theta}(x|z
 &lt;li&gt;The first term $\mathbb{E}_{q_{\phi}(z|x)}\left[\log p_{\theta}(x|z)\right]$ controls the reconstruction error.&lt;/li&gt;
 &lt;li&gt;The second term $\text{KL}(q_{\phi}(z|x)||p(z))$ regularizes the approximate posterior to be close to the prior.&lt;/li&gt;
 &lt;li&gt;In order to backpropagate through samples $z\sim q_{\phi}(z|x)$, we employ the reparameterization trick:
-$$z=\tilde{\mu}_{\phi}(x)+\text{diag}(\tilde{\sigma}_{\phi}(x))\odot \epsilon,\quad \epsilon\sim N(0,I).$$&lt;/li&gt;
+$$z=\tilde{\mu}_{\phi}(x)+\tilde{\sigma}_{\phi}(x)\odot \epsilon,\quad \epsilon\sim N(0,I).$$&lt;/li&gt;
 &lt;li&gt;It is quite hard to train both generation and inference models well in practice due to difficulties in balancing the two terms above during optimization (e.g., the variational posterior can easily collapse to the prior due to variational overpruning).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;

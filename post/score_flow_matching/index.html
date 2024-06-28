@@ -882,22 +882,35 @@ $$\lambda(t)\propto1/\lVert \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2.$$</li>
 $$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$</li>
 </ul>
 </li>
+<li>Predictor-corrector samplers for generation: correct the discretization errors in the numerical SDE solution with MCMC.
+<ul>
+<li>Initialize $x\sim \pi(x)$ and $t\gets T$.</li>
+<li>Repeat the following two steps until $t=0$:
+<ul>
+<li>Predictor (numerical SDE solver with small discretization step $\Delta t&lt;0$):
+$$\Delta x\gets\left(f_t(x)-g_t^2 s_{\theta}(x, t)\right)\Delta t + g_t\sqrt{|\Delta t|}z,\quad z\sim N(0,I).$$
+$$x\gets x+\Delta x.$$
+$$t\gets t+\Delta t.$$</li>
+<li>Corrector (a few steps of Langevin dynamics with step-size $\eta$):
+$$x\gets x+\eta s_{\theta}(x,t)+\sqrt{2\eta}z,\quad z\sim N(0,I).$$</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Why do we need multiple noise levels?
 <ul>
 <li>Large noise corrupts the data distribution $p_{\text{data}}(x_0)$ too much and will produce samples from the wrong distribution.</li>
+<li>When the noise level is small, $p_{\text{data}}(x_0)$ can have many low density regions in real-world applications. Since $\mathcal{L}_{DSM}(\theta)$ is weighted by $p_{\text{data}}(x_0)$, the score estimates in the low density regions can be very poor. Since (random) initial samples are highly likely located in one of the low density regions, it is difficult for Langevin dynamics to move them to the high density regions due to poor score estimates at the beginning.</li>
 <li>Score functions are blind for densities with disconnected support. To see this, consider a mixture of two distributions
-$$p_{\text{data}}(x_0)=w q(x_0) + (1-w) r(x_0)$$
-with disjoint supports $\mathcal{X}_q$ and $\mathcal{X}_r$ for the two mixture components. The score function is given by
+$$p_{\text{data}}(x_0)=w r_1(x_0) + (1-w) r_2(x_0)$$
+with disjoint supports $\mathcal{X}_1$ and $\mathcal{X}_2$ for the two mixture components. The score function is given by
 $$\nabla_x \log p_{\text{data}}(x_0)=
-\begin{cases}\nabla_x \log q(x_0), &amp;x\in\mathcal{X}_q\\
-\nabla_x \log r(x_0), &amp;x\in\mathcal{X}_r\end{cases},$$
-which contains no information of the mixture weight $w$. In theory, one regularity condition of score matching is $p_{\text{data}}(x_0)&gt;0$ everywhere. In practice, there will also be an issue when the mixture components are weakly connected, which is the case for $p_{\text{data}}(x_0)$ in many applications. Hence, score matching with small noise is unable capture the correct weighting between different modes and will lead to biased samples.</li>
-<li>Therefore, we start with a large noise level to make the modes connected, which enables accurate estimation of the weight for each mode. The noise level is gradually reduced to zero so that the samples are refined to be distributed as $p_{\text{data}}(x_0)$ with correct weighting.</li>
+\begin{cases}\nabla_x \log r_1(x_0), &amp;x\in\mathcal{X}_1\\
+\nabla_x \log r_2(x_0), &amp;x\in\mathcal{X}_2\end{cases},$$
+which contains no information of the mixture weight $w$. In theory, one regularity condition of score matching is $p_{\text{data}}(x_0)&gt;0$ everywhere. In practice, there will also be an issue when the mixture components are weakly connected. Hence, score matching with small noise is unable capture the correct weighting between different modes and will lead to biased samples.</li>
+<li>Therefore, we need to start with a large noise level to make the modes connected, which enables accurate estimation of the weight for each mode. The noise level is gradually reduced to zero so that the samples are refined to be distributed as $p_{\text{data}}(x_0)$ with correct weighting.</li>
 </ul>
 </li>
-<li>One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$. To see this, consider the score of a Gaussian convolution kernel of the form $p_{t|0}(x_t|x_0)=\mathcal{N}(x_t|\alpha_t x_0, \sigma^2 I)$, which is given by
-$$\nabla_{x_t} \log p_{t|0}(x_t|x_0)=\frac{x_t-\alpha_t x_0}{\sigma_t^2}=-\frac{z}{\sigma_t},\quad z\sim \mathcal{N}(0,I).$$
-The score above is unbounded since $\sigma_t\to 0$ as $t\to 0$. This results in a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small $t$ and results in optimization difficulty.</li>
 </ul>
 <h3 id="flow-matching-for-continuous-normalizing-flows">Flow Matching for Continuous Normalizing Flows</h3>
 <h4 id="notation-1">Notation</h4>

@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Introduction Problem Setting Data distribution: $$p(x)=\frac{\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\int \exp(-E(x)) dx.$$ Tractable score function: $$\nabla_x \log p(x)=-\nabla_x E(x).$$ Generative Modeling: Samples from $p(x)$ are available. The energy function $E$ is unknown and needs to be learned from data." />
+  <meta name="description" content="Introduction Problem Setting Data distribution: $$p(x)=\frac{\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\int \exp(-E(x)) dx.$$ Tractable score function: $$\nabla_x \log p(x)=-\nabla_x E(x).$$ Goal: generate new samples from $p(x)$. Sampling: The energy function $E$ is given." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/score_identities/" />
@@ -298,7 +298,7 @@
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/score_identities/" />
   <meta property="og:title" content="Score Identities | Wenlin Chen" />
-  <meta property="og:description" content="Introduction Problem Setting Data distribution: $$p(x)=\frac{\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\int \exp(-E(x)) dx.$$ Tractable score function: $$\nabla_x \log p(x)=-\nabla_x E(x).$$ Generative Modeling: Samples from $p(x)$ are available. The energy function $E$ is unknown and needs to be learned from data." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Introduction Problem Setting Data distribution: $$p(x)=\frac{\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\int \exp(-E(x)) dx.$$ Tractable score function: $$\nabla_x \log p(x)=-\nabla_x E(x).$$ Goal: generate new samples from $p(x)$. Sampling: The energy function $E$ is given." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Introduction Problem Setting Data distribution: $$p(x)=\\frac{\\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\\int \\exp(-E(x)) dx.$$ Tractable score function: $$\\nabla_x \\log p(x)=-\\nabla_x E(x).$$ Generative Modeling: Samples from $p(x)$ are available. The energy function $E$ is unknown and needs to be learned from data."
+  "description": "Introduction Problem Setting Data distribution: $$p(x)=\\frac{\\exp(-E(x))}{Z}.$$ Intractable normalizing constant: $$Z=\\int \\exp(-E(x)) dx.$$ Tractable score function: $$\\nabla_x \\log p(x)=-\\nabla_x E(x).$$ Goal: generate new samples from $p(x)$. Sampling: The energy function $E$ is given."
 }
 </script>
 
@@ -828,16 +828,18 @@ $$Z=\int \exp(-E(x)) dx.$$</li>
 $$\nabla_x \log p(x)=-\nabla_x E(x).$$</li>
 </ul>
 </li>
-<li>Generative Modeling:
-<ul>
-<li>Samples from $p(x)$ are available.</li>
-<li>The energy function $E$ is unknown and needs to be learned from data.</li>
-</ul>
-</li>
+<li>Goal: generate new samples from $p(x)$.</li>
 <li>Sampling:
 <ul>
 <li>The energy function $E$ is given.</li>
-<li>Samples from $p(x)$ are not available.</li>
+<li>No available samples from $p(x)$.</li>
+</ul>
+</li>
+<li>Generative Modeling:
+<ul>
+<li>Samples from $p(x)$ are available.</li>
+<li>The energy function $E$ is usually unknown and needs to be learned from data.</li>
+<li>In some rare settings, the energy function $E$ is also given.</li>
 </ul>
 </li>
 </ul>
@@ -956,7 +958,7 @@ $$</li>
 <li>Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
 \begin{aligned}
-\mathcal{L}(\theta)
+\mathcal{L}_{DSM}(\theta)
 &amp;= \mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2] \\
 &amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
 \end{aligned}
@@ -975,6 +977,9 @@ $$
 &amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
 \end{aligned}
 $$</li>
+<li>One problem with denoising score matching is that the score network $s_{\theta}(y)$ is inaccurate for a low noise level $\sigma\approx 0$. To see this, consider the score of the Gaussian convolution kernel:
+$$\nabla_{y} \log p(y|x)=\frac{y-\alpha x}{\sigma^2}=-\frac{z}{\sigma},\quad z\sim \mathcal{N}(0,I),$$
+which is unbounded as $\sigma\to 0$. This leads to a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small $t$ and thus results in optimization difficulty.</li>
 </ul>
 <h4 id="nonparametric-estimator">Nonparametric Estimator</h4>
 <ul>

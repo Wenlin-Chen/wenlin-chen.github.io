@@ -13,10 +13,10 @@
     </image>
     
     <item>
-      <title>Latent Variable Models</title>
-      <link>https://wenlin-chen.github.io/post/latent_variable_models/</link>
+      <title>Diffusion and Latent Variable Models</title>
+      <link>https://wenlin-chen.github.io/post/diffusion_and_latent_variable_models/</link>
       <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/post/latent_variable_models/</guid>
+      <guid>https://wenlin-chen.github.io/post/diffusion_and_latent_variable_models/</guid>
       <description>&lt;h3 id=&#34;latent-variable-models&#34;&gt;Latent Variable Models&lt;/h3&gt;
 &lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
 &lt;ul&gt;
@@ -64,10 +64,11 @@ $$\log p_{\theta}(x)-\mathcal{F}(\theta,\phi)=\text{KL}(q_{\phi}(z|x)||p_{\theta
 &lt;li&gt;Maximizing the ELBO is equivalent to minimizing the KL divergence between the approximate and true posteriors.&lt;/li&gt;
 &lt;li&gt;The ELBO attains equality when the approximate posterior is exactly the same as the true posterior:
 $$\log p_{\theta}(x)=\mathcal{F}(\theta,\phi)\iff\text{KL}(q_{\phi}(z|x)||p_{\theta}(z|x))=0\iff q_{\phi}(z|x)=p_{\theta}(z|x).$$&lt;/li&gt;
+&lt;li&gt;However, the mean-field variational poterior $q_{\phi}(z|x)$ is uni-modal and the reverse KL divergence is known to be mode-seeking instead of mass convering. This means that $q_{\phi}(z|x)$ can only fit to one of the modes in the true posterior $p_{\theta}(z|x)$, which limits the expressivity of VAEs and makes it hard for the aggregated poseterior $q_{\phi}(z)=\int q_{\phi}(z|x)p_{\text{data}}(x)dx$ to be close to the prior $p(z)=\mathcal{N}(0,I)$.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;hierarchical-latent-variable-models&#34;&gt;Hierarchical Latent Variable Models&lt;/h3&gt;
+&lt;h3 id=&#34;diffusion-and-hierarchical-latent-variable-models&#34;&gt;Diffusion and Hierarchical Latent Variable Models&lt;/h3&gt;
 &lt;h4 id=&#34;introduction-1&#34;&gt;Introduction&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;We slightly change the notation following the convention of hierarchical latent variable models.
@@ -157,10 +158,24 @@ $$\tilde{\mu}(x_t,x_0)=\tilde{\mu}\left(x_t,\frac{x_t-\sqrt{1-\bar{\alpha}_t}\ep
 &lt;li&gt;Reparameterize $\mu_{\theta}(x_t,t)$ in the same form as $\tilde{\mu}(x_t,x_0)$:
 $$\mu_{\theta}(x_t,t)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_{\theta}(x_t,t)\right).$$&lt;/li&gt;
 &lt;li&gt;The regression objectives can then be simplified to noise matching with a time-dependent noise prediction network $\epsilon_{\theta}(x_t,t)$:
-$$\mathbb{E}_{\mathcal{N}(\epsilon|0,I)}[\lVert\epsilon-\epsilon_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,t)\rVert^2].$$&lt;/li&gt;
+$$\sum_{t=1}^T\lambda(t)\mathbb{E}_{\mathcal{N}(\epsilon|0,I)}[\lVert\epsilon-\epsilon_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon,t)\rVert^2].$$
+&lt;ul&gt;
+&lt;li&gt;The analytical solution for the weighting function is given by
+$$\lambda(t)=\frac{(1-\alpha_t)^2}{2\sigma_t^2\alpha_t(1-\bar{\alpha}_t)}.$$&lt;/li&gt;
+&lt;li&gt;However, setting $\lambda(t)=1$ makes training much more stable in practice.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;Connection to score matching:
+&lt;li&gt;Sampling/generation is simply initializing $x_T\sim \mathcal{N}(0,I)$ and drawing $x_{t-1}\sim p_{\theta}(x_{t-1}|x_t)$ for $t=T,\cdots,1$:
+$$x_{t-1}=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_{\theta}(x_t,t)\right)+\sigma_t z_t,\quad z_t\sim\mathcal{N}(0,I).$$
+&lt;ul&gt;
+&lt;li&gt;The variance of $p_{\theta}(x_{t-1}|x_t)$ can be set to
+$$\sigma_t^2=1-\alpha_t\quad\text{or}\quad \sigma_t^2=\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t},$$
+which work equally well in practice for large $T$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Connection to score matching and score-based diffuson models:
 &lt;ul&gt;
 &lt;li&gt;Denoising score matching with a time-dependent score network $s_{\theta}(x_t, t)$:
 $$
@@ -169,9 +184,54 @@ $$
 &amp;amp;=\mathbb{E}_{q(x_t|x_0)}\left[\left\lVert\frac{x_t-\sqrt{\bar{\alpha}_t}x_0}{1-\bar{\alpha}_t}+s_{\theta}(x_t, t)\right\rVert^2\right] \\
 &amp;amp;= \mathbb{E}_{\mathcal{N}(\epsilon|0,I)}\left[\left\lVert\frac{\epsilon}{\sqrt{1-\bar{\alpha}_t}}+s_{\theta}(\sqrt{\bar{\alpha}_t}x_0+\sqrt{1-\bar{\alpha}_t}\epsilon, t)\right\rVert^2\right].
 \end{aligned}
-$$&lt;/li&gt;
-&lt;li&gt;Therefore, the score network $s_{\theta}(x_t,t)$ and the noise prediction network $\epsilon_{\theta}(x_t,t)$ have the following connection:
+$$
+Therefore, the score network $s_{\theta}(x_t,t)$ and the noise prediction network $\epsilon_{\theta}(x_t,t)$ have the following connection:
 $$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$&lt;/li&gt;
+&lt;li&gt;The sampling procedure of DDPM corresponds to the predictor step (numerical SDE solution with discretization) in the predictor-corrector sampling precedure of score-based diffusion models. One could also in principle introduce the corrector step in DDPM sampling by leveraging the relationship between $s_{\theta}(x_t, t)$ and $\epsilon_{\theta}(x_t, t)$ above.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;denoising-diffusion-implicit-models-ddims&#34;&gt;Denoising Diffusion Implicit Models (DDIMs)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;DDIMs define a fixed top-down inference model:
+$$q(x_{1:T}|x_0)=q(x_T|x_0)\prod_{t=2}^T q(x_{t-1}|x_t,x_0).$$
+&lt;ul&gt;
+&lt;li&gt;No dimensionality reduction is performed $(d=n)$.&lt;/li&gt;
+&lt;li&gt;The factors are predefined Gaussians to ensure that $q(x_t|x_0)=\mathcal{N}(x_t|\sqrt{\bar{\alpha}_t}x_0+(1-\bar{\alpha}_t)I)$ (i.e., identical to DDPMs):
+$$q(x_{t-1}|x_t,x_0)=\mathcal{N}\left(x_{t-1}\left|\sqrt{\bar{\alpha}_{t-1}}x_0+\frac{x_t-\sqrt{\bar{\alpha}_t}x_0}{\sqrt{1-\bar{\alpha}_t}}\sqrt{1-\bar{\alpha}_{t-1}-s_t^2},s_t^2\right)\right..$$
+&lt;ul&gt;
+&lt;li&gt;Note that the forward diffusion process induced by a DDIM is not necessarily Markovian:
+$$q(x_t|x_{t-1},x_0)=\frac{q(x_{t-1}|x_t,x_0)q(x_t|x_0)}{q(x_{t-1}|x_0)},$$
+since $x_t$ could depend on both $x_{t-1}$ and $x_0$ for some choices of the variance $s_t^2$.&lt;/li&gt;
+&lt;li&gt;The variance $s_t^2$ controls how stochastic the forward diffusion process is.
+&lt;ul&gt;
+&lt;li&gt;$x_{t-1}$ becomes a deterministic function of $x_t$ and $x_{t-1}$ for $s_t=0$.&lt;/li&gt;
+&lt;li&gt;If we set the variance $s_t^2$ as in DDPM:
+$$s_t^2=\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t},$$
+then DDIM recovers DDPM which has a markovian forward diffusion process:
+$$q(x_t|x_{t-1},x_0)=q(x_t|x_{t-1})=\mathcal{N}(x_t|\sqrt{\alpha_t}x_0+(1-\alpha_t)I).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The generation models are defined as
+$$\begin{aligned}
+p_{\theta}(x_{t-1}|x_t)
+&amp;amp;=\int q(x_{t-1}|x_t,x_0)p_{\theta}(x_0|x_t)dx_0 \\
+&amp;amp;\approx q(x_{t-1}|x_t,\tilde{x}_0(x_t)),\quad \tilde{x}_0(x_t)\sim p_{\theta}(x_0|x_t).
+\end{aligned}$$
+where we reparameterize
+$$
+\tilde{x}_0(x_t)=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon_{\theta}(x_t, t)}{\sqrt{\bar{\alpha}_t}}.
+$$&lt;/li&gt;
+&lt;li&gt;The training objective for DDIM has the identical form (up to an additive constant) to that for DDPM with a different weighting function $\lambda(t)$ for each choice of the variance $s_t^2$ in $q(x_{t-1}|x_t,x_0)$.&lt;/li&gt;
+&lt;li&gt;Sampling/generation is simply initializing $x_T\sim \mathcal{N}(0,I)$ and drawing $x_{t-1}\sim p_{\theta}(x_{t-1}|x_t)$ for $t=T,\cdots,1$:
+$$x_{t-1}=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon_{\theta}(x_t, t)}{\sqrt{\alpha_t}}+\epsilon_{\theta}(x_t, t)\sqrt{1-\bar{\alpha}_{t-1}-s_t^2}+s_t e,\quad e\sim\mathcal{N}(0,I).$$
+&lt;ul&gt;
+&lt;li&gt;DDPM is a special case with $s_t^2=\tilde{\sigma}_t^2$.&lt;/li&gt;
+&lt;li&gt;$s_t=0$ results in a deterministic generation process.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -249,22 +309,35 @@ $$\lambda(t)\propto1/\lVert \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2.$$&lt;/li
 $$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;Predictor-corrector samplers for generation: correct the discretization errors in the numerical SDE solution with MCMC.
+&lt;ul&gt;
+&lt;li&gt;Initialize $x\sim \pi(x)$ and $t\gets T$.&lt;/li&gt;
+&lt;li&gt;Repeat the following two steps until $t=0$:
+&lt;ul&gt;
+&lt;li&gt;Predictor (numerical SDE solver with small discretization step $\Delta t&amp;lt;0$):
+$$\Delta x\gets\left(f_t(x)-g_t^2 s_{\theta}(x, t)\right)\Delta t + g_t\sqrt{|\Delta t|}z,\quad z\sim N(0,I).$$
+$$x\gets x+\Delta x.$$
+$$t\gets t+\Delta t.$$&lt;/li&gt;
+&lt;li&gt;Corrector (a few steps of Langevin dynamics with step-size $\eta$):
+$$x\gets x+\eta s_{\theta}(x,t)+\sqrt{2\eta}z,\quad z\sim N(0,I).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;Why do we need multiple noise levels?
 &lt;ul&gt;
 &lt;li&gt;Large noise corrupts the data distribution $p_{\text{data}}(x_0)$ too much and will produce samples from the wrong distribution.&lt;/li&gt;
+&lt;li&gt;When the noise level is small, $p_{\text{data}}(x_0)$ can have many low density regions in real-world applications. Since $\mathcal{L}_{DSM}(\theta)$ is weighted by $p_{\text{data}}(x_0)$, the score estimates in the low density regions can be very poor. Since (random) initial samples are highly likely located in one of the low density regions, it is difficult for Langevin dynamics to move them to the high density regions due to poor score estimates at the beginning.&lt;/li&gt;
 &lt;li&gt;Score functions are blind for densities with disconnected support. To see this, consider a mixture of two distributions
-$$p_{\text{data}}(x_0)=w q(x_0) + (1-w) r(x_0)$$
-with disjoint supports $\mathcal{X}_q$ and $\mathcal{X}_r$ for the two mixture components. The score function is given by
+$$p_{\text{data}}(x_0)=w r_1(x_0) + (1-w) r_2(x_0)$$
+with disjoint supports $\mathcal{X}_1$ and $\mathcal{X}_2$ for the two mixture components. The score function is given by
 $$\nabla_x \log p_{\text{data}}(x_0)=
-\begin{cases}\nabla_x \log q(x_0), &amp;amp;x\in\mathcal{X}_q\\
-\nabla_x \log r(x_0), &amp;amp;x\in\mathcal{X}_r\end{cases},$$
-which contains no information of the mixture weight $w$. In theory, one regularity condition of score matching is $p_{\text{data}}(x_0)&amp;gt;0$ everywhere. In practice, there will also be an issue when the mixture components are weakly connected, which is the case for $p_{\text{data}}(x_0)$ in many applications. Hence, score matching with small noise is unable capture the correct weighting between different modes and will lead to biased samples.&lt;/li&gt;
-&lt;li&gt;Therefore, we start with a large noise level to make the modes connected, which enables accurate estimation of the weight for each mode. The noise level is gradually reduced to zero so that the samples are refined to be distributed as $p_{\text{data}}(x_0)$ with correct weighting.&lt;/li&gt;
+\begin{cases}\nabla_x \log r_1(x_0), &amp;amp;x\in\mathcal{X}_1\\
+\nabla_x \log r_2(x_0), &amp;amp;x\in\mathcal{X}_2\end{cases},$$
+which contains no information of the mixture weight $w$. In theory, one regularity condition of score matching is $p_{\text{data}}(x_0)&amp;gt;0$ everywhere. In practice, there will also be an issue when the mixture components are weakly connected. Hence, score matching with small noise is unable capture the correct weighting between different modes and will lead to biased samples.&lt;/li&gt;
+&lt;li&gt;Therefore, we need to start with a large noise level to make the modes connected, which enables accurate estimation of the weight for each mode. The noise level is gradually reduced to zero so that the samples are refined to be distributed as $p_{\text{data}}(x_0)$ with correct weighting.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$. To see this, consider the score of a Gaussian convolution kernel of the form $p_{t|0}(x_t|x_0)=\mathcal{N}(x_t|\alpha_t x_0, \sigma^2 I)$, which is given by
-$$\nabla_{x_t} \log p_{t|0}(x_t|x_0)=\frac{x_t-\alpha_t x_0}{\sigma_t^2}=-\frac{z}{\sigma_t},\quad z\sim \mathcal{N}(0,I).$$
-The score above is unbounded since $\sigma_t\to 0$ as $t\to 0$. This results in a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small $t$ and results in optimization difficulty.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;flow-matching-for-continuous-normalizing-flows&#34;&gt;Flow Matching for Continuous Normalizing Flows&lt;/h3&gt;
 &lt;h4 id=&#34;notation-1&#34;&gt;Notation&lt;/h4&gt;
@@ -468,16 +541,18 @@ $$Z=\int \exp(-E(x)) dx.$$&lt;/li&gt;
 $$\nabla_x \log p(x)=-\nabla_x E(x).$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Generative Modeling:
-&lt;ul&gt;
-&lt;li&gt;Samples from $p(x)$ are available.&lt;/li&gt;
-&lt;li&gt;The energy function $E$ is unknown and needs to be learned from data.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;li&gt;Goal: generate new samples from $p(x)$.&lt;/li&gt;
 &lt;li&gt;Sampling:
 &lt;ul&gt;
 &lt;li&gt;The energy function $E$ is given.&lt;/li&gt;
-&lt;li&gt;Samples from $p(x)$ are not available.&lt;/li&gt;
+&lt;li&gt;No available samples from $p(x)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Generative Modeling:
+&lt;ul&gt;
+&lt;li&gt;Samples from $p(x)$ are available.&lt;/li&gt;
+&lt;li&gt;The energy function $E$ is usually unknown and needs to be learned from data.&lt;/li&gt;
+&lt;li&gt;In some rare settings, the energy function $E$ is also given.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -596,7 +671,7 @@ $$&lt;/li&gt;
 &lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
 \begin{aligned}
-\mathcal{L}(\theta)
+\mathcal{L}_{DSM}(\theta)
 &amp;amp;= \mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2] \\
 &amp;amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
 \end{aligned}
@@ -615,6 +690,9 @@ $$
 &amp;amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
 \end{aligned}
 $$&lt;/li&gt;
+&lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(y)$ is inaccurate for a low noise level $\sigma\approx 0$. To see this, consider the score of the Gaussian convolution kernel:
+$$\nabla_{y} \log p(y|x)=\frac{y-\alpha x}{\sigma^2}=-\frac{z}{\sigma},\quad z\sim \mathcal{N}(0,I),$$
+which is unbounded as $\sigma\to 0$. This leads to a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small $t$ and thus results in optimization difficulty.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h4&gt;
 &lt;ul&gt;

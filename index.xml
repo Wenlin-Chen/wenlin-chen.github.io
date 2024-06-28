@@ -37,10 +37,10 @@
     </item>
     
     <item>
-      <title>Hierarchical Latent Variable Models</title>
-      <link>https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/</link>
+      <title>Latent Variable Models</title>
+      <link>https://wenlin-chen.github.io/post/latent_variable_models/</link>
       <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/post/hierarchical_latent_variable_models/</guid>
+      <guid>https://wenlin-chen.github.io/post/latent_variable_models/</guid>
       <description>&lt;h3 id=&#34;latent-variable-models&#34;&gt;Latent Variable Models&lt;/h3&gt;
 &lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
 &lt;ul&gt;
@@ -273,7 +273,22 @@ $$\lambda(t)\propto1/\lVert \nabla_{x_t} \log p_{t|0}(x_t|x_0)\rVert^2.$$&lt;/li
 $$\text{KL}(p_{\text{data}}(x_0)||p_{\theta}(x_0))\leq\frac{T}{2}\mathbb{E}_{p_t(x_t)\mathcal{U}(t|0,T)}[g_t^2\lVert s_{\theta}(x_t, t) - \nabla_{x_t} \log p_t(x_t)\rVert^2]+\text{KL}(p_T(x_T)||\pi(x_T)).$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$ due to the large magnitude of $\nabla_{x_t} \log p_{t|0}(x_t|x_0)$.&lt;/li&gt;
+&lt;li&gt;Why do we need multiple noise levels?
+&lt;ul&gt;
+&lt;li&gt;Large noise corrupts the data distribution $p_{\text{data}}(x_0)$ too much and will produce samples from the wrong distribution.&lt;/li&gt;
+&lt;li&gt;Score functions are blind for densities with disconnected support. To see this, consider a mixture of two distributions
+$$p_{\text{data}}(x_0)=w q(x_0) + (1-w) r(x_0)$$
+with disjoint supports $\mathcal{X}_q$ and $\mathcal{X}_r$ for the two mixture components. The score function is given by
+$$\nabla_x \log p_{\text{data}}(x_0)=
+\begin{cases}\nabla_x \log q(x_0), &amp;amp;x\in\mathcal{X}_q\\
+\nabla_x \log r(x_0), &amp;amp;x\in\mathcal{X}_r\end{cases},$$
+which contains no information of the mixture weight $w$. In theory, one regularity condition of score matching is $p_{\text{data}}(x_0)&amp;gt;0$ everywhere. In practice, there will also be an issue when the mixture components are weakly connected, which is the case for $p_{\text{data}}(x_0)$ in many applications. Hence, score matching with small noise is unable capture the correct weighting between different modes and will lead to biased samples.&lt;/li&gt;
+&lt;li&gt;Therefore, we start with a large noise level to make the modes connected, which enables accurate estimation of the weight for each mode. The noise level is gradually reduced to zero so that the samples are refined to be distributed as $p_{\text{data}}(x_0)$ with correct weighting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(x_t,t)$ is inaccurate for very small $t$. To see this, consider the score of a Gaussian convolution kernel of the form $p_{t|0}(x_t|x_0)=\mathcal{N}(x_t|\alpha_t x_0, \sigma^2 I)$, which is given by
+$$\nabla_{x_t} \log p_{t|0}(x_t|x_0)=\frac{x_t-\alpha_t x_0}{\sigma_t^2}=-\frac{z}{\sigma_t},\quad z\sim \mathcal{N}(0,I).$$
+The score above is unbounded since $\sigma_t\to 0$ as $t\to 0$. This results in a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small $t$ and results in optimization difficulty.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;flow-matching-for-continuous-normalizing-flows&#34;&gt;Flow Matching for Continuous Normalizing Flows&lt;/h3&gt;
 &lt;h4 id=&#34;notation-1&#34;&gt;Notation&lt;/h4&gt;
@@ -440,6 +455,7 @@ $$&lt;/li&gt;
 $$\implies \mathcal{L}_{CFM}(\theta)=\mathbb{E}_{\pi(x_0)p_{\text{data}}(x_1)\mathcal{U}(t|0,1)}\left[\left\lVert u_{\theta}(\mu_t(x_1)+\sigma_t(x_1)x_0,t)-\left(\frac{d}{dt}\mu_t(x_1)+x_0\frac{d}{dt}\sigma_t(x_1) \right)\right\rVert^2\right].$$&lt;/li&gt;
 &lt;li&gt;Example with optimal transport conditional vector field (linear interpolation):
 $$\mu_t(x_1)=tx_1,\quad \sigma_t(x_1)=(1-t)+t\sigma_{min}=1-(1-\sigma_{min})t.$$
+$$\implies x_t(x_1)=tx_1+(1-(1-\sigma_{min})t)x_0.$$
 $$\implies u_{t|1}(x_t(x_1)|x_1)=x_1-(1-\sigma_{min})x_0.$$
 $$\implies \mathcal{L}_{CFM}(\theta)=\mathbb{E}_{\pi(x_0)p_{\text{data}}(x_1)\mathcal{U}(t|0,1)}[\lVert u_{\theta}(tx_1+(1-(1-\sigma_{min})t)x_0,t)-(x_1-(1-\sigma_{min})x_0) \rVert^2].$$&lt;/li&gt;
 &lt;/ul&gt;

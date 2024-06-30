@@ -996,7 +996,7 @@ $$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$
 $$q(x_{1:T}|x_0)=q(x_T|x_0)\prod_{t=2}^T q(x_{t-1}|x_t,x_0).$$
 <ul>
 <li>No dimensionality reduction is performed $(d=n)$.</li>
-<li>The factors are predefined Gaussians to ensure that $q(x_t|x_0)=\mathcal{N}(x_t|\sqrt{\bar{\alpha}_t}x_0+(1-\bar{\alpha}_t)I)$ (i.e., identical to DDPMs):
+<li>The factors are predefined Gaussians to ensure that $q(x_t|x_0)=\mathcal{N}(x_t|\sqrt{\bar{\alpha}_t}x_0+(1-\bar{\alpha}_t)I)$ as in DDPMs:
 $$q(x_{t-1}|x_t,x_0)=\mathcal{N}\left(x_{t-1}\left|\sqrt{\bar{\alpha}_{t-1}}x_0+\frac{x_t-\sqrt{\bar{\alpha}_t}x_0}{\sqrt{1-\bar{\alpha}_t}}\sqrt{1-\bar{\alpha}_{t-1}-s_t^2},s_t^2\right)\right..$$
 <ul>
 <li>Note that the forward diffusion process induced by a DDIM is not necessarily Markovian:
@@ -1004,7 +1004,7 @@ $$q(x_t|x_{t-1},x_0)=\frac{q(x_{t-1}|x_t,x_0)q(x_t|x_0)}{q(x_{t-1}|x_0)},$$
 since $x_t$ could depend on both $x_{t-1}$ and $x_0$ for some choices of the variance $s_t^2$.</li>
 <li>The variance $s_t^2$ controls how stochastic the forward diffusion process is.
 <ul>
-<li>$x_{t-1}$ becomes a deterministic function of $x_t$ and $x_{t-1}$ for $s_t=0$.</li>
+<li>$x_{t-1}$ becomes a deterministic function of $x_t$ and $x_0$ for $s_t=0$.</li>
 <li>If we set the variance $s_t^2$ as in DDPM:
 $$s_t^2=\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t},$$
 then DDIM recovers DDPM which has a markovian forward diffusion process:
@@ -1021,7 +1021,7 @@ p_{\theta}(x_{t-1}|x_t)
 &amp;=\int q(x_{t-1}|x_t,x_0)p_{\theta}(x_0|x_t)dx_0 \\
 &amp;\approx q(x_{t-1}|x_t,\tilde{x}_0(x_t)),\quad \tilde{x}_0(x_t)\sim p_{\theta}(x_0|x_t).
 \end{aligned}$$
-where we reparameterize
+where we reparameterize $\tilde{x}_0(x_t)$ according to the forward diffusion process:
 $$
 \tilde{x}_0(x_t)=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon_{\theta}(x_t, t)}{\sqrt{\bar{\alpha}_t}}.
 $$</li>

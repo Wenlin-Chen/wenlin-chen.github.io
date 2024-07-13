@@ -762,7 +762,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;li&gt;This requires to have access to both samples from $p(x)$ and the ground-truth energy or score function. It is only accurate for small noise level.&lt;/li&gt;
-&lt;li&gt;Proof: This proof is similar to the proof of denoising score matching but use the target score identity instead.&lt;/li&gt;
+&lt;li&gt;Proof: This proof is similar to the proof of denoising score matching but with the target score identity instead.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

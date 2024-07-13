@@ -617,6 +617,7 @@ $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(
 $$
 \begin{aligned}
 \nabla_y\log p(y)
+&amp;amp;= \frac{\nabla_y p(y)}{p(y)} \\
 &amp;amp;= \frac{\int\nabla_y p(y|x)p(x)dx}{p(y)} \\
 &amp;amp;= \int\nabla_y\log(y|x)\frac{p(y|x)p(x)}{p(y)}dx \\
 &amp;amp;= \int\nabla_y\log p(y|x) p(x|y)dx.

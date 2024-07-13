@@ -587,11 +587,28 @@ $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I).$$&lt;/li&gt;
 &lt;li&gt;Intractable noisy marginal:
 $$p(y)=\int p(y|x)p(x)dx.$$&lt;/li&gt;
 &lt;li&gt;Intractable denoising posterior:
-$$p(x|y)=\frac{p(y|x)p(x)}{p(y)}.$$&lt;/li&gt;
+$$p(x|y)=\frac{p(y|x)p(x)}{p(y)}.$$
+&lt;ul&gt;
+&lt;li&gt;However, the score function of the denoising posterior is tractable:
+$$
+\begin{aligned}
+\nabla_x \log p(x|y) &amp;amp;= \nabla_x \log p(y|x) + \nabla_x \log p(x) \\
+&amp;amp;= \frac{\alpha(y-\alpha x)}{\sigma^2}-\nabla_x E(x).
+\end{aligned}
+$$
+Therefore, it is possible to sample from the denoising posterior using a MCMC sampler.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;Intractable noisy score:
-$$\nabla_y\log p(y)=\nabla_y\log \int p(y|x)p(x)dx.$$&lt;/li&gt;
+$$
+\begin{aligned}
+\nabla_y\log p(y) &amp;amp;=\nabla_y\log \int p(y|x)p(x)dx \\&amp;amp;
+=\nabla_y\log \int \exp\left(-\frac{\lVert y - \alpha x \rVert^2}{2\sigma^2}-E(x)\right)dx.
+\end{aligned}
+$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h3&gt;
+&lt;p&gt;We list some useful score identities below which allow us to calculate the noisy score.&lt;/p&gt;
 &lt;h4 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denoising score identity is a general formula without assumping the form of $p(y|x)$:
@@ -676,7 +693,7 @@ $$&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with the target score identity using importance sampling:
 $$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$
-This does not work well in practice as it only works for very small $t$.&lt;/li&gt;
+This does not work well in practice. It only works for very small noise level.&lt;/li&gt;
 &lt;li&gt;Proof: Using target score identity and the fact that $q(x|y)\propto p(y|x)$, we have
 $$
 \begin{aligned}
@@ -700,7 +717,7 @@ $$
 &amp;amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \nabla_y \log p(y|x)\rVert^2]+C.
 \end{aligned}
 $$
-This is the most popular generative modeling apporach. It is inaccurate for very small $t$.&lt;/li&gt;
+This is the most popular generative modeling apporach. It is inaccurate for very small noise level.&lt;/li&gt;
 &lt;li&gt;Proof: Using the denoising score identity, we have
 $$
 \begin{aligned}
@@ -716,7 +733,7 @@ $$
 $$&lt;/li&gt;
 &lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(y)$ is inaccurate for a low noise level $\sigma\approx 0$. To see this, consider the score of the Gaussian convolution kernel:
 $$\nabla_{y} \log p(y|x)=\frac{y-\alpha x}{\sigma^2}=-\frac{z}{\sigma},\quad z\sim \mathcal{N}(0,I),$$
-which is unbounded as $\sigma\to 0$. This leads to a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small $t$ and thus results in optimization difficulty.&lt;/li&gt;
+which is unbounded as $\sigma\to 0$. This leads to a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small noise level and thus results in optimization difficulty.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h4&gt;
 &lt;ul&gt;
@@ -733,6 +750,19 @@ $$
 &amp;amp;= \frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).
 \end{aligned}
 $$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;target-score-matching&#34;&gt;Target Score Matching&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
+$$
+\begin{aligned}
+\mathcal{L}_{TSM}(\theta)
+&amp;amp;= \mathbb{E}_{p(y)}[\lVert s_{\theta}(y) - \nabla_y \log p(y)\rVert^2] \\
+&amp;amp;= \mathbb{E}_{p(y|x)p(x)}[\lVert s_{\theta}(y) - \alpha^{-1}\nabla_x \log p(x)\rVert^2]+C.
+\end{aligned}
+$$&lt;/li&gt;
+&lt;li&gt;This requires to have access to both samples from $p(x)$ and the ground-truth energy or score function. It is only accurate for small noise level.&lt;/li&gt;
+&lt;li&gt;Proof: This proof is similar to the proof of denoising score matching but use the target score identity instead.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

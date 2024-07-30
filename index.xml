@@ -21,6 +21,82 @@
     </item>
     
     <item>
+      <title>Statistical Mechanics</title>
+      <link>https://wenlin-chen.github.io/post/statistical_mechanics/</link>
+      <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/post/statistical_mechanics/</guid>
+      <description>&lt;h3 id=&#34;what-is-statistical-mechanics&#34;&gt;What is Statistical Mechanics?&lt;/h3&gt;
+&lt;p&gt;Statistical mechanics is not a natural law like Newton&amp;rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality. Instead, it is a set of mathematical techniques that can be applied to study any physical system. Beyond physics, many ideas in machine learning were also inspired by statistical mechanics.&lt;/p&gt;
+&lt;h3 id=&#34;statistical-description-of-physical-systems&#34;&gt;Statistical Description of Physical Systems&lt;/h3&gt;
+&lt;h4 id=&#34;microstates-and-macrostates&#34;&gt;Microstates and Macrostates&lt;/h4&gt;
+&lt;p&gt;A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.&lt;/p&gt;
+&lt;!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. --&gt;
+&lt;p&gt;A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, and temperature of a system, and the total number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.&lt;/p&gt;
+&lt;h4 id=&#34;density-of-states&#34;&gt;Density of States&lt;/h4&gt;
+&lt;p&gt;There can be a huge number of microstates all corresponding to the same macrostate (e.g., there is an enormous number of configurations of individual particles which all add up to the same energy and volumn). The number of microstates corresponding to a macrostate is defined as the density of the (macro)state:
+$$
+\Omega(E,V,\cdots).
+$$
+$\Omega$ is a function of all macroscopic variables defining the macrostate and can be thought of as the number of microstates per unit volumn in the space defined by those macroscopic variables.&lt;/p&gt;
+&lt;p&gt;As an example, the energy of a system of $N$ free particles is given by
+$$E=\frac{|\mathbf{p}|^2}{2m},$$
+where $\mathbf{p}$ contains $3N$ momentum variables. Note that each value of $E$ corresponds to the surface of a $(3N-1)$-dimensional hypersphere in this $3N$-dimensional space of momentum. Therefore, the density of the state is proportional to the surface area of the $(3N-1)$-dimensional hypersphere:
+$$
+\Omega(E)\propto |\mathbf{p}|^{3N-1}\propto E^{(3N-1)/2}.
+$$
+Note that for a large system with many particles ($N&amp;gt; &amp;gt;1$), even a tiny increase of the energy $E$ will result in a huge increase in the density of states. Therefore, we will work with a smoother and slower changing function $\log\Omega$.&lt;/p&gt;
+&lt;h4 id=&#34;time-averages-and-ensemble-averages&#34;&gt;Time Averages and Ensemble Averages&lt;/h4&gt;
+&lt;p&gt;We usually have no idea which microstate a system is in even if we know its current macrostate. However, this can be described by probabilities.&lt;/p&gt;
+&lt;p&gt;For a system in a given macrostate, there are two approaches to defining the probability of the system being in a microstate.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The degrees of freedom making up the system are constantly changing. Conduct an experiment or simulation over a sufficiently long time interval. Define the probability of the system being in a microstate as the fraction of time spending in that microstate. Averages computed using this definition of probability are called time averages.&lt;/li&gt;
+&lt;li&gt;Imagine preparing many identical systems following exactly the same procedure. The set of all these system are called a statistical ensemble, which are in the same macrostate but can be in different microstates. Define the probability of the system being in a microstate as the fraction of systems in the ensemble which are in that microstate. Averages computed using this definition of probability are called ensemble averages.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;ergodicity-and-equilibrium&#34;&gt;Ergodicity and Equilibrium&lt;/h4&gt;
+&lt;p&gt;A system for which time averages and ensemble averages are equal is said to be ergodic. Ergodicity is a property of the system that it will eventually visit all parts of the space as time evloves and thus cannot be reduced or factored into smaller components.&lt;/p&gt;
+&lt;p&gt;The postulate of equal a priori probabilities states that a system has an equal probability of being in any microstate that is consistent with its macrostate. An isolated system that satisfies the postulate of equal a priori probabilities is said to be in equilibrium.&lt;/p&gt;
+&lt;p&gt;By the second law of thermodynamics and the maximum entropy property of the uniform distribution, it can be shown that once an isolated system satisfies the postulate of equal a priori probabilities even for a moment, it will continue satisfying it forever. This implies that an isolated system is in equilibrium if the probability distribution over its microstates does not change over time.&lt;/p&gt;
+&lt;h4 id=&#34;the-maxwell-boltzmann-distribution&#34;&gt;The Maxwell-Boltzmann Distribution&lt;/h4&gt;
+&lt;p&gt;Real systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A.&lt;/p&gt;
+&lt;p&gt;The total energy $E_T$ of the system is a sum of three terms:
+$$E_T=E_A+E_B+E_{AB},$$
+where $E_A$ depends only on the degrees of freedom that make up A, $E_B$ only depends on the degrees of freedom that make up B, and $E_{AB}$ depends on both parts of the system due to the interaction of A and B.&lt;/p&gt;
+&lt;p&gt;We assume that A and B are wealy coupled. This has two implications:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The interaction energy $E_{AB}$ is negligible compared to the individual energies $E_A$ and $E_B$ and their variations. Therefore, the total energy becomes
+$$E_T\approx E_A+E_B.$$&lt;/li&gt;
+&lt;li&gt;The total degress of freedom are specified independently. Therefore, the density of states factorizes and we are free to choose states for A and B independently:
+$$\Omega_T(E_T)\approx\Omega_A(E_A)\Omega_B(E_B).$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We also assume that B is much larger than A in the sense that any fluctuation of $E_A$ has negligible effect on $E_B$. This means that we only care about a very small range of values for $E_B$, and therefore the log density of states of B can be approximated by a linear function:
+$$\log\Omega_B(E_B)\approx\alpha+\beta E_B.$$&lt;/p&gt;
+&lt;p&gt;The Maxwell-Boltzmann distribution answers the following question: if the total energy of the system in equilibrium is $E_T$, what is the probability of A being in a particular microstate $i$?
+Since the system is in equilibrium, the probability of A being in the microstate $i$ equals the fraction of microstates of the whole system for which A is in the microstate $i$, which is proportional to the number of microstates of B given A is in the microstate $i$:
+$$p_i\propto\Omega_B(E_T-E_i)\propto e^{-\beta E_i},$$
+where $\beta$ is called the inverse temperature. We can define the temperature $T$ by
+$$\frac{1}{kT}\equiv\beta=\frac{\partial\log\Omega_B(E_B)}{\partial E_B},$$
+where $k=1.3806488\times 10^{-23}$ J/K is the Boltzmann constant.&lt;/p&gt;
+&lt;p&gt;With the above definition, we can write down the Maxwell-Boltzmann distribution:
+$$p_i=\frac{e^{-E_i/kT}}{Z}.$$
+The normalizing constant is called the partition function, which is given by
+$$Z=\sum_i e^{-E_i/kT},$$
+where the sum is taken over all microstates of A.&lt;/p&gt;
+&lt;h4 id=&#34;entropy-and-free-energy&#34;&gt;Entropy and Free Energy&lt;/h4&gt;
+&lt;p&gt;The probability of a macrostate with energy $E_A$ is given by
+$$p(E_A)=\sum_{i:E_i=E_A}\frac{e^{-E_i/kT}}{Z}=\Omega_A(E_A)\frac{e^{-E_A/kT}}{Z}.$$
+We define the entropy of a macrostate as
+$$S(E_A)=k\cdot\log\Omega_A(E_A),$$
+which is just another way of measuring the number of microstates corresponding to the macrostate with energy $E_A$.&lt;/p&gt;
+&lt;p&gt;Given the definition of entropy, we can rewrite the probability of a macrostate as
+$$p(E_A)=\frac{e^{-(E_A-TS(E_A))/kT}}{Z}.$$
+This leads to the definition of the Helmholtz free energy:
+$$F=E-TS.$$
+Free energy generally refers to any energy-like function (i.e., thermodynamic potential) that includes a $-TS$ term, which describes the probability of macrostates.&lt;/p&gt;
+&lt;h4 id=&#34;thermodynamic-forces-and-thermodynamic-potentials&#34;&gt;Thermodynamic Forces and Thermodynamic Potentials&lt;/h4&gt;
+</description>
+    </item>
+    
+    <item>
       <title>ReLU Characteristic Activation Analysis</title>
       <link>https://wenlin-chen.github.io/publication/chen2024relu/</link>
       <pubDate>Fri, 26 Jul 2024 00:00:00 +0000</pubDate>

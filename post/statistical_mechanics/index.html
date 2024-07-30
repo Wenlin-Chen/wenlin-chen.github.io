@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="The inadequate mixing of conventional Markov Chain Monte Carlo (MCMC) methods for multi-modal distributions presents a significant challenge in practical applications such as Bayesian inference and molecular dynamics. Addressing this, we propose Diffusive Gibbs Sampling (DiGS), an innovative family of sampling methods designed for effective sampling from distributions characterized by distant and disconnected modes. DiGS integrates recent developments in diffusion models, leveraging Gaussian convolution to create an auxiliary noisy distribution that bridges isolated modes in the original space and applying Gibbs sampling to alternately draw samples from both spaces. A novel Metropolis-within-Gibbs scheme is proposed to enhance mixing in the denoising sampling step. DiGS exhibits a better mixing property for sampling multi-modal distributions than state-of-the-art methods such as parallel tempering, attaining substantially improved performance across various tasks, including mixtures of Gaussians, Bayesian neural networks and molecular dynamics. " />
+  <meta name="description" content="What is Statistical Mechanics? Statistical mechanics is not a natural law like Newton&rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/publication/chen2024diffusive/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/statistical_mechanics/" />
 
   
 
@@ -62,6 +62,9 @@
   
 
   
+  
+    
+    <script src="/js/mathjax-config.js"></script>
   
 
   
@@ -210,9 +213,9 @@
 
       
       
-        
-      
 
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
       
     
       
@@ -276,7 +279,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/publication/chen2024diffusive/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/statistical_mechanics/" />
 
   
   
@@ -293,18 +296,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/publication/chen2024diffusive/" />
-  <meta property="og:title" content="Diffusive Gibbs Sampling | Wenlin Chen" />
-  <meta property="og:description" content="The inadequate mixing of conventional Markov Chain Monte Carlo (MCMC) methods for multi-modal distributions presents a significant challenge in practical applications such as Bayesian inference and molecular dynamics. Addressing this, we propose Diffusive Gibbs Sampling (DiGS), an innovative family of sampling methods designed for effective sampling from distributions characterized by distant and disconnected modes. DiGS integrates recent developments in diffusion models, leveraging Gaussian convolution to create an auxiliary noisy distribution that bridges isolated modes in the original space and applying Gibbs sampling to alternately draw samples from both spaces. A novel Metropolis-within-Gibbs scheme is proposed to enhance mixing in the denoising sampling step. DiGS exhibits a better mixing property for sampling multi-modal distributions than state-of-the-art methods such as parallel tempering, attaining substantially improved performance across various tasks, including mixtures of Gaussians, Bayesian neural networks and molecular dynamics. " /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/statistical_mechanics/" />
+  <meta property="og:title" content="Statistical Mechanics | Wenlin Chen" />
+  <meta property="og:description" content="What is Statistical Mechanics? Statistical mechanics is not a natural law like Newton&rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2024-02-04T00:00:00&#43;00:00"
+        content="2024-07-28T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-07-21T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-07-28T00:00:00&#43;00:00">
   
 
   
@@ -316,6 +319,8 @@
 
 
 
+
+  
 
 
 
@@ -323,15 +328,15 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://wenlin-chen.github.io/publication/chen2024diffusive/"
+    "@id": "https://wenlin-chen.github.io/post/statistical_mechanics/"
   },
-  "headline": "Diffusive Gibbs Sampling",
+  "headline": "Statistical Mechanics",
   
-  "datePublished": "2024-02-04T00:00:00Z",
-  "dateModified": "2024-07-21T00:00:00Z",
+  "datePublished": "2024-07-28T00:00:00Z",
+  "dateModified": "2024-07-28T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -346,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "The inadequate mixing of conventional Markov Chain Monte Carlo (MCMC) methods for multi-modal distributions presents a significant challenge in practical applications such as Bayesian inference and molecular dynamics. Addressing this, we propose Diffusive Gibbs Sampling (DiGS), an innovative family of sampling methods designed for effective sampling from distributions characterized by distant and disconnected modes. DiGS integrates recent developments in diffusion models, leveraging Gaussian convolution to create an auxiliary noisy distribution that bridges isolated modes in the original space and applying Gibbs sampling to alternately draw samples from both spaces. A novel Metropolis-within-Gibbs scheme is proposed to enhance mixing in the denoising sampling step. DiGS exhibits a better mixing property for sampling multi-modal distributions than state-of-the-art methods such as parallel tempering, attaining substantially improved performance across various tasks, including mixtures of Gaussians, Bayesian neural networks and molecular dynamics. "
+  "description": "What is Statistical Mechanics? Statistical mechanics is not a natural law like Newton\u0026rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality."
 }
 </script>
 
@@ -362,11 +367,11 @@
 
 
 
-  <title>Diffusive Gibbs Sampling | Wenlin Chen</title>
+  <title>Statistical Mechanics | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="ce0f1bccc5bc8fef905bf5da977085b4" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="90eb613fa6e493cc3f00ccc44d2cc925" >
 
   
   
@@ -702,16 +707,7 @@
   </div>
 
   <div class="page-body">
-    
-
-
-
-
-
-
-
-
-<div class="pub">
+    <article class="article">
 
   
 
@@ -733,7 +729,7 @@
   
   
 <div class="container pt-3">
-  <h1>Diffusive Gibbs Sampling</h1>
+  <h1>Statistical Mechanics</h1>
 
   
 
@@ -745,20 +741,6 @@
 
   
   
-  
-  
-  <div>
-    
-
-  <span class="author-highlighted">
-      Wenlin Chen</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
-      Mingtian Zhang</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
-      Brooks Paige</span>, <span >
-      José Miguel Hernández-Lobato</span>, <span >
-      David Barber</span>
-  </div>
-  
-  
 
   
   <span class="article-date">
@@ -766,122 +748,35 @@
     
       
     
-    July 2024
+    Jul 28, 2024
   </span>
   
 
   
 
   
-
-  
-  
-  
-  
-  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
   
 
   
   
-
-</div>
-
-    
-
-
-
-
-<div class="btn-links mb-3">
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-<a class="btn btn-outline-primary btn-page-header" href="/publication/chen2024diffusive/chen2024diffusive.pdf" target="_blank" rel="noopener">
-  PDF
-</a>
-
-
-
-<a href="#" class="btn btn-outline-primary btn-page-header js-cite-modal"
-        data-filename="/publication/chen2024diffusive/cite.bib">
-  Cite
-</a>
-
-
-  
-  
-    
-  
-<a class="btn btn-outline-primary btn-page-header" href="https://github.com/Wenlin-Chen/DiGS" target="_blank" rel="noopener">
-  Code
-</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-    
   
   
   
   
-  
-    
-  
-  <a class="btn btn-outline-primary btn-page-header" href="https://proceedings.mlr.press/v235/chen24be.html" target="_blank" rel="noopener">
-    PMLR</a>
 
   
   
-  
-    
-  
-  
-  
-  
-  
-    
-  
-  <a class="btn btn-outline-primary btn-page-header" href="https://openreview.net/forum?id=QH4mXDEULp" target="_blank" rel="noopener">
-    OpenReview</a>
-
-  
-  
-  
-    
-  
-  
-  
-  
-  
-    
-  
-  <a class="btn btn-outline-primary btn-page-header" href="https://arxiv.org/abs/2402.03008" target="_blank" rel="noopener">
-    arXiv</a>
-
 
 </div>
+
+    
+
+
+
 
 
   
@@ -890,47 +785,77 @@
 
   <div class="container">
 
-    
-    <h3>Abstract</h3>
-    <p class="pub-abstract">The inadequate mixing of conventional Markov Chain Monte Carlo (MCMC) methods for multi-modal distributions presents a significant challenge in practical applications such as Bayesian inference and molecular dynamics. Addressing this, we propose Diffusive Gibbs Sampling (DiGS), an innovative family of sampling methods designed for effective sampling from distributions characterized by distant and disconnected modes. DiGS integrates recent developments in diffusion models, leveraging Gaussian convolution to create an auxiliary noisy distribution that bridges isolated modes in the original space and applying Gibbs sampling to alternately draw samples from both spaces. A novel Metropolis-within-Gibbs scheme is proposed to enhance mixing in the denoising sampling step. DiGS exhibits a better mixing property for sampling multi-modal distributions than state-of-the-art methods such as parallel tempering, attaining substantially improved performance across various tasks, including mixtures of Gaussians, Bayesian neural networks and molecular dynamics.</p>
-    
+    <div class="article-style">
+      <h3 id="what-is-statistical-mechanics">What is Statistical Mechanics?</h3>
+<p>Statistical mechanics is not a natural law like Newton&rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality. Instead, it is a set of mathematical techniques that can be applied to study any physical system. Beyond physics, many ideas in machine learning were also inspired by statistical mechanics.</p>
+<h3 id="statistical-description-of-physical-systems">Statistical Description of Physical Systems</h3>
+<h4 id="microstates-and-macrostates">Microstates and Macrostates</h4>
+<p>A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.</p>
+<!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. -->
+<p>A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, and temperature of a system, and the total number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.</p>
+<h4 id="density-of-states">Density of States</h4>
+<p>There can be a huge number of microstates all corresponding to the same macrostate (e.g., there is an enormous number of configurations of individual particles which all add up to the same energy and volumn). The number of microstates corresponding to a macrostate is defined as the density of the (macro)state:
+$$
+\Omega(E,V,\cdots).
+$$
+$\Omega$ is a function of all macroscopic variables defining the macrostate and can be thought of as the number of microstates per unit volumn in the space defined by those macroscopic variables.</p>
+<p>As an example, the energy of a system of $N$ free particles is given by
+$$E=\frac{|\mathbf{p}|^2}{2m},$$
+where $\mathbf{p}$ contains $3N$ momentum variables. Note that each value of $E$ corresponds to the surface of a $(3N-1)$-dimensional hypersphere in this $3N$-dimensional space of momentum. Therefore, the density of the state is proportional to the surface area of the $(3N-1)$-dimensional hypersphere:
+$$
+\Omega(E)\propto |\mathbf{p}|^{3N-1}\propto E^{(3N-1)/2}.
+$$
+Note that for a large system with many particles ($N&gt; &gt;1$), even a tiny increase of the energy $E$ will result in a huge increase in the density of states. Therefore, we will work with a smoother and slower changing function $\log\Omega$.</p>
+<h4 id="time-averages-and-ensemble-averages">Time Averages and Ensemble Averages</h4>
+<p>We usually have no idea which microstate a system is in even if we know its current macrostate. However, this can be described by probabilities.</p>
+<p>For a system in a given macrostate, there are two approaches to defining the probability of the system being in a microstate.</p>
+<ol>
+<li>The degrees of freedom making up the system are constantly changing. Conduct an experiment or simulation over a sufficiently long time interval. Define the probability of the system being in a microstate as the fraction of time spending in that microstate. Averages computed using this definition of probability are called time averages.</li>
+<li>Imagine preparing many identical systems following exactly the same procedure. The set of all these system are called a statistical ensemble, which are in the same macrostate but can be in different microstates. Define the probability of the system being in a microstate as the fraction of systems in the ensemble which are in that microstate. Averages computed using this definition of probability are called ensemble averages.</li>
+</ol>
+<h4 id="ergodicity-and-equilibrium">Ergodicity and Equilibrium</h4>
+<p>A system for which time averages and ensemble averages are equal is said to be ergodic. Ergodicity is a property of the system that it will eventually visit all parts of the space as time evloves and thus cannot be reduced or factored into smaller components.</p>
+<p>The postulate of equal a priori probabilities states that a system has an equal probability of being in any microstate that is consistent with its macrostate. An isolated system that satisfies the postulate of equal a priori probabilities is said to be in equilibrium.</p>
+<p>By the second law of thermodynamics and the maximum entropy property of the uniform distribution, it can be shown that once an isolated system satisfies the postulate of equal a priori probabilities even for a moment, it will continue satisfying it forever. This implies that an isolated system is in equilibrium if the probability distribution over its microstates does not change over time.</p>
+<h4 id="the-maxwell-boltzmann-distribution">The Maxwell-Boltzmann Distribution</h4>
+<p>Real systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A.</p>
+<p>The total energy $E_T$ of the system is a sum of three terms:
+$$E_T=E_A+E_B+E_{AB},$$
+where $E_A$ depends only on the degrees of freedom that make up A, $E_B$ only depends on the degrees of freedom that make up B, and $E_{AB}$ depends on both parts of the system due to the interaction of A and B.</p>
+<p>We assume that A and B are wealy coupled. This has two implications:</p>
+<ol>
+<li>The interaction energy $E_{AB}$ is negligible compared to the individual energies $E_A$ and $E_B$ and their variations. Therefore, the total energy becomes
+$$E_T\approx E_A+E_B.$$</li>
+<li>The total degress of freedom are specified independently. Therefore, the density of states factorizes and we are free to choose states for A and B independently:
+$$\Omega_T(E_T)\approx\Omega_A(E_A)\Omega_B(E_B).$$</li>
+</ol>
+<p>We also assume that B is much larger than A in the sense that any fluctuation of $E_A$ has negligible effect on $E_B$. This means that we only care about a very small range of values for $E_B$, and therefore the log density of states of B can be approximated by a linear function:
+$$\log\Omega_B(E_B)\approx\alpha+\beta E_B.$$</p>
+<p>The Maxwell-Boltzmann distribution answers the following question: if the total energy of the system in equilibrium is $E_T$, what is the probability of A being in a particular microstate $i$?
+Since the system is in equilibrium, the probability of A being in the microstate $i$ equals the fraction of microstates of the whole system for which A is in the microstate $i$, which is proportional to the number of microstates of B given A is in the microstate $i$:
+$$p_i\propto\Omega_B(E_T-E_i)\propto e^{-\beta E_i},$$
+where $\beta$ is called the inverse temperature. We can define the temperature $T$ by
+$$\frac{1}{kT}\equiv\beta=\frac{\partial\log\Omega_B(E_B)}{\partial E_B},$$
+where $k=1.3806488\times 10^{-23}$ J/K is the Boltzmann constant.</p>
+<p>With the above definition, we can write down the Maxwell-Boltzmann distribution:
+$$p_i=\frac{e^{-E_i/kT}}{Z}.$$
+The normalizing constant is called the partition function, which is given by
+$$Z=\sum_i e^{-E_i/kT},$$
+where the sum is taken over all microstates of A.</p>
+<h4 id="entropy-and-free-energy">Entropy and Free Energy</h4>
+<p>The probability of a macrostate with energy $E_A$ is given by
+$$p(E_A)=\sum_{i:E_i=E_A}\frac{e^{-E_i/kT}}{Z}=\Omega_A(E_A)\frac{e^{-E_A/kT}}{Z}.$$
+We define the entropy of a macrostate as
+$$S(E_A)=k\cdot\log\Omega_A(E_A),$$
+which is just another way of measuring the number of microstates corresponding to the macrostate with energy $E_A$.</p>
+<p>Given the definition of entropy, we can rewrite the probability of a macrostate as
+$$p(E_A)=\frac{e^{-(E_A-TS(E_A))/kT}}{Z}.$$
+This leads to the definition of the Helmholtz free energy:
+$$F=E-TS.$$
+Free energy generally refers to any energy-like function (i.e., thermodynamic potential) that includes a $-TS$ term, which describes the probability of macrostates.</p>
+<h4 id="thermodynamic-forces-and-thermodynamic-potentials">Thermodynamic Forces and Thermodynamic Potentials</h4>
 
-    
-    
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading">Type</div>
-          <div class="col-12 col-md-9">
-            <a href="/publication/#1">
-              Conference paper
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
     </div>
-    <div class="d-md-none space-below"></div>
-    
-
-    
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-12 col-md-3 pub-row-heading">Publication</div>
-          <div class="col-12 col-md-9">The Forty-first International Conference on Machine Learning (ICML 2024)</div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-    <div class="d-md-none space-below"></div>
-    
-
-    <div class="space-below"></div>
-
-    <div class="article-style"></div>
 
     
 
@@ -952,7 +877,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/publication/chen2024diffusive/&amp;text=Diffusive%20Gibbs%20Sampling" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/statistical_mechanics/&amp;text=Statistical%20Mechanics" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -965,7 +890,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/publication/chen2024diffusive/&amp;t=Diffusive%20Gibbs%20Sampling" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/statistical_mechanics/&amp;t=Statistical%20Mechanics" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -978,7 +903,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Diffusive%20Gibbs%20Sampling&amp;body=https://wenlin-chen.github.io/publication/chen2024diffusive/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Statistical%20Mechanics&amp;body=https://wenlin-chen.github.io/post/statistical_mechanics/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -991,7 +916,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/publication/chen2024diffusive/&amp;title=Diffusive%20Gibbs%20Sampling" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/statistical_mechanics/&amp;title=Statistical%20Mechanics" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1004,7 +929,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Diffusive%20Gibbs%20Sampling%20https://wenlin-chen.github.io/publication/chen2024diffusive/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Statistical%20Mechanics%20https://wenlin-chen.github.io/post/statistical_mechanics/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1017,7 +942,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/publication/chen2024diffusive/&amp;title=Diffusive%20Gibbs%20Sampling" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/statistical_mechanics/&amp;title=Statistical%20Mechanics" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1037,7 +962,6 @@
 
   
   
-    
 
 
 
@@ -1151,31 +1075,6 @@
   </div>
 
 
-  
-    
-
-
-
-
-  
-    
-
-
-
-
-  
-    
-
-
-
-
-  
-    
-
-
-
-
-  
 
 
 
@@ -1198,7 +1097,7 @@
 
 
   </div>
-</div>
+</article>
   </div>
 
   <div class="page-footer">

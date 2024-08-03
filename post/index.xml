@@ -49,8 +49,13 @@ Note that for a large system with many particles ($N&amp;gt; &amp;gt;1$), even a
 &lt;p&gt;The postulate of equal a priori probabilities states that a system has an equal probability of being in any microstate that is consistent with its macrostate. An isolated system that satisfies the postulate of equal a priori probabilities is said to be in equilibrium.&lt;/p&gt;
 &lt;p&gt;By the second law of thermodynamics and the maximum entropy property of the uniform distribution, it can be shown that once an isolated system satisfies the postulate of equal a priori probabilities even for a moment, it will continue satisfying it forever. This implies that an isolated system is in equilibrium if the probability distribution over its microstates does not change over time.&lt;/p&gt;
 &lt;h4 id=&#34;the-maxwell-boltzmann-distribution&#34;&gt;The Maxwell-Boltzmann Distribution&lt;/h4&gt;
-&lt;p&gt;Real systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A.&lt;/p&gt;
-&lt;p&gt;The total energy $E_T$ of the system is a sum of three terms:
+&lt;p&gt;Real systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A. Some examples are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A is the gas contained in a box. B is the box along with the whole room where the box is placed.&lt;/li&gt;
+&lt;li&gt;A is a test tube with chemicals in it. B is a water bath the test tube is sitting in.&lt;/li&gt;
+&lt;li&gt;A is the carbon dioxide molecules in the air in a room. B is everything else in the air in that room.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The total energy $E_T$ of the whole system is a sum of three terms:
 $$E_T=E_A+E_B+E_{AB},$$
 where $E_A$ depends only on the degrees of freedom that make up A, $E_B$ only depends on the degrees of freedom that make up B, and $E_{AB}$ depends on both parts of the system due to the interaction of A and B.&lt;/p&gt;
 &lt;p&gt;We assume that A and B are wealy coupled. This has two implications:&lt;/p&gt;
@@ -73,8 +78,26 @@ $$p_i=\frac{e^{-E_i/kT}}{Z}.$$
 The normalizing constant is called the partition function, which is given by
 $$Z=\sum_i e^{-E_i/kT},$$
 where the sum is taken over all microstates of A.&lt;/p&gt;
-&lt;h4 id=&#34;entropy-and-free-energy&#34;&gt;Entropy and Free Energy&lt;/h4&gt;
-&lt;p&gt;The probability of a macrostate with energy $E_A$ is given by
+&lt;h4 id=&#34;thermodynamic-forces&#34;&gt;Thermodynamic Forces&lt;/h4&gt;
+&lt;p&gt;More generally, we usually care about the energy as well as other macroscopic variables.&lt;/p&gt;
+&lt;p&gt;Suppose that system A is a balloon filled with helium which can exchange both energy $E$ and volumn $V$ with the surrounding air B. We repeat the same argument above and assume the log density of states of B is linear in both energy and volumn:
+$$\log\Omega_B(E_B,V_B)\approx\alpha+\beta E_B+\gamma V_B.$$
+Then, the probability of A being in a particular microstate $i$ is given by
+$$p_i\propto\Omega_B(E_T-E_i,V_T-V_i)\propto e^{-\beta E_i-\gamma V_i}.$$
+Conventionally, we define a variable called pressure as
+$$P\equiv kT\frac{\partial\log\Omega_B(E_B,V_B)}{\partial V_B},$$
+and rewrite the probability of A being in the microstate $i$ as
+$$p_i=\frac{e^{-(E_i+PV_i)/kT}}{Z},$$
+where the partition function is given by
+$$Z=\sum_i e^{-(E_i+PV_i)/kT}.$$&lt;/p&gt;
+&lt;p&gt;Now, suppose that system A is a (fixed volumn) box filled with gas, with a small hole allowing the molecules to diffuse in from and out to the room B where the box is placed. This means that A can exchange both energy $E$ and the number of particles $N$ with B.&lt;/p&gt;
+&lt;p&gt;Similarly, we define a variable called chemical potential as
+$$\mu\equiv-kT\frac{\partial\log\Omega_B(E_B,N_B)}{\partial N_B}.$$
+Then, the probability of A being in the microstate $i$ is given by
+$$p_i=\frac{e^{-(E_i-\mu N_i)/kT}}{Z}.$$&lt;/p&gt;
+&lt;p&gt;Quantities like pressure $P$ and chemical potential $\mu$ are called thermodynamic forces, which are conjugate to the corresponding macroscopic variables $V$ and $N$ that the log density of states is differentiated with respect to. We say that $(V,P)$ and $(N,\mu)$ form conjugate pairs.&lt;/p&gt;
+&lt;h4 id=&#34;entropy-and-probabilities-of-macrostates&#34;&gt;Entropy and Probabilities of Macrostates&lt;/h4&gt;
+&lt;p&gt;Having defined the probability of A being in a microstate $i$, we now define the probability of a macrostate with energy $E_A$:
 $$p(E_A)=\sum_{i:E_i=E_A}\frac{e^{-E_i/kT}}{Z}=\Omega_A(E_A)\frac{e^{-E_A/kT}}{Z}.$$
 We define the entropy of a macrostate as
 $$S(E_A)=k\cdot\log\Omega_A(E_A),$$
@@ -82,9 +105,33 @@ which is just another way of measuring the number of microstates corresponding t
 &lt;p&gt;Given the definition of entropy, we can rewrite the probability of a macrostate as
 $$p(E_A)=\frac{e^{-(E_A-TS(E_A))/kT}}{Z}.$$
 This leads to the definition of the Helmholtz free energy:
-$$F=E-TS.$$
-Free energy generally refers to any energy-like function (i.e., thermodynamic potential) that includes a $-TS$ term, which describes the probability of macrostates.&lt;/p&gt;
-&lt;h4 id=&#34;thermodynamic-forces-and-thermodynamic-potentials&#34;&gt;Thermodynamic Forces and Thermodynamic Potentials&lt;/h4&gt;
+$$F=E-TS(E).$$&lt;/p&gt;
+&lt;h4 id=&#34;thermodynamic-potentials-and-free-energy&#34;&gt;Thermodynamic Potentials and Free Energy&lt;/h4&gt;
+&lt;p&gt;We have studied how to compute the probability of finding a system in a microstate or macrostate specified by an arbitrary set of macroscopic variables. Interestingly, in every case, the probability takes exactly the same form:
+$$p=\frac{e^{-\Phi/kT}}{Z},$$
+where $\Phi$ is called thermodynamic potential, which is a energy-like function that defines different kinds of probability distributions for the system.&lt;/p&gt;
+&lt;p&gt;Some common thermodynamic potentials with special names are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Energy: $E$.&lt;/li&gt;
+&lt;li&gt;Helmholtz free energy: $F=E-TS(E)$.&lt;/li&gt;
+&lt;li&gt;Enthalpy: $H=E+PV$.&lt;/li&gt;
+&lt;li&gt;Gibbs free energy: $G=E+PV-TS(E,V)$.&lt;/li&gt;
+&lt;li&gt;Grand potential: $\Phi_G=E-\mu N-TS(E,N)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The term free energy generally refers to any thermodynamic potential that includes a $-TS$ term, which describes the probability of a macrostate.&lt;/p&gt;
+&lt;p&gt;There are two ways of understanding thermodynamic potentials:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We start with $E$ and add in terms based on the ensemble that we want to use. If we want the volumn to be variable, then add the $PV$ term. If we want the number of particles to be variable, then add the $-\mu N$ term. If we want to work with macrostates, then add the $-TS$ term.&lt;/li&gt;
+&lt;li&gt;We start with a single potential that includes all possible terms. If the volumn is fixed, then $PV$ is constant and can be ignored. If the number of particles is fixed, then $-\mu N$ is constant and can be ignored. If we want to work with microstates, then $TS=0$ since a microstate can be thought of as a macrostate with a single microstate (so the entropy $S$ is zero).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Some common ensembles with special names are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Microcanonical ensemble refers to an isolated system with fixed energy. Therefore, it has equal probability of being in any microstate with that specific energy and no chance of being in any microstate with a different energy.&lt;/li&gt;
+&lt;li&gt;Canonical ensemble refers to a system that can exchange energy with a heat bath at a fixed temperature. The corresponding thermodynamic potential is $E$ for microstates and $E-TS(E)$ for macrostates.&lt;/li&gt;
+&lt;li&gt;Grand canonical ensemble refers to a system that can exhcange both energy and particles with a heat bath of a fixed temperature and chemical potential. The corresponding thermodynamic potential is $E-\mu N$ for microstates and $E-\mu N-TS(E,N)$ for macrostates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;averages-and-partition-function&#34;&gt;Averages and Partition Function&lt;/h4&gt;
+&lt;h4 id=&#34;very-large-numbers&#34;&gt;Very Large Numbers&lt;/h4&gt;
 </description>
     </item>
     

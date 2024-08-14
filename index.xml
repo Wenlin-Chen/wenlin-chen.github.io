@@ -40,6 +40,7 @@
 &lt;p&gt;A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.&lt;/p&gt;
 &lt;!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. --&gt;
 &lt;p&gt;A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, and temperature of a system, and the total number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.&lt;/p&gt;
+&lt;p&gt;Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of a physical system.&lt;/p&gt;
 &lt;h4 id=&#34;density-of-states&#34;&gt;Density of States&lt;/h4&gt;
 &lt;p&gt;There can be a huge number of microstates all corresponding to the same macrostate (e.g., there is an enormous number of configurations of individual particles which all add up to the same energy and volumn). The number of microstates corresponding to a macrostate is defined as the density of the (macro)state:
 $$
@@ -146,8 +147,46 @@ where $\Phi$ is called thermodynamic potential, which is a energy-like function 
 &lt;li&gt;Canonical ensemble refers to a system that can exchange energy with a heat bath at a fixed temperature. The corresponding thermodynamic potential is $E$ for microstates and $E-TS(E)$ for macrostates.&lt;/li&gt;
 &lt;li&gt;Grand canonical ensemble refers to a system that can exhcange both energy and particles with a heat bath of a fixed temperature and chemical potential. The corresponding thermodynamic potential is $E-\mu N$ for microstates and $E-\mu N-TS(E,N)$ for macrostates.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;averages-and-partition-function&#34;&gt;Averages and Partition Function&lt;/h4&gt;
-&lt;h4 id=&#34;very-large-numbers&#34;&gt;Very Large Numbers&lt;/h4&gt;
+&lt;h4 id=&#34;averages-and-very-large-numbers&#34;&gt;Averages and Very Large Numbers&lt;/h4&gt;
+&lt;p&gt;The ensemble average or mean of a quantity $x$ is defined as
+$$\left&amp;lt;x\right&amp;gt;=\sum_i x_i p_i=\frac{\sum_i x_i e^{-\Phi_i}/kT}{\sum_i e^{-\Phi_i}/kT},$$
+where $x_i$ is the value of the quantity $x$ in the $i$-th state, $p_i$ is the probability of being in that state, and the sum can be over either microstates or macrostates depending on whether $x$ is a microscopic variable or macroscopic variable. It can be shown that
+$$\left&amp;lt;x+y\right&amp;gt;=\left&amp;lt;x\right&amp;gt;+\left&amp;lt;y\right&amp;gt;\quad\text{and}\quad\left&amp;lt;Cx\right&amp;gt;=C\left&amp;lt;x\right&amp;gt;.$$&lt;/p&gt;
+&lt;p&gt;The variance of a quantity $x$ measures its fluctuations, which is how much $x$ tends to vary about its average:
+$$\sigma(x)^2=\left&amp;lt;(x-\left&amp;lt;x\right&amp;gt;)^2\right&amp;gt;=\left&amp;lt;x^2\right&amp;gt;-\left&amp;lt;x\right&amp;gt;^2.$$
+The square root of variance is called standard deviation $\sigma(x)$, which also measures the fluctuations of $x$ but has the dimensions as $x$. Roughly speaking, the value of $x$ is inbetween $\left&amp;lt;x\right&amp;gt;\pm\sigma(x)$ about 2/3 of the time.&lt;/p&gt;
+&lt;p&gt;Most problems in statistical mechanics tend to involve very large numbers, in which cases averages can simply be treated as exact numbers since any variation about the average value is extremely small. In other words, the chance of measuring any value except the average is negligible. This great simplification is one of the reasons why statistical mechanics is so successful.&lt;/p&gt;
+&lt;p&gt;The central limit theorem states that the sum of i.i.d. random variables $x_i$ with mean $\mu_x$ and standard deviation $\sigma_x$ is distributed as a normal distribution with mean $\mu_S=N\mu_x$ and standard deviation $\sigma_S=\sqrt{N}\sigma_x$ in the limit $N\to\infty$:
+$$S=\sum_{i=1}^N x_i\sim\mathcal{N}(N\mu_x,\sqrt{N}\sigma_x),\quad\text{as }~N\to\infty.$$
+In practice, the convergence rate to the normal distribution depends on the distribution of $x_i$. Usually, $N=10$ already gives a good approximation to a normal distribution.&lt;/p&gt;
+&lt;p&gt;We usually care about the the ratio of the standard deviation and the average:
+$$\frac{\sigma_S}{\mu_S}\propto\frac{1}{\sqrt{N}},\quad\text{as }~N\to\infty.$$
+As an example, a typical sized room contains $N=10^{26}$ oxygen molecules. Let $x_i$ denote whether the $i$-th oxygen molecule is in the left side of the room. The fluctuations over the average of the number of oxygen molecules in the left side of the room is $10^{-13}$, which is negligible as it is too small to measure.&lt;/p&gt;
+&lt;h4 id=&#34;partition-function&#34;&gt;Partition Function&lt;/h4&gt;
+&lt;p&gt;Recall that the partition function is defined as
+$$Z=\sum_i e^{-\beta\Phi_i}=\sum_i e^{-\Phi_i/kT},$$
+which has some interesting and useful properties. In particular, the derivatives of $\log Z$ tend to give averages.&lt;/p&gt;
+&lt;p&gt;For example, the average thermodynamic potential $\left&amp;lt;\Phi\right&amp;gt;$ can be obtained by
+$$
+\begin{aligned}
+-\frac{\partial\log Z}{\partial\beta}
+&amp;amp;=-\frac{1}{Z}\frac{\partial Z}{\partial\beta} \\
+&amp;amp;=-\frac{1}{Z}\sum_i \frac{\partial e^{-\beta\Phi_i}}{\partial\beta} \\
+&amp;amp;= \frac{1}{Z}\sum_i \Phi_i e^{-\beta\Phi_i} \\
+&amp;amp;= \left&amp;lt;\Phi\right&amp;gt;.
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Another useful trick is to take the derivative with respect to a continuous microscopic or macroscopic variable $x$, which gives
+$$
+\begin{aligned}
+-kT\frac{\partial\log Z}{\partial x}
+&amp;amp;=-\frac{kT}{Z}\frac{\partial Z}{\partial x} \\
+&amp;amp;=-\frac{kT}{Z}\int\frac{\partial e^{-\Phi(x)/kT}}{\partial x}dx \\
+&amp;amp;=\frac{1}{Z}\int\frac{\partial\Phi(x)}{\partial x}e^{-\Phi(x)/kT}dx \\
+&amp;amp;=\left&amp;lt;\frac{\partial\Phi(x)}{\partial x}\right&amp;gt;.
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;interpretation-of-statistical-quantities&#34;&gt;Interpretation of Statistical Quantities&lt;/h3&gt;
 </description>
     </item>
     

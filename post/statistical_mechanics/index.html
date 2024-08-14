@@ -757,7 +757,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    9 min read
+    11 min read
   </span>
   
 
@@ -793,6 +793,7 @@
 <p>A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.</p>
 <!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. -->
 <p>A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, and temperature of a system, and the total number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.</p>
+<p>Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of a physical system.</p>
 <h4 id="density-of-states">Density of States</h4>
 <p>There can be a huge number of microstates all corresponding to the same macrostate (e.g., there is an enormous number of configurations of individual particles which all add up to the same energy and volumn). The number of microstates corresponding to a macrostate is defined as the density of the (macro)state:
 $$
@@ -899,8 +900,46 @@ where $\Phi$ is called thermodynamic potential, which is a energy-like function 
 <li>Canonical ensemble refers to a system that can exchange energy with a heat bath at a fixed temperature. The corresponding thermodynamic potential is $E$ for microstates and $E-TS(E)$ for macrostates.</li>
 <li>Grand canonical ensemble refers to a system that can exhcange both energy and particles with a heat bath of a fixed temperature and chemical potential. The corresponding thermodynamic potential is $E-\mu N$ for microstates and $E-\mu N-TS(E,N)$ for macrostates.</li>
 </ul>
-<h4 id="averages-and-partition-function">Averages and Partition Function</h4>
-<h4 id="very-large-numbers">Very Large Numbers</h4>
+<h4 id="averages-and-very-large-numbers">Averages and Very Large Numbers</h4>
+<p>The ensemble average or mean of a quantity $x$ is defined as
+$$\left&lt;x\right&gt;=\sum_i x_i p_i=\frac{\sum_i x_i e^{-\Phi_i}/kT}{\sum_i e^{-\Phi_i}/kT},$$
+where $x_i$ is the value of the quantity $x$ in the $i$-th state, $p_i$ is the probability of being in that state, and the sum can be over either microstates or macrostates depending on whether $x$ is a microscopic variable or macroscopic variable. It can be shown that
+$$\left&lt;x+y\right&gt;=\left&lt;x\right&gt;+\left&lt;y\right&gt;\quad\text{and}\quad\left&lt;Cx\right&gt;=C\left&lt;x\right&gt;.$$</p>
+<p>The variance of a quantity $x$ measures its fluctuations, which is how much $x$ tends to vary about its average:
+$$\sigma(x)^2=\left&lt;(x-\left&lt;x\right&gt;)^2\right&gt;=\left&lt;x^2\right&gt;-\left&lt;x\right&gt;^2.$$
+The square root of variance is called standard deviation $\sigma(x)$, which also measures the fluctuations of $x$ but has the dimensions as $x$. Roughly speaking, the value of $x$ is inbetween $\left&lt;x\right&gt;\pm\sigma(x)$ about 2/3 of the time.</p>
+<p>Most problems in statistical mechanics tend to involve very large numbers, in which cases averages can simply be treated as exact numbers since any variation about the average value is extremely small. In other words, the chance of measuring any value except the average is negligible. This great simplification is one of the reasons why statistical mechanics is so successful.</p>
+<p>The central limit theorem states that the sum of i.i.d. random variables $x_i$ with mean $\mu_x$ and standard deviation $\sigma_x$ is distributed as a normal distribution with mean $\mu_S=N\mu_x$ and standard deviation $\sigma_S=\sqrt{N}\sigma_x$ in the limit $N\to\infty$:
+$$S=\sum_{i=1}^N x_i\sim\mathcal{N}(N\mu_x,\sqrt{N}\sigma_x),\quad\text{as }~N\to\infty.$$
+In practice, the convergence rate to the normal distribution depends on the distribution of $x_i$. Usually, $N=10$ already gives a good approximation to a normal distribution.</p>
+<p>We usually care about the the ratio of the standard deviation and the average:
+$$\frac{\sigma_S}{\mu_S}\propto\frac{1}{\sqrt{N}},\quad\text{as }~N\to\infty.$$
+As an example, a typical sized room contains $N=10^{26}$ oxygen molecules. Let $x_i$ denote whether the $i$-th oxygen molecule is in the left side of the room. The fluctuations over the average of the number of oxygen molecules in the left side of the room is $10^{-13}$, which is negligible as it is too small to measure.</p>
+<h4 id="partition-function">Partition Function</h4>
+<p>Recall that the partition function is defined as
+$$Z=\sum_i e^{-\beta\Phi_i}=\sum_i e^{-\Phi_i/kT},$$
+which has some interesting and useful properties. In particular, the derivatives of $\log Z$ tend to give averages.</p>
+<p>For example, the average thermodynamic potential $\left&lt;\Phi\right&gt;$ can be obtained by
+$$
+\begin{aligned}
+-\frac{\partial\log Z}{\partial\beta}
+&amp;=-\frac{1}{Z}\frac{\partial Z}{\partial\beta} \\
+&amp;=-\frac{1}{Z}\sum_i \frac{\partial e^{-\beta\Phi_i}}{\partial\beta} \\
+&amp;= \frac{1}{Z}\sum_i \Phi_i e^{-\beta\Phi_i} \\
+&amp;= \left&lt;\Phi\right&gt;.
+\end{aligned}
+$$</p>
+<p>Another useful trick is to take the derivative with respect to a continuous microscopic or macroscopic variable $x$, which gives
+$$
+\begin{aligned}
+-kT\frac{\partial\log Z}{\partial x}
+&amp;=-\frac{kT}{Z}\frac{\partial Z}{\partial x} \\
+&amp;=-\frac{kT}{Z}\int\frac{\partial e^{-\Phi(x)/kT}}{\partial x}dx \\
+&amp;=\frac{1}{Z}\int\frac{\partial\Phi(x)}{\partial x}e^{-\Phi(x)/kT}dx \\
+&amp;=\left&lt;\frac{\partial\Phi(x)}{\partial x}\right&gt;.
+\end{aligned}
+$$</p>
+<h3 id="interpretation-of-statistical-quantities">Interpretation of Statistical Quantities</h3>
 
     </div>
 

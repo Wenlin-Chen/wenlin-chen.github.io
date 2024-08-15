@@ -187,6 +187,29 @@ $$
 \end{aligned}
 $$&lt;/p&gt;
 &lt;h3 id=&#34;interpretation-of-statistical-quantities&#34;&gt;Interpretation of Statistical Quantities&lt;/h3&gt;
+&lt;p&gt;We have derived statistical definitions of many abstract mathematical quantities such as temperature. Now we try to build up an intuitive understanding of what they are in the physical world.&lt;/p&gt;
+&lt;h4 id=&#34;temperature&#34;&gt;Temperature&lt;/h4&gt;
+&lt;p&gt;Temperature measures the microscopic jiggling of atoms: the faster they move, the hotter an object feels. To see this and understand the significance of temperature, we prove the equipartition theorem below.&lt;/p&gt;
+&lt;p&gt;Consider a general energy function that can be seperated into the sum of two terms:
+$$E(x_1,x_2,\cdots)=E_1(x_1)+E_2(x_2,x_3,\cdots),$$
+where the energy is quadratic in $x_1$:
+$$E(x_1)=Cx_1^2.$$
+One particularly important example is the momentum $p_i$ of a classical particle, which corresponds to the kenetic energy:
+$$E_k(p_i)=\frac{p_i^2}{2m}.$$
+Now, we compute the average value of $E_1$:
+$$
+\begin{aligned}
+\left&amp;lt;E_1(x_1)\right&amp;gt; &amp;amp;= \frac{\int E_1(x_1)e^{-\beta E(x_1,x_2,\cdots)}dx_1dx_2\cdots}{\int e^{-\beta E(x_1,x_2,\cdots)}dx_1dx_2\cdots} \\
+&amp;amp;= \frac{\int e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int E_1(x_1)e^{-\beta E_1(x_1)}dx_1}{e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int e^{-\beta E_1(x_1)}dx_1} \\
+&amp;amp;= \frac{\int E_1(x_1)e^{-\beta E_1(x_1)}dx_1}{\int e^{-\beta E_1(x_1)}dx_1} \\
+&amp;amp;=-\frac{\partial\log\int e^{-\beta E_1(x_1)}dx_1}{\partial\beta} \\
+&amp;amp;=-\frac{\partial\log\int e^{-\beta Cx_1^2}dx_1}{\partial\beta} \\
+&amp;amp;=-\frac{\partial(\log\beta^{-1/2}+\log\int e^{-\beta Cx_1^2}d(\beta^{1/2}x_1))}{\partial\beta} \\
+&amp;amp;=\frac{1}{2\beta} \\
+&amp;amp;=\frac{kT}{2}.
+\end{aligned}
+$$
+This tells us that temperature is a measure of average kinetic energy, which shows how the statistical definition of temperature matches up with the physical one: if a system is in equilibrium with a heat bath at temperature $T$, then its average kinetic energy per degree of freedom is $\left&amp;lt; E_k\right&amp;gt;=kT/2$.&lt;/p&gt;
 </description>
     </item>
     

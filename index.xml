@@ -927,7 +927,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;li&gt;One problem with denoising score matching is that the score network $s_{\theta}(y)$ is inaccurate for a low noise level $\sigma\approx 0$. To see this, consider the score of the Gaussian convolution kernel:
-$$\nabla_{y} \log p(y|x)=\frac{y-\alpha x}{\sigma^2}=-\frac{z}{\sigma},\quad z\sim \mathcal{N}(0,I),$$
+$$\nabla_{y} \log p(y|x)=-\frac{y-\alpha x}{\sigma^2}=-\frac{z}{\sigma},\quad z\sim \mathcal{N}(0,I),$$
 which is unbounded as $\sigma\to 0$. This leads to a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small noise level and thus results in optimization difficulty.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h4&gt;

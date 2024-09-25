@@ -5,12 +5,20 @@
     <link>https://wenlin-chen.github.io/publication/</link>
       <atom:link href="https://wenlin-chen.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Sat, 24 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2024 Wenlin Chen</copyright><lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Publications</title>
       <link>https://wenlin-chen.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Neural Characteristic Activation Analysis and Geometric Parameterization for ReLU Networks</title>
+      <link>https://wenlin-chen.github.io/publication/chen2024neural/</link>
+      <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2024neural/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Leveraging Task Structures for Improved Identifiability in Neural Network Representations</title>
@@ -25,14 +33,6 @@
       <link>https://wenlin-chen.github.io/publication/wu2024modelling/</link>
       <pubDate>Sun, 11 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/publication/wu2024modelling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ReLU Characteristic Activation Analysis</title>
-      <link>https://wenlin-chen.github.io/publication/chen2024relu/</link>
-      <pubDate>Fri, 26 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2024relu/</guid>
       <description></description>
     </item>
     

@@ -802,12 +802,12 @@ $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Target score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
+&lt;li&gt;Target score identity assumes a translation-invariant convolution $p(y|x)=p(y-\alpha x)$ (e.g., Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$):
 $$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$&lt;/li&gt;
 &lt;li&gt;Proof: By denoising score identity and using the following three identities
 $$\nabla_y \log p(y|x)=-\alpha^{-1}\nabla_x \log p(y|x),$$
 $$\nabla_x \log p(y|x)=\nabla_x\log p(x|y)-\nabla_x \log p(x),$$
-$$\int \nabla_x\log p(x|y)p(x|y)dx=\int \nabla_xp(x|y)dx=\nabla_x\int p(x|y)dx=0,$$
+$$\int \nabla_x\log p(x|y)p(x|y)dx=\int \nabla_xp(x|y)dx=\nabla_x\int p(x|y)dx=\nabla_x 1=0,$$
 we have
 $$
 \begin{aligned}

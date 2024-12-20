@@ -206,17 +206,17 @@ $$
 $$&lt;/p&gt;
 &lt;p&gt;The number of ways of redistributing the $N$ relicas is called the multilicative number:
 $$
-W=\frac{N!}{\prod_i n!}.
+\Omega=\frac{N!}{\prod_i n!}.
 $$
 With Stiring&amp;rsquo;s approximation:
 $$\log n! =\sum_{x=1}^n\log x\approx\int_{1}^n \log xdx\sim n\log n-n,$$
 the multiplicative number can be a approximated by
 $$
-\log W=\log N!-\sum_i\log n!\approx N\log N - N - \sum_i n_i\log n_i + \sum_i n_i = N\log N - \sum_i n_i\log n_i.
+\log \Omega=\log N!-\sum_i\log n!\approx N\log N - N - \sum_i n_i\log n_i + \sum_i n_i = N\log N - \sum_i n_i\log n_i.
 $$
 Now, we turn the counts into probabilities. The log multilicative number can be rewritten as the total entropy of the $N$ replicas:
 $$
-k\log W\approx -k\sum_i n_i\log\frac{n_i}{N}=-Nk\sum_i\frac{n_i}{N}\log\frac{n_i}{N}=NS.
+k\log \Omega\approx -k\sum_i n_i\log\frac{n_i}{N}=-Nk\sum_i\frac{n_i}{N}\log\frac{n_i}{N}=NS.
 $$
 The two constraints on counts can be turned into constraints of probability and average energy:
 $$

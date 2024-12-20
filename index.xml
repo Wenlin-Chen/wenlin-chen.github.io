@@ -59,6 +59,27 @@
       <guid>https://wenlin-chen.github.io/post/statistical_mechanics/</guid>
       <description>&lt;h3 id=&#34;1-what-is-statistical-mechanics&#34;&gt;1. What is Statistical Mechanics?&lt;/h3&gt;
 &lt;p&gt;Statistical mechanics is not a natural law like Newton&amp;rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality. Instead, it is a set of mathematical techniques that can be applied to study any physical system. Beyond physics, many ideas in machine learning were also inspired by statistical mechanics.&lt;/p&gt;
+&lt;p&gt;Statistical mechanics is particularly applicable in the following situations.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ideal predictability is impossible:
+&lt;ul&gt;
+&lt;li&gt;Initial conditions or laws of motion are not known with infinite precision.&lt;/li&gt;
+&lt;li&gt;Systems are interacting with outside environments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ideal predictability is not useful:
+&lt;ul&gt;
+&lt;li&gt;It might not be useful to know microscopic variables such as the position and momentum of every particle in the room.&lt;/li&gt;
+&lt;li&gt;Calculating the macroscopic variables such as the total energy is more useful.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Large numbers are involved:
+&lt;ul&gt;
+&lt;li&gt;Statistical average becomes precise for large numbers.&lt;/li&gt;
+&lt;li&gt;Statistical mechanics can be highly precise for macroscopic variables (except for rare events at the tails of probability distributions).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;2-statistical-description-of-physical-systems&#34;&gt;2. Statistical Description of Physical Systems&lt;/h3&gt;
 &lt;h4 id=&#34;21-microstates-and-macrostates&#34;&gt;2.1 Microstates and Macrostates&lt;/h4&gt;
 &lt;p&gt;A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.&lt;/p&gt;
@@ -143,24 +164,31 @@ $$p_i=\frac{e^{-E_i/kT}}{Z}.$$
 The normalizing constant is called the partition function, which is given by
 $$Z=\sum_i e^{-E_i/kT},$$
 where the sum is taken over all microstates of A.&lt;/p&gt;
-&lt;h4 id=&#34;26-thermodynamic-forces&#34;&gt;2.6 Thermodynamic Forces&lt;/h4&gt;
+&lt;h4 id=&#34;26-thermodynamic-forces-and-entropy&#34;&gt;2.6 Thermodynamic Forces and Entropy&lt;/h4&gt;
 &lt;p&gt;More generally, we usually care about the energy as well as other macroscopic variables.&lt;/p&gt;
 &lt;p&gt;Suppose that system A is a balloon filled with helium which can exchange both energy $E$ and volumn $V$ with the surrounding air B. We repeat the same argument above and assume the log density of states of B is linear in both energy and volumn:
 $$\log\Omega_B(E_B,V_B)\approx\alpha+\beta E_B+\gamma V_B.$$
 Then, the probability of A being in a particular microstate $i$ is given by
 $$p_i\propto\Omega_B(E_T-E_i,V_T-V_i)\propto e^{-\beta E_i-\gamma V_i}.$$
 Conventionally, we define a variable called pressure as
-$$P\equiv kT\frac{\partial\log\Omega_B(E_B,V_B)}{\partial V_B}=T\frac{\partial S_B(E_B)}{\partial V_B}.,$$
+$$P\equiv kT\frac{\partial\log\Omega_B(E_B,V_B)}{\partial V_B}=T\frac{\partial S_B(E_B, V_B)}{\partial V_B}.,$$
 and rewrite the probability of A being in the microstate $i$ as
 $$p_i=\frac{e^{-(E_i+PV_i)/kT}}{Z},$$
 where the partition function is given by
 $$Z=\sum_i e^{-(E_i+PV_i)/kT}.$$&lt;/p&gt;
 &lt;p&gt;Now, suppose that system A is a (fixed volumn) box filled with gas, with a small hole allowing the molecules to diffuse in from and out to the room B where the box is placed. This means that A can exchange both energy $E$ and the number of particles $N$ with B.&lt;/p&gt;
 &lt;p&gt;Similarly, we define a variable called chemical potential as
-$$\mu\equiv-kT\frac{\partial\log\Omega_B(E_B,N_B)}{\partial N_B}=-T\frac{\partial S_B(E_B)}{\partial N_B}.$$
+$$\mu\equiv-kT\frac{\partial\log\Omega_B(E_B,N_B)}{\partial N_B}=-T\frac{\partial S_B(E_B, V_B)}{\partial N_B}.$$
 Then, the probability of A being in the microstate $i$ is given by
 $$p_i=\frac{e^{-(E_i-\mu N_i)/kT}}{Z}.$$&lt;/p&gt;
-&lt;p&gt;Quantities like pressure $P$ and chemical potential $\mu$ are called thermodynamic forces, which are conjugate to the corresponding macroscopic variables $V$ and $N$ that the log density of states is differentiated with respect to. We say that $(V,P)$ and $(N,\mu)$ form conjugate pairs.&lt;/p&gt;
+&lt;p&gt;Quantities like pressure $P$ and chemical potential $\mu$ are called thermodynamic forces, which correspond to the tendency of changing the macroscopic variables, volume $V$ and the number of particles $N$, with respect to which the entropy is differentiated. We say that $(V,P)$ and $(N,\mu)$ form conjugate pairs.&lt;/p&gt;
+&lt;p&gt;We can now write down the total differential of the entropy $S$ as a function of the (internal) energy $E$, volume $V$ and the number of i-th particles $N_i$:
+$$
+\begin{aligned}
+dS(E,V,N)&amp;amp;=\left.\frac{\partial S}{\partial E}\right|_{V,N}dE+\left.\frac{\partial S}{\partial V}\right|_{E,N}dV+\sum_i\left.\frac{\partial S}{\partial N_i}\right|_{E,V}dN_i \\
+&amp;amp;\equiv \frac{1}{T}dE+\frac{P}{T}dV-\sum_i\frac{\mu_i}{T}dN_i.
+\end{aligned}
+$$&lt;/p&gt;
 &lt;h4 id=&#34;27-probabilities-of-macrostates-and-free-energy&#34;&gt;2.7 Probabilities of Macrostates and Free Energy&lt;/h4&gt;
 &lt;p&gt;Having defined the probability of A being in a microstate $i$, we now define the probability of a macrostate with energy $E_A$:
 $$p(E_A)=\sum_{i:E_i=E_A}\frac{e^{-E_i/kT}}{Z}=\Omega_A(E_A)\frac{e^{-E_A/kT}}{Z}.$$
@@ -308,18 +336,17 @@ $$&lt;/p&gt;
 &lt;h4 id=&#34;31-temperature&#34;&gt;3.1 Temperature&lt;/h4&gt;
 &lt;p&gt;Temperature measures the microscopic jiggling of atoms: the faster they move, the hotter an object feels. To see this and understand the significance of temperature, we prove the equipartition theorem below.&lt;/p&gt;
 &lt;p&gt;Consider a general energy function that can be seperated into the sum of two terms:
-$$E(x_1,x_2,\cdots)=E_1(x_1)+E_2(x_2,x_3,\cdots),$$
-where the energy is quadratic in $x_1$:
-$$E(x_1)=Cx_1^2.$$
+$$E(y_1,y_2,\cdots)=E_1(y_1)+E_2(y_2,y_3,\cdots),$$
+where the energy is quadratic in $y_1$:
+$$E(y_1)=Cy_1^2.$$
 Now, we compute the average value of $E_1$:
 $$
 \begin{aligned}
-\left&amp;lt;E_1(x_1)\right&amp;gt; &amp;amp;= \frac{\int E_1(x_1)e^{-\beta E(x_1,x_2,\cdots)}dx_1dx_2\cdots}{\int e^{-\beta E(x_1,x_2,\cdots)}dx_1dx_2\cdots} \\
-% &amp;amp;= \frac{\int e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int E_1(x_1)e^{-\beta E_1(x_1)}dx_1}{e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int e^{-\beta E_1(x_1)}dx_1} \\
-&amp;amp;= \frac{\int E_1(x_1)e^{-\beta E_1(x_1)}dx_1}{\int e^{-\beta E_1(x_1)}dx_1} \\
-&amp;amp;=-\frac{\partial\log\int e^{-\beta E_1(x_1)}dx_1}{\partial\beta} \\
-&amp;amp;=-\frac{\partial\log\int e^{-\beta Cx_1^2}dx_1}{\partial\beta} \\
-&amp;amp;=-\frac{\partial(\log\beta^{-1/2}+\log\int e^{-\beta Cx_1^2}d(\beta^{1/2}x_1))}{\partial\beta} \\
+\left&amp;lt;E_1(y_1)\right&amp;gt; &amp;amp;= \frac{\int E_1(y_1)e^{-\beta E(y_1,y_2,\cdots)}dy_1dy_2\cdots}{\int e^{-\beta E(y_1,y_2,\cdots)}dy_1dy_2\cdots} \\
+&amp;amp;= \frac{\int E_1(y_1)e^{-\beta E_1(y_1)}dy_1}{\int e^{-\beta E_1(y_1)}dy_1} \\
+&amp;amp;=-\frac{\partial}{\partial\beta}\log\int e^{-\beta E_1(y_1)}dy_1 \\
+&amp;amp;=-\frac{\partial}{\partial\beta} \log\int e^{-\beta Cy_1^2}dy_1 \\
+&amp;amp;=-\frac{\partial}{\partial\beta} \left(\log\beta^{-1/2}+\log\int e^{-\beta Cy_1^2}d(\beta^{1/2}y_1)\right) \\
 &amp;amp;=\frac{1}{2\beta}=\frac{kT}{2}.
 \end{aligned}
 $$

@@ -57,39 +57,61 @@
       <link>https://wenlin-chen.github.io/post/statistical_mechanics/</link>
       <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/statistical_mechanics/</guid>
-      <description>&lt;h3 id=&#34;what-is-statistical-mechanics&#34;&gt;What is Statistical Mechanics?&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;1-what-is-statistical-mechanics&#34;&gt;1. What is Statistical Mechanics?&lt;/h3&gt;
 &lt;p&gt;Statistical mechanics is not a natural law like Newton&amp;rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality. Instead, it is a set of mathematical techniques that can be applied to study any physical system. Beyond physics, many ideas in machine learning were also inspired by statistical mechanics.&lt;/p&gt;
-&lt;h3 id=&#34;statistical-description-of-physical-systems&#34;&gt;Statistical Description of Physical Systems&lt;/h3&gt;
-&lt;h4 id=&#34;microstates-and-macrostates&#34;&gt;Microstates and Macrostates&lt;/h4&gt;
+&lt;h3 id=&#34;2-statistical-description-of-physical-systems&#34;&gt;2. Statistical Description of Physical Systems&lt;/h3&gt;
+&lt;h4 id=&#34;21-microstates-and-macrostates&#34;&gt;2.1 Microstates and Macrostates&lt;/h4&gt;
 &lt;p&gt;A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.&lt;/p&gt;
 &lt;!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. --&gt;
 &lt;p&gt;A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, and temperature of a system, and the total number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.&lt;/p&gt;
 &lt;p&gt;Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of a physical system.&lt;/p&gt;
-&lt;h4 id=&#34;density-of-states&#34;&gt;Density of States&lt;/h4&gt;
+&lt;p&gt;For quantum systems, a microstate is a value $\left.|\Phi\right&amp;gt;$ of the wavefunction. The microscopic variables are the probability amplitudes of the basis states. A macroscopic variables is defined as the expectation value of an operator. For an operator (e.g., Hamiltonian $H$) corresponding to a measurable quantity (e.g., energy $E$), the corresponding macroscopic variable is
+$$
+E\equiv \left&amp;lt;\Phi|H|\Phi\right&amp;gt;.
+$$
+Conservation of energy $E$ still holds for isolated quantum systems.&lt;/p&gt;
+&lt;h4 id=&#34;22-density-of-states&#34;&gt;2.2 Density of States&lt;/h4&gt;
 &lt;p&gt;There can be a huge number of microstates all corresponding to the same macrostate (e.g., there is an enormous number of configurations of individual particles which all add up to the same energy and volumn). The number of microstates corresponding to a macrostate is defined as the density of the (macro)state:
 $$
 \Omega(E,V,\cdots).
 $$
 $\Omega$ is a function of all macroscopic variables defining the macrostate and can be thought of as the number of microstates per unit volumn in the space defined by those macroscopic variables.&lt;/p&gt;
-&lt;p&gt;As an example, the energy of a system of $N$ free particles is given by
+&lt;p&gt;As an example, the energy of a classical system of $N$ free particles is given by
 $$E=\frac{|\mathbf{p}|^2}{2m},$$
 where $\mathbf{p}$ contains $3N$ momentum variables. Note that each value of $E$ corresponds to the surface of a $(3N-1)$-dimensional hypersphere in this $3N$-dimensional space of momentum. Therefore, the density of the state is proportional to the surface area of the $(3N-1)$-dimensional hypersphere:
 $$
 \Omega(E)\propto |\mathbf{p}|^{3N-1}\propto E^{(3N-1)/2}.
 $$
 Note that for a large system with many particles ($N&amp;gt; &amp;gt;1$), even a tiny increase of the energy $E$ will result in a huge increase in the density of states. Therefore, we will work with a smoother and slower changing function $\log\Omega$.&lt;/p&gt;
-&lt;h4 id=&#34;time-averages-and-ensemble-averages&#34;&gt;Time Averages and Ensemble Averages&lt;/h4&gt;
+&lt;h4 id=&#34;23-time-averages-and-ensemble-averages&#34;&gt;2.3 Time Averages and Ensemble Averages&lt;/h4&gt;
 &lt;p&gt;We usually have no idea which microstate a system is in even if we know its current macrostate. However, this can be described by probabilities.&lt;/p&gt;
 &lt;p&gt;For a system in a given macrostate, there are two approaches to defining the probability of the system being in a microstate.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;The degrees of freedom making up the system are constantly changing. Conduct an experiment or simulation over a sufficiently long time interval. Define the probability of the system being in a microstate as the fraction of time spending in that microstate. Averages computed using this definition of probability are called time averages.&lt;/li&gt;
 &lt;li&gt;Imagine preparing many identical systems following exactly the same procedure. The set of all these system are called a statistical ensemble, which are in the same macrostate but can be in different microstates. Define the probability of the system being in a microstate as the fraction of systems in the ensemble which are in that microstate. Averages computed using this definition of probability are called ensemble averages.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;ergodicity-and-equilibrium&#34;&gt;Ergodicity and Equilibrium&lt;/h4&gt;
+&lt;p&gt;For quantum systems, we need to be careful about different types of probabilities. In statistical mechanics, probability always refers to either time average (a fraction of time) or ensemble average (a fraction of ensemble members). In quantum mechanics, even for a given state, there is a probability that a measurement will give a certain result. This probability only comes up when you perform a measurement (i.e., interact with an external system). As long as quantum systems iare isolated, they are always in well-defined microstates and macrostates at any time.&lt;/p&gt;
+&lt;h4 id=&#34;24-ergodicity-and-equilibrium&#34;&gt;2.4 Ergodicity and Equilibrium&lt;/h4&gt;
 &lt;p&gt;A system for which time averages and ensemble averages are equal is said to be ergodic. Ergodicity is a property of the system that it will eventually visit all parts of the space as time evloves and thus cannot be reduced or factored into smaller components.&lt;/p&gt;
 &lt;p&gt;The postulate of equal a priori probabilities states that a system has an equal probability of being in any microstate that is consistent with its macrostate. An isolated system that satisfies the postulate of equal a priori probabilities is said to be in equilibrium.&lt;/p&gt;
-&lt;p&gt;By the second law of thermodynamics and the maximum entropy property of the uniform distribution, it can be shown that once an isolated system satisfies the postulate of equal a priori probabilities even for a moment, it will continue satisfying it forever. This implies that an isolated system is in equilibrium if the probability distribution over its microstates does not change over time.&lt;/p&gt;
-&lt;h4 id=&#34;the-maxwell-boltzmann-distribution&#34;&gt;The Maxwell-Boltzmann Distribution&lt;/h4&gt;
+&lt;p&gt;It can be shown that once an isolated system satisfies the postulate of equal a priori probabilities even for a moment, it will continue satisfying it forever. Suppose that there are $\Omega(E,\cdots)$ microstates consistent with a macrostate. Each of these microstates is associated with a probability $p_i$. The entropy of a probability distribution is defined as
+$$
+S(E,\cdots)=-k\sum_i p_i\log p_i,
+$$
+which measures our ignorance (lack of knowledge) of the system. If we maximize the entropy subject to the normalization constraint using Lagrange multiplier:
+$$
+\max_{p}~L=S/k+\alpha \left(1-\sum_i p_i\right),
+$$
+we will obtain the uniform distribution:
+$$
+\frac{\partial L}{\partial p_i}=-\log p_i - 1 -\alpha=0\quad\implies\quad p_i=e^{-(\alpha+1)}=\frac{1}{\Omega(E,\cdots)}.
+$$
+Since the second law of thermodynamics states that the entropy of a system never decreases, this completes the proof and further implies that an isolated system is in equilibrium if the probability distribution over its microstates does not change over time.&lt;/p&gt;
+&lt;p&gt;The above calculation also reveals that the entropy of a macrostate of a system in equilibrium is given by
+$$
+S(E,\cdots)=k\log \Omega(E,\cdots).
+$$&lt;/p&gt;
+&lt;h4 id=&#34;25-the-maxwell-boltzmann-distribution&#34;&gt;2.5 The Maxwell-Boltzmann Distribution&lt;/h4&gt;
 &lt;p&gt;Real systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A. Some examples are&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A is the gas contained in a box. B is the box along with the whole room where the box is placed.&lt;/li&gt;
@@ -112,68 +134,70 @@ $$\log\Omega_B(E_B)\approx\alpha+\beta E_B.$$&lt;/p&gt;
 Since the system is in equilibrium, the probability of A being in the microstate $i$ equals the fraction of microstates of the whole system for which A is in the microstate $i$, which is proportional to the number of microstates of B given A is in the microstate $i$:
 $$p_i\propto\Omega_B(E_T-E_i)\propto e^{-\beta E_i},$$
 where $\beta$ is called the inverse temperature. We can define the temperature $T$ by
-$$\frac{1}{kT}\equiv\beta=\frac{\partial\log\Omega_B(E_B)}{\partial E_B},$$
-where $k=1.3806488\times 10^{-23}$ J/K is the Boltzmann constant.&lt;/p&gt;
+$$\frac{1}{kT}\equiv\beta=\frac{\partial\log\Omega_B(E_B)}{\partial E_B}=\frac{1}{k}\frac{\partial S_B(E_B)}{\partial E_B},$$
+where $k=1.3806488\times 10^{-23}$ J/K is the Boltzmann constant that converts human unit of temperature (Kelvin) to physical unit of temperature (Joules, which is the unit of energy).&lt;/p&gt;
 &lt;p&gt;With the above definition, we can write down the Maxwell-Boltzmann distribution:
 $$p_i=\frac{e^{-E_i/kT}}{Z}.$$
 The normalizing constant is called the partition function, which is given by
 $$Z=\sum_i e^{-E_i/kT},$$
 where the sum is taken over all microstates of A.&lt;/p&gt;
-&lt;h4 id=&#34;thermodynamic-forces&#34;&gt;Thermodynamic Forces&lt;/h4&gt;
+&lt;h4 id=&#34;26-thermodynamic-forces&#34;&gt;2.6 Thermodynamic Forces&lt;/h4&gt;
 &lt;p&gt;More generally, we usually care about the energy as well as other macroscopic variables.&lt;/p&gt;
 &lt;p&gt;Suppose that system A is a balloon filled with helium which can exchange both energy $E$ and volumn $V$ with the surrounding air B. We repeat the same argument above and assume the log density of states of B is linear in both energy and volumn:
 $$\log\Omega_B(E_B,V_B)\approx\alpha+\beta E_B+\gamma V_B.$$
 Then, the probability of A being in a particular microstate $i$ is given by
 $$p_i\propto\Omega_B(E_T-E_i,V_T-V_i)\propto e^{-\beta E_i-\gamma V_i}.$$
 Conventionally, we define a variable called pressure as
-$$P\equiv kT\frac{\partial\log\Omega_B(E_B,V_B)}{\partial V_B},$$
+$$P\equiv kT\frac{\partial\log\Omega_B(E_B,V_B)}{\partial V_B}=T\frac{\partial S_B(E_B)}{\partial V_B}.,$$
 and rewrite the probability of A being in the microstate $i$ as
 $$p_i=\frac{e^{-(E_i+PV_i)/kT}}{Z},$$
 where the partition function is given by
 $$Z=\sum_i e^{-(E_i+PV_i)/kT}.$$&lt;/p&gt;
 &lt;p&gt;Now, suppose that system A is a (fixed volumn) box filled with gas, with a small hole allowing the molecules to diffuse in from and out to the room B where the box is placed. This means that A can exchange both energy $E$ and the number of particles $N$ with B.&lt;/p&gt;
 &lt;p&gt;Similarly, we define a variable called chemical potential as
-$$\mu\equiv-kT\frac{\partial\log\Omega_B(E_B,N_B)}{\partial N_B}.$$
+$$\mu\equiv-kT\frac{\partial\log\Omega_B(E_B,N_B)}{\partial N_B}=-T\frac{\partial S_B(E_B)}{\partial N_B}.$$
 Then, the probability of A being in the microstate $i$ is given by
 $$p_i=\frac{e^{-(E_i-\mu N_i)/kT}}{Z}.$$&lt;/p&gt;
 &lt;p&gt;Quantities like pressure $P$ and chemical potential $\mu$ are called thermodynamic forces, which are conjugate to the corresponding macroscopic variables $V$ and $N$ that the log density of states is differentiated with respect to. We say that $(V,P)$ and $(N,\mu)$ form conjugate pairs.&lt;/p&gt;
-&lt;h4 id=&#34;entropy-and-probabilities-of-macrostates&#34;&gt;Entropy and Probabilities of Macrostates&lt;/h4&gt;
+&lt;h4 id=&#34;27-probabilities-of-macrostates-and-free-energy&#34;&gt;2.7 Probabilities of Macrostates and Free Energy&lt;/h4&gt;
 &lt;p&gt;Having defined the probability of A being in a microstate $i$, we now define the probability of a macrostate with energy $E_A$:
 $$p(E_A)=\sum_{i:E_i=E_A}\frac{e^{-E_i/kT}}{Z}=\Omega_A(E_A)\frac{e^{-E_A/kT}}{Z}.$$
-We define the entropy of a macrostate as
-$$S(E_A)=k\cdot\log\Omega_A(E_A),$$
+Recall that the definition of the entropy of a macrostate is
+$$S(E_A)=k\log\Omega_A(E_A),$$
 which is just another way of measuring the number of microstates corresponding to the macrostate with energy $E_A$.&lt;/p&gt;
 &lt;p&gt;Given the definition of entropy, we can rewrite the probability of a macrostate as
 $$p(E_A)=\frac{e^{-(E_A-TS(E_A))/kT}}{Z}.$$
 This leads to the definition of the Helmholtz free energy:
 $$F=E-TS(E).$$&lt;/p&gt;
-&lt;h4 id=&#34;thermodynamic-potentials-and-free-energy&#34;&gt;Thermodynamic Potentials and Free Energy&lt;/h4&gt;
+&lt;h4 id=&#34;28-thermodynamic-potentials-and-free-energy&#34;&gt;2.8 Thermodynamic Potentials and Free Energy&lt;/h4&gt;
 &lt;p&gt;We have studied how to compute the probability of finding a system in a microstate or macrostate specified by an arbitrary set of macroscopic variables. Interestingly, in every case, the probability takes exactly the same form:
 $$p=\frac{e^{-\Phi/kT}}{Z},$$
 where $\Phi$ is called thermodynamic potential, which is a energy-like function that defines different kinds of probability distributions for the system.&lt;/p&gt;
 &lt;p&gt;Some common thermodynamic potentials with special names are&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Energy: $E$.&lt;/li&gt;
-&lt;li&gt;Helmholtz free energy: $F=E-TS(E)$.&lt;/li&gt;
-&lt;li&gt;Enthalpy: $H=E+PV$.&lt;/li&gt;
-&lt;li&gt;Gibbs free energy: $G=E+PV-TS(E,V)$.&lt;/li&gt;
-&lt;li&gt;Grand potential: $\Phi_G=E-\mu N-TS(E,N)$.&lt;/li&gt;
+&lt;li&gt;Energy: $E_A$.&lt;/li&gt;
+&lt;li&gt;Helmholtz free energy: $F_A=E_A-T_BS_A(E_A)$.&lt;/li&gt;
+&lt;li&gt;Enthalpy: $H_A=E_A+P_BV_A$.&lt;/li&gt;
+&lt;li&gt;Gibbs free energy: $G_A=E_A+P_BV_A-T_BS_A(E_A,V_A)$.&lt;/li&gt;
+&lt;li&gt;Grand potential: $\Phi_{G_A}=E_A-\mu_B N_A-T_BS_A(E_A,N_A)$.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Note that the temperature $T_B$, pressure $P_B$ and chemical potential $\mu_B$ are defined in terms of the entropy $S_B$ of the heat bath, and hence the subscript $B$. The energy $E_A$, volume $V_A$, number of particles $N_A$ are the macroscopic variables of the small system of interest, and hence the subscript $A$.&lt;/p&gt;
 &lt;p&gt;The term free energy generally refers to any thermodynamic potential that includes a $-TS$ term, which describes the probability of a macrostate.&lt;/p&gt;
 &lt;p&gt;There are two ways of understanding thermodynamic potentials:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;We start with $E$ and add in terms based on the ensemble that we want to use. If we want the volumn to be variable, then add the $PV$ term. If we want the number of particles to be variable, then add the $-\mu N$ term. If we want to work with macrostates, then add the $-TS$ term.&lt;/li&gt;
 &lt;li&gt;We start with a single potential that includes all possible terms. If the volumn is fixed, then $PV$ is constant and can be ignored. If the number of particles is fixed, then $-\mu N$ is constant and can be ignored. If we want to work with microstates, then $TS=0$ since a microstate can be thought of as a macrostate with a single microstate (so the entropy $S$ is zero).&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;A thermodynamics potential is a measure how probable it is for a system to be in a particular microstate or macrostate since it appears in the exponent of the Maxwell-Boltzmann distribution (lower values of thermodynamics potential indicate more likely states). The probability is balanced by all terms in the thermodynamics potential. For example, lower energy corresponds to a more probable microstate, but there may be fewer of such microstates when forming their corresponding macrostate.&lt;/p&gt;
 &lt;p&gt;Some common ensembles with special names are&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Microcanonical ensemble refers to an isolated system with fixed energy. Therefore, it has equal probability of being in any microstate with that specific energy and no chance of being in any microstate with a different energy.&lt;/li&gt;
 &lt;li&gt;Canonical ensemble refers to a system that can exchange energy with a heat bath at a fixed temperature. The corresponding thermodynamic potential is $E$ for microstates and $E-TS(E)$ for macrostates.&lt;/li&gt;
 &lt;li&gt;Grand canonical ensemble refers to a system that can exhcange both energy and particles with a heat bath of a fixed temperature and chemical potential. The corresponding thermodynamic potential is $E-\mu N$ for microstates and $E-\mu N-TS(E,N)$ for macrostates.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;averages-and-very-large-numbers&#34;&gt;Averages and Very Large Numbers&lt;/h4&gt;
+&lt;h4 id=&#34;29-averages-and-very-large-numbers&#34;&gt;2.9 Averages and Very Large Numbers&lt;/h4&gt;
 &lt;p&gt;The ensemble average or mean of a quantity $x$ is defined as
-$$\left&amp;lt;x\right&amp;gt;=\sum_i x_i p_i=\frac{\sum_i x_i e^{-\Phi_i}/kT}{\sum_i e^{-\Phi_i}/kT},$$
+$$\left&amp;lt;x\right&amp;gt;=\sum_i x_i p_i=\frac{\sum_i x_i e^{-\Phi_i/kT}}{\sum_i e^{-\Phi_i/kT}},$$
 where $x_i$ is the value of the quantity $x$ in the $i$-th state, $p_i$ is the probability of being in that state, and the sum can be over either microstates or macrostates depending on whether $x$ is a microscopic variable or macroscopic variable. It can be shown that
 $$\left&amp;lt;x+y\right&amp;gt;=\left&amp;lt;x\right&amp;gt;+\left&amp;lt;y\right&amp;gt;\quad\text{and}\quad\left&amp;lt;Cx\right&amp;gt;=C\left&amp;lt;x\right&amp;gt;.$$&lt;/p&gt;
 &lt;p&gt;The variance of a quantity $x$ measures its fluctuations, which is how much $x$ tends to vary about its average:
@@ -186,7 +210,7 @@ In practice, the convergence rate to the normal distribution depends on the dist
 &lt;p&gt;We usually care about the the ratio of the standard deviation and the average:
 $$\frac{\sigma_S}{\mu_S}\propto\frac{1}{\sqrt{N}},\quad\text{as }~N\to\infty.$$
 As an example, a typical sized room contains $N=10^{26}$ oxygen molecules. Let $x_i$ denote whether the $i$-th oxygen molecule is in the left side of the room. The fluctuations over the average of the number of oxygen molecules in the left side of the room is $10^{-13}$, which is negligible as it is too small to measure.&lt;/p&gt;
-&lt;h4 id=&#34;partition-function&#34;&gt;Partition Function&lt;/h4&gt;
+&lt;h4 id=&#34;210-partition-function&#34;&gt;2.10 Partition Function&lt;/h4&gt;
 &lt;p&gt;Recall that the partition function is defined as
 $$Z=\sum_i e^{-\beta\Phi_i}=\sum_i e^{-\Phi_i/kT},$$
 which has some interesting and useful properties. In particular, the derivatives of $\log Z$ tend to give averages.&lt;/p&gt;
@@ -195,6 +219,7 @@ $$
 \begin{aligned}
 -\frac{\partial\log Z}{\partial\beta}
 &amp;amp;=-\frac{1}{Z}\frac{\partial Z}{\partial\beta} \\
+&amp;amp;=-\frac{1}{Z} \frac{\partial}{\partial\beta} \sum_i e^{-\beta\Phi_i} \\
 &amp;amp;=-\frac{1}{Z}\sum_i \frac{\partial e^{-\beta\Phi_i}}{\partial\beta} \\
 &amp;amp;= \frac{1}{Z}\sum_i \Phi_i e^{-\beta\Phi_i} \\
 &amp;amp;= \left&amp;lt;\Phi\right&amp;gt;.
@@ -210,30 +235,98 @@ $$
 &amp;amp;=\left&amp;lt;\frac{\partial\Phi(x)}{\partial x}\right&amp;gt;.
 \end{aligned}
 $$&lt;/p&gt;
-&lt;h3 id=&#34;interpretation-of-statistical-quantities&#34;&gt;Interpretation of Statistical Quantities&lt;/h3&gt;
+&lt;h4 id=&#34;211-alternative-derivation-of-the-boltzmann-distribution-and-free-energy&#34;&gt;2.11 Alternative Derivation of the Boltzmann Distribution and Free Energy&lt;/h4&gt;
+&lt;p&gt;A system in contact with a heat bath at a fixed temperature $T$ can be thought of as $N$ ($N\to\infty$) replicas of the same system wealy connected together (i.e., a canonical ensemble). The first replica is of interest to us, and the rest provide the heat bath. Each replica is in a microstate $i$ with energy $E_i$. Just like the system can exchange energy with the heat bath, these replicas can exchange energy with each other. The total energy $E_{total}=N\left&amp;lt;E\right&amp;gt;$ of the $N$ replicas is conserved. In equilibrium, what is the probability of the first system among those $N$ replicas is in macrostate $i$?&lt;/p&gt;
+&lt;p&gt;The postulate of equal a priori probabilities tells us that each way of redistributing these $N$ replicas among the possible microstates that is consistent with a given total energy is equally probable. Let $n_i$ be the occupation number, which denotes the number of replicas that are in state $i$. The most probable set of occupation numbers $n=(n_1,n_2,\cdots)$ is the one that corresponds to the maximum number of ways of redistributing these $N$ replicas among possible states subject to the following constraints:
+$$
+\sum_i n_i = N,
+$$
+$$
+\sum_i n_iE_i = E_{total}.
+$$&lt;/p&gt;
+&lt;p&gt;The number of ways of redistributing the $N$ relicas is called the multilicative number:
+$$
+W=\frac{N!}{\prod_i n!}.
+$$
+With Stiring&amp;rsquo;s approximation:
+$$\log n! =\sum_{x=1}^n\log x\approx\int_{1}^n \log xdx\sim n\log n-n,$$
+the multiplicative number can be a approximated by
+$$
+\log W=\log N!-\sum_i\log n!\approx N\log N - N - \sum_i n_i\log n_i + \sum_i n_i = N\log N - \sum_i n_i\log n_i.
+$$
+Now, we turn the counts into probabilities. The log multilicative number can be rewritten as the total entropy of the $N$ replicas:
+$$
+k\log W\approx -k\sum_i n_i\log\frac{n_i}{N}=-Nk\sum_i\frac{n_i}{N}\log\frac{n_i}{N}=NS.
+$$
+The two constraints on counts can be turned into constraints of probability and average energy:
+$$
+\sum_i p_i=\frac{\sum_i n_i}{N}=1,
+$$
+$$
+\sum_i p_iE_i = \frac{\sum_i n_iE_i}{N}=\frac{E_{total}}{N}=\left&amp;lt;E\right&amp;gt;.
+$$
+Finally, we need to solve the following constrained optimization problem to obtain the Boltzmann distribution:
+$$
+\max_{p_i}~S/k=-\sum_i p_i\log p_i,
+$$
+$$
+s.t.~\sum_i p_i=1\quad\text{and}\quad\sum_i p_iE_i =\left&amp;lt;E\right&amp;gt;.
+$$
+Using the Lagrange multiplier, we have the following unconstrained optimization problem:
+$$
+\max_{p_i,\alpha,\beta} ~L=S/k + \alpha\left(1-\sum_i p_i\right) + \beta\left(\left&amp;lt;E\right&amp;gt;-\sum_i p_iE_i\right).
+$$
+We set the derivative of $L$ w.r.t. $p_i$ to zero.
+$$
+\frac{\partial L}{\partial p_i} = -\log p_i-1-\alpha-\beta E_i = 0.
+$$
+This results in the Boltzmann distribution:
+$$
+p_i=e^{-(\alpha+1)-\beta E_i}=\frac{e^{-\beta E_i}}{Z},
+$$
+where $\beta\equiv1/kT$ as the inverse temperature, and the partition function is defined as
+$$
+Z=\sum_i e^{-\beta E_i}.
+$$&lt;/p&gt;
+&lt;p&gt;This probabilistic formulation with the average energy constraint emphasizes the fact that equilibrium does not mean static. A system in equilibrium is still moving and fluctuating but with a statistical balance of motions. In our example, our system in equilibrium is still constantly exchanging energy with the heat bath and switching among different states, but with a constant average energy $\left&amp;lt;E\right&amp;gt;$.&lt;/p&gt;
+&lt;p&gt;We can further express the Helmholtz free energy in terms of the partion function. Note that the entropy can be rewritten as
+$$
+\begin{aligned}
+S&amp;amp;=-k\sum_i p_i \log p_i \\
+&amp;amp;=k\frac{1}{Z}\sum_i e^{-E_i/kT} \left(\frac{E_i}{kT}+\log Z\right) \\
+&amp;amp;=\frac{\left&amp;lt;E\right&amp;gt;}{T}+k\log Z.
+\end{aligned}
+$$
+Therefore, the Helmholtz free energy can be expressed as
+$$
+F = \left&amp;lt;E\right&amp;gt;-TS=-kT\log Z.
+$$&lt;/p&gt;
+&lt;h3 id=&#34;3-interpretation-of-statistical-quantities&#34;&gt;3. Interpretation of Statistical Quantities&lt;/h3&gt;
 &lt;p&gt;We have derived statistical definitions of many abstract mathematical quantities such as temperature. Now we try to build up an intuitive understanding of what they are in the physical world.&lt;/p&gt;
-&lt;h4 id=&#34;temperature&#34;&gt;Temperature&lt;/h4&gt;
+&lt;h4 id=&#34;31-temperature&#34;&gt;3.1 Temperature&lt;/h4&gt;
 &lt;p&gt;Temperature measures the microscopic jiggling of atoms: the faster they move, the hotter an object feels. To see this and understand the significance of temperature, we prove the equipartition theorem below.&lt;/p&gt;
 &lt;p&gt;Consider a general energy function that can be seperated into the sum of two terms:
 $$E(x_1,x_2,\cdots)=E_1(x_1)+E_2(x_2,x_3,\cdots),$$
 where the energy is quadratic in $x_1$:
 $$E(x_1)=Cx_1^2.$$
-One particularly important example is the momentum $p_i$ of a classical particle, which corresponds to the kenetic energy:
-$$E_k(p_i)=\frac{p_i^2}{2m}.$$
 Now, we compute the average value of $E_1$:
 $$
 \begin{aligned}
 \left&amp;lt;E_1(x_1)\right&amp;gt; &amp;amp;= \frac{\int E_1(x_1)e^{-\beta E(x_1,x_2,\cdots)}dx_1dx_2\cdots}{\int e^{-\beta E(x_1,x_2,\cdots)}dx_1dx_2\cdots} \\
-&amp;amp;= \frac{\int e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int E_1(x_1)e^{-\beta E_1(x_1)}dx_1}{e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int e^{-\beta E_1(x_1)}dx_1} \\
+% &amp;amp;= \frac{\int e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int E_1(x_1)e^{-\beta E_1(x_1)}dx_1}{e^{-\beta E_2(x_2,x_3,\cdots)}dx_2dx_3\cdots\int e^{-\beta E_1(x_1)}dx_1} \\
 &amp;amp;= \frac{\int E_1(x_1)e^{-\beta E_1(x_1)}dx_1}{\int e^{-\beta E_1(x_1)}dx_1} \\
 &amp;amp;=-\frac{\partial\log\int e^{-\beta E_1(x_1)}dx_1}{\partial\beta} \\
 &amp;amp;=-\frac{\partial\log\int e^{-\beta Cx_1^2}dx_1}{\partial\beta} \\
 &amp;amp;=-\frac{\partial(\log\beta^{-1/2}+\log\int e^{-\beta Cx_1^2}d(\beta^{1/2}x_1))}{\partial\beta} \\
-&amp;amp;=\frac{1}{2\beta} \\
-&amp;amp;=\frac{kT}{2}.
+&amp;amp;=\frac{1}{2\beta}=\frac{kT}{2}.
 \end{aligned}
 $$
-This tells us that temperature is a measure of average kinetic energy, which shows how the statistical definition of temperature matches up with the physical one: if a system is in equilibrium with a heat bath at temperature $T$, then its average kinetic energy per degree of freedom is $\left&amp;lt; E_k\right&amp;gt;=kT/2$.&lt;/p&gt;
+One particularly important example is the momentum $p$ of a classical particle, which corresponds to the kenetic energy:
+$$E_{kinetic}(p)=\frac{p^2}{2m}.$$
+This tells us that temperature is a measure of average kinetic energy, which shows how the statistical definition of temperature matches up with the physical one: if a system is in equilibrium with a heat bath at temperature $T$, then its average kinetic energy per degree of freedom is $\left&amp;lt; E_{kinetic}\right&amp;gt;=kT/2$. For examples, a gas of N rigid diatomic moelcules at temperature $T$ has $5N$ degrees of freedom (each rigid diatomic molecule has $2\times3-1=5$ degrees of freedom), whose kinetic energy is $\left&amp;lt; E_{kinetic}\right&amp;gt;=5N\cdot kT/2$.&lt;/p&gt;
+&lt;p&gt;Another example is the position $x$ of a harmonic oscillator, which corresponds to the potential energy:
+$$E_{potential}(x)=k_hx^2.$$
+Therefore, the average potential energy of a harmonic oscillator in equilibrium at temperature $T$ is $\left&amp;lt; E_{potential}\right&amp;gt;=kT/2$ per degree of freedom. More generally, the total energy of a system in equilibrium tends to roughly evenly distributed across its degrees of freedoms.&lt;/p&gt;
 </description>
     </item>
     

@@ -841,14 +841,15 @@ Note that for a large system with many particles ($N&gt; &gt;1$), even a tiny in
 <li>Imagine preparing many identical systems following exactly the same procedure. The set of all these system are called a statistical ensemble, which are in the same macrostate but can be in different microstates. Define the probability of the system being in a microstate as the fraction of systems in the ensemble which are in that microstate. Averages computed using this definition of probability are called ensemble averages.</li>
 </ol>
 <p>For quantum systems, we need to be careful about different types of probabilities. In statistical mechanics, probability always refers to either time average (a fraction of time) or ensemble average (a fraction of ensemble members). In quantum mechanics, even for a given state, there is a probability that a measurement will give a certain result. This probability only comes up when you perform a measurement (i.e., interact with an external system). As long as quantum systems iare isolated, they are always in well-defined microstates and macrostates at any time.</p>
-<h4 id="24-ergodicity-and-equilibrium">2.4 Ergodicity and Equilibrium</h4>
+<h4 id="24-ergodicity-equilibrium-and-entropy">2.4 Ergodicity, Equilibrium and Entropy</h4>
 <p>A system for which time averages and ensemble averages are equal is said to be ergodic. Ergodicity is a property of the system that it will eventually visit all parts of the space as time evloves and thus cannot be reduced or factored into smaller components.</p>
 <p>The postulate of equal a priori probabilities states that a system has an equal probability of being in any microstate that is consistent with its macrostate. An isolated system that satisfies the postulate of equal a priori probabilities is said to be in equilibrium.</p>
 <p>It can be shown that once an isolated system satisfies the postulate of equal a priori probabilities even for a moment, it will continue satisfying it forever. Suppose that there are $\Omega(E,\cdots)$ microstates consistent with a macrostate. Each of these microstates is associated with a probability $p_i$. The entropy of a probability distribution is defined as
 $$
 S(E,\cdots)=-k\sum_i p_i\log p_i,
 $$
-which measures our ignorance (lack of knowledge) of the system. If we maximize the entropy subject to the normalization constraint using Lagrange multiplier:
+which measures our ignorance (lack of knowledge) or uncertainty of the system. Typically, broad probability distribution corresponds to large entropy which indicates more ignorance, whereas narrow probability distribution corresponds to small entropy which indicates less ignorance.</p>
+<p>The mimimum entropy is achieved if we are certain about the system (i.e., there is one state with probability $p_i=1$). If we maximize the entropy subject to the normalization constraint using Lagrange multiplier:
 $$
 \max_{p}~L=S/k+\alpha \left(1-\sum_i p_i\right),
 $$

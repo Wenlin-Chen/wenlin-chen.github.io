@@ -252,7 +252,7 @@ $$
 $$
 With Stiring&amp;rsquo;s approximation:
 $$\log n! =\sum_{x=1}^n\log x\approx\int_{1}^n \log xdx\sim n\log n-n,$$
-the multiplicative number can be a approximated by
+the multiplicative number can be approximated by
 $$
 \log \Omega=\log N!-\sum_i\log n!\approx N\log N - N - \sum_i n_i\log n_i + \sum_i n_i = N\log N - \sum_i n_i\log n_i.
 $$

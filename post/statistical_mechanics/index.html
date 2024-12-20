@@ -855,7 +855,9 @@ where $E_A$ depends only on the degrees of freedom that make up A, $E_B$ only de
 <li>The interaction energy $E_{AB}$ is negligible compared to the individual energies $E_A$ and $E_B$ and their variations. Therefore, the total energy becomes
 $$E_T\approx E_A+E_B.$$</li>
 <li>The total degress of freedom are specified independently. Therefore, the density of states factorizes and we are free to choose states for A and B independently:
-$$\Omega_T(E_T)\approx\Omega_A(E_A)\Omega_B(E_B).$$</li>
+$$\Omega_T(E_T)=\Omega_A(E_A)\Omega_B(E_B).$$
+This implies that entropy is additive:
+$$S_T(E_T)=k\log\Omega_T(E_T)=k\log\Omega_A(E_A)+k\log\Omega_B(E_B)=S_A(E_A)+S_B(E_B).$$</li>
 </ol>
 <p>We also assume that B is much larger than A in the sense that any fluctuation of $E_A$ has negligible effect on $E_B$. This means that we only care about a very small range of values for $E_B$, and therefore the log density of states of B can be approximated by a linear function:
 $$\log\Omega_B(E_B)\approx\alpha+\beta E_B.$$</p>

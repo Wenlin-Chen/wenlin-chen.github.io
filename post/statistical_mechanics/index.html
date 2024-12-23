@@ -813,7 +813,7 @@
 <h4 id="21-microstates-and-macrostates">2.1 Microstates and Macrostates</h4>
 <p>A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.</p>
 <!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. -->
-<p>A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, and temperature of a system, and the total number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.</p>
+<p>A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, temperature of a system, or the number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.</p>
 <p>Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of a physical system.</p>
 <p>For quantum systems, a microstate is a value $\left.|\Phi\right&gt;$ of the wavefunction. The microscopic variables are the probability amplitudes of the basis states. A macroscopic variables is defined as the expectation value of an operator. For an operator (e.g., Hamiltonian $H$) corresponding to a measurable quantity (e.g., energy $E$), the corresponding macroscopic variable is
 $$
@@ -1015,9 +1015,9 @@ the multiplicative number can be approximated by
 $$
 \log \Omega=\log M!-\sum_i\log m!\approx M\log M - M - \sum_i m_i\log m_i + \sum_i m_i = M\log M - \sum_i m_i\log m_i.
 $$
-Now, we turn the counts into probabilities. The log multilicative number can be rewritten as the total entropy of the $M$ replicas:
+Now, we turn the counts into probabilities by letting $p_i=m_i/M$. The log multilicative number can be rewritten as the total entropy of the $M$ replicas:
 $$
-k\log \Omega\approx -k\sum_i m_i\log\frac{m_i}{M}=-Mk\sum_i\frac{m_i}{M}\log\frac{m_i}{M}=MS.
+k\log \Omega\approx -k\sum_i m_i\log\frac{m_i}{M}=-Mk\sum_i\frac{m_i}{M}\log\frac{m_i}{M}=-Mk\sum_ip_i\log p_i=MS.
 $$
 The two constraints on counts can be turned into constraints of probability and average energy:
 $$

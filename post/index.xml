@@ -137,12 +137,12 @@ and rewrite the probability of A being in the microstate $i$ as
 $$p_i=\frac{e^{-(E_i+PV_i)/kT}}{Z},$$
 where the partition function is given by
 $$Z=\sum_i e^{-(E_i+PV_i)/kT}.$$&lt;/p&gt;
-&lt;p&gt;Now, suppose that system A is a (fixed volumn) box filled with gas, with a small hole allowing the molecules to diffuse in from and out to the room B where the box is placed. This means that A can exchange both energy $E$ and the number of particles $N$ with B.&lt;/p&gt;
+&lt;p&gt;Now, suppose that system A is a (fixed volumn) box filled with gas, with a small hole allowing the molecules to diffuse in from and out to the room B where the box is placed. This means that A can exchange both energy $E$ and the particle number $N$ with B.&lt;/p&gt;
 &lt;p&gt;Similarly, we define a variable called chemical potential as
 $$\mu\equiv-kT\frac{\partial\log\Omega_B(E_B,N_B)}{\partial N_B}=-T\frac{\partial S_B(E_B, V_B)}{\partial N_B}.$$
 Then, the probability of A being in the microstate $i$ is given by
 $$p_i=\frac{e^{-(E_i-\mu N_i)/kT}}{Z}.$$&lt;/p&gt;
-&lt;p&gt;Quantities like pressure $P$ and chemical potential $\mu$ are called thermodynamic forces, which correspond to the tendency of changing the macroscopic variables, volume $V$ and the number of particles $N$, with respect to which the entropy is differentiated. We say that $(V,P)$ and $(N,\mu)$ form conjugate pairs.&lt;/p&gt;
+&lt;p&gt;Quantities like pressure $P$ and chemical potential $\mu$ are called thermodynamic forces, which correspond to the tendency of changing the macroscopic variables, volume $V$ and the particle number $N$, with respect to which the entropy is differentiated. We say that $(V,P)$ and $(N,\mu)$ form conjugate pairs.&lt;/p&gt;
 &lt;p&gt;We can now write down the total differential of the entropy $S$ as a function of the (internal) energy $E$, volume $V$ and the number of i-th particles $N_i$:
 $$
 \begin{aligned}
@@ -172,14 +172,14 @@ where $\Phi$ is called thermodynamic potential, which is a energy-like function 
 &lt;li&gt;Gibbs free energy: $G_A=E_A+P_BV_A-T_BS_A(E_A,V_A)$.&lt;/li&gt;
 &lt;li&gt;Grand potential: $\Phi_{G_A}=E_A-\mu_B N_A-T_BS_A(E_A,N_A)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Note that the temperature $T_B$, pressure $P_B$ and chemical potential $\mu_B$ are defined in terms of the entropy $S_B$ of the heat bath, and hence the subscript $B$. The energy $E_A$, volume $V_A$, number of particles $N_A$ are the macroscopic variables of the small system of interest, and hence the subscript $A$.&lt;/p&gt;
+&lt;p&gt;Note that the temperature $T_B$, pressure $P_B$ and chemical potential $\mu_B$ are defined in terms of the entropy $S_B$ of the heat bath, and hence the subscript $B$. The energy $E_A$, volume $V_A$, particle number $N_A$ are the macroscopic variables of the small system of interest, and hence the subscript $A$.&lt;/p&gt;
 &lt;p&gt;The term free energy generally refers to any thermodynamic potential that includes a $-TS$ term, which describes the probability of a macrostate.&lt;/p&gt;
 &lt;p&gt;There are two ways of understanding thermodynamic potentials:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;We start with $E$ and add in terms based on the ensemble that we want to use. If we want the volumn to be variable, then add the $PV$ term. If we want the number of particles to be variable, then add the $-\mu N$ term. If we want to work with macrostates, then add the $-TS$ term.&lt;/li&gt;
-&lt;li&gt;We start with a single potential that includes all possible terms. If the volumn is fixed, then $PV$ is constant and can be ignored. If the number of particles is fixed, then $-\mu N$ is constant and can be ignored. If we want to work with microstates, then $TS=0$ since a microstate can be thought of as a macrostate with a single microstate (so the entropy $S$ is zero).&lt;/li&gt;
+&lt;li&gt;We start with $E$ and add in terms based on the ensemble that we want to use. If we want the volumn to be variable, then add the $PV$ term. If we want the particle number to be variable, then add the $-\mu N$ term. If we want to work with macrostates, then add the $-TS$ term.&lt;/li&gt;
+&lt;li&gt;We start with a single potential that includes all possible terms. If the volumn is fixed, then $PV$ is constant and can be ignored. If particle number is fixed, then $-\mu N$ is constant and can be ignored. If we want to work with microstates, then $TS=0$ since a microstate can be thought of as a macrostate with a single microstate (so the entropy $S$ is zero).&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;A thermodynamics potential is a measure how probable it is for a system to be in a particular microstate or macrostate since it appears in the exponent of the Maxwell-Boltzmann distribution (lower values of thermodynamics potential indicate more likely states). The probability is balanced by all terms in the thermodynamics potential. For example, lower energy corresponds to a more probable microstate, but there may be fewer of such microstates when forming their corresponding macrostate.&lt;/p&gt;
+&lt;p&gt;A thermodynamic potential is a measure how probable it is for a system to be in a particular microstate or macrostate since it appears in the exponent of the Maxwell-Boltzmann distribution (lower values of thermodynamic potential indicate more likely states). The probability is balanced by all terms in the thermodynamic potential. For example, lower energy corresponds to a more probable microstate, but there may be fewer of such microstates when forming their corresponding macrostate.&lt;/p&gt;
 &lt;p&gt;Some common ensembles with special names are&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Microcanonical ensemble refers to an isolated system with fixed energy. Therefore, it has equal probability of being in any microstate with that specific energy and no chance of being in any microstate with a different energy.&lt;/li&gt;
@@ -226,35 +226,36 @@ $$
 &amp;amp;=\left&amp;lt;\frac{\partial\Phi(x)}{\partial x}\right&amp;gt;.
 \end{aligned}
 $$&lt;/p&gt;
-&lt;h4 id=&#34;211-alternative-derivation-of-the-boltzmann-distribution-and-free-energy&#34;&gt;2.11 Alternative Derivation of the Boltzmann Distribution and Free Energy&lt;/h4&gt;
-&lt;p&gt;A system in contact with a heat bath at a fixed temperature $T$ can be thought of as $N$ ($N\to\infty$) replicas of the same system wealy connected together (i.e., a canonical ensemble). The first replica is of interest to us, and the rest provide the heat bath. Each replica is in a microstate $i$ with energy $E_i$. Just like the system can exchange energy with the heat bath, these replicas can exchange energy with each other. The total energy $E_{total}=N\left&amp;lt;E\right&amp;gt;$ of the $N$ replicas is conserved. In equilibrium, what is the probability of the first system among those $N$ replicas is in macrostate $i$?&lt;/p&gt;
-&lt;p&gt;The postulate of equal a priori probabilities tells us that each way of redistributing these $N$ replicas among the possible microstates that is consistent with a given total energy is equally probable. Let $n_i$ be the occupation number, which denotes the number of replicas that are in state $i$. The most probable set of occupation numbers $n=(n_1,n_2,\cdots)$ is the one that corresponds to the maximum number of ways of redistributing these $N$ replicas among possible states subject to the following constraints:
+&lt;h4 id=&#34;211-an-alternative-perspective-of-macrostates-boltzmann-distribution-and-thermodynamic-potential&#34;&gt;2.11 An Alternative Perspective of Macrostates, Boltzmann Distribution and Thermodynamic Potential&lt;/h4&gt;
+&lt;p&gt;In the previous formulation, we treat the energy $E$ (or volume $V$, particle number $N$) of the system of interest as an independent variable, which defines a macrostate. In that case, every macrostate has a fixed value of energy and consists of all microstates with that value of $E$. As the system constantly exchanges energy with the heat bath, it continuosly fluctutates through a small range of macrostates with different energy values.&lt;/p&gt;
+&lt;p&gt;On the other hand, a system in contact with a heat bath at a fixed temperature $T$ (or pressure $P$, chemical potential $\mu$) can be thought of as $M$ ($M\to\infty$) replicas of the same system wealy connected together. The first replica is of interest to us, and the rest provide the heat bath. Each replica is in a microstate $i$ with energy $E_i$. Just like the system can exchange energy with the heat bath, these replicas can exchange energy with each other. The total energy $E_{total}=M\left&amp;lt;E\right&amp;gt;$ of the $M$ replicas is conserved. In this case, we treat the temperature $T$ as an independent variable that we can control, which defines a macrostate. Therefore, the system is in a single fixed macrostate. However, as the system constantly exchanges energy with the heat bath, each macrostate defined by temperature $T$ no longer has a fixed value of energy. Instead, each macrostate now correpsonds to a probability distribution $p(i,\left&amp;lt;E\right&amp;gt;)$ over different microstates $i$ with different energies $E_i$, whose average energy is given by a fixed value $\left&amp;lt;E\right&amp;gt;$=$E(T)$. The Boltzmann distribution specifies the probability of the system of interest being in a microstate $i$ for a given temperature $T$ or equivalently a given average energy $\left&amp;lt;E\right&amp;gt;$.&lt;/p&gt;
+&lt;p&gt;The postulate of equal a priori probabilities tells us that each way of redistributing these $M$ replicas among the possible microstates that is consistent with a given average energy $\left&amp;lt;E\right&amp;gt;$ is equally probable. Let $m_i$ be the occupation number, which denotes the number of replicas that are in state $i$. Hence, the most probable set of occupation numbers $m=(m_1,m_2,\cdots)$ for all states is the one that corresponds to the maximum number of ways of redistributing these $M$ replicas among possible states subject to the following constraints:
 $$
-\sum_i n_i = N,
+\sum_i m_i = M,
 $$
 $$
-\sum_i n_iE_i = E_{total}.
+\sum_i m_iE_i = E_{total}.
 $$&lt;/p&gt;
-&lt;p&gt;The number of ways of redistributing the $N$ relicas is called the multilicative number:
+&lt;p&gt;The number of ways of redistributing the $M$ relicas is called the multilicative number:
 $$
-\Omega=\frac{N!}{\prod_i n!}.
+\Omega=\frac{M!}{\prod_i m!}.
 $$
 With Stiring&amp;rsquo;s approximation:
 $$\log n! =\sum_{x=1}^n\log x\approx\int_{1}^n \log xdx\sim n\log n-n,$$
 the multiplicative number can be approximated by
 $$
-\log \Omega=\log N!-\sum_i\log n!\approx N\log N - N - \sum_i n_i\log n_i + \sum_i n_i = N\log N - \sum_i n_i\log n_i.
+\log \Omega=\log M!-\sum_i\log m!\approx M\log M - M - \sum_i m_i\log m_i + \sum_i m_i = M\log M - \sum_i m_i\log m_i.
 $$
-Now, we turn the counts into probabilities. The log multilicative number can be rewritten as the total entropy of the $N$ replicas:
+Now, we turn the counts into probabilities. The log multilicative number can be rewritten as the total entropy of the $M$ replicas:
 $$
-k\log \Omega\approx -k\sum_i n_i\log\frac{n_i}{N}=-Nk\sum_i\frac{n_i}{N}\log\frac{n_i}{N}=NS.
+k\log \Omega\approx -k\sum_i m_i\log\frac{m_i}{M}=-Mk\sum_i\frac{m_i}{M}\log\frac{m_i}{M}=MS.
 $$
 The two constraints on counts can be turned into constraints of probability and average energy:
 $$
-\sum_i p_i=\frac{\sum_i n_i}{N}=1,
+\sum_i p_i=\frac{\sum_i m_i}{M}=1,
 $$
 $$
-\sum_i p_iE_i = \frac{\sum_i n_iE_i}{N}=\frac{E_{total}}{N}=\left&amp;lt;E\right&amp;gt;.
+\sum_i p_iE_i = \frac{\sum_i m_iE_i}{M}=\frac{E_{total}}{M}=\left&amp;lt;E\right&amp;gt;.
 $$
 Finally, we need to solve the following constrained optimization problem to obtain the Boltzmann distribution:
 $$
@@ -263,7 +264,8 @@ $$
 $$
 s.t.~\sum_i p_i=1\quad\text{and}\quad\sum_i p_iE_i =\left&amp;lt;E\right&amp;gt;.
 $$
-Using the Lagrange multiplier, we have the following unconstrained optimization problem:
+In this case, the entropy $S=S(\left&amp;lt;E\right&amp;gt;)$ depends on the average energy $\left&amp;lt;E\right&amp;gt;$ of the probability distribution $p_i=p(i,\left&amp;lt;E\right&amp;gt;)$ for the macrostate. This is different from the previous formulation, where the entropy is $S(E)=\log \Omega(E)$ for a given fixed value of $E$ that defines each macrostate.&lt;/p&gt;
+&lt;p&gt;Using the Lagrange multiplier, we have the following unconstrained optimization problem:
 $$
 \max_{p_i,\alpha,\beta} ~L=S/k + \alpha\left(1-\sum_i p_i\right) + \beta\left(\left&amp;lt;E\right&amp;gt;-\sum_i p_iE_i\right).
 $$
@@ -279,16 +281,19 @@ where $\beta\equiv1/kT$ as the inverse temperature, and the partition function i
 $$
 Z=\sum_i e^{-\beta E_i}.
 $$&lt;/p&gt;
-&lt;p&gt;This probabilistic formulation with the average energy constraint emphasizes the fact that equilibrium does not mean static. A system in equilibrium is still moving and fluctuating but with a statistical balance of motions. In our example, our system in equilibrium is still constantly exchanging energy with the heat bath and switching among different states, but with a constant average energy $\left&amp;lt;E\right&amp;gt;$.&lt;/p&gt;
-&lt;p&gt;We can further express the Helmholtz free energy in terms of the partion function. Note that the entropy can be rewritten as
+&lt;p&gt;This perspective of Boltzmann distribution emphasizes the fact that equilibrium does not mean static. A system in equilibrium is still moving and fluctuating but with a statistical balance of motions. In this example, our system in equilibrium is still constantly exchanging energy with the heat bath and switching among different states, but with a constant average energy $\left&amp;lt;E\right&amp;gt;$. Note that in this case, the thermodynamic potential is no longer a fixed value as in the previous formulation. Instead, it is defined as an averaged quantity. For example, the Helmholtz free energy becomes
+$$
+F\equiv\left&amp;lt;E\right&amp;gt;-TS(\left&amp;lt;E\right&amp;gt;).
+$$&lt;/p&gt;
+&lt;p&gt;We can further express the Helmholtz free energy in terms of the partion function by a manipulation of the entropy formula:
 $$
 \begin{aligned}
 S&amp;amp;=-k\sum_i p_i \log p_i \\
 &amp;amp;=k\frac{1}{Z}\sum_i e^{-E_i/kT} \left(\frac{E_i}{kT}+\log Z\right) \\
-&amp;amp;=\frac{\left&amp;lt;E\right&amp;gt;}{T}+k\log Z.
+&amp;amp;=\frac{\left&amp;lt;E\right&amp;gt;}{T}+k\log Z,
 \end{aligned}
 $$
-Therefore, the Helmholtz free energy can be expressed as
+which gives
 $$
 F = \left&amp;lt;E\right&amp;gt;-TS=-kT\log Z.
 $$&lt;/p&gt;

@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Bilevel Optimization Problem Setting Consider the following bilevel optimization problem: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives." />
+  <meta name="description" content="1. Bilevel Optimization 1.1 Problem Setting Consider the following bilevel optimization problem: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ 1.2 Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/bilevel_optimization/" />
@@ -298,7 +298,7 @@
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/bilevel_optimization/" />
   <meta property="og:title" content="Bilevel Optimization | Wenlin Chen" />
-  <meta property="og:description" content="Bilevel Optimization Problem Setting Consider the following bilevel optimization problem: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="1. Bilevel Optimization 1.1 Problem Setting Consider the following bilevel optimization problem: $$ \begin{aligned} x^*&amp;=\underset{x}{\operatorname{argmin}}~f(x,y^*(x))\quad\text{(outer optimization)}, \\ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inner optimization)}. \end{aligned} $$ 1.2 Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Bilevel Optimization Problem Setting Consider the following bilevel optimization problem: $$ \\begin{aligned} x^*\u0026amp;=\\underset{x}{\\operatorname{argmin}}~f(x,y^*(x))\\quad\\text{(outer optimization)}, \\\\ s.t.\\quad y^*(x)\u0026amp;=\\underset{y}{\\operatorname{argmin}}~g(x,y)\\quad\\text{(inner optimization)}. \\end{aligned} $$ Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives."
+  "description": "1. Bilevel Optimization 1.1 Problem Setting Consider the following bilevel optimization problem: $$ \\begin{aligned} x^*\u0026amp;=\\underset{x}{\\operatorname{argmin}}~f(x,y^*(x))\\quad\\text{(outer optimization)}, \\\\ s.t.\\quad y^*(x)\u0026amp;=\\underset{y}{\\operatorname{argmin}}~g(x,y)\\quad\\text{(inner optimization)}. \\end{aligned} $$ 1.2 Understanding the Bilevel Objective The bilevel optimization objective can be understood by separately considering the two objectives."
 }
 </script>
 
@@ -655,6 +655,36 @@
         
         
 
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
       
 
         
@@ -786,8 +816,8 @@
   <div class="container">
 
     <div class="article-style">
-      <h3 id="bilevel-optimization">Bilevel Optimization</h3>
-<h4 id="problem-setting">Problem Setting</h4>
+      <h3 id="1-bilevel-optimization">1. Bilevel Optimization</h3>
+<h4 id="11-problem-setting">1.1 Problem Setting</h4>
 <ul>
 <li>Consider the following bilevel optimization problem:
 $$
@@ -797,7 +827,7 @@ s.t.\quad y^*(x)&amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(inne
 \end{aligned}
 $$</li>
 </ul>
-<h4 id="understanding-the-bilevel-objective">Understanding the Bilevel Objective</h4>
+<h4 id="12-understanding-the-bilevel-objective">1.2 Understanding the Bilevel Objective</h4>
 <ul>
 <li>The bilevel optimization objective can be understood by separately considering the two objectives.
 <ul>
@@ -807,8 +837,8 @@ $$</li>
 </li>
 <li>This results in a nested optimization procedure as evaluating the outer objective $f(x,y^*(x))$ at each value of $x$ requires solving an inner optimization problem to obtain the best response function $y^{*}(x)$ at that value of $x$.</li>
 </ul>
-<h3 id="solving-bilevel-optimization">Solving Bilevel Optimization</h3>
-<h4 id="gradient-based-optimization">Gradient-based Optimization</h4>
+<h3 id="2-solving-bilevel-optimization">2. Solving Bilevel Optimization</h3>
+<h4 id="21-gradient-based-optimization">2.1 Gradient-based Optimization</h4>
 <ul>
 <li>The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.</li>
 <li>We can calculate the hyper-gradient (i.e., total derivative) of $f(x,y^{*}(x))$ with respect to $x$ using the chain rule:
@@ -820,7 +850,7 @@ $$\frac{d f(x,y^{*}(x))}{d x}=\frac{\partial f(x,y^{*}(x))}{\partial x}+\frac{\p
 </ul>
 </li>
 </ul>
-<h4 id="implicit-function-theorem-ift">Implicit Function Theorem (IFT)</h4>
+<h4 id="22-implicit-function-theorem-ift">2.2 Implicit Function Theorem (IFT)</h4>
 <ul>
 <li>An important observation is that $y^*(x)$ is a critical point (i.e., minimum) of $g(x,y)$ for each given $x$.</li>
 <li>This enables us to employ Implicit Function Theorem (IFT) to calculate the Jacobian $\frac{\partial y^*(x)}{\partial x}$ for any $x&rsquo;$:
@@ -831,15 +861,15 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&rsquo;}=-\left.\left(\fra
 </ul>
 </li>
 </ul>
-<h3 id="applications-in-machine-learning">Applications in Machine Learning</h3>
-<h4 id="hyperparmaeter-optimization">Hyperparmaeter Optimization</h4>
+<h3 id="3-applications-in-machine-learning">3. Applications in Machine Learning</h3>
+<h4 id="31-hyperparmaeter-optimization">3.1 Hyperparmaeter Optimization</h4>
 <ul>
 <li>Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.</li>
 <li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>
 <li>Inner optimization corresponds to finding the optimal model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.</li>
 <li>Outer optimization corresponds to finding the optimal hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimal model parameters $y^{*}(x)$.</li>
 </ul>
-<h4 id="meta-learning">Meta-learning</h4>
+<h4 id="32-meta-learning">3.2 Meta-learning</h4>
 <ul>
 <li>Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.</li>
 <li>Let $f$ be the validation loss function and $g$ be the training loss function.</li>

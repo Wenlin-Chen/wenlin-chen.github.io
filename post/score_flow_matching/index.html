@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Generative Modeling Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." />
+  <meta name="description" content="1. Generative Modeling 1.1 Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. 1.2 Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/score_flow_matching/" />
@@ -298,7 +298,7 @@
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/score_flow_matching/" />
   <meta property="og:title" content="Score and Flow Matching | Wenlin Chen" />
-  <meta property="og:description" content="Generative Modeling Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="1. Generative Modeling 1.1 Problem Setting Data distribution $p_{\text{data}}(x)$ is unknown. Samples from $p_{\text{data}}(x)$ are available. 1.2 Goals Estimate the density of the data distribution $p_{\text{data}}(x)$. Generate new samples from $p_{\text{data}}(x)$." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Generative Modeling Problem Setting Data distribution $p_{\\text{data}}(x)$ is unknown. Samples from $p_{\\text{data}}(x)$ are available. Goals Estimate the density of the data distribution $p_{\\text{data}}(x)$. Generate new samples from $p_{\\text{data}}(x)$. Score Matching for Diffusion Models Notation Denote data by $x_0=x$ and noise by $x_T$."
+  "description": "1. Generative Modeling 1.1 Problem Setting Data distribution $p_{\\text{data}}(x)$ is unknown. Samples from $p_{\\text{data}}(x)$ are available. 1.2 Goals Estimate the density of the data distribution $p_{\\text{data}}(x)$. Generate new samples from $p_{\\text{data}}(x)$."
 }
 </script>
 
@@ -655,6 +655,36 @@
         
         
 
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
       
 
         
@@ -786,25 +816,25 @@
   <div class="container">
 
     <div class="article-style">
-      <h3 id="generative-modeling">Generative Modeling</h3>
-<h4 id="problem-setting">Problem Setting</h4>
+      <h3 id="1-generative-modeling">1. Generative Modeling</h3>
+<h4 id="11-problem-setting">1.1 Problem Setting</h4>
 <ul>
 <li>Data distribution $p_{\text{data}}(x)$ is unknown.</li>
 <li>Samples from $p_{\text{data}}(x)$ are available.</li>
 </ul>
-<h4 id="goals">Goals</h4>
+<h4 id="12-goals">1.2 Goals</h4>
 <ul>
 <li>Estimate the density of the data distribution $p_{\text{data}}(x)$.</li>
 <li>Generate new samples from $p_{\text{data}}(x)$.</li>
 </ul>
-<h3 id="score-matching-for-diffusion-models">Score Matching for Diffusion Models</h3>
-<h4 id="notation">Notation</h4>
+<h3 id="2-score-matching-for-diffusion-models">2. Score Matching for Diffusion Models</h3>
+<h4 id="21-notation">2.1 Notation</h4>
 <ul>
 <li>Denote data by $x_0=x$ and noise by $x_T$.</li>
 <li>Wiener process SDE ($dt&gt;0$):
 $$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$</li>
 </ul>
-<h4 id="diffusion-process">Diffusion Process</h4>
+<h4 id="22-diffusion-process">2.2 Diffusion Process</h4>
 <ul>
 <li>Forward diffusion SDE ($dt&gt;0$):
 $$dx_t=f_t(x_t)dt+g_tdw_t.$$
@@ -828,7 +858,7 @@ $$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
 </ul>
 </li>
 </ul>
-<h4 id="denoising-score-matching">Denoising Score Matching</h4>
+<h4 id="23-denoising-score-matching">2.3 Denoising Score Matching</h4>
 <ul>
 <li>To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.</li>
 <li>Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
@@ -882,8 +912,8 @@ which contains no information of the mixture weight $w$. In theory, one regulari
 </ul>
 </li>
 </ul>
-<h3 id="flow-matching-for-continuous-normalizing-flows">Flow Matching for Continuous Normalizing Flows</h3>
-<h4 id="notation-1">Notation</h4>
+<h3 id="3-flow-matching-for-continuous-normalizing-flows">3. Flow Matching for Continuous Normalizing Flows</h3>
+<h4 id="31-notation">3.1 Notation</h4>
 <ul>
 <li>Denote data by $x_T=x$ and noise by $x_0$
 <ul>
@@ -892,7 +922,7 @@ which contains no information of the mixture weight $w$. In theory, one regulari
 </ul>
 </li>
 </ul>
-<h4 id="discrete-normalizing-flow">Discrete Normalizing Flow</h4>
+<h4 id="32-discrete-normalizing-flow">3.2 Discrete Normalizing Flow</h4>
 <ul>
 <li>Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
 $$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
@@ -915,7 +945,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_T)}[\log p_{\theta}(x_T)].$$
 </ul>
 </li>
 </ul>
-<h4 id="continuous-normalizing-flow">Continuous Normalizing Flow</h4>
+<h4 id="33-continuous-normalizing-flow">3.3 Continuous Normalizing Flow</h4>
 <ul>
 <li>Continuous residual flow transformation:
 $$x_{t+\delta}=x_t+\delta u_t(x_t).$$
@@ -975,7 +1005,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_1)}[\log p_{\theta}(x_1)].$$
 </ul>
 </li>
 </ul>
-<h4 id="conditional-flow-matching">Conditional Flow Matching</h4>
+<h4 id="34-conditional-flow-matching">3.4 Conditional Flow Matching</h4>
 <ul>
 <li>We want a simulation-free objective like score matching.</li>
 <li>Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:

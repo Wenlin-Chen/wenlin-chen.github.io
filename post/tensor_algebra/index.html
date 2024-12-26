@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.
+  <meta name="description" content="1. Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.
 General relativity (metric tensor): curved space-time, expanding universe. Quantum mechanics and quantum computing: quantum superposition (linear combination), quantum engtanglement (tensor product)." />
 
   
@@ -299,7 +299,7 @@ General relativity (metric tensor): curved space-time, expanding universe. Quant
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/tensor_algebra/" />
   <meta property="og:title" content="Tensor Algebra | Wenlin Chen" />
-  <meta property="og:description" content="Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.
+  <meta property="og:description" content="1. Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.
 General relativity (metric tensor): curved space-time, expanding universe. Quantum mechanics and quantum computing: quantum superposition (linear combination), quantum engtanglement (tensor product)." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
@@ -353,7 +353,7 @@ General relativity (metric tensor): curved space-time, expanding universe. Quant
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.\nGeneral relativity (metric tensor): curved space-time, expanding universe. Quantum mechanics and quantum computing: quantum superposition (linear combination), quantum engtanglement (tensor product)."
+  "description": "1. Motivation and Applications of Tensors Tensors provide insights about how geometry works. Below are some examples that involve tensors.\nGeneral relativity (metric tensor): curved space-time, expanding universe. Quantum mechanics and quantum computing: quantum superposition (linear combination), quantum engtanglement (tensor product)."
 }
 </script>
 
@@ -657,6 +657,36 @@ General relativity (metric tensor): curved space-time, expanding universe. Quant
         
         
 
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
       
 
         
@@ -788,7 +818,8 @@ General relativity (metric tensor): curved space-time, expanding universe. Quant
   <div class="container">
 
     <div class="article-style">
-      <h3 id="motivation-and-applications-of-tensors">Motivation and Applications of Tensors</h3>
+      <!-- These notes are based on [Tensors for Beginners](https://www.youtube.com/playlist?list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG). -->
+<h3 id="1-motivation-and-applications-of-tensors">1. Motivation and Applications of Tensors</h3>
 <p>Tensors provide insights about how geometry works. Below are some examples that involve tensors.</p>
 <ul>
 <li>General relativity (metric tensor):
@@ -806,7 +837,7 @@ General relativity (metric tensor): curved space-time, expanding universe. Quant
 <li>Optimization.</li>
 <li>&hellip;</li>
 </ul>
-<h3 id="definitions-of-tensors">Definitions of Tensors</h3>
+<h3 id="2-definitions-of-tensors">2. Definitions of Tensors</h3>
 <p>Roughtly speaking, tensors are objects defined by the way they transform. Tensor algbra focuses on the analysis of individual tensors, which generalizes linear algebra. Tensor calculus focuses on the analysis of tensor fields, which generalizes multivariate calculus.</p>
 <p>Formally, there are several definitions of tensors from different perspectives.</p>
 <ol>
@@ -843,7 +874,7 @@ General relativity (metric tensor): curved space-time, expanding universe. Quant
 </li>
 </ol>
 <p>We will begin with special examples of tensors that we have seen in linear algebra and then gradually generalize the concept of tensors. For notational simplicity, we will use Einstein&rsquo;s notation, which drops the summation symbols $\sum$ since they can be inferred from the context by contracting all corresponding upper and lower indices.</p>
-<h3 id="change-of-basis">Change of Basis</h3>
+<h3 id="3-change-of-basis">3. Change of Basis</h3>
 <p>Consider an old basis $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ and a new basis $\tilde{E}=[\tilde{\mathbf{e}}_1,\cdots,\tilde{\mathbf{e}}_n]$.</p>
 <p>The forward transformation $F$ builds the new basis from the old basis:
 $$
@@ -901,7 +932,7 @@ $$ -->
 <!-- $$
 B=F^{-1}\quad\text{and}\quad F=B^{-1}.
 $$ -->
-<h3 id="vectors-and-vector-spaces">Vectors and Vector Spaces</h3>
+<h3 id="4-vectors-and-vector-spaces">4. Vectors and Vector Spaces</h3>
 <p>A vector space $(V,S,+,\cdot)$ consists of</p>
 <ul>
 <li>$V$: a set of vectors,</li>
@@ -926,7 +957,7 @@ v^n
 $$
 This tells us that column vectors are the array representations of vectors, which is the array definition of vectors.</p>
 <p>Geometrically, vectors are arrows (directed line segments).</p>
-<h3 id="vector-transformation">Vector Transformation</h3>
+<h3 id="5-vector-transformation">5. Vector Transformation</h3>
 <p>Let&rsquo;s represent the vector components of $\mathbf{v}$ in a different basis $\tilde{E}$:
 $$
 \mathbf{v}=\tilde{v}^j \tilde{\mathbf{e}}_j = \tilde{v}^jF^i_j\mathbf{e}_i = (F^i_j\tilde{v}^j)\mathbf{e}_i.
@@ -965,7 +996,7 @@ $$</p>
 </li>
 </ul>
 <p>We say that vector components are contravariant because they contra-vary with a change of basis. As a reminder, we always put the indices of the vector components above the letters. We say that basis vectors are covariant and put the indices of the basis vectors below the letters.</p>
-<h3 id="covectors-and-dual-vector-spaces">Covectors and Dual Vector Spaces</h3>
+<h3 id="6-covectors-and-dual-vector-spaces">6. Covectors and Dual Vector Spaces</h3>
 <p>Covectors (linear forms) are functions $\alpha: V\to S$ that map the vectors in $V$ to the scalars in $S$ such that</p>
 <ol>
 <li>$\alpha(\mathbf{v}+\mathbf{w})=\alpha(\mathbf{v})+\alpha(\mathbf{w}),~\forall \mathbf{v},\mathbf{w}\in V$.</li>
@@ -983,7 +1014,7 @@ $$</p>
 </li>
 </ul>
 <p>As shown above, we usually just write $+$ and $\cdot$ when we add and scale covectors in $V^*$ but need to remember that the addition and scaling rules in $V^*$ are actually different from those in $V$.</p>
-<h3 id="dual-basis-and-covector-components">Dual Basis and Covector Components</h3>
+<h3 id="7-dual-basis-and-covector-components">7. Dual Basis and Covector Components</h3>
 <p>Covectors are a kind of tensor. Covectors are invariant to the coordinate systems, but the components of covectors are not.</p>
 <p>Take the basis $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ for a vector space $V$. We introduce the (Kronecker) dual basis $\mathcal{E}=[\epsilon^1,\cdots,\epsilon^n]^T$ ($\epsilon^i:V\to S$) for its dual vector space $V^*$:
 $$
@@ -1013,7 +1044,7 @@ $$</p>
 \alpha(\mathbf{v})=\alpha\left(\sum_{i=1}^n v^i \mathbf{e}\_i \right)=\sum\_{i=1}^n v^i \alpha(\mathbf{e}_i) = \sum\_{i=1}^n \alpha_i v^i.
 $$ -->
 <p>Geometrically, a covector is a stack of linearly spaced, straight contour lines. A covector maps a vector into a scalar specified by the number of covector contour lines that the vector covers.</p>
-<h3 id="change-of-dual-basis-and-covector-transformation">Change of Dual Basis and Covector Transformation</h3>
+<h3 id="8-change-of-dual-basis-and-covector-transformation">8. Change of Dual Basis and Covector Transformation</h3>
 <p>Consider an old dual basis $\mathcal{E}=[\epsilon^1,\cdots,\epsilon^n]^T$ and a new dual basis $\tilde{\mathcal{E}}=[\tilde{\epsilon}^1,\cdots,\tilde{\epsilon}^n]^T$ for $V^*$. Let&rsquo;s build the new dual basis from the old dual basis using a transformation $Q$:
 $$
 \tilde{\epsilon}^i=Q^i_j\epsilon^j.
@@ -1066,7 +1097,7 @@ $$
 $$
 \epsilon^i= F^i_j\tilde{\epsilon}^j \quad\quad ~ \tilde{\epsilon}^i= B^i_j\epsilon^j \quad\quad\text{and}\quad\quad \tilde{\alpha}_j =  F^i_j\alpha_i \quad\quad \alpha_j =  B^i_j\tilde{\alpha}_i
 $$</p>
-<h3 id="linear-maps">Linear Maps</h3>
+<h3 id="9-linear-maps">9. Linear Maps</h3>
 <p>Linear maps $L:V\to W$ map vectors in $V$ to vectors in $W$ such that</p>
 <ol>
 <li>$L(\mathbf{v}+\mathbf{w})=L(\mathbf{v})+L(\mathbf{w})$,</li>
@@ -1115,7 +1146,7 @@ It is important to note that</p>
 <li>The $i$-th column vector in a matrix is what a copy of the $i$-th basis vector will be transformed into.</li>
 </ul>
 <p>Geometrically, linear maps are spatial transformations that keep lines parallel, keep lines evenly spaced, and keep the origin unchanged. A linear map can be a combination of vector scaling and rotation but not vector translation.</p>
-<h3 id="linear-map-transformation">Linear Map Transformation</h3>
+<h3 id="10-linear-map-transformation">10. Linear Map Transformation</h3>
 <p>Linear maps are a kind of tensor. Linear maps are invariant to the coordinate systems, but the components of linear maps are not.</p>
 <p>Let&rsquo;s transform a linear map from an old basis $E$ to a new basis $\tilde{E}$. By definition, we have
 $$
@@ -1172,7 +1203,7 @@ $$</li>
 </ul>
 </li>
 </ul>
-<h3 id="bilinear-forms-metric-tensors-and-their-transformations">Bilinear Forms, Metric Tensors and Their Transformations</h3>
+<h3 id="11-bilinear-forms-metric-tensors-and-their-transformations">11. Bilinear Forms, Metric Tensors and Their Transformations</h3>
 <p>Metric tensors $g:V\times V\to S$ are speical bilinear forms that define dot products between vectors such that</p>
 <ol>
 <li>$ag(\mathbf{v},\mathbf{w})=g(a\mathbf{v},\mathbf{w})=g(\mathbf{v},a\mathbf{w}),~\forall a\in S,~\forall\mathbf{v},\mathbf{w}\in V$.</li>
@@ -1228,7 +1259,7 @@ Metric tensors (and general bilinear forms) are (0,2)-tensors since both dimensi
 $$
 g(\mathbf{v},\mathbf{w})=v^i w^j g_{ij}=(F^i_k\tilde{v}^k)(F^j_l\tilde{v}^l) B^s_i B^t_j \tilde{g}_{st}=(B^s_i F^i_k)(B^t_jF^j_l)\tilde{v}^k\tilde{v}^l\tilde{g}_{st} = \delta^s_k \delta^t_l \tilde{v}^k\tilde{v}^l\tilde{g}_{st}=\tilde{v}^s\tilde{v}^t\tilde{g}_{st}.
 $$</p>
-<h3 id="general-linear-forms-and-tensors">General Linear Forms and Tensors</h3>
+<h3 id="12-general-linear-forms-and-tensors">12. General Linear Forms and Tensors</h3>
 <p>In general, we define an $n$-(linear) form to be a linear function $V\times V\times \cdots \times V=V^n\to S$, which is a (0,$n$)-tensor or a rank-$n$ covector. Covectors are linear forms or 1-linear forms. Bilinear forms are 2-linear forms.</p>
 <p>A general ($m$,$n$)-tensor $T$ is a tensor with $m$ contravariant dimensions and $n$ covariant dimensions. General tensor transformations are defined as
 $$
@@ -1238,7 +1269,7 @@ $$
 T^{ijk\cdots}_{rst\cdots}=(F^i_a F^j_b F^k_c\cdots ) \tilde{T}^{abc\cdots}_{xyz\cdots} (B^x_r B^y_s B^z_t\cdots).
 $$
 We will derive this transformation rule using tensor products later.</p>
-<h3 id="examples-of-tensor-products">Examples of Tensor Products</h3>
+<h3 id="13-examples-of-tensor-products">13. Examples of Tensor Products</h3>
 <p>In general, tensors can be constructed by combining vectors and covectors using tensor product. We first give a few examples of redefining tensors that we have learned using tensor products below.</p>
 <p>Linear maps are tensor products of vector-covector pairs:
 $$
@@ -1274,7 +1305,7 @@ $$
 $$
 \implies \tilde{\mathcal{B}}_{ij} = F^k_i F^l_j\mathcal{B}_{kl}.
 $$</p>
-<h3 id="general-tensor-products-and-kronecker-products">General Tensor Products and Kronecker Products</h3>
+<h3 id="14-general-tensor-products-and-kronecker-products">14. General Tensor Products and Kronecker Products</h3>
 <p>A general ($m$,$n$)-tensor can be defined by combining $m$ vectors $\mathbf{e}_i,\mathbf{e}_j,\mathbf{e}_k,\cdots$ and $n$ covectors $\epsilon^r,\epsilon^s,\epsilon^t,\cdots$ using tensor products:
 $$
 T = T^{ijk\cdots}_{rst\cdots}(\mathbf{e}_i\otimes\mathbf{e}_j\otimes\mathbf{e}_k\otimes\cdots)\otimes (\epsilon^r\otimes\epsilon^s\otimes\epsilon^t\otimes\cdots).
@@ -1310,7 +1341,7 @@ Note that there are multiple ways in which we can associate each covector with a
 <li>$T(x_1,\cdots,x_i+y_i,\cdots,x_n)=T(x_1,\cdots,x_i,\cdots,x_n)+T(x_1,\cdots,y_i,\cdots,x_n),~\forall i$.</li>
 </ol>
 <p>Kronecker products are tensor products expressed in the array representation of tensors. For examples, matrices are Kronecker products of (column vector, row vector) pairs, and metric tensors are Kronecker products of (row vector, row vector) pairs.</p>
-<h3 id="tensor-product-spaces">Tensor Product Spaces</h3>
+<h3 id="15-tensor-product-spaces">15. Tensor Product Spaces</h3>
 <p>Let $n\in S$ be a scalar, $\mathbf{v},\mathbf{u}\in V$ be vectors, and $\alpha,\beta\in V^*$ be covectors. Tensor products satisfy the following rules</p>
 <ol>
 <li>$n(\mathbf{v}\otimes\alpha)=(n\mathbf{v})\otimes\alpha=\mathbf{v}\otimes(n\alpha)$,</li>
@@ -1326,7 +1357,7 @@ Note that there are multiple ways in which we can associate each covector with a
 <li>$T^{~j}_{i~kl} L^i_j \quad (V \otimes V^*)\to (V^* \otimes V^*)$,</li>
 <li>&hellip;</li>
 </ul>
-<h3 id="musical-isomorphism">Musical Isomorphism</h3>
+<h3 id="16-musical-isomorphism">16. Musical Isomorphism</h3>
 <p>We would like to find a meaningful partner covector $\nu=v_i\epsilon^i\in V^*$ for each vector $\mathbf{v}=v^i\mathbf{e}_i\in V$. It turns out that one such partnership is called musical isomorphism, which is defined using the metric tensor $g\in V^*\otimes V^*$ (i.e., dot product).</p>
 <p>Musical isomorphism defines the partner of the vector $\mathbf{v}\in V$ as the linear function $\nu:V\to S$ such that
 $$

@@ -57,26 +57,27 @@
       <link>https://wenlin-chen.github.io/post/statistical_mechanics/</link>
       <pubDate>Sun, 28 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/statistical_mechanics/</guid>
-      <description>&lt;h3 id=&#34;1-what-is-statistical-mechanics&#34;&gt;1. What is Statistical Mechanics?&lt;/h3&gt;
+      <description>&lt;!-- These notes are based on [Introduction to Statistical Mechanics](https://web.stanford.edu/~peastman/statmech/) and  [Theoretical Minimum: Statistical Mechanics](https://theoreticalminimum.com/courses/statistical-mechanics/2013/spring). --&gt;
+&lt;h3 id=&#34;1-what-is-statistical-mechanics&#34;&gt;1. What is Statistical Mechanics?&lt;/h3&gt;
 &lt;p&gt;Statistical mechanics is not a natural law like Newton&amp;rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality. Instead, it is a set of mathematical techniques that can be applied to study any physical system. Beyond physics, many ideas in machine learning were also inspired by statistical mechanics.&lt;/p&gt;
 &lt;p&gt;Statistical mechanics is particularly applicable in the following situations.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Ideal predictability is impossible:
 &lt;ul&gt;
-&lt;li&gt;Initial conditions or laws of motion are not known with infinite precision.&lt;/li&gt;
-&lt;li&gt;Systems are interacting with outside environments.&lt;/li&gt;
+&lt;li&gt;Initial conditions or laws of motion may not be known with infinite precision.&lt;/li&gt;
+&lt;li&gt;Systems may interact with outside environments.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Ideal predictability is not useful:
 &lt;ul&gt;
-&lt;li&gt;It might not be useful to know microscopic variables such as the position and momentum of every particle in the room.&lt;/li&gt;
-&lt;li&gt;Calculating the macroscopic variables such as the total energy is more useful.&lt;/li&gt;
+&lt;li&gt;Calculating microscopic variables such as the position and momentum of every particle in the room may not be useful.&lt;/li&gt;
+&lt;li&gt;Calculating the macroscopic variables such as the total energy can be more useful.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Large numbers are involved:
 &lt;ul&gt;
-&lt;li&gt;Statistical average becomes precise for large numbers.&lt;/li&gt;
-&lt;li&gt;Statistical mechanics can be highly precise for macroscopic variables (except for rare events at the tails of probability distributions).&lt;/li&gt;
+&lt;li&gt;Statistical average is precise for large numbers.&lt;/li&gt;
+&lt;li&gt;Statistical mechanics is highly precise for macroscopic variables (except for rare events at the tails of probability distributions).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -85,12 +86,12 @@
 &lt;p&gt;A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.&lt;/p&gt;
 &lt;!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. --&gt;
 &lt;p&gt;A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, temperature of a system, or the number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.&lt;/p&gt;
-&lt;p&gt;Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of a physical system.&lt;/p&gt;
+&lt;p&gt;Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of physical systems.&lt;/p&gt;
 &lt;p&gt;For quantum systems, a microstate is a value $\left.|\Phi\right&amp;gt;$ of the wavefunction. The microscopic variables are the probability amplitudes of the basis states. A macroscopic variables is defined as the expectation value of an operator. For an operator (e.g., Hamiltonian $H$) corresponding to a measurable quantity (e.g., energy $E$), the corresponding macroscopic variable is
 $$
 E\equiv \left&amp;lt;\Phi|H|\Phi\right&amp;gt;.
-$$
-Conservation of energy $E$ still holds for isolated quantum systems.&lt;/p&gt;
+$$&lt;/p&gt;
+&lt;!-- Conservation of energy $E$ still holds for isolated quantum systems. --&gt;
 &lt;h4 id=&#34;22-density-of-states&#34;&gt;2.2 Density of States&lt;/h4&gt;
 &lt;p&gt;There can be a huge number of microstates all corresponding to the same macrostate (e.g., there is an enormous number of configurations of individual particles which all add up to the same energy and volumn). The number of microstates corresponding to a macrostate is defined as the density of the (macro)state:
 $$
@@ -111,7 +112,7 @@ Note that for a large system with many particles ($N&amp;gt; &amp;gt;1$), even a
 &lt;li&gt;The degrees of freedom making up the system are constantly changing. Conduct an experiment or simulation over a sufficiently long time interval. Define the probability of the system being in a microstate as the fraction of time spending in that microstate. Averages computed using this definition of probability are called time averages.&lt;/li&gt;
 &lt;li&gt;Imagine preparing many identical systems following exactly the same procedure. The set of all these system are called a statistical ensemble, which are in the same macrostate but can be in different microstates. Define the probability of the system being in a microstate as the fraction of systems in the ensemble which are in that microstate. Averages computed using this definition of probability are called ensemble averages.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;For quantum systems, we need to be careful about different types of probabilities. In statistical mechanics, probability always refers to either time average (a fraction of time) or ensemble average (a fraction of ensemble members). In quantum mechanics, even for a given state, there is a probability that a measurement will give a certain result. This probability only comes up when you perform a measurement (i.e., interact with an external system). As long as quantum systems iare isolated, they are always in well-defined microstates and macrostates at any time.&lt;/p&gt;
+&lt;p&gt;For quantum systems, we need to be careful about different types of probabilities. In statistical mechanics, probability always refers to either time average (a fraction of time) or ensemble average (a fraction of ensemble members). In quantum mechanics, even for a given state, there is a probability that a measurement will give a certain result. This probability only comes up when you perform a measurement (i.e., the system interacts with an external system). As long as quantum systems are isolated, they are always in well-defined microstates and macrostates at any time.&lt;/p&gt;
 &lt;h4 id=&#34;24-ergodicity-equilibrium-and-entropy&#34;&gt;2.4 Ergodicity, Equilibrium and Entropy&lt;/h4&gt;
 &lt;p&gt;A system for which time averages and ensemble averages are equal is said to be ergodic. Ergodicity is a property of the system that it will eventually visit all parts of the space as time evloves and thus cannot be reduced or factored into smaller components.&lt;/p&gt;
 &lt;p&gt;The postulate of equal a priori probabilities states that a system has an equal probability of being in any microstate that is consistent with its macrostate. An isolated system that satisfies the postulate of equal a priori probabilities is said to be in equilibrium.&lt;/p&gt;
@@ -120,7 +121,7 @@ $$
 S(E,\cdots)=-k\sum_i p_i\log p_i,
 $$
 which measures our ignorance (lack of knowledge) or uncertainty of the system. Typically, broad probability distribution corresponds to large entropy which indicates more ignorance, whereas narrow probability distribution corresponds to small entropy which indicates less ignorance.&lt;/p&gt;
-&lt;p&gt;The mimimum entropy is achieved if we are certain about the system (i.e., there is one state with probability $p_i=1$). If we maximize the entropy subject to the normalization constraint using Lagrange multiplier:
+&lt;p&gt;The mimimum entropy $S=0$ is achieved if we are certain about the system (i.e., there is one state with probability $p_i=1$). If we maximize the entropy subject to the normalization constraint using Lagrange multiplier:
 $$
 \max_{p}~L=S/k+\alpha \left(1-\sum_i p_i\right),
 $$
@@ -134,7 +135,7 @@ $$
 S(E,\cdots)=k\log \Omega(E,\cdots).
 $$&lt;/p&gt;
 &lt;h4 id=&#34;25-the-maxwell-boltzmann-distribution&#34;&gt;2.5 The Maxwell-Boltzmann Distribution&lt;/h4&gt;
-&lt;p&gt;Real systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A. Some examples are&lt;/p&gt;
+&lt;p&gt;Real-world systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A. Some examples are&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A is the gas contained in a box. B is the box along with the whole room where the box is placed.&lt;/li&gt;
 &lt;li&gt;A is a test tube with chemicals in it. B is a water bath the test tube is sitting in.&lt;/li&gt;
@@ -268,7 +269,7 @@ $$
 $$&lt;/p&gt;
 &lt;h4 id=&#34;211-an-alternative-perspective-of-macrostates-boltzmann-distribution-and-thermodynamic-potential&#34;&gt;2.11 An Alternative Perspective of Macrostates, Boltzmann Distribution and Thermodynamic Potential&lt;/h4&gt;
 &lt;p&gt;In the previous formulation, we treat the energy $E$ (or volume $V$, particle number $N$) of the system of interest as an independent variable, which defines a macrostate. In that case, every macrostate has a fixed value of energy and consists of all microstates with that value of $E$. As the system constantly exchanges energy with the heat bath, it continuosly fluctutates through a small range of macrostates with different energy values.&lt;/p&gt;
-&lt;p&gt;On the other hand, a system in contact with a heat bath at a fixed temperature $T$ (or pressure $P$, chemical potential $\mu$) can be thought of as $M$ ($M\to\infty$) replicas of the same system wealy connected together. The first replica is of interest to us, and the rest provide the heat bath. Each replica is in a microstate $i$ with energy $E_i$. Just like the system can exchange energy with the heat bath, these replicas can exchange energy with each other. The total energy $E_{total}=M\left&amp;lt;E\right&amp;gt;$ of the $M$ replicas is conserved. In this case, we treat the temperature $T$ as an independent variable that we can control, which defines a macrostate. Therefore, the system is in a single fixed macrostate. However, as the system constantly exchanges energy with the heat bath, each macrostate defined by temperature $T$ no longer has a fixed value of energy. Instead, each macrostate now correpsonds to a probability distribution $p(i,\left&amp;lt;E\right&amp;gt;)$ over different microstates $i$ with different energies $E_i$, whose average energy is given by a fixed value $\left&amp;lt;E\right&amp;gt;$=$E(T)$. The Boltzmann distribution specifies the probability of the system of interest being in a microstate $i$ for a given temperature $T$ or equivalently a given average energy $\left&amp;lt;E\right&amp;gt;$.&lt;/p&gt;
+&lt;p&gt;On the other hand, a system in contact with a heat bath at a fixed temperature $T$ (or pressure $P$, chemical potential $\mu$) can be thought of as $M$ ($M\to\infty$) replicas of the same system wealy connected together. The first replica is of interest to us, and the rest provide the heat bath. Each replica is in a microstate $i$ with energy $E_i$. Just like the system can exchange energy with the heat bath, these replicas can exchange energy with each other. The total energy $E_{total}=M\left&amp;lt;E\right&amp;gt;$ of the $M$ replicas is conserved. In this case, we treat the temperature $T$ as an independent variable that we can control, which defines a macrostate. Therefore, the system is in a single fixed macrostate. However, as the system constantly exchanges energy with the heat bath, each macrostate defined by temperature $T$ no longer has a fixed value of energy. Instead, each macrostate now correpsonds to a probability distribution $p(i,\left&amp;lt;E\right&amp;gt;)$ over different microstates $i$ with different energies $E_i$, whose average energy is a fixed value $\left&amp;lt;E\right&amp;gt;$. Since the flucatuation of a macroscopic variable around its average value is negligible, we can treat $\left&amp;lt;E\right&amp;gt;$ as a fixed value $E=E(T)$, which is a dependent variable of the temperature $T$. Each microstate also has a probability of being in each macrostate now. The Boltzmann distribution specifies the probability of a system being in a microstate $i$ at a given average energy $\left&amp;lt;E\right&amp;gt;$ corresponding to the macrostate of temperature $T$.&lt;/p&gt;
 &lt;p&gt;The postulate of equal a priori probabilities tells us that each way of redistributing these $M$ replicas among the possible microstates that is consistent with a given average energy $\left&amp;lt;E\right&amp;gt;$ is equally probable. Let $m_i$ be the occupation number, which denotes the number of replicas that are in state $i$. Hence, the most probable set of occupation numbers $m=(m_1,m_2,\cdots)$ for all states is the one that corresponds to the maximum number of ways of redistributing these $M$ replicas among possible states subject to the following constraints:
 $$
 \sum_i m_i = M,
@@ -321,7 +322,7 @@ where $\beta\equiv1/kT$ as the inverse temperature, and the partition function i
 $$
 Z=\sum_i e^{-\beta E_i}.
 $$&lt;/p&gt;
-&lt;p&gt;This perspective of Boltzmann distribution emphasizes the fact that equilibrium does not mean static. A system in equilibrium is still moving and fluctuating but with a statistical balance of motions. In this example, our system in equilibrium is still constantly exchanging energy with the heat bath and switching among different states, but with a constant average energy $\left&amp;lt;E\right&amp;gt;$. Note that in this case, the thermodynamic potential is no longer a fixed value as in the previous formulation. Instead, it is defined as an averaged quantity. For example, the Helmholtz free energy becomes
+&lt;p&gt;Note that equilibrium does not mean static &amp;ndash; a system in equilibrium is still moving and fluctuating but with a statistical balance of motions. In this example, our system in equilibrium is still constantly exchanging energy with the heat bath and switching among different microstates, but with a fixed average energy $\left&amp;lt;E\right&amp;gt;$ correpsonding to the macrostate of temperature $T$. Note that in this case, the thermodynamic potential is no longer a fixed value as in the previous formulation. Instead, it is defined as an averaged quantity. For example, the Helmholtz free energy becomes
 $$
 F\equiv\left&amp;lt;E\right&amp;gt;-TS(\left&amp;lt;E\right&amp;gt;).
 $$&lt;/p&gt;
@@ -333,7 +334,7 @@ S&amp;amp;=-k\sum_i p_i \log p_i \\
 &amp;amp;=\frac{\left&amp;lt;E\right&amp;gt;}{T}+k\log Z,
 \end{aligned}
 $$
-which gives
+which implies
 $$
 F = \left&amp;lt;E\right&amp;gt;-TS=-kT\log Z.
 $$&lt;/p&gt;
@@ -378,8 +379,8 @@ Therefore, the average potential energy of a harmonic oscillator in equilibrium 
       <link>https://wenlin-chen.github.io/post/diffusion_and_latent_variable_models/</link>
       <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/diffusion_and_latent_variable_models/</guid>
-      <description>&lt;h3 id=&#34;latent-variable-models&#34;&gt;Latent Variable Models&lt;/h3&gt;
-&lt;h4 id=&#34;introduction&#34;&gt;Introduction&lt;/h4&gt;
+      <description>&lt;h3 id=&#34;1-latent-variable-models&#34;&gt;1. Latent Variable Models&lt;/h3&gt;
+&lt;h4 id=&#34;11-introduction&#34;&gt;1.1 Introduction&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$.&lt;/li&gt;
 &lt;li&gt;Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$).&lt;/li&gt;
@@ -405,7 +406,7 @@ $$p_{\theta}(z|x)=\frac{p_{\theta}(x|z)p(z)}{p_{\theta}(x)}=\frac{p_{\theta}(x|z
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;variational-autoencoders-vaes&#34;&gt;Variational Autoencoders (VAEs)&lt;/h4&gt;
+&lt;h4 id=&#34;12-variational-autoencoders-vaes&#34;&gt;1.2 Variational Autoencoders (VAEs)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;VAEs introduce an amortized mean-field Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
 $$q_{\phi}(z|x)=\mathcal{N}(z|\tilde{\mu}_{\phi}(x),\text{diag}(\tilde{\sigma}_{\phi}(x)^2))\approx p_{\theta}(z|x).$$&lt;/li&gt;
@@ -429,8 +430,8 @@ $$\log p_{\theta}(x)=\mathcal{F}(\theta,\phi)\iff\text{KL}(q_{\phi}(z|x)||p_{\th
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;diffusion-and-hierarchical-latent-variable-models&#34;&gt;Diffusion and Hierarchical Latent Variable Models&lt;/h3&gt;
-&lt;h4 id=&#34;introduction-1&#34;&gt;Introduction&lt;/h4&gt;
+&lt;h3 id=&#34;2-diffusion-and-hierarchical-latent-variable-models&#34;&gt;2. Diffusion and Hierarchical Latent Variable Models&lt;/h3&gt;
+&lt;h4 id=&#34;21-introduction&#34;&gt;2.1 Introduction&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;We slightly change the notation following the convention of hierarchical latent variable models.
 &lt;ul&gt;
@@ -447,7 +448,7 @@ $$p_{\theta}(x_{t-1}|x_t)=\mathcal{N}(x_{t-1}|\mu_{\theta}(x_t,t),\sigma_t^2 I).
 &lt;li&gt;The posterior is intractable as before:
 $$p_{\theta}(x_{1:T}|x_0)=\frac{p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)}{p_{\theta}(x_0)}.$$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;hierarchical-variational-autoencoders-hvaes&#34;&gt;Hierarchical Variational Autoencoders (HVAEs)&lt;/h4&gt;
+&lt;h4 id=&#34;22-hierarchical-variational-autoencoders-hvaes&#34;&gt;2.2 Hierarchical Variational Autoencoders (HVAEs)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;HVAEs approximate the intractable posterior with an amortized Gaussian variational posterior (or encoder/inference model):
 $$q_{\phi}(x_{1:T}|x_0)\approx p_{\theta}(x_{1:T}|x_0).$$&lt;/li&gt;
@@ -474,7 +475,7 @@ $$\mathcal{F}(\theta,\phi)=\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log p_{\thet
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;denoising-diffusion-probabilistic-models-ddpms&#34;&gt;Denoising Diffusion Probabilistic Models (DDPMs)&lt;/h4&gt;
+&lt;h4 id=&#34;23-denoising-diffusion-probabilistic-models-ddpms&#34;&gt;2.3 Denoising Diffusion Probabilistic Models (DDPMs)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;DDPMs are a class of state-of-the-art deep generative models.&lt;/li&gt;
 &lt;li&gt;DDPMs define a fixed bottom-up inference model (or diffusion process):
@@ -552,7 +553,7 @@ $$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;denoising-diffusion-implicit-models-ddims&#34;&gt;Denoising Diffusion Implicit Models (DDIMs)&lt;/h4&gt;
+&lt;h4 id=&#34;24-denoising-diffusion-implicit-models-ddims&#34;&gt;2.4 Denoising Diffusion Implicit Models (DDIMs)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;DDIMs define a fixed top-down inference model:
 $$q(x_{1:T}|x_0)=q(x_T|x_0)\prod_{t=2}^T q(x_{t-1}|x_t,x_0).$$
@@ -604,25 +605,25 @@ $$x_{t-1}=\frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon_{\theta}(x_t, t)}{\sqrt{\alp
       <link>https://wenlin-chen.github.io/post/score_flow_matching/</link>
       <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/score_flow_matching/</guid>
-      <description>&lt;h3 id=&#34;generative-modeling&#34;&gt;Generative Modeling&lt;/h3&gt;
-&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
+      <description>&lt;h3 id=&#34;1-generative-modeling&#34;&gt;1. Generative Modeling&lt;/h3&gt;
+&lt;h4 id=&#34;11-problem-setting&#34;&gt;1.1 Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Data distribution $p_{\text{data}}(x)$ is unknown.&lt;/li&gt;
 &lt;li&gt;Samples from $p_{\text{data}}(x)$ are available.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;goals&#34;&gt;Goals&lt;/h4&gt;
+&lt;h4 id=&#34;12-goals&#34;&gt;1.2 Goals&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the density of the data distribution $p_{\text{data}}(x)$.&lt;/li&gt;
 &lt;li&gt;Generate new samples from $p_{\text{data}}(x)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;score-matching-for-diffusion-models&#34;&gt;Score Matching for Diffusion Models&lt;/h3&gt;
-&lt;h4 id=&#34;notation&#34;&gt;Notation&lt;/h4&gt;
+&lt;h3 id=&#34;2-score-matching-for-diffusion-models&#34;&gt;2. Score Matching for Diffusion Models&lt;/h3&gt;
+&lt;h4 id=&#34;21-notation&#34;&gt;2.1 Notation&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denote data by $x_0=x$ and noise by $x_T$.&lt;/li&gt;
 &lt;li&gt;Wiener process SDE ($dt&amp;gt;0$):
 $$dw_t=z\sqrt{dt},\quad z\sim\mathcal{N}(0,I).$$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;diffusion-process&#34;&gt;Diffusion Process&lt;/h4&gt;
+&lt;h4 id=&#34;22-diffusion-process&#34;&gt;2.2 Diffusion Process&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Forward diffusion SDE ($dt&amp;gt;0$):
 $$dx_t=f_t(x_t)dt+g_tdw_t.$$
@@ -646,7 +647,7 @@ $$dx_t=\left(f_t(x_t)-\frac{1}{2}g_t^2\nabla_{x_t} \log p_t(x_t)\right)dt.$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h4&gt;
+&lt;h4 id=&#34;23-denoising-score-matching&#34;&gt;2.3 Denoising Score Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;To generate data using the reverse diffusion SDE or probability flow PDE starting from a tractable noise distribution $\pi(x_T)$, we need to estimate the score $\nabla_{x_t} \log p_t(x_t)$ at every time $t$.&lt;/li&gt;
 &lt;li&gt;Learn a time-dependent score network $s_{\theta}(x_t, t)$ by minimizing the score matching objetive:
@@ -700,8 +701,8 @@ which contains no information of the mixture weight $w$. In theory, one regulari
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;flow-matching-for-continuous-normalizing-flows&#34;&gt;Flow Matching for Continuous Normalizing Flows&lt;/h3&gt;
-&lt;h4 id=&#34;notation-1&#34;&gt;Notation&lt;/h4&gt;
+&lt;h3 id=&#34;3-flow-matching-for-continuous-normalizing-flows&#34;&gt;3. Flow Matching for Continuous Normalizing Flows&lt;/h3&gt;
+&lt;h4 id=&#34;31-notation&#34;&gt;3.1 Notation&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denote data by $x_T=x$ and noise by $x_0$
 &lt;ul&gt;
@@ -710,7 +711,7 @@ which contains no information of the mixture weight $w$. In theory, one regulari
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;discrete-normalizing-flow&#34;&gt;Discrete Normalizing Flow&lt;/h4&gt;
+&lt;h4 id=&#34;32-discrete-normalizing-flow&#34;&gt;3.2 Discrete Normalizing Flow&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Discrete normalzing flow with an invertible transformation function $\phi$ (and $T=1$):
 $$x_1=\phi(x_0),\quad x_0\sim\pi(x_0),$$
@@ -733,7 +734,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_T)}[\log p_{\theta}(x_T)].$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;continuous-normalizing-flow&#34;&gt;Continuous Normalizing Flow&lt;/h4&gt;
+&lt;h4 id=&#34;33-continuous-normalizing-flow&#34;&gt;3.3 Continuous Normalizing Flow&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Continuous residual flow transformation:
 $$x_{t+\delta}=x_t+\delta u_t(x_t).$$
@@ -793,7 +794,7 @@ $$\max_{\theta}~\mathbb{E}_{p_{\text{data}}(x_1)}[\log p_{\theta}(x_1)].$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;conditional-flow-matching&#34;&gt;Conditional Flow Matching&lt;/h4&gt;
+&lt;h4 id=&#34;34-conditional-flow-matching&#34;&gt;3.4 Conditional Flow Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;We want a simulation-free objective like score matching.&lt;/li&gt;
 &lt;li&gt;Learn a time-dependent vector field $u_{\theta}(x_t, t)$ by minimizing the flow matching objetive:
@@ -890,8 +891,8 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$&lt
       <link>https://wenlin-chen.github.io/post/score_identities/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/score_identities/</guid>
-      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
-&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
+      <description>&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;
+&lt;h4 id=&#34;11-problem-setting&#34;&gt;1.1 Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Data distribution:
 $$p(x)=\frac{\exp(-E(x))}{Z}.$$
@@ -917,7 +918,7 @@ $$\nabla_x \log p(x)=-\nabla_x E(x).$$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;diffusion&#34;&gt;Diffusion&lt;/h4&gt;
+&lt;h4 id=&#34;12-diffusion&#34;&gt;1.2 Diffusion&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Gaussian convolution kernel:
 $$p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I).$$&lt;/li&gt;
@@ -944,9 +945,9 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;score-identities&#34;&gt;Score Identities&lt;/h3&gt;
+&lt;h3 id=&#34;2-score-identities&#34;&gt;2. Score Identities&lt;/h3&gt;
 &lt;p&gt;We list some useful score identities below which allow us to calculate the noisy score.&lt;/p&gt;
-&lt;h4 id=&#34;denoising-score-identity&#34;&gt;Denoising Score Identity&lt;/h4&gt;
+&lt;h4 id=&#34;21-denoising-score-identity&#34;&gt;2.1 Denoising Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denoising score identity is a general formula without assumping the form of $p(y|x)$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx.$$&lt;/li&gt;
@@ -962,7 +963,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;tweedie-score-identity&#34;&gt;Tweedie Score Identity&lt;/h4&gt;
+&lt;h4 id=&#34;22-tweedie-score-identity&#34;&gt;2.2 Tweedie Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Tweedie score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$:
 $$\nabla_y\log p(y)=\frac{\alpha\mathbb{E}_{p(x|y)}[ x ]-y}{\sigma^2}=\int\left(\frac{\alpha x-y}{\sigma^2}\right)p(x|y)dx.$$&lt;/li&gt;
@@ -976,7 +977,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;target-score-identity&#34;&gt;Target Score Identity&lt;/h4&gt;
+&lt;h4 id=&#34;23-target-score-identity&#34;&gt;2.3 Target Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Target score identity assumes a translation-invariant convolution $p(y|x)=p(y-\alpha x)$ (e.g., Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$):
 $$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$&lt;/li&gt;
@@ -995,7 +996,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;mixed-score-identity&#34;&gt;Mixed Score Identity&lt;/h4&gt;
+&lt;h4 id=&#34;24-mixed-score-identity&#34;&gt;2.4 Mixed Score Identity&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Mixed score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$ with a variance-preserving scheme $\sigma^2=1-\alpha^2$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.$$
@@ -1008,8 +1009,8 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;applications-in-score-based-sampling&#34;&gt;Applications in Score-based Sampling&lt;/h3&gt;
-&lt;h4 id=&#34;monte-carlo-estimator&#34;&gt;Monte Carlo Estimator&lt;/h4&gt;
+&lt;h3 id=&#34;3-applications-in-score-based-sampling&#34;&gt;3. Applications in Score-based Sampling&lt;/h3&gt;
+&lt;h4 id=&#34;31-monte-carlo-estimator&#34;&gt;3.1 Monte Carlo Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with Tweedie score identity using Monte Carlo:
 $$\nabla_y \log p(y)\approx \frac{\frac{\alpha}{K}\sum_{k=1}^K x_k-y}{\sigma^2},\quad x_k\sim p(x|y).$$&lt;/li&gt;
@@ -1028,7 +1029,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;importance-sampling-estimator&#34;&gt;Importance Sampling Estimator&lt;/h4&gt;
+&lt;h4 id=&#34;32-importance-sampling-estimator&#34;&gt;3.2 Importance Sampling Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with the target score identity using importance sampling:
 $$\nabla_y \log p(y)\approx -\frac{\sum_{k=1}^K \exp(-E(x_k))\nabla_x E(x_k)}{\alpha\sum_{k=1}^K \exp(-E(x_k))},\quad x_k\sim q(x|y)=\mathcal{N}\left(x\left|\frac{y}{\alpha},\left(\frac{\sigma}{\alpha}\right)^2I\right)\right..$$
@@ -1045,8 +1046,8 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;applications-in-score-based-generative-modeling&#34;&gt;Applications in Score-based Generative Modeling&lt;/h3&gt;
-&lt;h4 id=&#34;denoising-score-matching&#34;&gt;Denoising Score Matching&lt;/h4&gt;
+&lt;h3 id=&#34;3-applications-in-score-based-generative-modeling&#34;&gt;3 Applications in Score-based Generative Modeling&lt;/h3&gt;
+&lt;h4 id=&#34;31-denoising-score-matching&#34;&gt;3.1 Denoising Score Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
@@ -1074,7 +1075,7 @@ $$&lt;/li&gt;
 $$\nabla_{y} \log p(y|x)=-\frac{y-\alpha x}{\sigma^2}=-\frac{z}{\sigma},\quad z\sim \mathcal{N}(0,I),$$
 which is unbounded as $\sigma\to 0$. This leads to a huge variance for the estimate of $\mathcal{L}_{DSM}(\theta)$ for small noise level and thus results in optimization difficulty.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;nonparametric-estimator&#34;&gt;Nonparametric Estimator&lt;/h4&gt;
+&lt;h4 id=&#34;32-nonparametric-estimator&#34;&gt;3.2 Nonparametric Estimator&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Estimate the noisy score with the target score identity using with a KDE-style estimator:
 $$\nabla_y \log p(y)\approx\frac{\sum_{k=1}^K p(y|x_k)\nabla_y \log p(y|x_k)}{\sum_{k=1}^K p(y|x_k)},\quad x_k\sim p(x).$$
@@ -1090,7 +1091,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;target-score-matching&#34;&gt;Target Score Matching&lt;/h4&gt;
+&lt;h4 id=&#34;33-target-score-matching&#34;&gt;3.3 Target Score Matching&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
@@ -1111,7 +1112,8 @@ $$&lt;/li&gt;
       <link>https://wenlin-chen.github.io/post/tensor_algebra/</link>
       <pubDate>Fri, 05 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/tensor_algebra/</guid>
-      <description>&lt;h3 id=&#34;motivation-and-applications-of-tensors&#34;&gt;Motivation and Applications of Tensors&lt;/h3&gt;
+      <description>&lt;!-- These notes are based on [Tensors for Beginners](https://www.youtube.com/playlist?list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG). --&gt;
+&lt;h3 id=&#34;1-motivation-and-applications-of-tensors&#34;&gt;1. Motivation and Applications of Tensors&lt;/h3&gt;
 &lt;p&gt;Tensors provide insights about how geometry works. Below are some examples that involve tensors.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;General relativity (metric tensor):
@@ -1129,7 +1131,7 @@ $$&lt;/li&gt;
 &lt;li&gt;Optimization.&lt;/li&gt;
 &lt;li&gt;&amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;definitions-of-tensors&#34;&gt;Definitions of Tensors&lt;/h3&gt;
+&lt;h3 id=&#34;2-definitions-of-tensors&#34;&gt;2. Definitions of Tensors&lt;/h3&gt;
 &lt;p&gt;Roughtly speaking, tensors are objects defined by the way they transform. Tensor algbra focuses on the analysis of individual tensors, which generalizes linear algebra. Tensor calculus focuses on the analysis of tensor fields, which generalizes multivariate calculus.&lt;/p&gt;
 &lt;p&gt;Formally, there are several definitions of tensors from different perspectives.&lt;/p&gt;
 &lt;ol&gt;
@@ -1166,7 +1168,7 @@ $$&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;We will begin with special examples of tensors that we have seen in linear algebra and then gradually generalize the concept of tensors. For notational simplicity, we will use Einstein&amp;rsquo;s notation, which drops the summation symbols $\sum$ since they can be inferred from the context by contracting all corresponding upper and lower indices.&lt;/p&gt;
-&lt;h3 id=&#34;change-of-basis&#34;&gt;Change of Basis&lt;/h3&gt;
+&lt;h3 id=&#34;3-change-of-basis&#34;&gt;3. Change of Basis&lt;/h3&gt;
 &lt;p&gt;Consider an old basis $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ and a new basis $\tilde{E}=[\tilde{\mathbf{e}}_1,\cdots,\tilde{\mathbf{e}}_n]$.&lt;/p&gt;
 &lt;p&gt;The forward transformation $F$ builds the new basis from the old basis:
 $$
@@ -1224,7 +1226,7 @@ $$ --&gt;
 &lt;!-- $$
 B=F^{-1}\quad\text{and}\quad F=B^{-1}.
 $$ --&gt;
-&lt;h3 id=&#34;vectors-and-vector-spaces&#34;&gt;Vectors and Vector Spaces&lt;/h3&gt;
+&lt;h3 id=&#34;4-vectors-and-vector-spaces&#34;&gt;4. Vectors and Vector Spaces&lt;/h3&gt;
 &lt;p&gt;A vector space $(V,S,+,\cdot)$ consists of&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$V$: a set of vectors,&lt;/li&gt;
@@ -1249,7 +1251,7 @@ v^n
 $$
 This tells us that column vectors are the array representations of vectors, which is the array definition of vectors.&lt;/p&gt;
 &lt;p&gt;Geometrically, vectors are arrows (directed line segments).&lt;/p&gt;
-&lt;h3 id=&#34;vector-transformation&#34;&gt;Vector Transformation&lt;/h3&gt;
+&lt;h3 id=&#34;5-vector-transformation&#34;&gt;5. Vector Transformation&lt;/h3&gt;
 &lt;p&gt;Let&amp;rsquo;s represent the vector components of $\mathbf{v}$ in a different basis $\tilde{E}$:
 $$
 \mathbf{v}=\tilde{v}^j \tilde{\mathbf{e}}_j = \tilde{v}^jF^i_j\mathbf{e}_i = (F^i_j\tilde{v}^j)\mathbf{e}_i.
@@ -1288,7 +1290,7 @@ $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;We say that vector components are contravariant because they contra-vary with a change of basis. As a reminder, we always put the indices of the vector components above the letters. We say that basis vectors are covariant and put the indices of the basis vectors below the letters.&lt;/p&gt;
-&lt;h3 id=&#34;covectors-and-dual-vector-spaces&#34;&gt;Covectors and Dual Vector Spaces&lt;/h3&gt;
+&lt;h3 id=&#34;6-covectors-and-dual-vector-spaces&#34;&gt;6. Covectors and Dual Vector Spaces&lt;/h3&gt;
 &lt;p&gt;Covectors (linear forms) are functions $\alpha: V\to S$ that map the vectors in $V$ to the scalars in $S$ such that&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$\alpha(\mathbf{v}+\mathbf{w})=\alpha(\mathbf{v})+\alpha(\mathbf{w}),~\forall \mathbf{v},\mathbf{w}\in V$.&lt;/li&gt;
@@ -1306,7 +1308,7 @@ $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;As shown above, we usually just write $+$ and $\cdot$ when we add and scale covectors in $V^*$ but need to remember that the addition and scaling rules in $V^*$ are actually different from those in $V$.&lt;/p&gt;
-&lt;h3 id=&#34;dual-basis-and-covector-components&#34;&gt;Dual Basis and Covector Components&lt;/h3&gt;
+&lt;h3 id=&#34;7-dual-basis-and-covector-components&#34;&gt;7. Dual Basis and Covector Components&lt;/h3&gt;
 &lt;p&gt;Covectors are a kind of tensor. Covectors are invariant to the coordinate systems, but the components of covectors are not.&lt;/p&gt;
 &lt;p&gt;Take the basis $E=[\mathbf{e}_1,\cdots,\mathbf{e}_n]$ for a vector space $V$. We introduce the (Kronecker) dual basis $\mathcal{E}=[\epsilon^1,\cdots,\epsilon^n]^T$ ($\epsilon^i:V\to S$) for its dual vector space $V^*$:
 $$
@@ -1336,7 +1338,7 @@ $$&lt;/p&gt;
 \alpha(\mathbf{v})=\alpha\left(\sum_{i=1}^n v^i \mathbf{e}\_i \right)=\sum\_{i=1}^n v^i \alpha(\mathbf{e}_i) = \sum\_{i=1}^n \alpha_i v^i.
 $$ --&gt;
 &lt;p&gt;Geometrically, a covector is a stack of linearly spaced, straight contour lines. A covector maps a vector into a scalar specified by the number of covector contour lines that the vector covers.&lt;/p&gt;
-&lt;h3 id=&#34;change-of-dual-basis-and-covector-transformation&#34;&gt;Change of Dual Basis and Covector Transformation&lt;/h3&gt;
+&lt;h3 id=&#34;8-change-of-dual-basis-and-covector-transformation&#34;&gt;8. Change of Dual Basis and Covector Transformation&lt;/h3&gt;
 &lt;p&gt;Consider an old dual basis $\mathcal{E}=[\epsilon^1,\cdots,\epsilon^n]^T$ and a new dual basis $\tilde{\mathcal{E}}=[\tilde{\epsilon}^1,\cdots,\tilde{\epsilon}^n]^T$ for $V^*$. Let&amp;rsquo;s build the new dual basis from the old dual basis using a transformation $Q$:
 $$
 \tilde{\epsilon}^i=Q^i_j\epsilon^j.
@@ -1389,7 +1391,7 @@ $$
 $$
 \epsilon^i= F^i_j\tilde{\epsilon}^j \quad\quad ~ \tilde{\epsilon}^i= B^i_j\epsilon^j \quad\quad\text{and}\quad\quad \tilde{\alpha}_j =  F^i_j\alpha_i \quad\quad \alpha_j =  B^i_j\tilde{\alpha}_i
 $$&lt;/p&gt;
-&lt;h3 id=&#34;linear-maps&#34;&gt;Linear Maps&lt;/h3&gt;
+&lt;h3 id=&#34;9-linear-maps&#34;&gt;9. Linear Maps&lt;/h3&gt;
 &lt;p&gt;Linear maps $L:V\to W$ map vectors in $V$ to vectors in $W$ such that&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$L(\mathbf{v}+\mathbf{w})=L(\mathbf{v})+L(\mathbf{w})$,&lt;/li&gt;
@@ -1438,7 +1440,7 @@ It is important to note that&lt;/p&gt;
 &lt;li&gt;The $i$-th column vector in a matrix is what a copy of the $i$-th basis vector will be transformed into.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Geometrically, linear maps are spatial transformations that keep lines parallel, keep lines evenly spaced, and keep the origin unchanged. A linear map can be a combination of vector scaling and rotation but not vector translation.&lt;/p&gt;
-&lt;h3 id=&#34;linear-map-transformation&#34;&gt;Linear Map Transformation&lt;/h3&gt;
+&lt;h3 id=&#34;10-linear-map-transformation&#34;&gt;10. Linear Map Transformation&lt;/h3&gt;
 &lt;p&gt;Linear maps are a kind of tensor. Linear maps are invariant to the coordinate systems, but the components of linear maps are not.&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s transform a linear map from an old basis $E$ to a new basis $\tilde{E}$. By definition, we have
 $$
@@ -1495,7 +1497,7 @@ $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;bilinear-forms-metric-tensors-and-their-transformations&#34;&gt;Bilinear Forms, Metric Tensors and Their Transformations&lt;/h3&gt;
+&lt;h3 id=&#34;11-bilinear-forms-metric-tensors-and-their-transformations&#34;&gt;11. Bilinear Forms, Metric Tensors and Their Transformations&lt;/h3&gt;
 &lt;p&gt;Metric tensors $g:V\times V\to S$ are speical bilinear forms that define dot products between vectors such that&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$ag(\mathbf{v},\mathbf{w})=g(a\mathbf{v},\mathbf{w})=g(\mathbf{v},a\mathbf{w}),~\forall a\in S,~\forall\mathbf{v},\mathbf{w}\in V$.&lt;/li&gt;
@@ -1551,7 +1553,7 @@ Metric tensors (and general bilinear forms) are (0,2)-tensors since both dimensi
 $$
 g(\mathbf{v},\mathbf{w})=v^i w^j g_{ij}=(F^i_k\tilde{v}^k)(F^j_l\tilde{v}^l) B^s_i B^t_j \tilde{g}_{st}=(B^s_i F^i_k)(B^t_jF^j_l)\tilde{v}^k\tilde{v}^l\tilde{g}_{st} = \delta^s_k \delta^t_l \tilde{v}^k\tilde{v}^l\tilde{g}_{st}=\tilde{v}^s\tilde{v}^t\tilde{g}_{st}.
 $$&lt;/p&gt;
-&lt;h3 id=&#34;general-linear-forms-and-tensors&#34;&gt;General Linear Forms and Tensors&lt;/h3&gt;
+&lt;h3 id=&#34;12-general-linear-forms-and-tensors&#34;&gt;12. General Linear Forms and Tensors&lt;/h3&gt;
 &lt;p&gt;In general, we define an $n$-(linear) form to be a linear function $V\times V\times \cdots \times V=V^n\to S$, which is a (0,$n$)-tensor or a rank-$n$ covector. Covectors are linear forms or 1-linear forms. Bilinear forms are 2-linear forms.&lt;/p&gt;
 &lt;p&gt;A general ($m$,$n$)-tensor $T$ is a tensor with $m$ contravariant dimensions and $n$ covariant dimensions. General tensor transformations are defined as
 $$
@@ -1561,7 +1563,7 @@ $$
 T^{ijk\cdots}_{rst\cdots}=(F^i_a F^j_b F^k_c\cdots ) \tilde{T}^{abc\cdots}_{xyz\cdots} (B^x_r B^y_s B^z_t\cdots).
 $$
 We will derive this transformation rule using tensor products later.&lt;/p&gt;
-&lt;h3 id=&#34;examples-of-tensor-products&#34;&gt;Examples of Tensor Products&lt;/h3&gt;
+&lt;h3 id=&#34;13-examples-of-tensor-products&#34;&gt;13. Examples of Tensor Products&lt;/h3&gt;
 &lt;p&gt;In general, tensors can be constructed by combining vectors and covectors using tensor product. We first give a few examples of redefining tensors that we have learned using tensor products below.&lt;/p&gt;
 &lt;p&gt;Linear maps are tensor products of vector-covector pairs:
 $$
@@ -1597,7 +1599,7 @@ $$
 $$
 \implies \tilde{\mathcal{B}}_{ij} = F^k_i F^l_j\mathcal{B}_{kl}.
 $$&lt;/p&gt;
-&lt;h3 id=&#34;general-tensor-products-and-kronecker-products&#34;&gt;General Tensor Products and Kronecker Products&lt;/h3&gt;
+&lt;h3 id=&#34;14-general-tensor-products-and-kronecker-products&#34;&gt;14. General Tensor Products and Kronecker Products&lt;/h3&gt;
 &lt;p&gt;A general ($m$,$n$)-tensor can be defined by combining $m$ vectors $\mathbf{e}_i,\mathbf{e}_j,\mathbf{e}_k,\cdots$ and $n$ covectors $\epsilon^r,\epsilon^s,\epsilon^t,\cdots$ using tensor products:
 $$
 T = T^{ijk\cdots}_{rst\cdots}(\mathbf{e}_i\otimes\mathbf{e}_j\otimes\mathbf{e}_k\otimes\cdots)\otimes (\epsilon^r\otimes\epsilon^s\otimes\epsilon^t\otimes\cdots).
@@ -1633,7 +1635,7 @@ Note that there are multiple ways in which we can associate each covector with a
 &lt;li&gt;$T(x_1,\cdots,x_i+y_i,\cdots,x_n)=T(x_1,\cdots,x_i,\cdots,x_n)+T(x_1,\cdots,y_i,\cdots,x_n),~\forall i$.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Kronecker products are tensor products expressed in the array representation of tensors. For examples, matrices are Kronecker products of (column vector, row vector) pairs, and metric tensors are Kronecker products of (row vector, row vector) pairs.&lt;/p&gt;
-&lt;h3 id=&#34;tensor-product-spaces&#34;&gt;Tensor Product Spaces&lt;/h3&gt;
+&lt;h3 id=&#34;15-tensor-product-spaces&#34;&gt;15. Tensor Product Spaces&lt;/h3&gt;
 &lt;p&gt;Let $n\in S$ be a scalar, $\mathbf{v},\mathbf{u}\in V$ be vectors, and $\alpha,\beta\in V^*$ be covectors. Tensor products satisfy the following rules&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;$n(\mathbf{v}\otimes\alpha)=(n\mathbf{v})\otimes\alpha=\mathbf{v}\otimes(n\alpha)$,&lt;/li&gt;
@@ -1649,7 +1651,7 @@ Note that there are multiple ways in which we can associate each covector with a
 &lt;li&gt;$T^{~j}_{i~kl} L^i_j \quad (V \otimes V^*)\to (V^* \otimes V^*)$,&lt;/li&gt;
 &lt;li&gt;&amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;musical-isomorphism&#34;&gt;Musical Isomorphism&lt;/h3&gt;
+&lt;h3 id=&#34;16-musical-isomorphism&#34;&gt;16. Musical Isomorphism&lt;/h3&gt;
 &lt;p&gt;We would like to find a meaningful partner covector $\nu=v_i\epsilon^i\in V^*$ for each vector $\mathbf{v}=v^i\mathbf{e}_i\in V$. It turns out that one such partnership is called musical isomorphism, which is defined using the metric tensor $g\in V^*\otimes V^*$ (i.e., dot product).&lt;/p&gt;
 &lt;p&gt;Musical isomorphism defines the partner of the vector $\mathbf{v}\in V$ as the linear function $\nu:V\to S$ such that
 $$
@@ -1718,8 +1720,8 @@ $$&lt;/p&gt;
       <link>https://wenlin-chen.github.io/post/bilevel_optimization/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/bilevel_optimization/</guid>
-      <description>&lt;h3 id=&#34;bilevel-optimization&#34;&gt;Bilevel Optimization&lt;/h3&gt;
-&lt;h4 id=&#34;problem-setting&#34;&gt;Problem Setting&lt;/h4&gt;
+      <description>&lt;h3 id=&#34;1-bilevel-optimization&#34;&gt;1. Bilevel Optimization&lt;/h3&gt;
+&lt;h4 id=&#34;11-problem-setting&#34;&gt;1.1 Problem Setting&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Consider the following bilevel optimization problem:
 $$
@@ -1729,7 +1731,7 @@ s.t.\quad y^*(x)&amp;amp;=\underset{y}{\operatorname{argmin}}~g(x,y)\quad\text{(
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;understanding-the-bilevel-objective&#34;&gt;Understanding the Bilevel Objective&lt;/h4&gt;
+&lt;h4 id=&#34;12-understanding-the-bilevel-objective&#34;&gt;1.2 Understanding the Bilevel Objective&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;The bilevel optimization objective can be understood by separately considering the two objectives.
 &lt;ul&gt;
@@ -1739,8 +1741,8 @@ $$&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;This results in a nested optimization procedure as evaluating the outer objective $f(x,y^*(x))$ at each value of $x$ requires solving an inner optimization problem to obtain the best response function $y^{*}(x)$ at that value of $x$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;solving-bilevel-optimization&#34;&gt;Solving Bilevel Optimization&lt;/h3&gt;
-&lt;h4 id=&#34;gradient-based-optimization&#34;&gt;Gradient-based Optimization&lt;/h4&gt;
+&lt;h3 id=&#34;2-solving-bilevel-optimization&#34;&gt;2. Solving Bilevel Optimization&lt;/h3&gt;
+&lt;h4 id=&#34;21-gradient-based-optimization&#34;&gt;2.1 Gradient-based Optimization&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;The outer objective $f(x,y^{*}(x))$ can be seen as an implicit function of $x$ alone.&lt;/li&gt;
 &lt;li&gt;We can calculate the hyper-gradient (i.e., total derivative) of $f(x,y^{*}(x))$ with respect to $x$ using the chain rule:
@@ -1752,7 +1754,7 @@ $$\frac{d f(x,y^{*}(x))}{d x}=\frac{\partial f(x,y^{*}(x))}{\partial x}+\frac{\p
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;implicit-function-theorem-ift&#34;&gt;Implicit Function Theorem (IFT)&lt;/h4&gt;
+&lt;h4 id=&#34;22-implicit-function-theorem-ift&#34;&gt;2.2 Implicit Function Theorem (IFT)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;An important observation is that $y^*(x)$ is a critical point (i.e., minimum) of $g(x,y)$ for each given $x$.&lt;/li&gt;
 &lt;li&gt;This enables us to employ Implicit Function Theorem (IFT) to calculate the Jacobian $\frac{\partial y^*(x)}{\partial x}$ for any $x&amp;rsquo;$:
@@ -1763,15 +1765,15 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&amp;rsquo;}=-\left.\left(
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;applications-in-machine-learning&#34;&gt;Applications in Machine Learning&lt;/h3&gt;
-&lt;h4 id=&#34;hyperparmaeter-optimization&#34;&gt;Hyperparmaeter Optimization&lt;/h4&gt;
+&lt;h3 id=&#34;3-applications-in-machine-learning&#34;&gt;3. Applications in Machine Learning&lt;/h3&gt;
+&lt;h4 id=&#34;31-hyperparmaeter-optimization&#34;&gt;3.1 Hyperparmaeter Optimization&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Let $x$ be the hyperparameters and $y$ be the parameters of a machine learning model.&lt;/li&gt;
 &lt;li&gt;Let $f$ be the validation loss function and $g$ be the training loss function.&lt;/li&gt;
 &lt;li&gt;Inner optimization corresponds to finding the optimal model parameter $y^*(x)$ by minimizing the training loss $g(x,y)$ given current hyperparameters $x$.&lt;/li&gt;
 &lt;li&gt;Outer optimization corresponds to finding the optimal hyperparameters $x^*$ that minimizes the validation loss $f(x,y^{*}(x))$ given the optimal model parameters $y^{*}(x)$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;meta-learning&#34;&gt;Meta-learning&lt;/h4&gt;
+&lt;h4 id=&#34;32-meta-learning&#34;&gt;3.2 Meta-learning&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Let $x$ be the meta-learned parameters shared across all tasks and $y$ be the task-specific parameters.&lt;/li&gt;
 &lt;li&gt;Let $f$ be the validation loss function and $g$ be the training loss function.&lt;/li&gt;

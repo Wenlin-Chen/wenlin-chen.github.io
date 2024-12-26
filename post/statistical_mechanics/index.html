@@ -655,6 +655,36 @@
         
         
 
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
       
 
         
@@ -786,26 +816,27 @@
   <div class="container">
 
     <div class="article-style">
-      <h3 id="1-what-is-statistical-mechanics">1. What is Statistical Mechanics?</h3>
+      <!-- These notes are based on [Introduction to Statistical Mechanics](https://web.stanford.edu/~peastman/statmech/) and  [Theoretical Minimum: Statistical Mechanics](https://theoreticalminimum.com/courses/statistical-mechanics/2013/spring). -->
+<h3 id="1-what-is-statistical-mechanics">1. What is Statistical Mechanics?</h3>
 <p>Statistical mechanics is not a natural law like Newton&rsquo;s laws of motion which were discovered from experimental observations and are assumed to (approximately) reflect fundamental aspects of reality. Instead, it is a set of mathematical techniques that can be applied to study any physical system. Beyond physics, many ideas in machine learning were also inspired by statistical mechanics.</p>
 <p>Statistical mechanics is particularly applicable in the following situations.</p>
 <ul>
 <li>Ideal predictability is impossible:
 <ul>
-<li>Initial conditions or laws of motion are not known with infinite precision.</li>
-<li>Systems are interacting with outside environments.</li>
+<li>Initial conditions or laws of motion may not be known with infinite precision.</li>
+<li>Systems may interact with outside environments.</li>
 </ul>
 </li>
 <li>Ideal predictability is not useful:
 <ul>
-<li>It might not be useful to know microscopic variables such as the position and momentum of every particle in the room.</li>
-<li>Calculating the macroscopic variables such as the total energy is more useful.</li>
+<li>Calculating microscopic variables such as the position and momentum of every particle in the room may not be useful.</li>
+<li>Calculating the macroscopic variables such as the total energy can be more useful.</li>
 </ul>
 </li>
 <li>Large numbers are involved:
 <ul>
-<li>Statistical average becomes precise for large numbers.</li>
-<li>Statistical mechanics can be highly precise for macroscopic variables (except for rare events at the tails of probability distributions).</li>
+<li>Statistical average is precise for large numbers.</li>
+<li>Statistical mechanics is highly precise for macroscopic variables (except for rare events at the tails of probability distributions).</li>
 </ul>
 </li>
 </ul>
@@ -814,12 +845,12 @@
 <p>A microstate defines the values of all possible microscopic variables, such as position and momentum of every particle in a classical system of point particles.</p>
 <!-- We make a fundamental assumption that any physical system can exist in a discrete set of microstates (possibly infinite). Note that continious variables such as position and momentum can be discretized. -->
 <p>A macrostate defines the values of all possible macroscopic variables, such as the total energy, volumn, pressure, temperature of a system, or the number of particles in a system. We are usually more interested in macrostates since the number of microstates is typically huge, which is difficult to measure and in far more details than we usually care about.</p>
-<p>Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of a physical system.</p>
+<p>Statistical mechanics aims to create a bridge between the microscopic and macroscopic descriptions of physical systems.</p>
 <p>For quantum systems, a microstate is a value $\left.|\Phi\right&gt;$ of the wavefunction. The microscopic variables are the probability amplitudes of the basis states. A macroscopic variables is defined as the expectation value of an operator. For an operator (e.g., Hamiltonian $H$) corresponding to a measurable quantity (e.g., energy $E$), the corresponding macroscopic variable is
 $$
 E\equiv \left&lt;\Phi|H|\Phi\right&gt;.
-$$
-Conservation of energy $E$ still holds for isolated quantum systems.</p>
+$$</p>
+<!-- Conservation of energy $E$ still holds for isolated quantum systems. -->
 <h4 id="22-density-of-states">2.2 Density of States</h4>
 <p>There can be a huge number of microstates all corresponding to the same macrostate (e.g., there is an enormous number of configurations of individual particles which all add up to the same energy and volumn). The number of microstates corresponding to a macrostate is defined as the density of the (macro)state:
 $$
@@ -840,7 +871,7 @@ Note that for a large system with many particles ($N&gt; &gt;1$), even a tiny in
 <li>The degrees of freedom making up the system are constantly changing. Conduct an experiment or simulation over a sufficiently long time interval. Define the probability of the system being in a microstate as the fraction of time spending in that microstate. Averages computed using this definition of probability are called time averages.</li>
 <li>Imagine preparing many identical systems following exactly the same procedure. The set of all these system are called a statistical ensemble, which are in the same macrostate but can be in different microstates. Define the probability of the system being in a microstate as the fraction of systems in the ensemble which are in that microstate. Averages computed using this definition of probability are called ensemble averages.</li>
 </ol>
-<p>For quantum systems, we need to be careful about different types of probabilities. In statistical mechanics, probability always refers to either time average (a fraction of time) or ensemble average (a fraction of ensemble members). In quantum mechanics, even for a given state, there is a probability that a measurement will give a certain result. This probability only comes up when you perform a measurement (i.e., interact with an external system). As long as quantum systems iare isolated, they are always in well-defined microstates and macrostates at any time.</p>
+<p>For quantum systems, we need to be careful about different types of probabilities. In statistical mechanics, probability always refers to either time average (a fraction of time) or ensemble average (a fraction of ensemble members). In quantum mechanics, even for a given state, there is a probability that a measurement will give a certain result. This probability only comes up when you perform a measurement (i.e., the system interacts with an external system). As long as quantum systems are isolated, they are always in well-defined microstates and macrostates at any time.</p>
 <h4 id="24-ergodicity-equilibrium-and-entropy">2.4 Ergodicity, Equilibrium and Entropy</h4>
 <p>A system for which time averages and ensemble averages are equal is said to be ergodic. Ergodicity is a property of the system that it will eventually visit all parts of the space as time evloves and thus cannot be reduced or factored into smaller components.</p>
 <p>The postulate of equal a priori probabilities states that a system has an equal probability of being in any microstate that is consistent with its macrostate. An isolated system that satisfies the postulate of equal a priori probabilities is said to be in equilibrium.</p>
@@ -849,7 +880,7 @@ $$
 S(E,\cdots)=-k\sum_i p_i\log p_i,
 $$
 which measures our ignorance (lack of knowledge) or uncertainty of the system. Typically, broad probability distribution corresponds to large entropy which indicates more ignorance, whereas narrow probability distribution corresponds to small entropy which indicates less ignorance.</p>
-<p>The mimimum entropy is achieved if we are certain about the system (i.e., there is one state with probability $p_i=1$). If we maximize the entropy subject to the normalization constraint using Lagrange multiplier:
+<p>The mimimum entropy $S=0$ is achieved if we are certain about the system (i.e., there is one state with probability $p_i=1$). If we maximize the entropy subject to the normalization constraint using Lagrange multiplier:
 $$
 \max_{p}~L=S/k+\alpha \left(1-\sum_i p_i\right),
 $$
@@ -863,7 +894,7 @@ $$
 S(E,\cdots)=k\log \Omega(E,\cdots).
 $$</p>
 <h4 id="25-the-maxwell-boltzmann-distribution">2.5 The Maxwell-Boltzmann Distribution</h4>
-<p>Real systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A. Some examples are</p>
+<p>Real-world systems are usually not isolated. To analyze non-isolated systems, we consider an isolated system which is splitted into two parts A and B. A is the part we care about, on which we do experiments. B is called a heat bath, which is the environment that A is connected to. We only care about B to the extent that it affectes A. Some examples are</p>
 <ul>
 <li>A is the gas contained in a box. B is the box along with the whole room where the box is placed.</li>
 <li>A is a test tube with chemicals in it. B is a water bath the test tube is sitting in.</li>
@@ -997,7 +1028,7 @@ $$
 $$</p>
 <h4 id="211-an-alternative-perspective-of-macrostates-boltzmann-distribution-and-thermodynamic-potential">2.11 An Alternative Perspective of Macrostates, Boltzmann Distribution and Thermodynamic Potential</h4>
 <p>In the previous formulation, we treat the energy $E$ (or volume $V$, particle number $N$) of the system of interest as an independent variable, which defines a macrostate. In that case, every macrostate has a fixed value of energy and consists of all microstates with that value of $E$. As the system constantly exchanges energy with the heat bath, it continuosly fluctutates through a small range of macrostates with different energy values.</p>
-<p>On the other hand, a system in contact with a heat bath at a fixed temperature $T$ (or pressure $P$, chemical potential $\mu$) can be thought of as $M$ ($M\to\infty$) replicas of the same system wealy connected together. The first replica is of interest to us, and the rest provide the heat bath. Each replica is in a microstate $i$ with energy $E_i$. Just like the system can exchange energy with the heat bath, these replicas can exchange energy with each other. The total energy $E_{total}=M\left&lt;E\right&gt;$ of the $M$ replicas is conserved. In this case, we treat the temperature $T$ as an independent variable that we can control, which defines a macrostate. Therefore, the system is in a single fixed macrostate. However, as the system constantly exchanges energy with the heat bath, each macrostate defined by temperature $T$ no longer has a fixed value of energy. Instead, each macrostate now correpsonds to a probability distribution $p(i,\left&lt;E\right&gt;)$ over different microstates $i$ with different energies $E_i$, whose average energy is given by a fixed value $\left&lt;E\right&gt;$=$E(T)$. The Boltzmann distribution specifies the probability of the system of interest being in a microstate $i$ for a given temperature $T$ or equivalently a given average energy $\left&lt;E\right&gt;$.</p>
+<p>On the other hand, a system in contact with a heat bath at a fixed temperature $T$ (or pressure $P$, chemical potential $\mu$) can be thought of as $M$ ($M\to\infty$) replicas of the same system wealy connected together. The first replica is of interest to us, and the rest provide the heat bath. Each replica is in a microstate $i$ with energy $E_i$. Just like the system can exchange energy with the heat bath, these replicas can exchange energy with each other. The total energy $E_{total}=M\left&lt;E\right&gt;$ of the $M$ replicas is conserved. In this case, we treat the temperature $T$ as an independent variable that we can control, which defines a macrostate. Therefore, the system is in a single fixed macrostate. However, as the system constantly exchanges energy with the heat bath, each macrostate defined by temperature $T$ no longer has a fixed value of energy. Instead, each macrostate now correpsonds to a probability distribution $p(i,\left&lt;E\right&gt;)$ over different microstates $i$ with different energies $E_i$, whose average energy is a fixed value $\left&lt;E\right&gt;$. Since the flucatuation of a macroscopic variable around its average value is negligible, we can treat $\left&lt;E\right&gt;$ as a fixed value $E=E(T)$, which is a dependent variable of the temperature $T$. Each microstate also has a probability of being in each macrostate now. The Boltzmann distribution specifies the probability of a system being in a microstate $i$ at a given average energy $\left&lt;E\right&gt;$ corresponding to the macrostate of temperature $T$.</p>
 <p>The postulate of equal a priori probabilities tells us that each way of redistributing these $M$ replicas among the possible microstates that is consistent with a given average energy $\left&lt;E\right&gt;$ is equally probable. Let $m_i$ be the occupation number, which denotes the number of replicas that are in state $i$. Hence, the most probable set of occupation numbers $m=(m_1,m_2,\cdots)$ for all states is the one that corresponds to the maximum number of ways of redistributing these $M$ replicas among possible states subject to the following constraints:
 $$
 \sum_i m_i = M,
@@ -1050,7 +1081,7 @@ where $\beta\equiv1/kT$ as the inverse temperature, and the partition function i
 $$
 Z=\sum_i e^{-\beta E_i}.
 $$</p>
-<p>This perspective of Boltzmann distribution emphasizes the fact that equilibrium does not mean static. A system in equilibrium is still moving and fluctuating but with a statistical balance of motions. In this example, our system in equilibrium is still constantly exchanging energy with the heat bath and switching among different states, but with a constant average energy $\left&lt;E\right&gt;$. Note that in this case, the thermodynamic potential is no longer a fixed value as in the previous formulation. Instead, it is defined as an averaged quantity. For example, the Helmholtz free energy becomes
+<p>Note that equilibrium does not mean static &ndash; a system in equilibrium is still moving and fluctuating but with a statistical balance of motions. In this example, our system in equilibrium is still constantly exchanging energy with the heat bath and switching among different microstates, but with a fixed average energy $\left&lt;E\right&gt;$ correpsonding to the macrostate of temperature $T$. Note that in this case, the thermodynamic potential is no longer a fixed value as in the previous formulation. Instead, it is defined as an averaged quantity. For example, the Helmholtz free energy becomes
 $$
 F\equiv\left&lt;E\right&gt;-TS(\left&lt;E\right&gt;).
 $$</p>
@@ -1062,7 +1093,7 @@ S&amp;=-k\sum_i p_i \log p_i \\
 &amp;=\frac{\left&lt;E\right&gt;}{T}+k\log Z,
 \end{aligned}
 $$
-which gives
+which implies
 $$
 F = \left&lt;E\right&gt;-TS=-kT\log Z.
 $$</p>

@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Latent Variable Models Introduction Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$. Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma^2I)." />
+  <meta name="description" content="1. Latent Variable Models 1.1 Introduction Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$. Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma^2I)." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/diffusion_and_latent_variable_models/" />
@@ -298,7 +298,7 @@
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/post/diffusion_and_latent_variable_models/" />
   <meta property="og:title" content="Diffusion and Latent Variable Models | Wenlin Chen" />
-  <meta property="og:description" content="Latent Variable Models Introduction Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$. Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma^2I)." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="1. Latent Variable Models 1.1 Introduction Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$. Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\theta}(x,z)=p_{\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\theta}(x|z)=\mathcal{N}(x|\mu_{\theta}(z),\sigma^2I)." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -351,7 +351,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Latent Variable Models Introduction Observed data: $x\\in\\mathcal{X}\\subseteq\\mathbb{R}^n$. Latent variable: $z\\in\\mathbb{R}^d$ ($d\\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\\theta}(x,z)=p_{\\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\\theta}(x|z)=\\mathcal{N}(x|\\mu_{\\theta}(z),\\sigma^2I)."
+  "description": "1. Latent Variable Models 1.1 Introduction Observed data: $x\\in\\mathcal{X}\\subseteq\\mathbb{R}^n$. Latent variable: $z\\in\\mathbb{R}^d$ ($d\\leq n$). The joint distribution is factorized as the product of likelihood and prior: $$p_{\\theta}(x,z)=p_{\\theta}(x|z)p(z).$$ The likelihood (or decoder/generation model) is a Gaussian distribution with mean parameterized by a neural network: $$p_{\\theta}(x|z)=\\mathcal{N}(x|\\mu_{\\theta}(z),\\sigma^2I)."
 }
 </script>
 
@@ -655,6 +655,36 @@
         
         
 
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
       
 
         
@@ -786,8 +816,8 @@
   <div class="container">
 
     <div class="article-style">
-      <h3 id="latent-variable-models">Latent Variable Models</h3>
-<h4 id="introduction">Introduction</h4>
+      <h3 id="1-latent-variable-models">1. Latent Variable Models</h3>
+<h4 id="11-introduction">1.1 Introduction</h4>
 <ul>
 <li>Observed data: $x\in\mathcal{X}\subseteq\mathbb{R}^n$.</li>
 <li>Latent variable: $z\in\mathbb{R}^d$ ($d\leq n$).</li>
@@ -813,7 +843,7 @@ $$p_{\theta}(z|x)=\frac{p_{\theta}(x|z)p(z)}{p_{\theta}(x)}=\frac{p_{\theta}(x|z
 </ul>
 </li>
 </ul>
-<h4 id="variational-autoencoders-vaes">Variational Autoencoders (VAEs)</h4>
+<h4 id="12-variational-autoencoders-vaes">1.2 Variational Autoencoders (VAEs)</h4>
 <ul>
 <li>VAEs introduce an amortized mean-field Gaussian variational posterior (or encoder/inference model) with mean and diagnoal variance parameterized by neural networks:
 $$q_{\phi}(z|x)=\mathcal{N}(z|\tilde{\mu}_{\phi}(x),\text{diag}(\tilde{\sigma}_{\phi}(x)^2))\approx p_{\theta}(z|x).$$</li>
@@ -837,8 +867,8 @@ $$\log p_{\theta}(x)=\mathcal{F}(\theta,\phi)\iff\text{KL}(q_{\phi}(z|x)||p_{\th
 </ul>
 </li>
 </ul>
-<h3 id="diffusion-and-hierarchical-latent-variable-models">Diffusion and Hierarchical Latent Variable Models</h3>
-<h4 id="introduction-1">Introduction</h4>
+<h3 id="2-diffusion-and-hierarchical-latent-variable-models">2. Diffusion and Hierarchical Latent Variable Models</h3>
+<h4 id="21-introduction">2.1 Introduction</h4>
 <ul>
 <li>We slightly change the notation following the convention of hierarchical latent variable models.
 <ul>
@@ -855,7 +885,7 @@ $$p_{\theta}(x_{t-1}|x_t)=\mathcal{N}(x_{t-1}|\mu_{\theta}(x_t,t),\sigma_t^2 I).
 <li>The posterior is intractable as before:
 $$p_{\theta}(x_{1:T}|x_0)=\frac{p(x_T)\prod_{t=1}^T p_{\theta}(x_{t-1}|x_t)}{p_{\theta}(x_0)}.$$</li>
 </ul>
-<h4 id="hierarchical-variational-autoencoders-hvaes">Hierarchical Variational Autoencoders (HVAEs)</h4>
+<h4 id="22-hierarchical-variational-autoencoders-hvaes">2.2 Hierarchical Variational Autoencoders (HVAEs)</h4>
 <ul>
 <li>HVAEs approximate the intractable posterior with an amortized Gaussian variational posterior (or encoder/inference model):
 $$q_{\phi}(x_{1:T}|x_0)\approx p_{\theta}(x_{1:T}|x_0).$$</li>
@@ -882,7 +912,7 @@ $$\mathcal{F}(\theta,\phi)=\mathbb{E}_{q_{\phi}(x_{1:T}|x_0)}\left[\log p_{\thet
 </ul>
 </li>
 </ul>
-<h4 id="denoising-diffusion-probabilistic-models-ddpms">Denoising Diffusion Probabilistic Models (DDPMs)</h4>
+<h4 id="23-denoising-diffusion-probabilistic-models-ddpms">2.3 Denoising Diffusion Probabilistic Models (DDPMs)</h4>
 <ul>
 <li>DDPMs are a class of state-of-the-art deep generative models.</li>
 <li>DDPMs define a fixed bottom-up inference model (or diffusion process):
@@ -960,7 +990,7 @@ $$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$
 </ul>
 </li>
 </ul>
-<h4 id="denoising-diffusion-implicit-models-ddims">Denoising Diffusion Implicit Models (DDIMs)</h4>
+<h4 id="24-denoising-diffusion-implicit-models-ddims">2.4 Denoising Diffusion Implicit Models (DDIMs)</h4>
 <ul>
 <li>DDIMs define a fixed top-down inference model:
 $$q(x_{1:T}|x_0)=q(x_T|x_0)\prod_{t=2}^T q(x_{t-1}|x_t,x_0).$$

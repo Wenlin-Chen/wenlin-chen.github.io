@@ -928,7 +928,8 @@ $$x_{t-1}=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alp
 <li>The variance of $p_{\theta}(x_{t-1}|x_t)$ can be set to
 $$\sigma_t^2=1-\alpha_t\quad\text{or}\quad \sigma_t^2=\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t},$$
 which work equally well in practice for large $T$.</li>
-<li>It can be helpful to have a better approximation for the true covariance $\Sigma_{\theta}(x_t, t)$ of $p_{\theta}(x_{t-1}|x_t)$ especially when the number of denoising steps is small.</li>
+<li>It can be helpful to have a better approximation for the true covariance $\Sigma_{\theta}(x_t, t)$ of $p_{\theta}(x_{t-1}|x_t)$ especially when the number of denoising steps is small. Note that the true covariance (and all higher-order moments in principle) can be derived analytically from the score function:
+$$\Sigma_{\theta}(x_t, t)=\frac{1-\alpha_t}{\alpha_t}\left(I+(1-\alpha_t)\nabla_{x_t}s_{\theta}(x_t,t)\right).$$</li>
 </ul>
 </li>
 <li>Connection to score matching and score-based diffuson models:
@@ -942,7 +943,9 @@ $$
 \end{aligned}
 $$
 Therefore, the score network $s_{\theta}(x_t,t)$ and the noise prediction network $\epsilon_{\theta}(x_t,t)$ have the following connection:
-$$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$</li>
+$$s_{\theta}(x_t,t)=-\frac{\epsilon_{\theta}(x_t,t)}{\sqrt{1-\bar{\alpha}_t}}.$$
+Furthermore, this gives rise to the Tweedie&rsquo;s formula:
+$$\mu_{\theta}(x_t,t)=\frac{x_t+(1-\alpha_t)s_{\theta}(x_t,t)}{\sqrt{\alpha_t}}.$$</li>
 <li>The sampling procedure of DDPM corresponds to the predictor step (numerical SDE solution with discretization) in the predictor-corrector sampling precedure of score-based diffusion models. One could also in principle introduce the corrector step in DDPM sampling by leveraging the relationship between $s_{\theta}(x_t, t)$ and $\epsilon_{\theta}(x_t, t)$ above.</li>
 </ul>
 </li>

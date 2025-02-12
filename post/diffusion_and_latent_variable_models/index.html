@@ -605,6 +605,36 @@
         
 
         <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
           <a class="nav-link " href="/resume/"><span>Resume</span></a>
         </li>
 
@@ -713,7 +743,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    7 min read
   </span>
   
 
@@ -898,7 +928,7 @@ $$x_{t-1}=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{1-\alpha_t}{\sqrt{1-\bar{\alp
 <li>The variance of $p_{\theta}(x_{t-1}|x_t)$ can be set to
 $$\sigma_t^2=1-\alpha_t\quad\text{or}\quad \sigma_t^2=\tilde{\sigma}_t^2=\frac{(1-\bar{\alpha}_{t-1})(1-\alpha_t)}{1-\bar{\alpha}_t},$$
 which work equally well in practice for large $T$.</li>
-<li>It can be helpful to have a better approximation for the true covariance $\Sigma_{\theta}(x_t, t)$ of $p_{\theta}(x_{t-1}|x_t)$ especially when $T$ is small.</li>
+<li>It can be helpful to have a better approximation for the true covariance $\Sigma_{\theta}(x_t, t)$ of $p_{\theta}(x_{t-1}|x_t)$ especially when the number of denoising steps is small.</li>
 </ul>
 </li>
 <li>Connection to score matching and score-based diffuson models:
@@ -956,12 +986,12 @@ $$</li>
 <li>Sampling/generation is simply initializing $x_T\sim \mathcal{N}(0,I)$ and drawing $x_{t-1}\sim p_{\theta}(x_{t-1}|x_t)$ for $t=T,\cdots,1$:
 $$x_{t-1}=\sqrt{\frac{\bar{\alpha}_{t-1}}{\bar{\alpha}_t}}\left(x_t-\sqrt{1-\bar{\alpha}_t}\epsilon_{\theta}(x_t, t)\right)+\epsilon_{\theta}(x_t, t)\sqrt{1-\bar{\alpha}_{t-1}-s_t^2}+s_t e,\quad e\sim\mathcal{N}(0,I).$$
 <ul>
-<li>DDPM is a special case with $s_t^2=\tilde{\sigma}_t^2$.</li>
-<li>$s_t=0$ results in a deterministic generation process.</li>
+<li>DDPM is a special case with $s_t^2=\tilde{\sigma}_t^2$. This shows that at each denoising step, DDPM first predicts $\tilde{x}_0(x_t)$ from $x_t$ and then add noise to the predicted $\tilde{x}_0(x_t)$ to get $x_{t-1}$, where the added noise is a combination of the predicted noise $\epsilon_{\theta}(x_t, t)$ and random noise $e$.</li>
+<li>$s_t=0$ results in a deterministic generation process (DDIM). For DDIM, the noise added to get $x_{t-1}$ from $\tilde{x}_0(x_t)$ is just the predicted noise $\epsilon_{\theta}(x_t, t)$ and there is no random noise $e$.</li>
+<li>In practice, we can introduce a hyperparameter $\eta\geq0$ to control the randomness, i.e., $s_t^2=\eta\cdot\tilde{\sigma}_t^2$.</li>
 <li>Accelarated sampling can be achieved by considering a subset of time steps $\{\tau_1,\cdots,\tau_T\}\subseteq\{1,\cdots,T\}$ at generation time:
 $$x_{\tau_{i-1}}=\sqrt{\frac{\bar{\alpha}_{\tau_{i-1}}}{\bar{\alpha}_{\tau_{i}}}}\left(x_{\tau_{i}}-\sqrt{1-\bar{\alpha}_{\tau_{i}}}\epsilon_{\theta}(x_{\tau_{i}}, \tau_i)\right)+\epsilon_{\theta}(x_{\tau_{i}}, \tau_i)\sqrt{1-\bar{\alpha}_{\tau_{i-1}}-s_{\tau_{i}}^2}+s_{\tau_{i}} e,\quad e\sim\mathcal{N}(0,I).$$
-For the deterministic generation process, we set $s_{\tau_{i}}=0$ again. For DDPM, we have
-$$s_{\tau_{i}}^2=\frac{(1-\bar{\alpha}_{\tau_{i-1}})(1-\bar{\alpha}_{\tau_{i}}/\bar{\alpha}_{\tau_{i-1}})}{1-\bar{\alpha}_{\tau_{i}}}.$$</li>
+In practice, using DDIM (i.e., $s_{\tau_{i}}=0$) results in better sampling quantiy when the number of denoising steps is small. DDPM tends to outperform DDIM when the number of denoising steps is large.</li>
 </ul>
 </li>
 </ul>

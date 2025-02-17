@@ -1,0 +1,1433 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wenlin Chen" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="1. Attention Mechanism Attention module assigns attention scores (importance weights) for the tokens in a sequence. An output sequence is produced by computing a linear combination of the input tokens weighted by the attention scores." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/post/transformers/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.f1ecf783c14edc00c9320c205831ad8e.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.807c460ea42d089b71c3cb26b919dfa0.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://wenlin-chen.github.io/post/transformers/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Wenlin Chen" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/post/transformers/" />
+  <meta property="og:title" content="Transformers | Wenlin Chen" />
+  <meta property="og:description" content="1. Attention Mechanism Attention module assigns attention scores (importance weights) for the tokens in a sequence. An output sequence is produced by computing a linear combination of the input tokens weighted by the attention scores." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-08-14T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-08-14T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wenlin-chen.github.io/post/transformers/"
+  },
+  "headline": "Transformers",
+  
+  "datePublished": "2022-08-14T00:00:00Z",
+  "dateModified": "2022-08-14T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wenlin Chen"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wenlin Chen",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "1. Attention Mechanism Attention module assigns attention scores (importance weights) for the tokens in a sequence. An output sequence is produced by computing a linear combination of the input tokens weighted by the attention scores."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Transformers | Wenlin Chen</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="bac0391f6cb13b704606a31d0070a803" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.1d309c6b3f55725f8869af2651084961.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Wenlin Chen</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Wenlin Chen</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>Notes</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/resume/"><span>Resume</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="container pt-3">
+  <h1>Transformers</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 14, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+  <div class="container">
+
+    <div class="article-style">
+      <h3 id="1-attention-mechanism">1. Attention Mechanism</h3>
+<p>Attention module assigns attention scores (importance weights) for the tokens in a sequence. An output sequence is produced by computing a linear combination of the input tokens weighted by the attention scores.</p>
+<h4 id="11-attention-formulation">1.1 Attention Formulation</h4>
+<p>Let $V=[v_1,v_2,\cdots,v_L]^T\in\mathbb{R}^{L\times D_v}$ be a sequence of length $L$. Each element $v_j\in\mathbb{R}^{D_v}$ in the sequence $V$ is a vector of dimension $D_v$.</p>
+<p>The attetion $Y=[y_1,y_2,\cdots,y_L]^T\in\mathbb{R}^{L\times D_v}$ of the sequence $V$ is a weighted sum of all elements in the sequence $V$:
+$$Y=AV,$$
+$$
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_L
+\end{bmatrix}=
+\begin{bmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1L} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2L} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{L1} &amp; a_{L2} &amp; \cdots &amp; a_{LL}
+\end{bmatrix}
+\begin{bmatrix}
+v_1 \\
+v_2 \\
+\vdots \\
+v_L
+\end{bmatrix},
+$$
+where the attention scores are given by the attention matrix $A\in\mathbb{R}^{L\times L}$. The attention scores are required to be positive:
+$$a_{ij}&gt;0,$$
+and normalized over its rows:
+$$\sum_{j=1}^L a_{ij}=1.$$
+Each score $a_{ij}$ specifies the importance of the $j$-th vector $v_j$ in the sequence $V$ to the $i$-th vector $y_i$ in the attention $Y$:
+$$y_i=\sum_{j=1}^La_{ij}v_j.$$</p>
+<h4 id="12-self-attention">1.2 Self-Attention</h4>
+<p>Self-attention is a simple way to generate an attention matrix $A$ and compute the attention $Y$ from an input sequence $X=[x_1,x_2,\cdots,x_L]^T\in\mathbb{R}^{L\times D}$ alone, where each element $x_i\in\mathbb{R}^D$ is a token.</p>
+<p>We first transform $X$ into query $Q$, key $K$ and value $V$ using three input linear projections $W_q\in\mathbb{R}^{D\times D_{qk}}$, $W_k\in\mathbb{R}^{D\times D_{qk}}$ and $W_v\in\mathbb{R}^{D\times D_v}$, respectively:
+$$Q=XW_q:=[q_1,q_2,\cdots,q_L]^T\in\mathbb{R}^{L\times D_{qk}},$$
+$$K=XW_k:=[k_1,k_2,\cdots,k_L]^T\in\mathbb{R}^{L\times D_{qk}},$$
+$$V=XW_v:=[v_1,v_2,\cdots,v_L]^T\in\mathbb{R}^{L\times D_{v}}.$$</p>
+<p>We then generate unnormalized attention scores $\tilde{A}\in\mathbb{R}^{L\times L}$ by computing the dot-product between query and key:
+$$\tilde{a}_{ij}=q_i^Tk_j=(W_q^Tx_i)^T(W_k^Tx_j)=x_i^T(W_qW_k^T)x_j,$$
+$$
+\tilde{A}=QK^T=
+\begin{bmatrix}
+q_1^T \\
+q_2^T \\
+\vdots \\
+q_L^T
+\end{bmatrix}
+\begin{bmatrix}
+k_1 &amp; k_2 &amp; \cdots &amp; k_L
+\end{bmatrix}=
+\begin{bmatrix}
+q_1^Tk_1 &amp; q_1^Tk_2 &amp; \cdots &amp; q_1^Tk_L \\
+q_2^Tk_1 &amp; q_2^Tk_2 &amp; \cdots &amp; q_2^Tk_L \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+q_L^Tk_1 &amp; q_L^Tk_2  &amp; \cdots &amp; q_L^Tk_L
+\end{bmatrix}.
+$$
+Since $W_k\not=W_q$ in general, $\tilde{A}$ is asymmetric ($\tilde{a}_{ij}\not=\tilde{a}_{ji}$). This makes the model more expressive by allowing having asymmetrical attention scores (i.e., the importance of $x_i$ to $x_j$ can be different from the importance of $x_j$ to $x_i$).</p>
+<p>The attention score $A\in\mathbb{R}^{L\times L}$ is then obtained by applying the softmax function to each row of $\tilde{A}$ to get normalized probabilities:
+$$A=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right),$$
+where we divide the dot-product by $\sqrt{D_{qk}}$ to increase numerical stability, which standardizes the dot-product (assuming that the elements in $K$ and $Q$ are independently distributed with unit variance). This is the scaled dot-product attention, which is the most commonly-used attention mechanism in transformers.</p>
+<p>Finally, the attention $Y\in\mathbb{R}^{L\times D_v}$ is obtained by
+$$Y=AV=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right)V.$$</p>
+<p>The MHSA layer essentially allows all tokens in the input sequence to communicate with each other.</p>
+<p>If the sequence $X$ is causal (e.g., a time series), we need to apply the causal mask to $\tilde{A}$ during training by setting all elements in the upper triangular part of $\tilde{A}$ to be $-\infty$ (i.e., $\tilde{a}_{ij}=-\infty$ and thus $a_{ij}=0$ for $j&gt;i$):
+$$
+\tilde{A}=
+\begin{bmatrix}
+q_1^Tk_1 &amp; -\infty  &amp; -\infty &amp; \cdots &amp; -\infty &amp; -\infty \\
+q_2^Tk_1 &amp; q_2^Tk_2 &amp; -\infty &amp; \cdots &amp; -\infty &amp; -\infty \\
+q_3^Tk_1 &amp; q_3^Tk_2 &amp; q_3^Tk_3 &amp; \cdots &amp; -\infty &amp; -\infty \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+q_{L-1}^Tk_1 &amp; q_{L-1}^Tk_2 &amp; q_{L-1}^Tk_3 &amp; \cdots &amp; q_{L-1}^Tk_{L-1} &amp;  -\infty \\
+q_L^Tk_1 &amp; q_L^Tk_2 &amp; q_L^Tk_3 &amp; \cdots &amp; q_L^Tk_{L-1} &amp;  q_L^Tk_L \\
+\end{bmatrix},
+$$
+which prevents the model from peeking into future (i.e., using future tokens to compute the attention score for the current token).</p>
+<p>At inference time for autoregressive generation, it is a common practice (called KV-cache) to store the $k_i$ and $v_i$ vectors computed at each time step $i$ to avoid recomputing them in the future time steps $t&gt;i$.</p>
+<h4 id="13-cross-attention">1.3 Cross-Attention</h4>
+<p>For cross-attention between two sequences $X$ and $X&rsquo;$, the query Q is computed from a different input sequence $X&rsquo;=[x_1,x_2,\cdots,x_{L&rsquo;}]^T\in\mathbb{R}^{L&rsquo;\times D}$:
+$$Q=X&rsquo;W_q:=[q_1,q_2,\cdots,q_L]^T\in\mathbb{R}^{L&rsquo;\times D_{qk}},$$
+$$K=XW_k:=[k_1,k_2,\cdots,k_L]^T\in\mathbb{R}^{L\times D_{qk}},$$
+$$V=XW_v:=[v_1,v_2,\cdots,v_L]^T\in\mathbb{R}^{L\times D_{v}}.$$</p>
+<p>The attention scores $A\in\mathbb{R}^{L&rsquo;\times L}$ and attention $Y=AV\in\mathbb{R}^{L&rsquo;\times D_v}$ are computed using the same formulae:
+$$Y=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right)V.$$</p>
+<p>Self-attention is a special case of cross attention with $X&rsquo;=X$.</p>
+<h4 id="14-multi-head-attention">1.4 Multi-Head Attention</h4>
+<p>Multi-head attention computes multiple single-head attentions to give the model different views. Each head $h$ has its own linear projections $W_q^h$, $W_k^h$ and $W_v^h$ to compute its attention $Y_h$. We then concatenate all heads
+$$\tilde{Y}=
+\begin{bmatrix}
+Y_1 &amp; Y_2 &amp; \cdots &amp; Y_H
+\end{bmatrix}\in\mathbb{R}^{L&rsquo;\times HD_v}
+$$
+and apply an output linear projection $W_o\in\mathbb{R}^{HD_v\times D_o}$ to get the final attention output:
+$$O=\tilde{Y}W_o\in\mathbb{R}^{L&rsquo;\times D_o}.$$</p>
+<h4 id="15-computational-complexity-analysis">1.5 Computational Complexity Analysis</h4>
+<p>The time and space complexity of a multi-head attention module mainly comes from three parts: input projection, multi-head attention, output projection.</p>
+<ol>
+<li>Multi-Head Cross-Attention (MHCA):
+<ul>
+<li>We consider the most general case of MHCA.</li>
+<li>Time complexity:
+$$\mathcal{O}(H(\underbrace{L&rsquo;DD_{qk}}_{X&rsquo;W_q}+\underbrace{LDD_{qk}}_{XW_k}+\underbrace{LDD_v}_{XW_v})+H(\underbrace{L&rsquo;D_{qk}L}_{QK^T}+\underbrace{L&rsquo;LD_v}_{AV})+\underbrace{L&rsquo;HD_vD_o}_{\tilde{Y}W_o}).$$</li>
+<li>Space complexity
+$$\mathcal{O}(H(\underbrace{L&rsquo;D_{qk}}_{Q}+\underbrace{LD_{qk}}_{K}+\underbrace{LD_v}_{V})+H(\underbrace{L&rsquo;L}_{A}+\underbrace{L&rsquo;D_v}_{Y})+\underbrace{L&rsquo;D_o}_{O}).$$</li>
+</ul>
+</li>
+</ol>
+<!-- 2. Multi-Head Self-Attention (MHSA, $L'=L$):
+    - Time complexity:
+    $$\mathcal{O}(\underbrace{HLD(2D_{qk}+D_v)}\_{\text{input projection}}+\underbrace{HL^2(D_{qk}+D_v)}\_\text{self-attention}+\underbrace{LHD_vD_o}\_\text{output projection}).$$
+    - Space complexity
+    $$\mathcal{O}(\underbrace{HL(2D_{qk}+D_v)}\_{Q,K,V}+\underbrace{HL(L+D_v)}\_{A,Y}+\underbrace{LD_o}\_{O}).$$ -->
+<ol start="2">
+<li>Multi-Head Self-Attention (MHSA):
+<ul>
+<li>We consider the most commonly used MHSA configuration: $L&rsquo;=L, D_o=D, D_{qk}=D_v$.</li>
+<li>Time complexity:
+$$\mathcal{O}(\underbrace{HLDD_{qkv}}_{\text{input projection}}+\underbrace{HL^2D_{qkv}}_\text{self-attention}+\underbrace{HLDD_{qkv}}_\text{output projection}).$$</li>
+<li>Space complexity
+$$\mathcal{O}(\underbrace{HLD_{qkv}}_{Q,K,V}+\underbrace{HL(L+D_{qkv})}_{A,Y}+\underbrace{LD}_{O}).$$</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-transformer-block">2. Transformer Block</h3>
+<h4 id="21-forward-pass">2.1 Forward Pass</h4>
+<p>Transformer block $T$ is the core building block of transformers. We iteratively apply transformer blocks to process the input sequence $X^{(0)}$:
+$$X^{(m)}=T(X^{(m-1)}).$$</p>
+<p>A standard transformer block (with self-attention) consists of an MHSA layer and a point-wise feedforward network (FFN) with residual connections and LayerNorm:
+$$
+\tilde{O}^{(m)}=X^{(m-1)}+\text{MHSA}(\text{LayerNorm}(X^{(m-1)})),
+$$
+$$
+X^{(m)}=\tilde{O}^{(m)}+\text{FFN}(\text{LayerNorm}(\tilde{O}^{(m)})).
+$$</p>
+<p>Note that LayerNorm is applied to the sequences $X^{(m-1)}$ and $\tilde{O}^{(m)}$. We also use residual connection to stablize training and avoid gradient vanishing in deep network architectures.</p>
+<p>After obtaining the attention output $\tilde{O}^{(m)}$, we feed it into a point-wise feedforward network (also with LayerNorm and residual connection) which is an MLP network applied independently to each token in $\tilde{O}^{(m)}$.</p>
+<h4 id="22-point-wise-feed-forward-network-ffn">2.2 Point-Wise Feed-Forward Network (FFN)</h4>
+<p>The point-wise FFN processes the representation of each token in the attention output $\tilde{O}^{(m)}$ individually after they communicated with each other in the MHSA layer.</p>
+<p>Point-wise FFN refers to an MLP network with one hidden layer, which is applied independently to each token in $\tilde{O}^{(m)}$:
+$$
+F:=\text{FFN}(O)=g(OW_{f1})W_{f2},
+$$
+where $g$ is a non-linear activation function, $W_{f1}\in\mathbb{R}^{D\times4D}$ and $W_{f2}\in\mathbb{R}^{4D\times D}$.</p>
+<h4 id="23-layer-normalization-layernorm">2.3 Layer Normalization (LayerNorm)</h4>
+<p>LayerNorm is applied to the sequences $X^{(m-1)}$ and $\tilde{O}^{(m)}$ before feeding them into MHSA/FFN to prevent explosion of the sequence/learned representations.</p>
+<p>For a sequence $Z$, LayerNorm standardizes each token $z_i$ independently by its own mean and standard deviation:
+$$
+\tilde{z}_i=\frac{z_i-\text{mean}(z_i)}{\sqrt{\text{var}(z_i)+\varepsilon}}*\gamma+\beta,
+$$
+where $\gamma,\beta\in\mathbb{R}$ are learnable free-parameters.</p>
+<p>Note that LayerNorm in transformers is slightly different from that in CNNs which standardizes each image (including its height, width and channel axes). LayerNorm is preferred for NLP tasks, whereas BatchNorm, which standardizes the data along the batch axis, is more commonly used in computer vision tasks.</p>
+<h4 id="24-dropout">2.4 Dropout</h4>
+<p>Dropout is applied to the attention scores $A$, the attention output $O$, and the FFN output $F$ to prevent overfitting for these dense layers.</p>
+<p>Dropout works by randomly zeroing out each element in a sequence/weight matrix $Z$ with a pre-defined probability $q$ during training:
+$$\tilde{Z}=\frac{Z\odot M}{1-q},$$
+where each element in the mask $M$ is independently sampled from a Bernoulli distribution $m_{ij}\sim\text{Bern}(1-q)$ in each forward pass during training.</p>
+<h4 id="25-input-embedding-and-position-encoding">2.5 Input Embedding and Position Encoding</h4>
+<p>For discrete one-hot input tokens $X_{raw}\in\mathbb{R}^{L\times D_{vocab}}$, we use a look-up table $W_{embed}\in\mathbb{R}^{D_{vocab}\times D}$ ($D\ll D_{vocab}$) for input embedding:
+$$X^{(0)}=X_{raw}W_{embed}.$$</p>
+<p>Transformers are permutation-invariant since they treat input sequences as set of tokens. For tasks where the order of the tokens within a sequence is important, we need to add an extra position encoding vector $P\in\mathbb{R}^{L\times D}$ to the input embedding to break the permutation invariance:
+$$X^{(0)}=X_{raw}W_{embed}+P.$$
+There are many options for position encoding, including:</p>
+<ul>
+<li>Sinusoid position encoding by using sinusoid of a different phase and frequency for each token position $l$ and feature dimension $d$:
+$$P_{l,d}=
+\begin{cases}
+\sin\left(l\cdot n^{-d/D}\right), &amp; \text{if $d$ is even} \\
+\cos\left(l\cdot n^{-(d-1)/D}\right), &amp; \text{if $d$ is odd}
+\end{cases}
+$$
+where $n$ is a hyperparameter usually set to $n=10000$.</li>
+<li>Learned position encoding by treating $P=[p_1, p_2, \cdots, p_L]^T\in\mathbb{R}^{L\times D}$ as a learnable free-parameter.</li>
+<li>Relative position encoding instead learns to encode the relative position offset between any two token positions $i$ and $j$. One way is to reparameterize the dot-product bewteen query and key. Note that for the standard learned position encoding, we have
+$$
+\begin{aligned}
+\tilde{a}_{ij}
+&amp;=q_i^{T}k^j=(x_i+p_i)^TW_qW_k^T(x_j+p_j) \\
+&amp;=x_i^TW_qW_k^Tx_j + x_i^TW_qW_k^Tp_j + p_i^TW_qW_k^Tx_j + p_i^TW_qW_k^Tp_j.
+\end{aligned}
+$$
+Relative position encoding modifies the above equation:
+$$\tilde{a}_{ij}^{rel}=\underbrace{x_i^TW_qW_{k,C}^Tx_j}_\text{standard attention} + \underbrace{x_i^TW_qW_{k,R}^Tp_{i-j}}_\text{content-dependent positional bias} + \underbrace{u^TW_{k,C}^Tx_j}_\text{global content bias} + \underbrace{v^TW_{k,R}^Tp_{i-j}}_\text{global positional bias},$$
+where $P$ is the sinusoid poisition encoding, all $p_j$&rsquo;s&rsquo; are replaced by the relative position $p_{i-j}$, $u,v$ are two learnable free-parameters, and the matrix $W_k$ are splitted into two matrices $W_{k,C}$ for content information and $W_{k,R}$ for location information.</li>
+<li>Rotary position encoding (RoPE) ensures that each dot-product $q_i^Tk_j$ only depends on the relative position between $i$ and $j$ by rotating the representations by an angle proportional to its position index with the following rotation matrix:
+$$
+R_i=
+\begin{bmatrix}
+\cos(l\theta_1) &amp; -\sin(l\theta_1) &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+\sin(l\theta_1) &amp; \cos(l\theta_1) &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \cos(l\theta_2) &amp; -\sin(l\theta_2) &amp; \cdots &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp;\sin(l\theta_2) &amp; \cos(l\theta_2) &amp; \cdots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; \cos(l\theta_{D_{qk}/2}) &amp; -\sin(l\theta_{D_{qk}/2}) \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; \sin(l\theta_{D_{qk}/2}) &amp; \cos(l\theta_{D_{qk}/2})
+\end{bmatrix}\in\mathbb{R}^{D_{qk}\times D_{qk}},
+$$
+which formulates the sinusoid position encoding into a rotation matrix, where $\theta_d=n^{-2(d-1)/D_{qk}}$ with $d=\{1,2,\cdots,D_{qk}/2\}$ and $n=10000$. Now, we incorportate this rotation into the dot-product:
+$$
+\tilde{a}_{ij}^{RoPE}=(R_iW_q^Tx_i)^T(R_jW_k^Tx_j)=x_i^TW_q(R_i^TR_j)W_k^Tx_j=x_i^T(W_qR^{j-i}W_k^T)x_j.
+$$</li>
+</ul>
+<h4 id="26-activation-function">2.6 Activation Function</h4>
+<p>The original transformer paper uses the Rectifid Linear Unit (ReLU) as the activation function:
+$$\text{ReLU}(z)=\max(0,z).$$
+Subsequent papers employ smoother activation functions, including:</p>
+<ul>
+<li>Gaussian Error Linear Unit (GELU):
+$$\text{GELU}(z)=z\odot\Phi(z),$$
+where $\Phi(\cdot)$ is the CDF of a standard Gaussian distribution.</li>
+<li>Swish Unit:
+$$\text{Swish}(z)=z\odot\text{Sigmoid}(\alpha z),$$
+where $\text{Sigmoid}(z)=1/(1+\exp(-z))$. For $\alpha=1$, Swish recovers Sigmoid Linear Unit (SiLU). As $\alpha\to\infty$, Swish recovers ReLU.</li>
+<li>Swish-Gated Linear Unit (SwiGLU):
+$$\text{SwiGLU}(z)=\text{Swish}(zW_1)\odot(zW_2).$$</li>
+</ul>
+<h3 id="3-transformer-architectures">3. Transformer Architectures</h3>
+<h4 id="31-full-transformer">3.1 Full Transformer</h4>
+<p>The full encoder-decoder transformer architecture is designed to solve sequence-to-sequence modeling tasks such as machine translation.</p>
+<figure>
+  <img src=full_transformer.png width="50%" height="50%">
+  <figcaption>Transformer Encoder-Decoder Architecture (image source: https://github.com/dvgodoy/dl-visuals/).</figcaption>
+</figure>
+<h4 id="32-bidirectional-encoder-representations-from-transformer-bert">3.2 Bidirectional Encoder Representations from Transformer (BERT)</h4>
+<p>BERT employs an encoder-only transformer architecture to learn representations for the input sequence, trained by masked token prediction and next sentence prediction.</p>
+<h4 id="33-generative-pre-trained-transformer-gpt">3.3 Generative Pre-trained Transformer (GPT)</h4>
+<p>GPT employs a decoder-only transformer architecture to generate text given context, trained by next token prediction.</p>
+<h4 id="34-vision-transformer-vit">3.4 Vision Transformer (ViT)</h4>
+<p>ViT is a transformer encoder designed to learn representations for images. ViT converts an image to a sequence of tokens by dividing the image into patches and mapping them to lower dimensional token space with a linear projection. The sequence is then fed into a transformer encoder for representation learning. Compared to CNNs, ViTs are less data efficient but have more capacity due to fewer inductive biases.</p>
+<h3 id="4-low-rank-adaptation-lora">4. Low-Rank Adaptation (LoRA)</h3>
+<p>LoRA is an efficient way to fine-tune the weight matrices in transformer models (attention and optionally MLP). The hypothesis behind LoRA is that the adaptation of a large transformer model has a low intrinstic dimension that can be achieved by learning an additional low rank matrix. LoRA freezes all weights in the original model and learns a low rank matrix $\Delta W:=BA$ for each weight matrix $W\in\mathbb{R}^{D_1\times D_2}$ in the original model:
+$$W&rsquo;=W+\frac{\alpha}{r}BA,$$
+where $B\in\mathbb{R}^{D_1\times r}$ and $A\in\mathbb{R}^{r\times D_2}$ are learnable parameters, and $\alpha$ is a hyperparameter. For $\Delta W$ to be a low rank matrix, we require $r\ll\min(D1,D2)$.</p>
+<p>To use the original model weights as the starting point of fine-tuning, we need to ensure that $\Delta W=0$ at initialization, which is usually achieved by initializing $B=0$ and $A\sim\mathcal{N}(0,\sigma_A^2I)$ with $\sigma_A=\mathcal{O}(D^{-1/2})$.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/post/transformers/&amp;text=Transformers" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/post/transformers/&amp;t=Transformers" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Transformers&amp;body=https://wenlin-chen.github.io/post/transformers/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/post/transformers/&amp;title=Transformers" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Transformers%20https://wenlin-chen.github.io/post/transformers/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/post/transformers/&amp;title=Transformers" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://wenlin-chen.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu27f7dc34c9db8fd2b063f3fba6be9864_216943_270x270_fill_q75_lanczos_center.jpg" alt="Wenlin Chen"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://wenlin-chen.github.io/">Wenlin Chen</a></h5>
+      <h6 class="card-subtitle">PhD Student in Machine Learning</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?hl=en&amp;user=A4zbE2IAAAAJ" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/wenlin-chen/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Wenlin-Chen" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/resume/" >
+        <i class="fas fa-file"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+    
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <p class="powered-by">
+      © 2025 Wenlin Chen
+    </p>
+    
+  
+    <p class="powered-by">
+      
+      
+      
+    </p>
+  </footer>
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.9592335d574f7a97010f99b90ad0f310.js"></script>
+
+    
+    
+    
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.2cc80485e7b9001edba5cdf5b39a1f97.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

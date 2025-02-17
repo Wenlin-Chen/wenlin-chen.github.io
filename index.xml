@@ -21,6 +21,14 @@
     </item>
     
     <item>
+      <title>Towards Training One-Step Diffusion Models Without Distillation</title>
+      <link>https://wenlin-chen.github.io/publication/zhang2025towards/</link>
+      <pubDate>Tue, 11 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/zhang2025towards/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Neural Characteristic Activation Analysis and Geometric Parameterization for ReLU Networks</title>
       <link>https://wenlin-chen.github.io/publication/chen2024neural/</link>
       <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
@@ -585,7 +593,7 @@ $$p_{1|0,1}(x|x_0,x_1)=\delta(x-x_1)\implies p_1(x_1)=p_{\text{data}}(x_1).$$&lt
     <item>
       <title>Score Identities</title>
       <link>https://wenlin-chen.github.io/post/score_identities/</link>
-      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/score_identities/</guid>
       <description>&lt;h3 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h3&gt;
 &lt;h4 id=&#34;11-problem-setting&#34;&gt;1.1 Problem Setting&lt;/h4&gt;
@@ -643,7 +651,7 @@ $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;2-score-identities&#34;&gt;2. Score Identities&lt;/h3&gt;
 &lt;p&gt;We list some useful score identities below which allow us to calculate the noisy score.&lt;/p&gt;
-&lt;h4 id=&#34;21-denoising-score-identity&#34;&gt;2.1 Denoising Score Identity&lt;/h4&gt;
+&lt;h4 id=&#34;21-denoising-score-identity-dsi&#34;&gt;2.1 Denoising Score Identity (DSI)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Denoising score identity is a general formula without assumping the form of $p(y|x)$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx.$$&lt;/li&gt;
@@ -673,7 +681,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;23-target-score-identity&#34;&gt;2.3 Target Score Identity&lt;/h4&gt;
+&lt;h4 id=&#34;23-target-score-identity-tsi&#34;&gt;2.3 Target Score Identity (TSI)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Target score identity assumes a translation-invariant convolution $p(y|x)=p(y-\alpha x)$ (e.g., Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$):
 $$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$&lt;/li&gt;
@@ -692,7 +700,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;24-mixed-score-identity&#34;&gt;2.4 Mixed Score Identity&lt;/h4&gt;
+&lt;h4 id=&#34;24-mixed-score-identity-msi&#34;&gt;2.4 Mixed Score Identity (MSI)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Mixed score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$ with a variance-preserving scheme $\sigma^2=1-\alpha^2$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.$$
@@ -743,7 +751,7 @@ $$
 $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;3-applications-in-score-based-generative-modeling&#34;&gt;3 Applications in Score-based Generative Modeling&lt;/h3&gt;
-&lt;h4 id=&#34;31-denoising-score-matching&#34;&gt;3.1 Denoising Score Matching&lt;/h4&gt;
+&lt;h4 id=&#34;31-denoising-score-matching-dsm&#34;&gt;3.1 Denoising Score Matching (DSM)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
@@ -787,7 +795,7 @@ $$
 \end{aligned}
 $$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;33-target-score-matching&#34;&gt;3.3 Target Score Matching&lt;/h4&gt;
+&lt;h4 id=&#34;33-target-score-matching-tsm&#34;&gt;3.3 Target Score Matching (TSM)&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
@@ -820,9 +828,268 @@ $$&lt;/li&gt;
     </item>
     
     <item>
+      <title>Optimal Client Sampling for Federated Learning</title>
+      <link>https://wenlin-chen.github.io/publication/chen2022optimal/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2022optimal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transformers</title>
+      <link>https://wenlin-chen.github.io/post/transformers/</link>
+      <pubDate>Sun, 14 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/post/transformers/</guid>
+      <description>&lt;h3 id=&#34;1-attention-mechanism&#34;&gt;1. Attention Mechanism&lt;/h3&gt;
+&lt;p&gt;Attention module assigns attention scores (importance weights) for the tokens in a sequence. An output sequence is produced by computing a linear combination of the input tokens weighted by the attention scores.&lt;/p&gt;
+&lt;h4 id=&#34;11-attention-formulation&#34;&gt;1.1 Attention Formulation&lt;/h4&gt;
+&lt;p&gt;Let $V=[v_1,v_2,\cdots,v_L]^T\in\mathbb{R}^{L\times D_v}$ be a sequence of length $L$. Each element $v_j\in\mathbb{R}^{D_v}$ in the sequence $V$ is a vector of dimension $D_v$.&lt;/p&gt;
+&lt;p&gt;The attetion $Y=[y_1,y_2,\cdots,y_L]^T\in\mathbb{R}^{L\times D_v}$ of the sequence $V$ is a weighted sum of all elements in the sequence $V$:
+$$Y=AV,$$
+$$
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_L
+\end{bmatrix}=
+\begin{bmatrix}
+a_{11} &amp;amp; a_{12} &amp;amp; \cdots &amp;amp; a_{1L} \\
+a_{21} &amp;amp; a_{22} &amp;amp; \cdots &amp;amp; a_{2L} \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+a_{L1} &amp;amp; a_{L2} &amp;amp; \cdots &amp;amp; a_{LL}
+\end{bmatrix}
+\begin{bmatrix}
+v_1 \\
+v_2 \\
+\vdots \\
+v_L
+\end{bmatrix},
+$$
+where the attention scores are given by the attention matrix $A\in\mathbb{R}^{L\times L}$. The attention scores are required to be positive:
+$$a_{ij}&amp;gt;0,$$
+and normalized over its rows:
+$$\sum_{j=1}^L a_{ij}=1.$$
+Each score $a_{ij}$ specifies the importance of the $j$-th vector $v_j$ in the sequence $V$ to the $i$-th vector $y_i$ in the attention $Y$:
+$$y_i=\sum_{j=1}^La_{ij}v_j.$$&lt;/p&gt;
+&lt;h4 id=&#34;12-self-attention&#34;&gt;1.2 Self-Attention&lt;/h4&gt;
+&lt;p&gt;Self-attention is a simple way to generate an attention matrix $A$ and compute the attention $Y$ from an input sequence $X=[x_1,x_2,\cdots,x_L]^T\in\mathbb{R}^{L\times D}$ alone, where each element $x_i\in\mathbb{R}^D$ is a token.&lt;/p&gt;
+&lt;p&gt;We first transform $X$ into query $Q$, key $K$ and value $V$ using three input linear projections $W_q\in\mathbb{R}^{D\times D_{qk}}$, $W_k\in\mathbb{R}^{D\times D_{qk}}$ and $W_v\in\mathbb{R}^{D\times D_v}$, respectively:
+$$Q=XW_q:=[q_1,q_2,\cdots,q_L]^T\in\mathbb{R}^{L\times D_{qk}},$$
+$$K=XW_k:=[k_1,k_2,\cdots,k_L]^T\in\mathbb{R}^{L\times D_{qk}},$$
+$$V=XW_v:=[v_1,v_2,\cdots,v_L]^T\in\mathbb{R}^{L\times D_{v}}.$$&lt;/p&gt;
+&lt;p&gt;We then generate unnormalized attention scores $\tilde{A}\in\mathbb{R}^{L\times L}$ by computing the dot-product between query and key:
+$$\tilde{a}_{ij}=q_i^Tk_j=(W_q^Tx_i)^T(W_k^Tx_j)=x_i^T(W_qW_k^T)x_j,$$
+$$
+\tilde{A}=QK^T=
+\begin{bmatrix}
+q_1^T \\
+q_2^T \\
+\vdots \\
+q_L^T
+\end{bmatrix}
+\begin{bmatrix}
+k_1 &amp;amp; k_2 &amp;amp; \cdots &amp;amp; k_L
+\end{bmatrix}=
+\begin{bmatrix}
+q_1^Tk_1 &amp;amp; q_1^Tk_2 &amp;amp; \cdots &amp;amp; q_1^Tk_L \\
+q_2^Tk_1 &amp;amp; q_2^Tk_2 &amp;amp; \cdots &amp;amp; q_2^Tk_L \\
+\vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\
+q_L^Tk_1 &amp;amp; q_L^Tk_2  &amp;amp; \cdots &amp;amp; q_L^Tk_L
+\end{bmatrix}.
+$$
+Since $W_k\not=W_q$ in general, $\tilde{A}$ is asymmetric ($\tilde{a}_{ij}\not=\tilde{a}_{ji}$). This makes the model more expressive by allowing having asymmetrical attention scores (i.e., the importance of $x_i$ to $x_j$ can be different from the importance of $x_j$ to $x_i$).&lt;/p&gt;
+&lt;p&gt;The attention score $A\in\mathbb{R}^{L\times L}$ is then obtained by applying the softmax function to each row of $\tilde{A}$ to get normalized probabilities:
+$$A=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right),$$
+where we divide the dot-product by $\sqrt{D_{qk}}$ to increase numerical stability, which standardizes the dot-product (assuming that the elements in $K$ and $Q$ are independently distributed with unit variance). This is the scaled dot-product attention, which is the most commonly-used attention mechanism in transformers.&lt;/p&gt;
+&lt;p&gt;Finally, the attention $Y\in\mathbb{R}^{L\times D_v}$ is obtained by
+$$Y=AV=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right)V.$$&lt;/p&gt;
+&lt;p&gt;The MHSA layer essentially allows all tokens in the input sequence to communicate with each other.&lt;/p&gt;
+&lt;p&gt;If the sequence $X$ is causal (e.g., a time series), we need to apply the causal mask to $\tilde{A}$ during training by setting all elements in the upper triangular part of $\tilde{A}$ to be $-\infty$ (i.e., $\tilde{a}_{ij}=-\infty$ and thus $a_{ij}=0$ for $j&amp;gt;i$):
+$$
+\tilde{A}=
+\begin{bmatrix}
+q_1^Tk_1 &amp;amp; -\infty  &amp;amp; -\infty &amp;amp; \cdots &amp;amp; -\infty &amp;amp; -\infty \\
+q_2^Tk_1 &amp;amp; q_2^Tk_2 &amp;amp; -\infty &amp;amp; \cdots &amp;amp; -\infty &amp;amp; -\infty \\
+q_3^Tk_1 &amp;amp; q_3^Tk_2 &amp;amp; q_3^Tk_3 &amp;amp; \cdots &amp;amp; -\infty &amp;amp; -\infty \\
+\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots \\
+q_{L-1}^Tk_1 &amp;amp; q_{L-1}^Tk_2 &amp;amp; q_{L-1}^Tk_3 &amp;amp; \cdots &amp;amp; q_{L-1}^Tk_{L-1} &amp;amp;  -\infty \\
+q_L^Tk_1 &amp;amp; q_L^Tk_2 &amp;amp; q_L^Tk_3 &amp;amp; \cdots &amp;amp; q_L^Tk_{L-1} &amp;amp;  q_L^Tk_L \\
+\end{bmatrix},
+$$
+which prevents the model from peeking into future (i.e., using future tokens to compute the attention score for the current token).&lt;/p&gt;
+&lt;p&gt;At inference time for autoregressive generation, it is a common practice (called KV-cache) to store the $k_i$ and $v_i$ vectors computed at each time step $i$ to avoid recomputing them in the future time steps $t&amp;gt;i$.&lt;/p&gt;
+&lt;h4 id=&#34;13-cross-attention&#34;&gt;1.3 Cross-Attention&lt;/h4&gt;
+&lt;p&gt;For cross-attention between two sequences $X$ and $X&amp;rsquo;$, the query Q is computed from a different input sequence $X&amp;rsquo;=[x_1,x_2,\cdots,x_{L&amp;rsquo;}]^T\in\mathbb{R}^{L&amp;rsquo;\times D}$:
+$$Q=X&amp;rsquo;W_q:=[q_1,q_2,\cdots,q_L]^T\in\mathbb{R}^{L&amp;rsquo;\times D_{qk}},$$
+$$K=XW_k:=[k_1,k_2,\cdots,k_L]^T\in\mathbb{R}^{L\times D_{qk}},$$
+$$V=XW_v:=[v_1,v_2,\cdots,v_L]^T\in\mathbb{R}^{L\times D_{v}}.$$&lt;/p&gt;
+&lt;p&gt;The attention scores $A\in\mathbb{R}^{L&amp;rsquo;\times L}$ and attention $Y=AV\in\mathbb{R}^{L&amp;rsquo;\times D_v}$ are computed using the same formulae:
+$$Y=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right)V.$$&lt;/p&gt;
+&lt;p&gt;Self-attention is a special case of cross attention with $X&amp;rsquo;=X$.&lt;/p&gt;
+&lt;h4 id=&#34;14-multi-head-attention&#34;&gt;1.4 Multi-Head Attention&lt;/h4&gt;
+&lt;p&gt;Multi-head attention computes multiple single-head attentions to give the model different views. Each head $h$ has its own linear projections $W_q^h$, $W_k^h$ and $W_v^h$ to compute its attention $Y_h$. We then concatenate all heads
+$$\tilde{Y}=
+\begin{bmatrix}
+Y_1 &amp;amp; Y_2 &amp;amp; \cdots &amp;amp; Y_H
+\end{bmatrix}\in\mathbb{R}^{L&amp;rsquo;\times HD_v}
+$$
+and apply an output linear projection $W_o\in\mathbb{R}^{HD_v\times D_o}$ to get the final attention output:
+$$O=\tilde{Y}W_o\in\mathbb{R}^{L&amp;rsquo;\times D_o}.$$&lt;/p&gt;
+&lt;h4 id=&#34;15-computational-complexity-analysis&#34;&gt;1.5 Computational Complexity Analysis&lt;/h4&gt;
+&lt;p&gt;The time and space complexity of a multi-head attention module mainly comes from three parts: input projection, multi-head attention, output projection.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Multi-Head Cross-Attention (MHCA):
+&lt;ul&gt;
+&lt;li&gt;We consider the most general case of MHCA.&lt;/li&gt;
+&lt;li&gt;Time complexity:
+$$\mathcal{O}(H(\underbrace{L&amp;rsquo;DD_{qk}}_{X&amp;rsquo;W_q}+\underbrace{LDD_{qk}}_{XW_k}+\underbrace{LDD_v}_{XW_v})+H(\underbrace{L&amp;rsquo;D_{qk}L}_{QK^T}+\underbrace{L&amp;rsquo;LD_v}_{AV})+\underbrace{L&amp;rsquo;HD_vD_o}_{\tilde{Y}W_o}).$$&lt;/li&gt;
+&lt;li&gt;Space complexity
+$$\mathcal{O}(H(\underbrace{L&amp;rsquo;D_{qk}}_{Q}+\underbrace{LD_{qk}}_{K}+\underbrace{LD_v}_{V})+H(\underbrace{L&amp;rsquo;L}_{A}+\underbrace{L&amp;rsquo;D_v}_{Y})+\underbrace{L&amp;rsquo;D_o}_{O}).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- 2. Multi-Head Self-Attention (MHSA, $L&#39;=L$):
+    - Time complexity:
+    $$\mathcal{O}(\underbrace{HLD(2D_{qk}+D_v)}\_{\text{input projection}}+\underbrace{HL^2(D_{qk}+D_v)}\_\text{self-attention}+\underbrace{LHD_vD_o}\_\text{output projection}).$$
+    - Space complexity
+    $$\mathcal{O}(\underbrace{HL(2D_{qk}+D_v)}\_{Q,K,V}+\underbrace{HL(L+D_v)}\_{A,Y}+\underbrace{LD_o}\_{O}).$$ --&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Multi-Head Self-Attention (MHSA):
+&lt;ul&gt;
+&lt;li&gt;We consider the most commonly used MHSA configuration: $L&amp;rsquo;=L, D_o=D, D_{qk}=D_v$.&lt;/li&gt;
+&lt;li&gt;Time complexity:
+$$\mathcal{O}(\underbrace{HLDD_{qkv}}_{\text{input projection}}+\underbrace{HL^2D_{qkv}}_\text{self-attention}+\underbrace{HLDD_{qkv}}_\text{output projection}).$$&lt;/li&gt;
+&lt;li&gt;Space complexity
+$$\mathcal{O}(\underbrace{HLD_{qkv}}_{Q,K,V}+\underbrace{HL(L+D_{qkv})}_{A,Y}+\underbrace{LD}_{O}).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-transformer-block&#34;&gt;2. Transformer Block&lt;/h3&gt;
+&lt;h4 id=&#34;21-forward-pass&#34;&gt;2.1 Forward Pass&lt;/h4&gt;
+&lt;p&gt;Transformer block $T$ is the core building block of transformers. We iteratively apply transformer blocks to process the input sequence $X^{(0)}$:
+$$X^{(m)}=T(X^{(m-1)}).$$&lt;/p&gt;
+&lt;p&gt;A standard transformer block (with self-attention) consists of an MHSA layer and a point-wise feedforward network (FFN) with residual connections and LayerNorm:
+$$
+\tilde{O}^{(m)}=X^{(m-1)}+\text{MHSA}(\text{LayerNorm}(X^{(m-1)})),
+$$
+$$
+X^{(m)}=\tilde{O}^{(m)}+\text{FFN}(\text{LayerNorm}(\tilde{O}^{(m)})).
+$$&lt;/p&gt;
+&lt;p&gt;Note that LayerNorm is applied to the sequences $X^{(m-1)}$ and $\tilde{O}^{(m)}$. We also use residual connection to stablize training and avoid gradient vanishing in deep network architectures.&lt;/p&gt;
+&lt;p&gt;After obtaining the attention output $\tilde{O}^{(m)}$, we feed it into a point-wise feedforward network (also with LayerNorm and residual connection) which is an MLP network applied independently to each token in $\tilde{O}^{(m)}$.&lt;/p&gt;
+&lt;h4 id=&#34;22-point-wise-feed-forward-network-ffn&#34;&gt;2.2 Point-Wise Feed-Forward Network (FFN)&lt;/h4&gt;
+&lt;p&gt;The point-wise FFN processes the representation of each token in the attention output $\tilde{O}^{(m)}$ individually after they communicated with each other in the MHSA layer.&lt;/p&gt;
+&lt;p&gt;Point-wise FFN refers to an MLP network with one hidden layer, which is applied independently to each token in $\tilde{O}^{(m)}$:
+$$
+F:=\text{FFN}(O)=g(OW_{f1})W_{f2},
+$$
+where $g$ is a non-linear activation function, $W_{f1}\in\mathbb{R}^{D\times4D}$ and $W_{f2}\in\mathbb{R}^{4D\times D}$.&lt;/p&gt;
+&lt;h4 id=&#34;23-layer-normalization-layernorm&#34;&gt;2.3 Layer Normalization (LayerNorm)&lt;/h4&gt;
+&lt;p&gt;LayerNorm is applied to the sequences $X^{(m-1)}$ and $\tilde{O}^{(m)}$ before feeding them into MHSA/FFN to prevent explosion of the sequence/learned representations.&lt;/p&gt;
+&lt;p&gt;For a sequence $Z$, LayerNorm standardizes each token $z_i$ independently by its own mean and standard deviation:
+$$
+\tilde{z}_i=\frac{z_i-\text{mean}(z_i)}{\sqrt{\text{var}(z_i)+\varepsilon}}*\gamma+\beta,
+$$
+where $\gamma,\beta\in\mathbb{R}$ are learnable free-parameters.&lt;/p&gt;
+&lt;p&gt;Note that LayerNorm in transformers is slightly different from that in CNNs which standardizes each image (including its height, width and channel axes). LayerNorm is preferred for NLP tasks, whereas BatchNorm, which standardizes the data along the batch axis, is more commonly used in computer vision tasks.&lt;/p&gt;
+&lt;h4 id=&#34;24-dropout&#34;&gt;2.4 Dropout&lt;/h4&gt;
+&lt;p&gt;Dropout is applied to the attention scores $A$, the attention output $O$, and the FFN output $F$ to prevent overfitting for these dense layers.&lt;/p&gt;
+&lt;p&gt;Dropout works by randomly zeroing out each element in a sequence/weight matrix $Z$ with a pre-defined probability $q$ during training:
+$$\tilde{Z}=\frac{Z\odot M}{1-q},$$
+where each element in the mask $M$ is independently sampled from a Bernoulli distribution $m_{ij}\sim\text{Bern}(1-q)$ in each forward pass during training.&lt;/p&gt;
+&lt;h4 id=&#34;25-input-embedding-and-position-encoding&#34;&gt;2.5 Input Embedding and Position Encoding&lt;/h4&gt;
+&lt;p&gt;For discrete one-hot input tokens $X_{raw}\in\mathbb{R}^{L\times D_{vocab}}$, we use a look-up table $W_{embed}\in\mathbb{R}^{D_{vocab}\times D}$ ($D\ll D_{vocab}$) for input embedding:
+$$X^{(0)}=X_{raw}W_{embed}.$$&lt;/p&gt;
+&lt;p&gt;Transformers are permutation-invariant since they treat input sequences as set of tokens. For tasks where the order of the tokens within a sequence is important, we need to add an extra position encoding vector $P\in\mathbb{R}^{L\times D}$ to the input embedding to break the permutation invariance:
+$$X^{(0)}=X_{raw}W_{embed}+P.$$
+There are many options for position encoding, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sinusoid position encoding by using sinusoid of a different phase and frequency for each token position $l$ and feature dimension $d$:
+$$P_{l,d}=
+\begin{cases}
+\sin\left(l\cdot n^{-d/D}\right), &amp;amp; \text{if $d$ is even} \\
+\cos\left(l\cdot n^{-(d-1)/D}\right), &amp;amp; \text{if $d$ is odd}
+\end{cases}
+$$
+where $n$ is a hyperparameter usually set to $n=10000$.&lt;/li&gt;
+&lt;li&gt;Learned position encoding by treating $P=[p_1, p_2, \cdots, p_L]^T\in\mathbb{R}^{L\times D}$ as a learnable free-parameter.&lt;/li&gt;
+&lt;li&gt;Relative position encoding instead learns to encode the relative position offset between any two token positions $i$ and $j$. One way is to reparameterize the dot-product bewteen query and key. Note that for the standard learned position encoding, we have
+$$
+\begin{aligned}
+\tilde{a}_{ij}
+&amp;amp;=q_i^{T}k^j=(x_i+p_i)^TW_qW_k^T(x_j+p_j) \\
+&amp;amp;=x_i^TW_qW_k^Tx_j + x_i^TW_qW_k^Tp_j + p_i^TW_qW_k^Tx_j + p_i^TW_qW_k^Tp_j.
+\end{aligned}
+$$
+Relative position encoding modifies the above equation:
+$$\tilde{a}_{ij}^{rel}=\underbrace{x_i^TW_qW_{k,C}^Tx_j}_\text{standard attention} + \underbrace{x_i^TW_qW_{k,R}^Tp_{i-j}}_\text{content-dependent positional bias} + \underbrace{u^TW_{k,C}^Tx_j}_\text{global content bias} + \underbrace{v^TW_{k,R}^Tp_{i-j}}_\text{global positional bias},$$
+where $P$ is the sinusoid poisition encoding, all $p_j$&amp;rsquo;s&amp;rsquo; are replaced by the relative position $p_{i-j}$, $u,v$ are two learnable free-parameters, and the matrix $W_k$ are splitted into two matrices $W_{k,C}$ for content information and $W_{k,R}$ for location information.&lt;/li&gt;
+&lt;li&gt;Rotary position encoding (RoPE) ensures that each dot-product $q_i^Tk_j$ only depends on the relative position between $i$ and $j$ by rotating the representations by an angle proportional to its position index with the following rotation matrix:
+$$
+R_i=
+\begin{bmatrix}
+\cos(l\theta_1) &amp;amp; -\sin(l\theta_1) &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 \\
+\sin(l\theta_1) &amp;amp; \cos(l\theta_1) &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; 0 &amp;amp; \cos(l\theta_2) &amp;amp; -\sin(l\theta_2) &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 \\
+0 &amp;amp; 0 &amp;amp;\sin(l\theta_2) &amp;amp; \cos(l\theta_2) &amp;amp; \cdots &amp;amp; 0 &amp;amp; 0 \\
+\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots &amp;amp; \vdots \\
+0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \cos(l\theta_{D_{qk}/2}) &amp;amp; -\sin(l\theta_{D_{qk}/2}) \\
+0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; \cdots &amp;amp; \sin(l\theta_{D_{qk}/2}) &amp;amp; \cos(l\theta_{D_{qk}/2})
+\end{bmatrix}\in\mathbb{R}^{D_{qk}\times D_{qk}},
+$$
+which formulates the sinusoid position encoding into a rotation matrix, where $\theta_d=n^{-2(d-1)/D_{qk}}$ with $d=\{1,2,\cdots,D_{qk}/2\}$ and $n=10000$. Now, we incorportate this rotation into the dot-product:
+$$
+\tilde{a}_{ij}^{RoPE}=(R_iW_q^Tx_i)^T(R_jW_k^Tx_j)=x_i^TW_q(R_i^TR_j)W_k^Tx_j=x_i^T(W_qR^{j-i}W_k^T)x_j.
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;26-activation-function&#34;&gt;2.6 Activation Function&lt;/h4&gt;
+&lt;p&gt;The original transformer paper uses the Rectifid Linear Unit (ReLU) as the activation function:
+$$\text{ReLU}(z)=\max(0,z).$$
+Subsequent papers employ smoother activation functions, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gaussian Error Linear Unit (GELU):
+$$\text{GELU}(z)=z\odot\Phi(z),$$
+where $\Phi(\cdot)$ is the CDF of a standard Gaussian distribution.&lt;/li&gt;
+&lt;li&gt;Swish Unit:
+$$\text{Swish}(z)=z\odot\text{Sigmoid}(\alpha z),$$
+where $\text{Sigmoid}(z)=1/(1+\exp(-z))$. For $\alpha=1$, Swish recovers Sigmoid Linear Unit (SiLU). As $\alpha\to\infty$, Swish recovers ReLU.&lt;/li&gt;
+&lt;li&gt;Swish-Gated Linear Unit (SwiGLU):
+$$\text{SwiGLU}(z)=\text{Swish}(zW_1)\odot(zW_2).$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-transformer-architectures&#34;&gt;3. Transformer Architectures&lt;/h3&gt;
+&lt;h4 id=&#34;31-full-transformer&#34;&gt;3.1 Full Transformer&lt;/h4&gt;
+&lt;p&gt;The full encoder-decoder transformer architecture is designed to solve sequence-to-sequence modeling tasks such as machine translation.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=full_transformer.png width=&#34;50%&#34; height=&#34;50%&#34;&gt;
+  &lt;figcaption&gt;Transformer Encoder-Decoder Architecture (image source: https://github.com/dvgodoy/dl-visuals/).&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h4 id=&#34;32-bidirectional-encoder-representations-from-transformer-bert&#34;&gt;3.2 Bidirectional Encoder Representations from Transformer (BERT)&lt;/h4&gt;
+&lt;p&gt;BERT employs an encoder-only transformer architecture to learn representations for the input sequence, trained by masked token prediction and next sentence prediction.&lt;/p&gt;
+&lt;h4 id=&#34;33-generative-pre-trained-transformer-gpt&#34;&gt;3.3 Generative Pre-trained Transformer (GPT)&lt;/h4&gt;
+&lt;p&gt;GPT employs a decoder-only transformer architecture to generate text given context, trained by next token prediction.&lt;/p&gt;
+&lt;h4 id=&#34;34-vision-transformer-vit&#34;&gt;3.4 Vision Transformer (ViT)&lt;/h4&gt;
+&lt;p&gt;ViT is a transformer encoder designed to learn representations for images. ViT converts an image to a sequence of tokens by dividing the image into patches and mapping them to lower dimensional token space with a linear projection. The sequence is then fed into a transformer encoder for representation learning. Compared to CNNs, ViTs are less data efficient but have more capacity due to fewer inductive biases.&lt;/p&gt;
+&lt;h3 id=&#34;4-low-rank-adaptation-lora&#34;&gt;4. Low-Rank Adaptation (LoRA)&lt;/h3&gt;
+&lt;p&gt;LoRA is an efficient way to fine-tune the weight matrices in transformer models (attention and optionally MLP). The hypothesis behind LoRA is that the adaptation of a large transformer model has a low intrinstic dimension that can be achieved by learning an additional low rank matrix. LoRA freezes all weights in the original model and learns a low rank matrix $\Delta W:=BA$ for each weight matrix $W\in\mathbb{R}^{D_1\times D_2}$ in the original model:
+$$W&amp;rsquo;=W+\frac{\alpha}{r}BA,$$
+where $B\in\mathbb{R}^{D_1\times r}$ and $A\in\mathbb{R}^{r\times D_2}$ are learnable parameters, and $\alpha$ is a hyperparameter. For $\Delta W$ to be a low rank matrix, we require $r\ll\min(D1,D2)$.&lt;/p&gt;
+&lt;p&gt;To use the original model weights as the starting point of fine-tuning, we need to ensure that $\Delta W=0$ at initialization, which is usually achieved by initializing $B=0$ and $A\sim\mathcal{N}(0,\sigma_A^2I)$ with $\sigma_A=\mathcal{O}(D^{-1/2})$.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks</title>
+      <link>https://wenlin-chen.github.io/publication/tripp2022evaluation/</link>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/tripp2022evaluation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Bilevel Optimization</title>
       <link>https://wenlin-chen.github.io/post/bilevel_optimization/</link>
-      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://wenlin-chen.github.io/post/bilevel_optimization/</guid>
       <description>&lt;h3 id=&#34;1-bilevel-optimization&#34;&gt;1. Bilevel Optimization&lt;/h3&gt;
 &lt;h4 id=&#34;11-problem-setting&#34;&gt;1.1 Problem Setting&lt;/h4&gt;
@@ -885,22 +1152,6 @@ $$\left.\frac{\partial y^*(x)}{\partial x}\right|_{x=x&amp;rsquo;}=-\left.\left(
 &lt;li&gt;Outer optimization corresponds to finding the optimal meta-learned parameters $x^*$ that minimizes the expected validation loss $f(x,y^{*}(x))$ across tasks given the optimal task-specific parameters $y^{*}(x)$ for each task.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Optimal Client Sampling for Federated Learning</title>
-      <link>https://wenlin-chen.github.io/publication/chen2022optimal/</link>
-      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/chen2022optimal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>An Evaluation Framework for the Objective Functions of De Novo Drug Design Benchmarks</title>
-      <link>https://wenlin-chen.github.io/publication/tripp2022evaluation/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate>
-      <guid>https://wenlin-chen.github.io/publication/tripp2022evaluation/</guid>
-      <description></description>
     </item>
     
     <item>

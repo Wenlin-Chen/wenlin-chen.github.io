@@ -304,10 +304,10 @@
     
       <meta
         property="article:published_time"
-        content="2024-06-01T00:00:00&#43;00:00"
+        content="2024-03-01T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-06-01T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-03-01T00:00:00&#43;00:00">
   
 
   
@@ -335,8 +335,8 @@
   },
   "headline": "Score Identities",
   
-  "datePublished": "2024-06-01T00:00:00Z",
-  "dateModified": "2024-06-01T00:00:00Z",
+  "datePublished": "2024-03-01T00:00:00Z",
+  "dateModified": "2024-03-01T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -734,7 +734,7 @@
     
       
     
-    Jun 1, 2024
+    Mar 1, 2024
   </span>
   
 
@@ -828,7 +828,7 @@ $$</li>
 </ul>
 <h3 id="2-score-identities">2. Score Identities</h3>
 <p>We list some useful score identities below which allow us to calculate the noisy score.</p>
-<h4 id="21-denoising-score-identity">2.1 Denoising Score Identity</h4>
+<h4 id="21-denoising-score-identity-dsi">2.1 Denoising Score Identity (DSI)</h4>
 <ul>
 <li>Denoising score identity is a general formula without assumping the form of $p(y|x)$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\nabla_y\log p(y|x)]=\int\nabla_y\log p(y|x) p(x|y)dx.$$</li>
@@ -858,7 +858,7 @@ $$
 \end{aligned}
 $$</li>
 </ul>
-<h4 id="23-target-score-identity">2.3 Target Score Identity</h4>
+<h4 id="23-target-score-identity-tsi">2.3 Target Score Identity (TSI)</h4>
 <ul>
 <li>Target score identity assumes a translation-invariant convolution $p(y|x)=p(y-\alpha x)$ (e.g., Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$):
 $$\nabla_y\log p(y)=\alpha^{-1}\mathbb{E}_{p(x|y)}[\nabla_x\log p(x)]=\alpha^{-1}\int \nabla_x\log p(x) p(x|y) dx.$$</li>
@@ -877,7 +877,7 @@ $$
 \end{aligned}
 $$</li>
 </ul>
-<h4 id="24-mixed-score-identity">2.4 Mixed Score Identity</h4>
+<h4 id="24-mixed-score-identity-msi">2.4 Mixed Score Identity (MSI)</h4>
 <ul>
 <li>Mixed score identity assumes Gaussian convolution $p(y|x)=\mathcal{N}(y|\alpha x,\sigma^2 I)$ with a variance-preserving scheme $\sigma^2=1-\alpha^2$:
 $$\nabla_y\log p(y)=\mathbb{E}_{p(x|y)}[\alpha(x+\nabla_x\log p(x))-y]=\int (\alpha(x+\nabla_x\log p(x))-y) p(x|y) dx.$$
@@ -928,7 +928,7 @@ $$
 $$</li>
 </ul>
 <h3 id="3-applications-in-score-based-generative-modeling">3 Applications in Score-based Generative Modeling</h3>
-<h4 id="31-denoising-score-matching">3.1 Denoising Score Matching</h4>
+<h4 id="31-denoising-score-matching-dsm">3.1 Denoising Score Matching (DSM)</h4>
 <ul>
 <li>Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$
@@ -972,7 +972,7 @@ $$
 \end{aligned}
 $$</li>
 </ul>
-<h4 id="33-target-score-matching">3.3 Target Score Matching</h4>
+<h4 id="33-target-score-matching-tsm">3.3 Target Score Matching (TSM)</h4>
 <ul>
 <li>Learn a noisy score network $s_{\theta}(y)$ by minimizing
 $$

@@ -836,7 +836,7 @@ $$A=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right),$$
 where we divide the dot-product by $\sqrt{D_{qk}}$ to increase numerical stability, which standardizes the dot-product (assuming that the elements in $K$ and $Q$ are independently distributed with unit variance). This is the scaled dot-product attention, which is the most commonly-used attention mechanism in transformers.</p>
 <p>Finally, the attention $Y\in\mathbb{R}^{L\times D_v}$ is obtained by
 $$Y=AV=\text{softmax}\left(\frac{QK^T}{\sqrt{D_{qk}}}\right)V.$$</p>
-<p>The MHSA layer essentially allows all tokens in the input sequence to communicate with each other.</p>
+<p>The MHSA layer essentially allows all tokens in the input sequence to communicate with each other, which can be viewed as a message passing mechanism applied to a complete graph.</p>
 <p>If the sequence $X$ is causal (e.g., a time series), we need to apply the causal mask to $\tilde{A}$ during training by setting all elements in the upper triangular part of $\tilde{A}$ to be $-\infty$ (i.e., $\tilde{a}_{ij}=-\infty$ and thus $a_{ij}=0$ for $j&gt;i$):
 $$
 \tilde{A}=

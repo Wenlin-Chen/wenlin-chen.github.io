@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="Diffusion models, which can be viewed as a special case of hierarchical variational autoencoders (HVAEs), have shown profound success in generating photo-realistic images. In contrast, standard HVAEs often produce images of inferior quality compared to diffusion models. In this paper, we hypothesize that the success of diffusion models can be partly attributed to the additional self-supervision information for their intermediate latent states provided by corrupted images, which along with the original image form a pseudo video. Based on this hypothesis, we explore the possibility of improving other types of generative models with such pseudo videos. Specifically, we first extend a given image generative model to their video generative model counterpart, and then train the video generative model on pseudo videos constructed by applying data augmentation to the original images. Furthermore, we analyze the potential issues of first-order Markov data augmentation methods, which are typically used in diffusion models, and propose to use more expressive data augmentation to construct more useful information in pseudo videos. Our empirical results on the CIFAR10 and CelebA datasets demonstrate that improved image generation quality can be achieved with additional self-supervised information from pseudo videos." />
+  <meta name="description" content="Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), in terms of the number of target evaluations. On the other hand, we also identify several inefficiencies in PT: (1) information across different temperature levels is only exchanged through swapping samples; (2) the varying mixing rates across temperatures lead to wasted computation, particularly at low temperatures early on; and (3) PT’s reliance on MCMC results in dependent samples, slowing transitions between modes. To address the weaknesses in both approaches, we propose Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures. We introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. This approach enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers and demonstrating a promising direction to improve over PT." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/publication/chen2025your/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/publication/rissanen2025progressive/" />
 
   
 
@@ -276,7 +276,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/publication/chen2025your/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/publication/rissanen2025progressive/" />
 
   
   
@@ -293,18 +293,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/publication/chen2025your/" />
-  <meta property="og:title" content="Your Image is Secretly the Last Frame of a Pseudo Video | Wenlin Chen" />
-  <meta property="og:description" content="Diffusion models, which can be viewed as a special case of hierarchical variational autoencoders (HVAEs), have shown profound success in generating photo-realistic images. In contrast, standard HVAEs often produce images of inferior quality compared to diffusion models. In this paper, we hypothesize that the success of diffusion models can be partly attributed to the additional self-supervision information for their intermediate latent states provided by corrupted images, which along with the original image form a pseudo video. Based on this hypothesis, we explore the possibility of improving other types of generative models with such pseudo videos. Specifically, we first extend a given image generative model to their video generative model counterpart, and then train the video generative model on pseudo videos constructed by applying data augmentation to the original images. Furthermore, we analyze the potential issues of first-order Markov data augmentation methods, which are typically used in diffusion models, and propose to use more expressive data augmentation to construct more useful information in pseudo videos. Our empirical results on the CIFAR10 and CelebA datasets demonstrate that improved image generation quality can be achieved with additional self-supervised information from pseudo videos." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/publication/rissanen2025progressive/" />
+  <meta property="og:title" content="Progressive Tempering Sampling with Diffusion | Wenlin Chen" />
+  <meta property="og:description" content="Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), in terms of the number of target evaluations. On the other hand, we also identify several inefficiencies in PT: (1) information across different temperature levels is only exchanged through swapping samples; (2) the varying mixing rates across temperatures lead to wasted computation, particularly at low temperatures early on; and (3) PT’s reliance on MCMC results in dependent samples, slowing transitions between modes. To address the weaknesses in both approaches, we propose Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures. We introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. This approach enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers and demonstrating a promising direction to improve over PT." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2023-10-26T00:00:00&#43;00:00"
+        content="2025-02-10T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2025-04-26T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-07-13T00:00:00&#43;00:00">
   
 
   
@@ -326,16 +326,16 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://wenlin-chen.github.io/publication/chen2025your/"
+    "@id": "https://wenlin-chen.github.io/publication/rissanen2025progressive/"
   },
-  "headline": "Your Image is Secretly the Last Frame of a Pseudo Video",
+  "headline": "Progressive Tempering Sampling with Diffusion",
   
-  "datePublished": "2023-10-26T00:00:00Z",
-  "dateModified": "2025-04-26T00:00:00Z",
+  "datePublished": "2025-02-10T00:00:00Z",
+  "dateModified": "2025-07-13T00:00:00Z",
   
   "author": {
     "@type": "Person",
-    "name": "Wenlong Chen"
+    "name": "Severi Rissanen"
   },
   
   "publisher": {
@@ -346,7 +346,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Diffusion models, which can be viewed as a special case of hierarchical variational autoencoders (HVAEs), have shown profound success in generating photo-realistic images. In contrast, standard HVAEs often produce images of inferior quality compared to diffusion models. In this paper, we hypothesize that the success of diffusion models can be partly attributed to the additional self-supervision information for their intermediate latent states provided by corrupted images, which along with the original image form a pseudo video. Based on this hypothesis, we explore the possibility of improving other types of generative models with such pseudo videos. Specifically, we first extend a given image generative model to their video generative model counterpart, and then train the video generative model on pseudo videos constructed by applying data augmentation to the original images. Furthermore, we analyze the potential issues of first-order Markov data augmentation methods, which are typically used in diffusion models, and propose to use more expressive data augmentation to construct more useful information in pseudo videos. Our empirical results on the CIFAR10 and CelebA datasets demonstrate that improved image generation quality can be achieved with additional self-supervised information from pseudo videos."
+  "description": "Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), in terms of the number of target evaluations. On the other hand, we also identify several inefficiencies in PT: (1) information across different temperature levels is only exchanged through swapping samples; (2) the varying mixing rates across temperatures lead to wasted computation, particularly at low temperatures early on; and (3) PT’s reliance on MCMC results in dependent samples, slowing transitions between modes. To address the weaknesses in both approaches, we propose Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures. We introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. This approach enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers and demonstrating a promising direction to improve over PT."
 }
 </script>
 
@@ -362,11 +362,11 @@
 
 
 
-  <title>Your Image is Secretly the Last Frame of a Pseudo Video | Wenlin Chen</title>
+  <title>Progressive Tempering Sampling with Diffusion | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="17d4792e890e5540ba58343391438c28" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4f0d7bdc3442566089e121a0bfaef6c3" >
 
   
   
@@ -652,7 +652,7 @@
   
   
 <div class="container pt-3">
-  <h1>Your Image is Secretly the Last Frame of a Pseudo Video</h1>
+  <h1>Progressive Tempering Sampling with Diffusion</h1>
 
   
 
@@ -670,10 +670,13 @@
     
 
   <span >
-      Wenlong Chen</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span class="author-highlighted">
-      Wenlin Chen</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
-      Lapo Rastrelli</span>, <span >
-      Yingzhen Li</span>
+      Severi Rissanen</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
+      RuiKang OuYang</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
+      Jiajun He</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span class="author-highlighted">
+      Wenlin Chen</span>, <span >
+      Markus Heinonen</span>, <span >
+      Arno Solin</span>, <span >
+      José Miguel Hernández-Lobato</span>
   </div>
   
   
@@ -684,7 +687,7 @@
     
       
     
-    April 2025
+    July 2025
   </span>
   
 
@@ -724,14 +727,10 @@
 
 
 
-<a class="btn btn-outline-primary btn-page-header" href="/publication/chen2025your/chen2025your.pdf" target="_blank" rel="noopener" style="font-size: 0.7rem;">
-  PDF
-</a>
-
 
 
 <a href="#" class="btn btn-outline-primary btn-page-header js-cite-modal"
-        data-filename="/publication/chen2025your/cite.bib" style="font-size: 0.7rem;">
+        data-filename="/publication/rissanen2025progressive/cite.bib" style="font-size: 0.7rem;">
   Cite
 </a>
 
@@ -748,34 +747,6 @@
 
 
 
-  
-  
-  
-    
-  
-  
-  
-  
-  
-    
-  
-  <a class="btn btn-outline-primary btn-page-header" href="https://openreview.net/forum?id=ur8nvWUWr1" target="_blank" rel="noopener" style="font-size: 0.7rem;">
-    OpenReview</a>
-
-  
-  
-  
-    
-  
-  
-  
-  
-  
-    
-  
-  <a class="btn btn-outline-primary btn-page-header" href="https://arxiv.org/abs/2410.20158" target="_blank" rel="noopener" style="font-size: 0.7rem;">
-    arXiv</a>
-
 </div>
 
 
@@ -787,7 +758,7 @@
 
     
     <h3>Abstract</h3>
-    <p class="pub-abstract">Diffusion models, which can be viewed as a special case of hierarchical variational autoencoders (HVAEs), have shown profound success in generating photo-realistic images. In contrast, standard HVAEs often produce images of inferior quality compared to diffusion models. In this paper, we hypothesize that the success of diffusion models can be partly attributed to the additional self-supervision information for their intermediate latent states provided by corrupted images, which along with the original image form a pseudo video. Based on this hypothesis, we explore the possibility of improving other types of generative models with such pseudo videos. Specifically, we first extend a given image generative model to their video generative model counterpart, and then train the video generative model on pseudo videos constructed by applying data augmentation to the original images. Furthermore, we analyze the potential issues of first-order Markov data augmentation methods, which are typically used in diffusion models, and propose to use more expressive data augmentation to construct more useful information in pseudo videos. Our empirical results on the CIFAR10 and CelebA datasets demonstrate that improved image generation quality can be achieved with additional self-supervised information from pseudo videos.</p>
+    <p class="pub-abstract">Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), in terms of the number of target evaluations. On the other hand, we also identify several inefficiencies in PT: (1) information across different temperature levels is only exchanged through swapping samples; (2) the varying mixing rates across temperatures lead to wasted computation, particularly at low temperatures early on; and (3) PT’s reliance on MCMC results in dependent samples, slowing transitions between modes. To address the weaknesses in both approaches, we propose Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures. We introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. This approach enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers and demonstrating a promising direction to improve over PT.</p>
     
 
     
@@ -798,8 +769,8 @@
         <div class="row">
           <div class="col-12 col-md-3 pub-row-heading">Type</div>
           <div class="col-12 col-md-9">
-            <a href="/publication/#3">
-              Preprint
+            <a href="/publication/#1">
+              Conference paper
             </a>
           </div>
         </div>
@@ -815,7 +786,7 @@
       <div class="col-md-10">
         <div class="row">
           <div class="col-12 col-md-3 pub-row-heading">Publication</div>
-          <div class="col-12 col-md-9">Workshop on Deep Generative Model in Machine Learning: Theory, Principle and Efficacy (DeLTa) at ICLR 2025</div>
+          <div class="col-12 col-md-9">The Forty-Second International Conference on Machine Learning (ICML 2025)</div>
         </div>
       </div>
       <div class="col-md-1"></div>
@@ -847,7 +818,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/publication/chen2025your/&amp;text=Your%20Image%20is%20Secretly%20the%20Last%20Frame%20of%20a%20Pseudo%20Video" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;text=Progressive%20Tempering%20Sampling%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -860,7 +831,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/publication/chen2025your/&amp;t=Your%20Image%20is%20Secretly%20the%20Last%20Frame%20of%20a%20Pseudo%20Video" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;t=Progressive%20Tempering%20Sampling%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -873,7 +844,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Your%20Image%20is%20Secretly%20the%20Last%20Frame%20of%20a%20Pseudo%20Video&amp;body=https://wenlin-chen.github.io/publication/chen2025your/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Progressive%20Tempering%20Sampling%20with%20Diffusion&amp;body=https://wenlin-chen.github.io/publication/rissanen2025progressive/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -886,7 +857,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/publication/chen2025your/&amp;title=Your%20Image%20is%20Secretly%20the%20Last%20Frame%20of%20a%20Pseudo%20Video" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;title=Progressive%20Tempering%20Sampling%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -899,7 +870,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Your%20Image%20is%20Secretly%20the%20Last%20Frame%20of%20a%20Pseudo%20Video%20https://wenlin-chen.github.io/publication/chen2025your/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Progressive%20Tempering%20Sampling%20with%20Diffusion%20https://wenlin-chen.github.io/publication/rissanen2025progressive/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -912,7 +883,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/publication/chen2025your/&amp;title=Your%20Image%20is%20Secretly%20the%20Last%20Frame%20of%20a%20Pseudo%20Video" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;title=Progressive%20Tempering%20Sampling%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -931,6 +902,18 @@
 
 
   
+  
+    
+
+
+
+
+  
+    
+
+
+
+
   
     
 
@@ -1050,6 +1033,12 @@
 
     </div>
   </div>
+
+
+  
+    
+
+
 
 
   

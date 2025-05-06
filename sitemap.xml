@@ -5,6 +5,9 @@
     <loc>https://wenlin-chen.github.io/publication-type/1/</loc>
     <lastmod>2025-07-13T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wenlin-chen.github.io/tag/diffusion/</loc>
+    <lastmod>2025-07-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wenlin-chen.github.io/publication/rissanen2025progressive/</loc>
     <lastmod>2025-07-13T00:00:00+00:00</lastmod>
   </url><url>
@@ -12,6 +15,9 @@
     <lastmod>2025-07-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication/</loc>
+    <lastmod>2025-07-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wenlin-chen.github.io/tags/</loc>
     <lastmod>2025-07-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/</loc>
@@ -32,13 +38,22 @@
     <loc>https://wenlin-chen.github.io/publication/chen2024neural/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wenlin-chen.github.io/tag/optimization/</loc>
+    <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wenlin-chen.github.io/publication-type/2/</loc>
     <lastmod>2024-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication/chen2024leveraging/</loc>
     <lastmod>2024-08-24T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wenlin-chen.github.io/tag/multi-task/</loc>
+    <lastmod>2024-08-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wenlin-chen.github.io/publication/wu2024modelling/</loc>
+    <lastmod>2024-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wenlin-chen.github.io/tag/uncertainty/</loc>
     <lastmod>2024-08-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication/chen2024diffusive/</loc>
@@ -47,6 +62,9 @@
     <loc>https://wenlin-chen.github.io/publication/wu2023has/</loc>
     <lastmod>2023-09-30T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wenlin-chen.github.io/tag/meta-learning/</loc>
+    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wenlin-chen.github.io/publication/chen2023meta/</loc>
     <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -54,6 +72,9 @@
     <lastmod>2022-08-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication-type/4/</loc>
+    <lastmod>2022-04-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://wenlin-chen.github.io/tag/ai4sci/</loc>
     <lastmod>2022-04-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://wenlin-chen.github.io/publication/tripp2022evaluation/</loc>
@@ -65,6 +86,9 @@
     <loc>https://wenlin-chen.github.io/publication/chen2021causal/</loc>
     <lastmod>2021-08-19T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://wenlin-chen.github.io/tag/causality/</loc>
+    <lastmod>2021-08-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://wenlin-chen.github.io/publication/webb2020ensemble/</loc>
     <lastmod>2020-09-14T00:00:00+00:00</lastmod>
   </url><url>
@@ -73,7 +97,5 @@
     <loc>https://wenlin-chen.github.io/categories/</loc>
   </url><url>
     <loc>https://wenlin-chen.github.io/resume/</loc>
-  </url><url>
-    <loc>https://wenlin-chen.github.io/tags/</loc>
   </url>
 </urlset>

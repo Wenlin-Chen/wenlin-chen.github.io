@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>optimization | Wenlin Chen</title>
+    <link>https://wenlin-chen.github.io/tag/optimization/</link>
+      <atom:link href="https://wenlin-chen.github.io/tag/optimization/index.xml" rel="self" type="application/rss+xml" />
+    <description>optimization</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2025 Wenlin Chen</copyright><lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>optimization</title>
+      <link>https://wenlin-chen.github.io/tag/optimization/</link>
+    </image>
+    
+    <item>
+      <title>Neural Characteristic Activation Analysis and Geometric Parameterization for ReLU Networks</title>
+      <link>https://wenlin-chen.github.io/publication/chen2024neural/</link>
+      <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2024neural/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimal Client Sampling for Federated Learning</title>
+      <link>https://wenlin-chen.github.io/publication/chen2022optimal/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2022optimal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>To Ensemble or Not Ensemble: When Does End-to-End Training Fail?</title>
+      <link>https://wenlin-chen.github.io/publication/webb2020ensemble/</link>
+      <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/webb2020ensemble/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

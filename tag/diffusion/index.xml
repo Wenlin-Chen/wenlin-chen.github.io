@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>diffusion | Wenlin Chen</title>
+    <link>https://wenlin-chen.github.io/tag/diffusion/</link>
+      <atom:link href="https://wenlin-chen.github.io/tag/diffusion/index.xml" rel="self" type="application/rss+xml" />
+    <description>diffusion</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2025 Wenlin Chen</copyright><lastBuildDate>Sun, 13 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>diffusion</title>
+      <link>https://wenlin-chen.github.io/tag/diffusion/</link>
+    </image>
+    
+    <item>
+      <title>Progressive Tempering Sampling with Diffusion</title>
+      <link>https://wenlin-chen.github.io/publication/rissanen2025progressive/</link>
+      <pubDate>Sun, 13 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/rissanen2025progressive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Training Neural Samplers with Reverse Diffusive KL Divergence</title>
+      <link>https://wenlin-chen.github.io/publication/he2025training/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/he2025training/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Towards Training One-Step Diffusion Models Without Distillation</title>
+      <link>https://wenlin-chen.github.io/publication/zhang2025towards/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/zhang2025towards/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Your Image is Secretly the Last Frame of a Pseudo Video</title>
+      <link>https://wenlin-chen.github.io/publication/chen2025your/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2025your/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Diffusive Gibbs Sampling</title>
+      <link>https://wenlin-chen.github.io/publication/chen2024diffusive/</link>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2024diffusive/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

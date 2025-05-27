@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Recent advances in one-step generative models typically follow a two-stage process: first training a teacher diffusion model and then distilling it into a one-step student model. This distillation process traditionally relies on both the teacher model&#39;s score function to compute the distillation loss and its weights for student initialization. In this paper, we explore whether one-step generative models can be trained directly without this distillation process. First, we show that the teacher&#39;s score function is not essential and propose a family of distillation methods that achieve competitive results without relying on score estimation. Next, we demonstrate that initialization from teacher weights is indispensable in successful training. Surprisingly, we find that this benefit is not due to improved &#34;input-output&#34; mapping but rather the learned feature representations, which dominate distillation quality. Our findings provide a better understanding of the role of initialization in one-step model training and its impact on distillation quality." />
+  <meta name="description" content="Recent advances in training one-step diffusion models typically follow a two-stage pipeline: first training a teacher diffusion model and then distilling it into a one-step student model. This process often depends on both the teacher&#39;s score function for supervision and its weights for initializing the student model. In this paper, we explore whether one-step diffusion models can be trained directly without this distillation procedure. We introduce a family of new training methods that entirely forgo teacher score supervision, yet outperforms most teacher-guided distillation approaches. This suggests that score supervision is not essential for effective training of one-step diffusion models. However, we find that initializing the student model with the teacher&#39;s weights remains critical. Surprisingly, the key advantage of teacher initialization is not due to better latent-to-output mappings, but rather the rich set of feature representations across different noise levels that the teacher diffusion model provides. These insights take us one step closer towards training one-step diffusion models without distillation and provide a better understanding of the roles of teacher supervision and initialization in the distillation process." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/publication/zhang2025towards/" />
@@ -295,7 +295,7 @@
   <meta property="og:site_name" content="Wenlin Chen" />
   <meta property="og:url" content="https://wenlin-chen.github.io/publication/zhang2025towards/" />
   <meta property="og:title" content="Towards Training One-Step Diffusion Models Without Distillation | Wenlin Chen" />
-  <meta property="og:description" content="Recent advances in one-step generative models typically follow a two-stage process: first training a teacher diffusion model and then distilling it into a one-step student model. This distillation process traditionally relies on both the teacher model&#39;s score function to compute the distillation loss and its weights for student initialization. In this paper, we explore whether one-step generative models can be trained directly without this distillation process. First, we show that the teacher&#39;s score function is not essential and propose a family of distillation methods that achieve competitive results without relying on score estimation. Next, we demonstrate that initialization from teacher weights is indispensable in successful training. Surprisingly, we find that this benefit is not due to improved &#34;input-output&#34; mapping but rather the learned feature representations, which dominate distillation quality. Our findings provide a better understanding of the role of initialization in one-step model training and its impact on distillation quality." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:description" content="Recent advances in training one-step diffusion models typically follow a two-stage pipeline: first training a teacher diffusion model and then distilling it into a one-step student model. This process often depends on both the teacher&#39;s score function for supervision and its weights for initializing the student model. In this paper, we explore whether one-step diffusion models can be trained directly without this distillation procedure. We introduce a family of new training methods that entirely forgo teacher score supervision, yet outperforms most teacher-guided distillation approaches. This suggests that score supervision is not essential for effective training of one-step diffusion models. However, we find that initializing the student model with the teacher&#39;s weights remains critical. Surprisingly, the key advantage of teacher initialization is not due to better latent-to-output mappings, but rather the rich set of feature representations across different noise levels that the teacher diffusion model provides. These insights take us one step closer towards training one-step diffusion models without distillation and provide a better understanding of the roles of teacher supervision and initialization in the distillation process." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -346,7 +346,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Recent advances in one-step generative models typically follow a two-stage process: first training a teacher diffusion model and then distilling it into a one-step student model. This distillation process traditionally relies on both the teacher model's score function to compute the distillation loss and its weights for student initialization. In this paper, we explore whether one-step generative models can be trained directly without this distillation process. First, we show that the teacher's score function is not essential and propose a family of distillation methods that achieve competitive results without relying on score estimation. Next, we demonstrate that initialization from teacher weights is indispensable in successful training. Surprisingly, we find that this benefit is not due to improved \"input-output\" mapping but rather the learned feature representations, which dominate distillation quality. Our findings provide a better understanding of the role of initialization in one-step model training and its impact on distillation quality."
+  "description": "Recent advances in training one-step diffusion models typically follow a two-stage pipeline: first training a teacher diffusion model and then distilling it into a one-step student model. This process often depends on both the teacher's score function for supervision and its weights for initializing the student model. In this paper, we explore whether one-step diffusion models can be trained directly without this distillation procedure. We introduce a family of new training methods that entirely forgo teacher score supervision, yet outperforms most teacher-guided distillation approaches. This suggests that score supervision is not essential for effective training of one-step diffusion models. However, we find that initializing the student model with the teacher's weights remains critical. Surprisingly, the key advantage of teacher initialization is not due to better latent-to-output mappings, but rather the rich set of feature representations across different noise levels that the teacher diffusion model provides. These insights take us one step closer towards training one-step diffusion models without distillation and provide a better understanding of the roles of teacher supervision and initialization in the distillation process."
 }
 </script>
 
@@ -669,9 +669,9 @@
     
 
   <span >
-      Mingtian Zhang</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
-      Jiajun He</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span class="author-highlighted">
+      Mingtian Zhang</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span class="author-highlighted">
       Wenlin Chen</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
+      Jiajun He</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
       Zijing Ou</span>, <span >
       José Miguel Hernández-Lobato</span>, <span >
       Bernhard Schölkopf</span>, <span >
@@ -789,7 +789,7 @@
 
     
     <h3>Abstract</h3>
-    <p class="pub-abstract">Recent advances in one-step generative models typically follow a two-stage process: first training a teacher diffusion model and then distilling it into a one-step student model. This distillation process traditionally relies on both the teacher model&rsquo;s score function to compute the distillation loss and its weights for student initialization. In this paper, we explore whether one-step generative models can be trained directly without this distillation process. First, we show that the teacher&rsquo;s score function is not essential and propose a family of distillation methods that achieve competitive results without relying on score estimation. Next, we demonstrate that initialization from teacher weights is indispensable in successful training. Surprisingly, we find that this benefit is not due to improved &ldquo;input-output&rdquo; mapping but rather the learned feature representations, which dominate distillation quality. Our findings provide a better understanding of the role of initialization in one-step model training and its impact on distillation quality.</p>
+    <p class="pub-abstract">Recent advances in training one-step diffusion models typically follow a two-stage pipeline: first training a teacher diffusion model and then distilling it into a one-step student model. This process often depends on both the teacher&rsquo;s score function for supervision and its weights for initializing the student model. In this paper, we explore whether one-step diffusion models can be trained directly without this distillation procedure. We introduce a family of new training methods that entirely forgo teacher score supervision, yet outperforms most teacher-guided distillation approaches. This suggests that score supervision is not essential for effective training of one-step diffusion models. However, we find that initializing the student model with the teacher&rsquo;s weights remains critical. Surprisingly, the key advantage of teacher initialization is not due to better latent-to-output mappings, but rather the rich set of feature representations across different noise levels that the teacher diffusion model provides. These insights take us one step closer towards training one-step diffusion models without distillation and provide a better understanding of the roles of teacher supervision and initialization in the distillation process.</p>
     
 
     
@@ -950,12 +950,6 @@
 
 
 
-
-  
-    
-
-
-
   
   
   
@@ -1064,6 +1058,12 @@
 
     </div>
   </div>
+
+
+  
+    
+
+
 
 
   

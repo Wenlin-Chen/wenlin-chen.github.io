@@ -21,6 +21,14 @@
     </item>
     
     <item>
+      <title>Bridging Deep Learning and Probabilistic Inference: Towards Data Efficiency, Identifiability, and Sampling Scalability</title>
+      <link>https://wenlin-chen.github.io/publication/chen2025bridging/</link>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/chen2025bridging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Training Neural Samplers with Reverse Diffusive KL Divergence</title>
       <link>https://wenlin-chen.github.io/publication/he2025training/</link>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>

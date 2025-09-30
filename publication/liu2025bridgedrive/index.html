@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), when it comes to the efficiency of target evaluations. On the other hand, unlike a well-trained neural sampler, PT yields only dependent samples and needs to be rerun -- at considerable computational cost -- whenever new samples are required. To address these weaknesses, we propose the Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures, leveraging the advantages of PT to improve the training of neural samplers. We also introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. PTSD enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers." />
+  <meta name="description" content="Diffusion-based planners have shown great promise for autonomous driving due to their ability to capture multi-modal driving behaviors. However, guiding these models effectively in reactive, closed-loop environments remains a significant challenge. Simple conditioning often fails to provide sufficient guidance in complex and dynamic driving scenarios. Recent work attempts to use typical expert driving behaviors (i.e., anchors) to guide diffusion models but relies on a truncated schedule, which introduces theoretical inconsistencies and can compromise performance. To address this, we introduce BridgeDrive, a novel anchor-guided diffusion bridge policy for closed-loop trajectory planning. Our approach provides a principled diffusion framework that effectively translates anchors into fine-grained trajectory plans, appropriately responding to varying traffic conditions. Our planner is compatible with efficient ODE solvers, a critical factor for real-time autonomous driving deployment. We achieve state-of-the-art performance on the Bench2Drive benchmark, improving the success rate by 5% over prior arts." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/publication/rissanen2025progressive/" />
+  <link rel="alternate" hreflang="en-us" href="https://wenlin-chen.github.io/publication/liu2025bridgedrive/" />
 
   
 
@@ -276,7 +276,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://wenlin-chen.github.io/publication/rissanen2025progressive/" />
+  <link rel="canonical" href="https://wenlin-chen.github.io/publication/liu2025bridgedrive/" />
 
   
   
@@ -293,18 +293,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Wenlin Chen" />
-  <meta property="og:url" content="https://wenlin-chen.github.io/publication/rissanen2025progressive/" />
-  <meta property="og:title" content="Progressive Tempering Sampler with Diffusion | Wenlin Chen" />
-  <meta property="og:description" content="Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), when it comes to the efficiency of target evaluations. On the other hand, unlike a well-trained neural sampler, PT yields only dependent samples and needs to be rerun -- at considerable computational cost -- whenever new samples are required. To address these weaknesses, we propose the Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures, leveraging the advantages of PT to improve the training of neural samplers. We also introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. PTSD enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://wenlin-chen.github.io/publication/liu2025bridgedrive/" />
+  <meta property="og:title" content="BridgeDrive: Diffusion Bridge Policy for Closed-Loop Trajectory Planning in Autonomous Driving | Wenlin Chen" />
+  <meta property="og:description" content="Diffusion-based planners have shown great promise for autonomous driving due to their ability to capture multi-modal driving behaviors. However, guiding these models effectively in reactive, closed-loop environments remains a significant challenge. Simple conditioning often fails to provide sufficient guidance in complex and dynamic driving scenarios. Recent work attempts to use typical expert driving behaviors (i.e., anchors) to guide diffusion models but relies on a truncated schedule, which introduces theoretical inconsistencies and can compromise performance. To address this, we introduce BridgeDrive, a novel anchor-guided diffusion bridge policy for closed-loop trajectory planning. Our approach provides a principled diffusion framework that effectively translates anchors into fine-grained trajectory plans, appropriately responding to varying traffic conditions. Our planner is compatible with efficient ODE solvers, a critical factor for real-time autonomous driving deployment. We achieve state-of-the-art performance on the Bench2Drive benchmark, improving the success rate by 5% over prior arts." /><meta property="og:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2025-02-10T00:00:00&#43;00:00"
+        content="2025-09-30T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2025-07-13T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-09-30T00:00:00&#43;00:00">
   
 
   
@@ -326,16 +326,16 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://wenlin-chen.github.io/publication/rissanen2025progressive/"
+    "@id": "https://wenlin-chen.github.io/publication/liu2025bridgedrive/"
   },
-  "headline": "Progressive Tempering Sampler with Diffusion",
+  "headline": "BridgeDrive: Diffusion Bridge Policy for Closed-Loop Trajectory Planning in Autonomous Driving",
   
-  "datePublished": "2025-02-10T00:00:00Z",
-  "dateModified": "2025-07-13T00:00:00Z",
+  "datePublished": "2025-09-30T00:00:00Z",
+  "dateModified": "2025-09-30T00:00:00Z",
   
   "author": {
     "@type": "Person",
-    "name": "Severi Rissanen"
+    "name": "Shu Liu"
   },
   
   "publisher": {
@@ -346,7 +346,7 @@
       "url": "https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), when it comes to the efficiency of target evaluations. On the other hand, unlike a well-trained neural sampler, PT yields only dependent samples and needs to be rerun -- at considerable computational cost -- whenever new samples are required. To address these weaknesses, we propose the Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures, leveraging the advantages of PT to improve the training of neural samplers. We also introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. PTSD enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers."
+  "description": "Diffusion-based planners have shown great promise for autonomous driving due to their ability to capture multi-modal driving behaviors. However, guiding these models effectively in reactive, closed-loop environments remains a significant challenge. Simple conditioning often fails to provide sufficient guidance in complex and dynamic driving scenarios. Recent work attempts to use typical expert driving behaviors (i.e., anchors) to guide diffusion models but relies on a truncated schedule, which introduces theoretical inconsistencies and can compromise performance. To address this, we introduce BridgeDrive, a novel anchor-guided diffusion bridge policy for closed-loop trajectory planning. Our approach provides a principled diffusion framework that effectively translates anchors into fine-grained trajectory plans, appropriately responding to varying traffic conditions. Our planner is compatible with efficient ODE solvers, a critical factor for real-time autonomous driving deployment. We achieve state-of-the-art performance on the Bench2Drive benchmark, improving the success rate by 5% over prior arts."
 }
 </script>
 
@@ -362,11 +362,11 @@
 
 
 
-  <title>Progressive Tempering Sampler with Diffusion | Wenlin Chen</title>
+  <title>BridgeDrive: Diffusion Bridge Policy for Closed-Loop Trajectory Planning in Autonomous Driving | Wenlin Chen</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4f0d7bdc3442566089e121a0bfaef6c3" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="f3040b0e77c3ab01c6bc889c9fa5d5a2" >
 
   
   
@@ -651,7 +651,7 @@
   
   
 <div class="container pt-3">
-  <h1>Progressive Tempering Sampler with Diffusion</h1>
+  <h1>BridgeDrive: Diffusion Bridge Policy for Closed-Loop Trajectory Planning in Autonomous Driving</h1>
 
   
 
@@ -669,13 +669,16 @@
     
 
   <span >
-      Severi Rissanen</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
-      RuiKang OuYang</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
-      Jiajun He</span>, <span class="author-highlighted">
-      Wenlin Chen</span>, <span >
-      Markus Heinonen</span>, <span >
-      Arno Solin</span>, <span >
-      José Miguel Hernández-Lobato</span>
+      Shu Liu</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span class="author-highlighted">
+      Wenlin Chen</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
+      Weihao Li</span><span class="author-notes" data-toggle="tooltip" title="Equal contribution">*</span>, <span >
+      Zheng Wang</span>, <span >
+      Lijin Yang</span>, <span >
+      Jianing Huang</span>, <span >
+      Yipin Zhang</span>, <span >
+      Zhongzhan Huang</span>, <span >
+      Ze Cheng</span>, <span >
+      Hao Yang</span>
   </div>
   
   
@@ -686,7 +689,7 @@
     
       
     
-    July 2025
+    September 2025
   </span>
   
 
@@ -723,29 +726,23 @@
 
 
   
+    
+  
 
 
 
-<a class="btn btn-outline-primary btn-page-header" href="/publication/rissanen2025progressive/rissanen2025progressive.pdf" target="_blank" rel="noopener" style="font-size: 0.7rem;">
+<a class="btn btn-outline-primary btn-page-header" href="https://www.arxiv.org/pdf/2509.23589" target="_blank" rel="noopener" style="font-size: 0.7rem;">
   PDF
 </a>
 
 
 
 <a href="#" class="btn btn-outline-primary btn-page-header js-cite-modal"
-        data-filename="/publication/rissanen2025progressive/cite.bib" style="font-size: 0.7rem;">
+        data-filename="/publication/liu2025bridgedrive/cite.bib" style="font-size: 0.7rem;">
   Cite
 </a>
 
 
-  
-  
-    
-  
-<a class="btn btn-outline-primary btn-page-header" href="https://github.com/cambridge-mlg/Progressive-Tempering-Sampler-with-Diffusion" target="_blank" rel="noopener" style="font-size: 0.7rem;">
-  Code
-</a>
-
 
 
 
@@ -769,7 +766,7 @@
   
     
   
-  <a class="btn btn-outline-primary btn-page-header" href="https://www.arxiv.org/abs/2506.05231" target="_blank" rel="noopener" style="font-size: 0.7rem;">
+  <a class="btn btn-outline-primary btn-page-header" href="https://www.arxiv.org/abs/2509.23589" target="_blank" rel="noopener" style="font-size: 0.7rem;">
     arXiv</a>
 
 </div>
@@ -783,7 +780,7 @@
 
     
     <h3>Abstract</h3>
-    <p class="pub-abstract">Recent research has focused on designing neural samplers that amortize the process of sampling from unnormalized densities. However, despite significant advancements, they still fall short of the state-of-the-art MCMC approach, Parallel Tempering (PT), when it comes to the efficiency of target evaluations. On the other hand, unlike a well-trained neural sampler, PT yields only dependent samples and needs to be rerun &ndash; at considerable computational cost &ndash; whenever new samples are required. To address these weaknesses, we propose the Progressive Tempering Sampler with Diffusion (PTSD), which trains diffusion models sequentially across temperatures, leveraging the advantages of PT to improve the training of neural samplers. We also introduce a novel method to combine high-temperature diffusion models to generate approximate lower-temperature samples, which are minimally refined using MCMC and used to train the next diffusion model. PTSD enables efficient reuse of sample information across temperature levels while generating well-mixed, uncorrelated samples. Our method significantly improves target evaluation efficiency, outperforming diffusion-based neural samplers.</p>
+    <p class="pub-abstract">Diffusion-based planners have shown great promise for autonomous driving due to their ability to capture multi-modal driving behaviors. However, guiding these models effectively in reactive, closed-loop environments remains a significant challenge. Simple conditioning often fails to provide sufficient guidance in complex and dynamic driving scenarios. Recent work attempts to use typical expert driving behaviors (i.e., anchors) to guide diffusion models but relies on a truncated schedule, which introduces theoretical inconsistencies and can compromise performance. To address this, we introduce BridgeDrive, a novel anchor-guided diffusion bridge policy for closed-loop trajectory planning. Our approach provides a principled diffusion framework that effectively translates anchors into fine-grained trajectory plans, appropriately responding to varying traffic conditions. Our planner is compatible with efficient ODE solvers, a critical factor for real-time autonomous driving deployment. We achieve state-of-the-art performance on the Bench2Drive benchmark, improving the success rate by 5% over prior arts.</p>
     
 
     
@@ -794,8 +791,8 @@
         <div class="row">
           <div class="col-12 col-md-3 pub-row-heading">Type</div>
           <div class="col-12 col-md-9">
-            <a href="/publication/#1">
-              Conference paper
+            <a href="/publication/#3">
+              Preprint
             </a>
           </div>
         </div>
@@ -811,7 +808,7 @@
       <div class="col-md-10">
         <div class="row">
           <div class="col-12 col-md-3 pub-row-heading">Publication</div>
-          <div class="col-12 col-md-9">The Forty-Second International Conference on Machine Learning (ICML 2025)</div>
+          <div class="col-12 col-md-9">arXiv preprint arXiv:2509.23589</div>
         </div>
       </div>
       <div class="col-md-1"></div>
@@ -832,11 +829,7 @@
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/sampling/">Sampling</a>
-  
   <a class="badge badge-light" href="/tag/diffusion/">Diffusion</a>
-  
-  <a class="badge badge-light" href="/tag/ai-for-science/">AI for Science</a>
   
 </div>
 
@@ -853,7 +846,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;text=Progressive%20Tempering%20Sampler%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://wenlin-chen.github.io/publication/liu2025bridgedrive/&amp;text=BridgeDrive:%20Diffusion%20Bridge%20Policy%20for%20Closed-Loop%20Trajectory%20Planning%20in%20Autonomous%20Driving" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -866,7 +859,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;t=Progressive%20Tempering%20Sampler%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://wenlin-chen.github.io/publication/liu2025bridgedrive/&amp;t=BridgeDrive:%20Diffusion%20Bridge%20Policy%20for%20Closed-Loop%20Trajectory%20Planning%20in%20Autonomous%20Driving" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -879,7 +872,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Progressive%20Tempering%20Sampler%20with%20Diffusion&amp;body=https://wenlin-chen.github.io/publication/rissanen2025progressive/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=BridgeDrive:%20Diffusion%20Bridge%20Policy%20for%20Closed-Loop%20Trajectory%20Planning%20in%20Autonomous%20Driving&amp;body=https://wenlin-chen.github.io/publication/liu2025bridgedrive/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -892,7 +885,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;title=Progressive%20Tempering%20Sampler%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://wenlin-chen.github.io/publication/liu2025bridgedrive/&amp;title=BridgeDrive:%20Diffusion%20Bridge%20Policy%20for%20Closed-Loop%20Trajectory%20Planning%20in%20Autonomous%20Driving" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -905,7 +898,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Progressive%20Tempering%20Sampler%20with%20Diffusion%20https://wenlin-chen.github.io/publication/rissanen2025progressive/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=BridgeDrive:%20Diffusion%20Bridge%20Policy%20for%20Closed-Loop%20Trajectory%20Planning%20in%20Autonomous%20Driving%20https://wenlin-chen.github.io/publication/liu2025bridgedrive/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -918,7 +911,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/publication/rissanen2025progressive/&amp;title=Progressive%20Tempering%20Sampler%20with%20Diffusion" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://wenlin-chen.github.io/publication/liu2025bridgedrive/&amp;title=BridgeDrive:%20Diffusion%20Bridge%20Policy%20for%20Closed-Loop%20Trajectory%20Planning%20in%20Autonomous%20Driving" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -937,18 +930,6 @@
 
 
   
-  
-    
-
-
-
-
-  
-    
-
-
-
-
   
     
 
@@ -1089,6 +1070,36 @@
 
 
   
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
+    
+
+
+
+
+  
 
 
 
@@ -1109,15 +1120,15 @@
     <h3>Related</h3>
     <ul>
       
-      <li><a href="/publication/chen2024diffusive/">Diffusive Gibbs Sampling</a></li>
-      
-      <li><a href="/publication/he2025training/">Training Neural Samplers with Reverse Diffusive KL Divergence</a></li>
-      
-      <li><a href="/publication/chen2025bridging/">Bridging Deep Learning and Probabilistic Inference: Towards Data Efficiency, Identifiability, and Sampling Scalability</a></li>
-      
-      <li><a href="/publication/liu2025bridgedrive/">BridgeDrive: Diffusion Bridge Policy for Closed-Loop Trajectory Planning in Autonomous Driving</a></li>
+      <li><a href="/publication/rissanen2025progressive/">Progressive Tempering Sampler with Diffusion</a></li>
       
       <li><a href="/publication/zhang2025towards/">Towards Training One-Step Diffusion Models Without Distillation</a></li>
+      
+      <li><a href="/publication/chen2024diffusive/">Diffusive Gibbs Sampling</a></li>
+      
+      <li><a href="/publication/chen2025your/">Your Image is Secretly the Last Frame of a Pseudo Video</a></li>
+      
+      <li><a href="/publication/he2025training/">Training Neural Samplers with Reverse Diffusive KL Divergence</a></li>
       
     </ul>
   </div>

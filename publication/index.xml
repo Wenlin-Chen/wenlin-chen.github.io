@@ -5,12 +5,20 @@
     <link>https://wenlin-chen.github.io/publication/</link>
       <atom:link href="https://wenlin-chen.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications &amp; Preprints</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2025 Wenlin Chen</copyright><lastBuildDate>Tue, 22 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2025 Wenlin Chen</copyright><lastBuildDate>Tue, 30 Sep 2025 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wenlin-chen.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Publications &amp; Preprints</title>
       <link>https://wenlin-chen.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>BridgeDrive: Diffusion Bridge Policy for Closed-Loop Trajectory Planning in Autonomous Driving</title>
+      <link>https://wenlin-chen.github.io/publication/liu2025bridgedrive/</link>
+      <pubDate>Tue, 30 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://wenlin-chen.github.io/publication/liu2025bridgedrive/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bridging Deep Learning and Probabilistic Inference: Towards Data Efficiency, Identifiability, and Sampling Scalability</title>

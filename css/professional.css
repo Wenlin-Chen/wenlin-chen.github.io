@@ -215,10 +215,10 @@ body.dark #navbar-main {
   border-radius: 999px;
   color: var(--text-muted);
   display: inline-flex;
-  height: 2.2rem;
+  height: 2.75rem;
   justify-content: center;
   transition: all 0.2s ease;
-  width: 2.2rem;
+  width: 2.75rem;
 }
 
 .network-icon li a:hover,
@@ -230,7 +230,7 @@ body.dark #navbar-main {
 }
 
 .network-icon .big-icon {
-  font-size: 1rem;
+  font-size: 1.25rem;
   line-height: 1;
 }
 

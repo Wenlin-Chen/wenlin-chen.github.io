@@ -545,6 +545,30 @@ body.dark #navbar-main {
     font-size: 1rem;
   }
 
+  .portrait-title h2 {
+    font-size: 1.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .portrait-title h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .network-icon {
+    gap: 0.65rem;
+    margin-top: 1.2rem;
+  }
+
+  .network-icon li a {
+    height: 3.05rem;
+    width: 3.05rem;
+  }
+
+  .network-icon .big-icon {
+    font-size: 1.4rem;
+  }
+
   .filter-search {
     min-width: 100%;
     width: 100%;

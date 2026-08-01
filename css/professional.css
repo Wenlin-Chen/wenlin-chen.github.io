@@ -312,11 +312,11 @@ ul.network-icon {
 .compact-item-card {
   background: transparent;
   border: 0;
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   border-radius: 0;
   box-shadow: none;
   margin-bottom: 0;
-  padding: 1rem 0 1.1rem;
+  padding: 1rem 0 0.75rem;
   transition: none;
 }
 
@@ -591,6 +591,6 @@ ul.network-icon {
 
   .card-simple.compact-item-card,
   .compact-item-card {
-    padding: 0.9rem 0 1rem;
+    padding: 0.9rem 0 0.7rem;
   }
 }

@@ -320,6 +320,10 @@ ul.network-icon {
   transition: none;
 }
 
+.wg-featured .card-simple.compact-item-card {
+  margin-top: 0;
+}
+
 .card-simple.compact-item-card:hover,
 .compact-item-card:hover {
   background: transparent;
